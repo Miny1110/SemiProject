@@ -1,0 +1,62 @@
+--1. EMP 테이블에서 모든 사원에 대한 이름,부서번호,부서명을 출력하는 SELECT 문장을 작성하여라.
+SELECT A.ENAME,A.DEPTNO,B.DNAME
+FROM EMP A,DEPT B
+WHERE A.DEPTNO = B.DEPTNO;
+
+--2. EMP 테이블에서 NEW YORK에서 근무하고 있는 사원에 대하여 이름,업무,급여,부서명을 출력하는 SELECT 문장을 작성하여라.
+SELECT A.ENAME,A.JOB,A.SAL,B.DNAME
+FROM EMP A, DEPT B
+WHERE B.DEPTNO=10;
+
+--3. EMP 테이블에서 보너스를 받는 사원에 대하여 이름,부서명,위치를 출력하는 SELECT 문장을 작성하여라.
+SELECT A.ENAME,B.DNAME,B.LOC
+FROM EMP A INNER JOIN DEPT B
+ON A.DEPTNO = B.DEPTNO
+WHERE A.COMM >0;
+ 
+--4. EMP 테이블에서 이름 중 L자가 있는 사원에 대하여 이름,업무,부서명,위치를 출력하는 SELECT 문장을 작성하여라.
+SELECT A.ENAME,A.JOB,B.DNAME,B.LOC
+FROM EMP A INNER JOIN DEPT B
+ON A.DEPTNO = B.DEPTNO
+WHERE A.ENAME LIKE '%L%';
+ 
+/*5. 아래의 결과를 출력하는 SELECT 문장을 작성하여라.(관리자가 없는 King을 포함하여 모든 사원을 출력)
+Employee        Emp# Manager         Mgr#
+---------- --------- ---------- ---------
+KING            7839
+
+BLAKE           7698 KING            7839
+
+CLARK           7782 KING            7839
+. . . . . . . . . .
+14 rows selected. */
+
+SELECT A.ENAME "Employee",A.EMPNO "Emp#",B.ENAME "Maneger",A.MGR "Mgr#"
+FROM EMP A INNER JOIN EMP B
+ON A.MGR = B.EMPNO(+)
+ORDER BY B.ENAME DESC;
+
+
+--6. EMP 테이블에서 그들의 관리자 보다 먼저 입사한 사원에 대하여 이름,입사일,관리자 이름, 관리자 입사일을 출력하는 SELECT 문장을 작성하여라.
+ 
+SELECT A.ENAME,A.HIREDATE,B.ENAME,B.HIREDATE
+FROM EMP A, EMP B
+WHERE A.MGR = B.EMPNO;
+
+/*7. EMP 테이블에서 사원의 급여와 사원의 급여 양만큼 “*”를 출력하는 SELECT 문장을 작성하여라. 단 “*”는 100을 의미한다.
+
+Employee and their salary
+-----------------------------------------------------------------
+KING      **************************************************
+BLAKE     ****************************
+CLARK     ************************
+JONES     *****************************
+MARTIN    ************
+ALLEN     ****************
+TURNER    *************** */
+
+SELECT (ENAME ||'  '||RPAD('*',FLOOR(SAL/100),'*'))"Employee and their salary"
+FROM EMP;
+
+SELECT ENAME || RPAD(' ',ROUND(SAL/100) +1,'*') AS "Employee and their salary"
+FROM EMP;
