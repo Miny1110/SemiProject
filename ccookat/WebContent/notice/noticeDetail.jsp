@@ -240,17 +240,13 @@
     <!-- Hero Section End -->
 											
     <!-- Blog Details Hero Begin -->
-    <section class="blog-details-hero" style="background: url('<%=cp%>/Data/style/img/blog/details/details-hero.jpg') no-repeat center;">
-        <div class="container">
+     <section class="breadcrumb-section" data-setbg="<%=cp %>/Data/style/img/breadcrumb.jpg" style="background-image: url(&quot;<%=cp %>/Data/style/img/breadcrumb.jpg&quot;);">
+       <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="blog__details__hero__text">
                         <h2>The Moment You Need To Remove Garlic From The Menu</h2>
-                        <ul>
-                            <li>By Michael Scofield</li>
-                            <li>January 14, 2019</li>
-                            <li>8 Comments</li>
-                        </ul>
+
                     </div>
                 </div>
             </div>

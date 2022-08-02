@@ -1042,6 +1042,8 @@ ol {
 	display: flex;
 	align-items: center;
 	padding: 45px 0 40px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .breadcrumb__text h2 {
