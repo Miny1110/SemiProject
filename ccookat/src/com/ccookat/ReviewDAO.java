@@ -72,7 +72,7 @@ public class ReviewDAO {
 			return totalCount;
 		}
 
-	
+	//입력하기
 	public int insertData(ReviewDTO dto) {
 		
 	
@@ -159,6 +159,7 @@ public class ReviewDAO {
 			return lists;
 			
 		}
+	 //하나 읽어오기
 	 public ReviewDTO getReadData(int reviewNum) {
 		 
 		 ReviewDTO dto = null;
@@ -200,7 +201,7 @@ public class ReviewDAO {
 			}
 			return dto;
 	 }
-	 
+	 //삭제하기
 	 public int deleteData(int reviewNum) {
 
 			int result = 0;
@@ -229,7 +230,6 @@ public class ReviewDAO {
 		}
 	 
 	 //수정
-	 
 		public int updateData(ReviewDTO dto){
 			
 			int result = 0;
