@@ -2470,8 +2470,11 @@ ol {
 
 .blog-details-hero {
 	height: 350px;
+	width: 70%;
 	display: flex;
 	align-items: center;
+	margin: auto;
+	padding: auto;
 }
 
 .blog__details__hero__text {
