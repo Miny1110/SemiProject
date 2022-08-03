@@ -131,14 +131,14 @@ public class NoticeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		NoticeDTO dto = null;
+		NoticeDTO ndto = null;
 		String sql;
 
 		try {
 
 			sql ="select noticeNum,noticeTitle,noticeCreated,";
 			sql+="noticeContent,noticeHitCount,noticeImage ";
-			sql+="from notice where noticenum=?";
+			sql+="from notice where noticeNum=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -148,14 +148,14 @@ public class NoticeDAO {
 
 			if(rs.next()) {
 
-				dto = new NoticeDTO();
+				ndto = new NoticeDTO();
 
-				dto.setNoticeNum(Integer.parseInt("noticeNum"));
-				dto.setNoticeTitle("noticeTitle");
-				dto.setNoticeCreated("noticeCreated");
-				dto.setNoticeContent("noticeContent");
-				dto.setNoticeHitCount(Integer.parseInt("noticeHitCount"));
-				dto.setNoticeImage("noticeImage");
+				ndto.setNoticeNum(Integer.parseInt("noticeNum"));
+				ndto.setNoticeTitle("noticeTitle");
+				ndto.setNoticeCreated("noticeCreated");
+				ndto.setNoticeContent("noticeContent");
+				ndto.setNoticeHitCount(Integer.parseInt("noticeHitCount"));
+				ndto.setNoticeImage("noticeImage");
 
 			}
 
@@ -166,7 +166,7 @@ public class NoticeDAO {
 			System.out.println(e.toString());
 		}
 
-		return dto;
+		return ndto;
 	}
 
 	//공지사항 목록에 뿌려줄 데이터
@@ -251,29 +251,26 @@ public class NoticeDAO {
 		return dataCount;
 	}
 
-	public int updateHitCount(int noticeNum) {
+	public void updateHitCount(int noticeNum) {
 
-		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
 
 		try {
 
-			sql = "update notice set hitCount = hitCount+1 where num=?";
+			sql = "update notice set noticehitCount=noticehitCount+1 where noticeNum=?";
 
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, noticeNum);
 
-			result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 
 			pstmt.close();
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-
-		return result;
 
 	}
 
