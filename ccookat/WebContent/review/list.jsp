@@ -1,9 +1,54 @@
+<%@page import="java.util.List"%>
+<%@page import="com.util.MyPage"%>
+<%@page import="com.ccookat.ReviewDAO"%>
+<%@page import="com.util.DBConn"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="com.ccookat.ReviewDTO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
+	Connection conn = DBConn.getconnection();
+	ReviewDAO dao = new ReviewDAO(conn);
+	
+	MyPage mypage = new MyPage();
+	
+	String pageNum = request.getParameter("pageNum");
+	int currentPage = 1;
+	
+	if (pageNum != null) { // 여기 값이 있다는건 사용자가 몇페이지를 뿌려줘 이런의미로 온거니까
+		currentPage = Integer.parseInt(pageNum);
+	}
+	//처음
+	//전체데이터갯수 구하기
+	int dataCount = dao.getDataCount();
+
+	//하나의 페이지에 보여줄 데이터 갯수
+	int numPerPage = 5;
+
+	//전체 페이지 갯수
+	int totalPage = mypage.getPageCount(numPerPage, dataCount);
+
+	//삭제시 페이지수가 줄었을때 처리하는 방법 
+	if (currentPage > totalPage) {
+		currentPage = totalPage;
+	}
+
+	//데이터베이스에서 가져올 rownum의 시작과 끝 구하기
+	int start = (currentPage - 1) * numPerPage + 1;
+	int end = currentPage * numPerPage;
+	
+	List<ReviewDTO> lists = dao.getLists(start, end);
+
+	
+
+	//페이징 처리
+	String listUrl = cp + "/guest/guest.jsp";
+	String pageIndexList = mypage.pageIndexList(currentPage, totalPage, listUrl);
+	
+	DBConn.close();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zxx"><head>
@@ -354,42 +399,36 @@
                                         sed sit amet dui. Proin eget tortor risus.</p>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
-                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
-                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
-                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent
-                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac
-                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante
-                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                                        Proin eget tortor risus.</p>
-                                    <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
-                                        ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet
-                                        elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
-                                        porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
-                                        nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
-                                </div>
-                            </div>
-                            <div class="tab-pane active" id="tabs-3" role="tabpanel">
+                            <div class="tab-pane active" id="tabs-2" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>리뷰 페이지</h6>
-                                    
-                                    <form action="" method="post" name="myForm" enctype="multipart/form-data">
+                                    <form action="" method="post" name="myForm">
                        
                                     <input type="button" value=" 글올리기 " class="btn2" 
 				onclick="javascript:location.href='<%=cp%>/review/created.jsp;"/>
-						
-					</form>
+					<%for(ReviewDTO dto : lists){ %>
+					<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee">	
+						<tr height="10">	
+						<td align="left" style="padding-left: 5px;">
+						<b><%=dto.getCustomerId() %> <%=dto.getReviewTitle() %></b>
+						</td>
+						</tr>
+
+										<tr height="10">
+											<td align="right" style="padding: 5px;"><input
+												type="button" value=" 삭제 " class="btn2" onclick="deleted();" />
+											</td>
+										</tr>
+										<tr><td colspan="2" bgcolor="#dbdbdb" height="1"></td></tr>
+
+
+
+
+
+										</form>
 					
                                    
-                                </div>
-                            </div>
-                        </div>
+                           
                     </div>
                 </div>
             </div>
