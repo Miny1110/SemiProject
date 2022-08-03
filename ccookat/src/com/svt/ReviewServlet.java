@@ -146,6 +146,7 @@ public class ReviewServlet extends HttpServlet {
 		rdto.setReviewTitle(req.getParameter("reviewTitle"));
 		rdto.setReviewContent(req.getParameter("reviewContent"));
 		rdto.setReviewImage(req.getParameter("reviewImage"));
+		rdto.setItemNum(Integer.parseInt(req.getParameter("itemNum")));
 		rdto.setReviewCreated(req.getParameter("reviewCreated"));
 		
 		rdao.insertData(rdto);
