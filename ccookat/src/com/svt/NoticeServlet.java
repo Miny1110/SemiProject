@@ -168,6 +168,9 @@ public class NoticeServlet extends HttpServlet {
 			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 			String pageNum = request.getParameter("pageNum");
 			
+			System.out.println(noticeNum);
+			System.out.println(pageNum);
+			
 			NoticeDTO ndto = ndao.selectData(noticeNum);
 			
 			//파일에있는 이미지데이터 삭제
