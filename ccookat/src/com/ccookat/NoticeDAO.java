@@ -27,7 +27,7 @@ public class NoticeDAO {
 		
 		try {
 			
-			sql = "select nvl(max(num),0) from notice";
+			sql = "select nvl(max(noticeNum),0) from notice";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -56,9 +56,9 @@ public class NoticeDAO {
 		
 		try {
 			
-			sql = "insert into(noticeNum,noticeTitle,noticeCreated,";
+			sql = "insert into notice(noticeNum,noticeTitle,noticeCreated,";
 			sql+= "noticeContent,noticeHitCount,noticeImage) ";
-			sql+= "values(?,?,sysdate,?,?,?)";
+			sql+= "values(?,?,sysdate,?,0,?)";
 					
 			pstmt = conn.prepareStatement(sql);
 			
@@ -122,10 +122,7 @@ public class NoticeDAO {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
-		
-		
-		
+			
 	}
 	
 	//수정시 뿌려줄 데이터
@@ -177,7 +174,7 @@ public class NoticeDAO {
 	public List<NoticeDTO> selectAll(int start,int end) {
 		
 		List<NoticeDTO> lists = new ArrayList<>();
-		
+		NoticeDTO ndto = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
@@ -185,34 +182,35 @@ public class NoticeDAO {
 		try {
 
 			sql ="select * from(select rownum rnum,data.* from ";
-			sql+="(select noticeNum,noticeTitle,noticeCreated,noticeContent,noticeHitCount,noticeImage ";
-			sql+="from notice order by noticeNum) data) ";
+			sql+="(select noticeNum,noticeTitle,to_char(noticeCreated,'yyyy.mm.dd') noticeCreated,";
+			sql+="SUBSTR(noticeContent, 1, 30) noticeContent,noticeHitCount,noticeImage ";
+			sql+="from notice order by noticeNum desc) data) ";
 			sql+="where rnum>=? and rnum<=?";
-			
-				
+							
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
 			
 			rs = pstmt.executeQuery();
-			
-			
+
 			while(rs.next()) {
 				
-				NoticeDTO dto = new NoticeDTO();
+				ndto = new NoticeDTO();
 				
-				dto.getNoticeNum();
-				dto.getNoticeTitle();
-				dto.getNoticeCreated();
-				dto.getNoticeContent();
-				dto.getNoticeHitCount();
-				dto.getNoticeImage();							
+				ndto.setNoticeNum(rs.getInt("noticeNum"));
+				ndto.setNoticeTitle(rs.getString("noticeTitle"));			
+				ndto.setNoticeCreated(rs.getString("noticeCreated"));
+				ndto.setNoticeContent(rs.getString("noticeContent"));
+				ndto.setNoticeHitCount(rs.getInt("noticeHitCount"));
+				ndto.setNoticeImage(rs.getString("noticeImage"));
 				
-				lists.add(dto);
+				lists.add(ndto);
 				
 			}
 			
+			pstmt.close();
+			rs.close();
 			
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -221,6 +219,36 @@ public class NoticeDAO {
 		return lists;
 	}
 	
+	//페이징 처리를 위한 전체 데이터 갯수 도출
 	
+	public int getDataCount() {
+
+		int dataCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+
+			sql = "select nvl(count(*),0) from notice";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+
+				dataCount = rs.getInt(1);							
+			}
+
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}		
+		return dataCount;
+	}
 
 }

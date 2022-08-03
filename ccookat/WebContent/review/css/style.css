@@ -1,3 +1,11 @@
+/******************************************************************
+  Template Name: Ogani
+  Description:  Ogani eCommerce  HTML Template
+  Author: Colorlib
+  Author URI: https://colorlib.com
+  Version: 1.0
+  Created: Colorlib
+******************************************************************/
 
 /*------------------------------------------------------------------
 [Table of contents]
@@ -121,7 +129,7 @@ ol {
 	right: 0;
 	height: 4px;
 	width: 80px;
-	background: #FF5833;
+	background: #7fad39;
 	content: "";
 	margin: 0 auto;
 }
@@ -159,7 +167,7 @@ ol {
 	color: #ffffff;
 	text-transform: uppercase;
 	font-weight: 700;
-	background: #FF5833;
+	background: #7fad39;
 	letter-spacing: 2px;
 }
 
@@ -170,7 +178,7 @@ ol {
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 13px 30px 12px;
-	background: #FF5833;
+	background: #7fad39;
 	border: none;
 }
 
@@ -320,7 +328,6 @@ ol {
 	display: inline-block;
 	margin-right: 40px;
 	cursor: pointer;
-	
 }
 
 .header__top__right__language:hover ul {
@@ -342,9 +349,6 @@ ol {
 
 .header__top__right__language img {
 	margin-right: 6px;
-	width: 10px;
-	height: 5px
-	
 }
 
 .header__top__right__language div {
@@ -445,7 +449,7 @@ ol {
 }
 
 .header__menu ul li .header__menu__dropdown li:hover>a {
-	color: #FF5833;
+	color: #7fad39;
 }
 
 .header__menu ul li .header__menu__dropdown li a {
@@ -456,7 +460,7 @@ ol {
 }
 
 .header__menu ul li.active a {
-	color: #FF5833;
+	color: #7fad39;
 }
 
 .header__menu ul li:hover .header__menu__dropdown {
@@ -466,7 +470,7 @@ ol {
 }
 
 .header__menu ul li:hover>a {
-	color: #FF5833;
+	color: #7fad39;
 }
 
 .header__menu ul li:last-child {
@@ -520,7 +524,7 @@ ol {
 .header__cart ul li a span {
 	height: 13px;
 	width: 13px;
-	background: #FF5833;
+	background: #7fad39;
 	font-size: 10px;
 	color: #ffffff;
 	line-height: 13px;
@@ -566,7 +570,6 @@ ol {
 
 .hero.hero-normal .hero__categories {
 	position: relative;
-	background: #FF5833;
 }
 
 .hero.hero-normal .hero__categories ul {
@@ -584,7 +587,7 @@ ol {
 }
 
 .hero__categories__all {
-	background: #FF5833;
+	background: #7fad39;
 	position: relative;
 	padding: 10px 25px 10px 40px;
 	cursor: pointer;
@@ -697,7 +700,7 @@ ol {
 
 .hero__search__phone__icon {
 	font-size: 18px;
-	color: #FF5833;
+	color: #7fad39;
 	height: 50px;
 	width: 50px;
 	background: #f5f5f5;
@@ -735,7 +738,7 @@ ol {
 	text-transform: uppercase;
 	font-weight: 700;
 	letter-spacing: 4px;
-	color: #FF5833;
+	color: #7fad39;
 }
 
 .hero__text h2 {
@@ -837,7 +840,7 @@ ol {
 	bottom: -2px;
 	width: 100%;
 	height: 2px;
-	background: #FF5833;
+	background: #7fad39;
 	content: "";
 	opacity: 0;
 }
@@ -885,8 +888,8 @@ ol {
 }
 
 .featured__item__pic__hover li:hover a {
-	background: #FF5833;
-	border-color: #FF5833;
+	background: #7fad39;
+	border-color: #7fad39;
 }
 
 .featured__item__pic__hover li:hover a i {
@@ -1198,7 +1201,7 @@ ol {
 }
 
 .sidebar__item__color.sidebar__item__color--green label:after {
-	background: #FF5833;
+	background: #3CC032;
 }
 
 .sidebar__item__color label {
@@ -1321,8 +1324,8 @@ ol {
 }
 
 .product__item__pic__hover li:hover a {
-	background: #FF5833;
-	border-color: #FF5833;
+	background: #7fad39;
+	border-color: #7fad39;
 }
 
 .product__item__pic__hover li:hover a i {
@@ -1520,7 +1523,7 @@ ol {
 }
 
 .filter__option span:hover {
-	color: #FF5833;
+	color: #7fad39;
 }
 
 .product__item {
@@ -1561,8 +1564,8 @@ ol {
 }
 
 .product__item__pic__hover li:hover a {
-	background: #FF5833;
-	border-color: #FF5833;
+	background: #7fad39;
+	border-color: #7fad39;
 }
 
 .product__item__pic__hover li:hover a i {
@@ -1642,8 +1645,8 @@ ol {
 
 .product__pagination a:hover,
 .blog__pagination a:hover {
-	background: #FF5833;
-	border-color: #FF5833;
+	background: #7fad39;
+	border-color: #7fad39;
 	color: #ffffff;
 }
 
@@ -2133,16 +2136,6 @@ ol {
 	color: #b2b2b2;
 }
 
-.checkout__input textarea {
-    width: 100%;
-    height: 300px;
-    border: 1px solid #ebebeb;
-    padding-left: 20px;
-    font-size: 16px;
-    color: #b2b2b2;
-    border-radius: 4px;
-}
-
 .checkout__input__checkbox {
 	margin-bottom: 10px;
 }
@@ -2161,8 +2154,8 @@ ol {
 }
 
 .checkout__input__checkbox label input:checked~.checkmark {
-	background: #FF5833;
-	border-color: #FF5833;
+	background: #7fad39;
+	border-color: #7fad39;
 }
 
 .checkout__input__checkbox label input:checked~.checkmark:after {
@@ -2389,7 +2382,7 @@ ol {
 }
 
 .blog__sidebar__item ul li a:hover {
-	color: #FF5833;
+	color: #7fad39;
 }
 
 .blog__sidebar__search {
@@ -2609,7 +2602,7 @@ ol {
 }
 
 .blog__details__widget .blog__details__social a:hover {
-	color: #FF5833;
+	color: #7fad39;
 }
 
 .blog__details__widget .blog__details__social a:last-child {
@@ -2727,7 +2720,7 @@ ol {
 }
 
 .footer__widget .footer__widget__social a:hover {
-	background: #FF5833;
+	background: #7fad39;
 	color: #ffffff;
 	border-color: #ffffff;
 }
@@ -2765,7 +2758,7 @@ ol {
 
 .contact__widget span {
 	font-size: 36px;
-	color: #FF5833;
+	color: #7fad39;
 }
 
 .contact__widget h4 {
@@ -2804,7 +2797,7 @@ ol {
 
 .map .map-inside i {
 	font-size: 48px;
-	color: #FF5833;
+	color: #7fad39;
 	position: absolute;
 	bottom: -75px;
 	left: 50%;
@@ -3061,7 +3054,7 @@ ol {
 	.humberger__menu__cart ul li a span {
 		height: 13px;
 		width: 13px;
-		background: #FF5833;
+		background: #7fad39;
 		font-size: 10px;
 		color: #ffffff;
 		line-height: 13px;
@@ -3127,7 +3120,7 @@ ol {
 		-webkit-border-radius: 0;
 		border-radius: 0;
 		background: transparent;
-		color: #FF5833;
+		color: #7fad39;
 	}
 	.humberger__menu__wrapper .slicknav_nav .slicknav_row,
 	.humberger__menu__wrapper .slicknav_nav a {
@@ -3319,7 +3312,7 @@ ol {
 	.humberger__menu__cart ul li a span {
 		height: 13px;
 		width: 13px;
-		background: #FF5833;
+		background: #7fad39;
 		font-size: 10px;
 		color: #ffffff;
 		line-height: 13px;
@@ -3385,7 +3378,7 @@ ol {
 		-webkit-border-radius: 0;
 		border-radius: 0;
 		background: transparent;
-		color: #FF5833;
+		color: #7fad39;
 	}
 	.humberger__menu__wrapper .slicknav_nav .slicknav_row,
 	.humberger__menu__wrapper .slicknav_nav a {
@@ -3472,5 +3465,4 @@ ol {
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
-	
 }
