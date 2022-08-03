@@ -264,8 +264,8 @@
                 <div class="col-lg-4 col-md-5">
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="공지사항 검색" name="searchvalue">
+                            <form action="<%=cp%>/main/notice/list.do">
+                                <input type="text" placeholder="공지사항 검색" name="searchValue">
                                 <button type="submit"><span class="icon_search"></span></button>
                             </form>
                         </div>
