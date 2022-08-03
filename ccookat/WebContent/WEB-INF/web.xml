@@ -41,7 +41,7 @@
 	
 	<servlet>
 		<servlet-name>ccookatReviewServlet</servlet-name>
-		<servlet-class>com.svt.ReviewServlett</servlet-class>
+		<servlet-class>com.svt.ReviewServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ccookatReviewServlet</servlet-name>
