@@ -137,7 +137,7 @@ public class NoticeDAO {
 		try {
 
 			sql ="select noticeNum,noticeTitle,noticeCreated,";
-			sql+="noticeContent,noticeHitCount,noticeImage) ";
+			sql+="noticeContent,noticeHitCount,noticeImage ";
 			sql+="from notice where noticenum=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -251,7 +251,7 @@ public class NoticeDAO {
 		return dataCount;
 	}
 
-	public int updateHitCount(int num) {
+	public int updateHitCount(int noticeNum) {
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -263,7 +263,7 @@ public class NoticeDAO {
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, noticeNum);
 
 			result = pstmt.executeUpdate();
 
