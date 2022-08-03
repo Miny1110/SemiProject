@@ -247,7 +247,7 @@
                         <h2>Checkout</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.html">Home</a>
-                            <span>Checkout</span>
+                            <span>NOTICE</span>
                         </div>
                     </div>
                 </div>
