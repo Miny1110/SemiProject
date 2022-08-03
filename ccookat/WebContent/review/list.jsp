@@ -340,28 +340,40 @@
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                <div class="product__details__tab__desc">
                                <p>구매고객 총 리뷰</p>
-                              <form action="/ccookat/main/review/created.do" method="post">
+                              <form action="" method="post">
                               
                                <div>
-                       				  	<input type="button" class="btn2" value=리뷰등록> 
+                       				  	<input type="button" class="btn2" value=리뷰등록
+                       				  	onclick="location='/ccookat/main/review/created.do';">
+                       				   
                        		
                        				 </div>
                               <c:forEach var="rdto" items="${lists}">
                                     <div>
-                       				 <div>
+                       				 <div style="border-bottom : 1px solid #d5d5d5;">
                        				 
                        			
-                       			 <div style="border: 3" class="product__details__tab__desc">
-                       				${rdto.customerId}<span></span>${rdto.reviewCreated}
+                       			 <div class="product__details__tab__desc">
+                       				${rdto.reviewNum}.&nbsp;&nbsp;${rdto.customerId}&nbsp;&nbsp;${rdto.reviewCreated}
+                       				  </div>
+                       				  <div align="right">
+                       				  
                        				  </div>
                        				   <div class="product__details__tab__desc">
                        				  	${rdto.reviewTitle}
                        				  	</div>
                        				  	<div class="product__details__tab__desc">
                        				  	${rdto.reviewContent}
+                       				  	  </div>
+                       				  	<div style="text-align: right;">
+                       				  	<input type="button" value="수정하기" onclick="location='/ccookat/main/review/created.do';">
+                       				  	<input type="button" value="삭제하기" onclick="location='/ccookat/main/review/deleted.do';">
                        				  	</div>
                        				  	
+                       				  
+                       				  	
                        				  	</div>
+                       				  
                        				  	</div>
                        				  	
                        				  	
@@ -372,6 +384,9 @@
                              		  
                              		  
                              		  </c:forEach> 
+                             		  		   <div class="product__pagination blog__pagination">
+                                ${pageIndexList }
+                            </div>
                              		  </form>
                             		</div>
                                 </div>
@@ -380,7 +395,7 @@
                     </div>
                 </div>
             </div>
-        
+      
     </section>
     <!-- Product Details Section End -->
 
