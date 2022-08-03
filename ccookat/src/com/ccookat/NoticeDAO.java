@@ -128,6 +128,7 @@ public class NoticeDAO {
 	//수정시 뿌려줄 데이터
 	public NoticeDTO selectData(int noticeNum) {
 
+		NoticeDTO ndto =null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
@@ -146,7 +147,7 @@ public class NoticeDAO {
 
 			if(rs.next()) {
 
-				NoticeDTO ndto = new NoticeDTO();
+				ndto = new NoticeDTO();
 
 				ndto.setNoticeNum(rs.getInt("noticeNum"));
 				ndto.setNoticeTitle(rs.getString("noticeTitle"));
