@@ -87,7 +87,7 @@ public class ItemDAO {
 	}
 	
 	
-	//상세페이지 게시글 수정 메소드 (관리자 권한)
+	//itemNum으로 하나의 데이터 가져오기 (관리자 권한)
 	public ItemDTO getReadData(int itemNum) {
 		
 		ItemDTO idto = null;
@@ -210,5 +210,10 @@ public class ItemDAO {
 		return lists;
 		
 	}
+	
+	
+
+
+	
 	
 }
