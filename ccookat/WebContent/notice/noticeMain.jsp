@@ -315,78 +315,27 @@
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <div class="row">
+                    <c:forEach var="ndto" items="${lists }">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="blog__item">
                                 <div class="blog__item__pic">
-                                    <img src="<%=cp %>/Data/style/img/blog/details/noticeim.png" alt="">
+                                    <img src="${imagePath }/${ndto.noticeImage }" width="auto"/>
                                 </div>
                                 <div class="blog__item__text">
                                     <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
+                                        <li><i class="fa fa-calendar-o"></i>${ndto.noticeCreated }</li>
                                     </ul>
-                                    <h5><a href="#">필 독 공 지</a></h5>
-                                    <p>배송 지연 상품 리스트</p>
+                                    <h5><a href="#">${ndto.noticeTitle }</a></h5>
+                                    <p>${ndto.noticeContent }</p>
                                     <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="<%=cp %>/Data/style/img/blog/details/noticepilsu.png" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">교환/환불 관련 문의사항</a></h5>
-                                    <p>교환도 환불도 안되세요^^ 신중히 구매 하셨어야죠 </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="<%=cp %>/Data/style/img/blog/details/noticeim.png" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">읽던지 말던지</a></h5>
-                                    <p>네네 다 님말이 맞으세용 ㅎㅎㅎ</p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="<%=cp %>/Data/style/img/blog/details/noticepilsu.png" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">신선식품 환불 기준 공지사항</a></h5>
-                                    <p>아닌데?신선했을텐데? </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
+                        </c:forEach>
+ 
                         <div class="col-lg-12">
                             <div class="product__pagination blog__pagination">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                                ${pageIndexList }
                             </div>
                             <div align="right">
                              <div class="blog__sidebar__item__tags">

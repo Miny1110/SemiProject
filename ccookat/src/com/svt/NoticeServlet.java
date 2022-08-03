@@ -42,7 +42,6 @@ public class NoticeServlet extends HttpServlet {
 		MyPage myPage = new MyPage(); 
 
 		String cp = request.getContextPath();
-		System.out.println(cp);
 		String uri = request.getRequestURI();
 		String url;
 
@@ -56,7 +55,46 @@ public class NoticeServlet extends HttpServlet {
 		}
 
 		if(uri.indexOf("list.do")!=-1) {
+			
+			String pageNum = request.getParameter("pageNum");
+			
+			int currentPage = 1;
 
+			if(pageNum!=null) {
+				currentPage = Integer.parseInt(pageNum);
+			}
+
+			int dataCount = ndao.getDataCount();
+
+			int numPerPage = 4;
+
+			int totalPage = myPage.getPageCount(numPerPage, dataCount);
+
+			if(currentPage>totalPage) {
+				currentPage=totalPage;
+				url = "/notice/noticeMain.jsp?pageNum="+currentPage;	
+			}
+
+			int start = (currentPage-1)*numPerPage+1;
+			int end = currentPage * numPerPage;
+
+			List<NoticeDTO> lists = ndao.selectAll(start, end);
+			
+			String listUrl = cp + "/main/notice/list.do";
+			
+			String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
+
+			String deletePath = cp + "main/notice/delete.do";
+			String imagePath = cp + "/pds/noticeFile";
+								
+			request.setAttribute("deletePath", deletePath);
+			request.setAttribute("imagePath", imagePath);
+			request.setAttribute("lists", lists);
+			request.setAttribute("pageIndexList", pageIndexList);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("dataCount", dataCount);
+			
 			url = "/notice/noticeMain.jsp";
 			forward(request, response, url);
 
@@ -74,9 +112,9 @@ public class NoticeServlet extends HttpServlet {
 					new MultipartRequest(request, path,maxSize,encType,
 							new DefaultFileRenamePolicy());
 
-			System.out.println("널일까?");
+
 			if(mr.getFile("upload")!=null) {
-				System.out.println("널은아님!");
+
 				NoticeDTO dto = new NoticeDTO();
 
 				int maxnum = ndao.getMaxNum();
@@ -94,6 +132,8 @@ public class NoticeServlet extends HttpServlet {
 
 		}else if(uri.indexOf("detail.do")!=-1) {
 
+		}else if(uri.indexOf("delete.do")!=-1) {
+			
 		}
 
 	}

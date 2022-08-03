@@ -57,7 +57,7 @@ public class MyPage {
 			if(page == currentPage) {
 				
 				//��Ʈ���� ����
-				sb.append("<font color=\"Fuchsia\">" + page + "</font>&nbsp;");
+				sb.append("<font color=\"gray\">" + page + "</font>&nbsp;");
 				
 			}else {
 				//<a href="list.jsp?pageNum=page">page</a>&nbsp;
