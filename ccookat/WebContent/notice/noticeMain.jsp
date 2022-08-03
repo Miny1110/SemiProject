@@ -390,7 +390,7 @@
                             </div>
                             <div align="right">
                              <div class="blog__sidebar__item__tags">
-                                <a href="#" onclick="">글올리기</a></div>
+                                <a href="<%=cp%>/notice/noticeUpload.jsp">글올리기</a></div>
                             </div>
                         </div>
                     </div>
