@@ -138,7 +138,9 @@ public class NoticeServlet extends HttpServlet {
 			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 			String pageNum = request.getParameter("pageNum");
 
+			String deletePath = cp + "/main/notice/delete.do";
 			String imagePath = cp + "/pds/noticeFile";
+			
 			ndao.updateHitCount(noticeNum);
 			
 			NoticeDTO ndto = ndao.selectData(noticeNum);
@@ -154,22 +156,20 @@ public class NoticeServlet extends HttpServlet {
 
 			//ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\n\r", "<br/>"));
 
-
+			request.setAttribute("deletePath", deletePath);
 			request.setAttribute("ndto", ndto);
 			//request.setAttribute("lineSu", line);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("imagePath", imagePath);
+			request.setAttribute("pageNum", pageNum);
 			
 			url = "/notice/noticeDetail.jsp";
 			forward(request, response, url);
 			
 		}else if(uri.indexOf("delete.do")!=-1) {
-			
+						
 			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
-			String pageNum = request.getParameter("pageNum");
-			
-			System.out.println(noticeNum);
-			System.out.println(pageNum);
+			String pageNum = request.getParameter("pageNum");			
 			
 			NoticeDTO ndto = ndao.selectData(noticeNum);
 			
