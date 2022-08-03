@@ -203,7 +203,7 @@
 							</div>
 							<div class="hero__search__phone__text">
 								<h5>+02 123-4567</h5>
-								<span>고객센터 10:00~17:00</span>
+								<span>고객센터 10~17시 운영</span>
 							</div>
                         </div>	
                     </div>
