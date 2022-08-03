@@ -10,45 +10,6 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 	
-	Connection conn = DBConn.getconnection();
-	ReviewDAO dao = new ReviewDAO(conn);
-	
-	MyPage mypage = new MyPage();
-	
-	String pageNum = request.getParameter("pageNum");
-	int currentPage = 1;
-	
-	if (pageNum != null) { // 여기 값이 있다는건 사용자가 몇페이지를 뿌려줘 이런의미로 온거니까
-		currentPage = Integer.parseInt(pageNum);
-	}
-	//처음
-	//전체데이터갯수 구하기
-	int dataCount = dao.getDataCount();
-
-	//하나의 페이지에 보여줄 데이터 갯수
-	int numPerPage = 5;
-
-	//전체 페이지 갯수
-	int totalPage = mypage.getPageCount(numPerPage, dataCount);
-
-	//삭제시 페이지수가 줄었을때 처리하는 방법 
-	if (currentPage > totalPage) {
-		currentPage = totalPage;
-	}
-
-	//데이터베이스에서 가져올 rownum의 시작과 끝 구하기
-	int start = (currentPage - 1) * numPerPage + 1;
-	int end = currentPage * numPerPage;
-	
-	List<ReviewDTO> lists = dao.getLists(start, end);
-
-	
-
-	//페이징 처리
-	String listUrl = cp + "/guest/guest.jsp";
-	String pageIndexList = mypage.pageIndexList(currentPage, totalPage, listUrl);
-	
-	DBConn.close();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zxx"><head>
@@ -57,7 +18,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>뀨우우우우</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
@@ -372,63 +333,58 @@
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">Information</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-3" role="tab" aria-selected="true">Reviews <span>(1)</span></a>
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-3" role="tab" aria-selected="true">상품 리뷰 <span>${totalArticle}</span></a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus
-                                        suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam
-                                        vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada.
-                                        Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur arcu erat,
-                                        accumsan id imperdiet et, porttitor at sem. Praesent sapien massa, convallis a
-                                        pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula
-                                        elementum sed sit amet dui. Vestibulum ante ipsum primis in faucibus orci luctus
-                                        et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
-                                        vel, ullamcorper sit amet ligula. Proin eget tortor risus.</p>
-                                        <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
-                                        ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet
-                                        elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
-                                        porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
-                                        nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                                        Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed
-                                        porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum
-                                        sed sit amet dui. Proin eget tortor risus.</p>
+                                    <p>이건 상품 디테일 설명이얌</p>
                                 </div>
                             </div>
-                            <div class="tab-pane active" id="tabs-2" role="tabpanel">
+                            <div class="tab-pane active" id="tabs-3" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>리뷰 페이지</h6>
                                     <form action="" method="post" name="myForm">
-                       
-                                    <input type="button" value=" 글올리기 " class="btn2" 
-				onclick="javascript:location.href='<%=cp%>/review/created.jsp;"/>
-					<%for(ReviewDTO dto : lists){ %>
-					<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee">	
-						<tr height="10">	
-						<td align="left" style="padding-left: 5px;">
-						<b><%=dto.getCustomerId() %> <%=dto.getReviewTitle() %></b>
-						</td>
-						</tr>
-
-										<tr height="10">
-											<td align="right" style="padding: 5px;"><input
-												type="button" value=" 삭제 " class="btn2" onclick="deleted();" />
-											</td>
-										</tr>
-										<tr><td colspan="2" bgcolor="#dbdbdb" height="1"></td></tr>
-
-
-
-
-
-										</form>
+                   
+                   <input type="button" value=" 글올리기 " class="btn2" 
+				onclick="javascript:location.href='<%=cp%>/main/review/created.do';"/>
+				
+				
+			 	<c:forEach var="rdto" items="${lists}">
 					
-                                   
-                           
+						<b>${rdto.customerId}&nbsp;${rdto.reviewCreated}</b>
+						
+						
+						 
+
+									
+				<a href="<%=cp%>/main/review/delete.do?num=${rdto.num}&pageNum=${pageNum }">삭제</a>
+								
+										<tr><td colspan="2" bgcolor="#dbdbdb" height="1"></td></tr>
+										 
+<tr>
+	<td bgcolor="#ffffff" colspan="2" height="20" valign="top" style="padding-left: 5px;">
+	<b>${rdto.reviewTitle }</b>
+	</td>
+</tr>	
+<tr><td colspan="2" bgcolor="#dbdbdb" height="3"></td></tr>
+<tr>
+	<td bgcolor="#ffffff" colspan="2" height="20" valign="top" style="padding-left: 5px;">
+	${rdto.reviewImage}
+<b>${rdto.reviewContent }</b>
+	</td>
+</tr>	
+
+
+
+
+										
+					
+			    
+		</c:forEach>  	
+			</form>                     
                     </div>
                 </div>
             </div>
