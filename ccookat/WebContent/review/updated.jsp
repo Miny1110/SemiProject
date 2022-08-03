@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>리 뷰</title>
+<title>리 뷰 수 정</title>
 </head>
 <body>
 

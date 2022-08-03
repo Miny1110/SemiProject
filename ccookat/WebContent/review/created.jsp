@@ -285,12 +285,12 @@
                     <div>
                         <div>
                    	
-                               <!-- <div class="checkout__input">
+                               <div class="checkout__input">
                                 <p>ID<span>*</span></p>
                                 <input type="text" name="customerId">
                                 <br/>
                             </div>
-                          -->
+                         
                             <div class="checkout__input">
                                 <p>Title<span>*</span></p>
                                 <input type="text" name="reviewTitle">
