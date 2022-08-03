@@ -280,10 +280,9 @@
                 </div>
                 <div class="col-lg-8 col-md-7 order-md-1 order-1">
                     <div class="blog__details__text">
-                    <h3>${ndto.noticeTitle }</h3>
+                    <h3>${ndto.noticeTitle } 왜안떠 ㅠㅠ</h3>
                         <img src="${imagePath }/${ndto.noticeImage }" alt="">
-                        <p>${ndto.noticeContent }</p>
-                      
+                        <p>${ndto.noticeContent }</p>                     
                     </div>
                     <div class="blog__details__content">
                         <div class="row">

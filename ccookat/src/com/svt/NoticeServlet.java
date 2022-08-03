@@ -118,16 +118,16 @@ public class NoticeServlet extends HttpServlet {
 
 			if(mr.getFile("upload")!=null) {
 
-				NoticeDTO dto = new NoticeDTO();
+				NoticeDTO ndto = new NoticeDTO();
 
 				int maxnum = ndao.getMaxNum();
 				
-				dto.setNoticeNum(maxnum+1);
-				dto.setNoticeTitle(mr.getParameter("noticeTitle"));
-				dto.setNoticeImage(mr.getFilesystemName("upload"));
-				dto.setNoticeContent(mr.getParameter("noticeContent"));
+				ndto.setNoticeNum(maxnum+1);
+				ndto.setNoticeTitle(mr.getParameter("noticeTitle"));
+				ndto.setNoticeImage(mr.getFilesystemName("upload"));
+				ndto.setNoticeContent(mr.getParameter("noticeContent"));
 	
-				ndao.insertData(dto);
+				ndao.insertData(ndto);
 			}
 
 			url = cp + "/main/notice/list.do";
