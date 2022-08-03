@@ -1,8 +1,10 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
 %>
 <html lang="zxx">
 <head>
@@ -366,7 +368,7 @@
                        				  	${rdto.reviewContent}
                        				  	  </div>
                        				  	<div style="text-align: right;">
-                       				  	<input type="button" value="수정하기" onclick="location='/ccookat/main/review/created.do';">
+                       				  	<input type="button" value="수정하기" onclick="location='/ccookat/main/review/uadated.do';">
                        				  	<input type="button" value="삭제하기" onclick="location='/ccookat/main/review/deleted.do';">
                        				  	</div>
                        				  	
