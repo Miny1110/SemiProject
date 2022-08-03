@@ -1,56 +1,86 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%
+<%@ page  contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
 %>
-<html lang="zxx"><head>
-    <meta charset="UTF-8">
+<html lang="zxx">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+<title>login</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
+<script type="text/javascript">
+
+	function sendIt() {
+		
+		var f = documnet.myForm;
+		
+		if(!f.customerId.value){
+			alert("아이디를 올바르게 입력하세요");
+			f.customerId.focus();
+			return;
+		}
+		
+		if(!f.customerPwd.value) {
+			alert("패스워드를 입력해주세요");
+			f.customerPwd.focus();
+			return;
+		}
+		
+		f.submit();
+		
+	}
+
+</script>
+
+
+ <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/login.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
-</head>
 
+</head>
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder" style="display: none;">
-        <div class="loader" style="display: none;"></div>
+  <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
     </div>
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="<%=cp %>/Data/style/img/logo.png" alt=""></a>
+            <a href="#"><img src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
+            <div class="header__cart__price"></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-                <img src="<%=cp %>/Data/style/img/language.png" alt="">
-                <div>English</div>
+                <img class="korean" src="<%=cp %>/Data/style/img/ccookat/korean.jpg" alt="">
+                <div>한국어</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Spanis</a></li>
+                    <li><a href="#">한국어</a></li>
                     <li><a href="#">English</a></li>
                 </ul>
             </div>
@@ -67,29 +97,12 @@
                         <li><a href="./shop-details.html">Shop Details</a></li>
                         <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                         <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
-        <div id="mobile-menu-wrap"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-            <ul>
-                <li class="active"><a href="./index.html" role="menuitem">Home</a></li>
-                <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
-                <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
-                    <span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
-                        <li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shoping Cart</a></li>
-                        <li><a href="./checkout.html" role="menuitem" tabindex="-1">Check Out</a></li>
-                        <li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html" role="menuitem">Blog</a></li>
-                <li><a href="./contact.html" role="menuitem">Contact</a></li>
-            </ul>
-        </nav></div></div>
+        <div id="mobile-menu-wrap"></div>
         <div class="header__top__right__social">
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -98,8 +111,7 @@
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
+                <li><i class="fa fa-envelope"></i> ccokat@gmail.com<</li>
             </ul>
         </div>
     </div>
@@ -113,8 +125,7 @@
                     <div class="col-lg-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li><i class="fa fa-envelope"></i> ccookg@gmail.com</li>
                             </ul>
                         </div>
                     </div>
@@ -127,11 +138,11 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="<%=cp %>/Data/style/img/language.png" alt="">
-                                <div>English</div>
+                                <img src="<%=cp %>/Data/style/img/ccookat/korean.jpg" alt="">
+                                <div>한국어</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Spanis</a></li>
+                                    <li><a href="#">한국어</a></li>
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
@@ -147,7 +158,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="<%=cp %>/Data/style/img/logo.png" alt=""></a>
+                        <a href="./index.html"><img src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -160,10 +171,8 @@
                                     <li><a href="./shop-details.html">Shop Details</a></li>
                                     <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                                     <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
@@ -174,7 +183,7 @@
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price"></div>
                     </div>
                 </div>
             </div>
@@ -193,20 +202,13 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>Cateories</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit &amp; Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter &amp; Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya &amp; Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="#">Vegetables & Fruit</a></li>
+                            <li><a href="#">Rice & Noodle & Bread</a></li>
+                            <li><a href="#">Fresh Meat & Egg</a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -218,19 +220,19 @@
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" placeholder="검색어를 입력해주세요">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
+							<div class="hero__search__phone__icon">
+								<i class="fa fa-phone"></i>
+							</div>
+							<div class="hero__search__phone__text">
+								<h5>+02 123-4567</h5>
+								<span>고객센터 10~17시 운영</span>
+							</div>
+                        </div>	
                     </div>
                 </div>
             </div>
@@ -238,64 +240,30 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section" data-setbg="<%=cp %>/Data/style/img/breadcrumb.jpg" style="background-image: url(&quot;<%=cp %>/Data/style/img/breadcrumb.jpg&quot;);">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Checkout</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>NOTICE</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <!-- Checkout Section Begin -->	
+    <div class="login-form">
+        <div id="login-name">
+            로그인
         </div>
-    </section>
-    <!-- Breadcrumb Section End -->
 
-    <!-- Checkout Section Begin -->
-    <section class="checkout spad">
-        <div class="container">
-            <div class="checkout__form">
-                <h4>Notice Upload</h4>
-                <form action="<%=cp %>/main/notice/upload_ok.do" method="post"
-								enctype="multipart/form-data">
-                    <div>
-                        <div>
-                            
-                            <div class="checkout__input">
-                                <p>Title<span>*</span></p>
-                                <input type="text" name="noticeTitle">
-                            </div>
-                            
-                            <div class="checkout__input">
-                                <p>Image File<span>*</span></p>
-                                <div class="blog__sidebar__item__tags">
-                                <input type="file" name="upload"/>
-                                </div>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Text<span>*</span></p>
-                                <textarea rows="15" cols="20" name="noticeContent"></textarea>
-                            </div>
-
-							<div class="blog__sidebar__item__tags">
-								<input type="submit" value=" 등록하기 ">
-								<input type="reset" value="다시입력"
-									onclick="document.myForm.noticeTitle.focus();"/>
-								<input type="button" value="작성취소"
-									onclick="location='<%=cp%>/main/notice/list.do';" />
-
-							</div>
-						</div>
-                     </div>
-                </form>
-            </div>
+        <form>
+          <input type="text" name="email" class="text-field" placeholder="아이디를 입력해주세요">
+          <input type="password" name="password" class="text-field" placeholder="비밀번호를 입력해주세요">
+          
+        </form>
+     
+        <div class="links">
+          <a href="#">아이디 찾기  |</a>
+          <a href="#">비밀번호 찾기</a>
         </div>
-    </section>
+
+        <div>
+            <input type="button" value="로그인" class="btn1">
+            <input type="button" value="회원가입" class="btn2">
+        </div>
+      </div>
+	
     <!-- Checkout Section End -->
 
     <!-- Footer Section Begin -->
@@ -305,12 +273,12 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="<%=cp %>/Data/style/img/logo.png" alt=""></a>
+                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
+                            <li>주소 : 서울 강남구 테헤란로 124 4층 ccookat</li>
+                            <li>고객센터 번호: +02 123-4567</li>
+                            <li>E-Mail : ccokat@gmail.com</li>
                         </ul>
                     </div>
                 </div>
@@ -356,9 +324,9 @@
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright ©<script>document.write(new Date().getFullYear());</script>2022 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">ccookat</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="footer__copyright__payment"><img src="<%=cp %>/Data/style/img/payment-item.png" alt=""></div>
+                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -376,8 +344,5 @@
     <script src="<%=cp %>/Data/style/js/owl.carousel.min.js"></script>
     <script src="<%=cp %>/Data/style/js/main.js"></script>
 
- 
-
-</body></html>
-
-
+</body>
+</html>
