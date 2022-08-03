@@ -135,57 +135,45 @@ public class NoticeServlet extends HttpServlet {
 
 		}else if(uri.indexOf("detail.do")!=-1) {
 
-			int num = Integer.parseInt(request.getParameter("NoticeNum"));
+			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 			String pageNum = request.getParameter("pageNum");
 
-			String searchKey = request.getParameter("searchKey");
-			String searchValue = request.getParameter("searchValue");
-
-			if(searchValue!=null && !searchValue.equals("")) {
-				searchValue = URLDecoder.decode(searchValue,"UTF-8");
-
-			}
+			String imagePath = cp + "/pds/noticeFile";
+			ndao.updateHitCount(noticeNum);
 			
-			ndao.updateHitCount(num);
+			NoticeDTO ndto = ndao.selectData(noticeNum);
 			
-			NoticeDTO ndto = ndao.selectData(num);
 			
 			if(ndto==null) {
 				url = cp + "/main/notice/list.do";
 				response.sendRedirect(url);
 			}
 			
-			int lineSu = ndto.getNoticeContent().split("\n").length;
+			
+			//int line = ndto.getNoticeContent().split("\n").length;
 
-			ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\r", "<br/>"));
+			//ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\n\r", "<br/>"));
 
-			String param = "pageNum=" + pageNum;
-
-			if(searchValue!=null&&!searchValue.equals("")) {
-
-				param += "&searchKey=" + searchKey;
-				param += "&searchValue=" + URLEncoder.encode(searchValue,"UTF-8");				
-			}
 
 			request.setAttribute("ndto", ndto);
-			request.setAttribute("params", param);
-			request.setAttribute("lineSu", lineSu);
+			//request.setAttribute("lineSu", line);
 			request.setAttribute("pageNum", pageNum);
-
+			request.setAttribute("imagePath", imagePath);
+			
 			url = "/notice/noticeDetail.jsp";
 			forward(request, response, url);
 			
 		}else if(uri.indexOf("delete.do")!=-1) {
 			
-			int num = Integer.parseInt(request.getParameter("num"));
+			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 			String pageNum = request.getParameter("pageNum");
 			
-			NoticeDTO ndto = ndao.selectData(num);
+			NoticeDTO ndto = ndao.selectData(noticeNum);
 			
 			//파일에있는 이미지데이터 삭제
 			FileManager.doFileDelete(ndto.getNoticeImage(), path);
 			//DB데이터 삭제
-			ndao.deleteData(num);
+			ndao.deleteData(noticeNum);
 			
 			url = cp + "/main/notice/list.do?pageNum=" + pageNum;
 			response.sendRedirect(url);
