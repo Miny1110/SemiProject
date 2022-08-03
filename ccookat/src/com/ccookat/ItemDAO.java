@@ -21,13 +21,14 @@ public class ItemDAO {
 	public int getMaxNum() {
 		
 		int maxNum = 0;
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
 		
 		try {
 			
-			sql = "select nvl(max(num),0) from item";
+			sql = "select nvl(max(itemNum),0) from item";
 			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
