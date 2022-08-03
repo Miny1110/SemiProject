@@ -261,7 +261,8 @@
         <div class="container">
             <div class="checkout__form">
                 <h4>Notice Upload</h4>
-                <form action="#">
+                <form action="<%=cp %>/main/notice/upload_ok.do" method="post"
+								enctype="multipart/form-data">
                     <div>
                         <div>
                             
@@ -280,11 +281,16 @@
                                 <p>Text<span>*</span></p>
                                 <textarea rows="15" cols="20" name="noticeContent"></textarea>
                             </div>
-                            
-                            <div class="blog__sidebar__item__tags">
-                            <a href="<%=cp%>/main/notice/list.do">등록하기</a>
-                            </div>
-               			</div>
+
+							<div class="blog__sidebar__item__tags">
+								<input type="submit" value=" 등록하기 ">
+								<input type="reset" value="다시입력"
+									onclick="document.myForm.noticeTitle.focus();"/>
+								<input type="button" value="작성취소"
+									onclick="location='<%=cp%>/main/notice/list.do';" />
+
+							</div>
+						</div>
                      </div>
                 </form>
             </div>
