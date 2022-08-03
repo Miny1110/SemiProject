@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/login.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/singUp.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
 
@@ -39,9 +39,15 @@
 			return;
 		}
 		
-		if(!f.customerPwd.value){
+		if(!f.customerPwd1.value){
 			alert("비밀번호를 입력하세요.");
-			f.customerPwd.focus();
+			f.customerPwd1.focus();
+			return;
+		}
+		
+		if(!f.customerPwd2.value){
+			alert("비밀번호를 입력하세요.");
+			f.customerPwd2.focus();
 			return;
 		}
 		
@@ -63,25 +69,8 @@
 			return;
 		}
 		
-		function findAddr(){
-			new daum.Postcode({
-			oncomplete: function(data) {
-				
-				console.lag(data);
-			}
-			
-			var roadAddr = data.roadAddress;
-			var jibunAddr = data.jibunAddress;
-			
-			document.getElementByld("member_post").value = data.zonecode;
-			if(roadAddr !==''){
-				document.getElementByld("member_addr").value = roadAddr;
-			} else  if(jibunAddr !== ''){
-				documnet.getElementByld("member_addr").value = jibunAddr;
-			}
-		
-		    	
-		}).open();
+		f.action = "<%=cp %>/customer/login.jsp"
+		f.submit();
 		
 	}
 
@@ -304,7 +293,7 @@
                     <tr>
                         <th>아이디<span class="ico">*</span></th>
                         <td>
-                            <input class="box-size" type="text" name="id" id="id" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"> 
+                            <input class="box-size" type="text" name="customerId" id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"> 
                             <input type="button" value="중복확인" class="signUp_btn">
                     
                         </td>
@@ -312,50 +301,52 @@
                     <tr>
                         <th>비밀번호<span class="ico">*</span></th>
                         <td>
-                            <input class="box-size" type="password" name="password" id="password" placeholder="비밀번호를 입력해주세요">
+                            <input class="box-size" type="password" name="customerPwd1" id="customerPwd1" placeholder="비밀번호를 입력해주세요">
                            
                         </td>
                     </tr>
                     <tr class="member_pwd">
                         <th>비밀번호확인<span class="ico">*</span></th>
                         <td>
-                            <input  class="box-size" type="password" name="repassword" id ="repassword" placeholder="비밀번호를 한번 더 입력해주세요">
+                            <input  class="box-size" type="password" name="customerPwd2" id ="customerPwd2" placeholder="비밀번호를 한번 더 입력해주세요">
                                                   </td>
                     </tr>
                     <tr>
                         <th>이름<span class="ico">*</span></th>
                         <td>
-                            <input class="box-size" type="text" name="name" id="name" 	placeholder="이름을 입력해주세요">
+                            <input class="box-size" type="text" name="customerName" id="customerName" 	placeholder="이름을 입력해주세요">
                             </td>
                     </tr>
                     <tr>
                         <th>이메일<span class="ico">*</span></th>
                         <td>
-                            <input class="box-size" type="text" name="email" class="email" id="email" placeholder="예: marketkurly@kurly.com">
+                            <input class="box-size" type="text" name="customerEmail" class="email" id="customerEmail" placeholder="예: marketkurly@kurly.com">
                             <input type="button" value="중복확인" class="signUp_btn">
                         </td>
                     </tr>
                     <tr class="field_phone">
                         <th>휴대폰<span class="ico">*</span></th>
                         <td>
-                        <input class="box-size" type="text" name="mobile1" id="mobile1" maxlength="3" placeholder="숫자만 입력해주세요." >
+                        <input class="box-size" type="text" name="customerTel" id="customerTel" maxlength="3" placeholder="숫자만 입력해주세요." >
                    </tr>
                    <tr>
                         <th>우편번호<span class="ico">*</span></th>
                         <td>
                             <input type="button" value="우편번호찾기" class="btn_zipcode">
                             <a href="javascript:void(0);" onclick="popupZipSearch();return false;" ></a>
-                       		<input class="box-size2" type="text" name="zipcode" id="zipcode" maxlength="3" >
+                       		<input class="box-size2" type="text" name="zipcode" id="zipcode" maxlength="3" readonly="readonly">
                          </td>
                     </tr>
                    
                     <tr>
                         <th>주소<span class="ico">*</span></th>
                         <td>
-                        	<input class=".btn_address" type="text" name="address" id="address"  value="주소" >
+                        	<input class="box-size" type="text" name="address" class="address" id="address" readonly="readonly">
+                        	<input class="box-size2" type="text" name="address2" class="address2" id="address2" readonly="readonly">
                         </td>
-                        
                     </tr>
+                    
+                    
                     </tbody>
                 </table>
                 <div id="formSubmit" class="form_footer">
@@ -447,5 +438,47 @@
     <script src="<%=cp %>/Data/style/js/owl.carousel.min.js"></script>
     <script src="<%=cp %>/Data/style/js/main.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<!-- <script>
+	function popupZipSearch(){
+		new daum.Postcode({
+			oncomplete : function(data) {
+				
+				var fullAddr = '';
+				var extraAddr ='';
+				
+				if(data.userSelectedType === 'R') {
+					fullAddr = data.roadAddress;
+				}else {
+					fullAddr = data.jubunAddress;
+				}
+				
+				
+				if(data.userSelectedType === 'R'){
+					
+					if(data.bname !== '') {
+						extraAddr += data.bname;
+					}
+					
+					if(data.buildingName !== '') {
+						extraAddr += (extraAddr !== '' ? ',' + data.buildingName : data.buildingName);
+					}
+					
+					fullAddr += (extraAddr !== ''? ' (' + extraAddr +')' : '');
+				}
+				
+				fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
+			}
+		
+		document.getElementById('me_org_zip').value = data.zonecode;
+		document.getElementById("me_org_addr1").value = fullAddr;
+		
+		document.getElementById("me_org_addr2").focus();
+		}
+		
+		}).open();
+		
+		
+	}
+	</script> -->
 </body>
 </html>
