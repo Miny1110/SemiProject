@@ -12,7 +12,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>login</title>
+<title>회원가입</title>
  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
@@ -23,10 +23,70 @@
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/login.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/singUp.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
 
+<script type="text/javascript">
+
+	function sendIt() {
+		
+		var f = document.myForm;
+		
+		if(!f.customerId.value) {
+			alert("아이디를 입력하세요.");
+			f.customerId.focus();
+			return;
+		}
+		
+		if(!f.customerPwd.value){
+			alert("비밀번호를 입력하세요.");
+			f.customerPwd.focus();
+			return;
+		}
+		
+		if(!f.customerName.value){
+			alert("이름을 입력하세요.");
+			f.customerName.focus();
+			return;
+		}
+		
+		if(!f.customerEmail.value){
+			alert("이메일을 입력하세요.");
+			f.customerEmail.focus();
+			return;
+		}
+		
+		if(!f.customerTel.value){
+			alert("전화번호를 입력하세요.");
+			f.customerTel.focus();
+			return;
+		}
+		
+		function findAddr(){
+			new daum.Postcode({
+			oncomplete: function(data) {
+				
+				console.lag(data);
+			}
+			
+			var roadAddr = data.roadAddress;
+			var jibunAddr = data.jibunAddress;
+			
+			document.getElementByld("member_post").value = data.zonecode;
+			if(roadAddr !==''){
+				document.getElementByld("member_addr").value = roadAddr;
+			} else  if(jibunAddr !== ''){
+				documnet.getElementByld("member_addr").value = jibunAddr;
+			}
+		
+		    	
+		}).open();
+		
+	}
+
+
+</script>
 </head>
 <body>
   <!-- Page Preloder -->
@@ -280,17 +340,27 @@
                         <td>
                         <input class="box-size" type="text" name="mobile1" id="mobile1" maxlength="3" placeholder="숫자만 입력해주세요." >
                    </tr>
+                   <tr>
+                        <th>우편번호<span class="ico">*</span></th>
+                        <td>
+                            <input type="button" value="우편번호찾기" class="btn_zipcode">
+                            <a href="javascript:void(0);" onclick="popupZipSearch();return false;" ></a>
+                       		<input class="box-size2" type="text" name="zipcode" id="zipcode" maxlength="3" >
+                         </td>
+                    </tr>
+                   
                     <tr>
                         <th>주소<span class="ico">*</span></th>
-                        <td class="field_address">
-                                <input type="button" value="주소검색" class="btn_address">
+                        <td>
+                        	<input class=".btn_address" type="text" name="address" id="address"  value="주소" >
                         </td>
                         
                     </tr>
                     </tbody>
                 </table>
                 <div id="formSubmit" class="form_footer">
-                    <input type="button" value="가입하기" class="btn_sign">
+                    <input type="button" value="가입하기" class="btn_sign"
+                    onclick="sendIt();"/>
                 </div>
             </form>
         </div>
@@ -376,6 +446,6 @@
     <script src="<%=cp %>/Data/style/js/mixitup.min.js"></script>
     <script src="<%=cp %>/Data/style/js/owl.carousel.min.js"></script>
     <script src="<%=cp %>/Data/style/js/main.js"></script>
-
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>
 </html>
