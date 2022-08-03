@@ -87,8 +87,8 @@ public class ItemDAO {
 	}
 	
 	
-	//itemNum으로 하나의 데이터 가져오기 (관리자 권한)
-	public ItemDTO getReadData(int itemNum) {
+	//itemNum으로 하나의 데이터 가져오기 (고객)
+	public ItemDTO getReadData_Customer(int itemNum) {
 		
 		ItemDTO idto = null;
 		PreparedStatement pstmt = null;
@@ -125,6 +125,57 @@ public class ItemDAO {
 				idto.setItemImage4(rs.getString("itemImage4"));
 				idto.setItemStock(rs.getInt("itemStock"));
 				idto.setItemHitCount(rs.getInt("itemHitCount"));
+				
+			}
+			
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return idto;
+		
+	}
+	
+	
+	//itemNum으로 제품별 상세페이지에 띄울 하나의 데이터 가져오기
+	//필요한 데이터: 제품번호, 이름, 가격, 할인, 카테고리, 내용, 이미지 4개, 재고
+	public ItemDTO getReadData_detail(int itemNum) {
+		
+		ItemDTO idto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		
+		try {
+			
+			sql = "select itemNum,itemName,itemPrice,itemDiscount,itemType,";
+			sql+= "itemContent,itemImage1,itemImage2,itemImage3,itemImage4,itemStock) ";
+			sql+= "from item where itemNum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, itemNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				idto = new ItemDTO();
+				
+				idto.setItemNum(rs.getInt("itemNum"));
+				idto.setItemName(rs.getString("itemName"));
+				idto.setItemPrice(rs.getInt("itemPrice"));
+				idto.setItemDiscount(rs.getInt("itemDiscount"));
+				idto.setItemType(rs.getString("itemType"));
+				idto.setItemContent(rs.getString("itemContent"));
+				idto.setItemImage1(rs.getString("itemImage1"));
+				idto.setItemImage2(rs.getString("itemImage2"));
+				idto.setItemImage3(rs.getString("itemImage3"));
+				idto.setItemImage4(rs.getString("itemImage4"));
+				idto.setItemStock(rs.getInt("itemStock"));
 				
 			}
 			

@@ -60,53 +60,72 @@ public class ItemServlet extends HttpServlet {
 			
 		}else if(uri.indexOf("created_ok.do")!=-1) { //글작성에서 입력한 데이터 DB에 넣기
 			
-			
 			String encType = "utf-8";
 			int maxSize = 10*1024*1024;
 			
 			MultipartRequest mr = new MultipartRequest(req, path, maxSize, encType, 
 					new DefaultFileRenamePolicy());
 			
+			if(mr.getFile("itemImage1")!=null || mr.getFile("itemImage2")!=null
+					|| mr.getFile("itemImage3")!=null || mr.getFile("itemImage4")!=null ) {
 				
-			ItemDTO idto = new ItemDTO();
+				ItemDTO idto = new ItemDTO();
 				
-			int maxNum = idto.getItemNum();
+				int maxNum = idto.getItemNum();
 				
-			idto.setItemNum(maxNum+1);
-			idto.setItemName(mr.getParameter("itemName"));
-			idto.setItemPrice(Integer.parseInt(mr.getParameter("itemPrice")));
-			System.out.println("왔니");
-			idto.setItemDiscount(Integer.parseInt(mr.getParameter("itemDiscount")));
-			idto.setItemType(mr.getParameter("itemType"));
-			idto.setItemContent(mr.getParameter("itemContent"));
-			idto.setItemImage1(mr.getFilesystemName("itemImage1"));
+				idto.setItemNum(maxNum+1);
+				idto.setItemName(mr.getParameter("itemName"));
+				idto.setItemPrice(Integer.parseInt(mr.getParameter("itemPrice")));
+				idto.setItemDiscount(Integer.parseInt(mr.getParameter("itemDiscount")));
+				idto.setItemType(mr.getParameter("itemType"));
+				idto.setItemContent(mr.getParameter("itemContent"));
+				idto.setItemImage1(mr.getFilesystemName("itemImage1"));
+				idto.setItemImage2(mr.getFilesystemName("itemImage2"));
+				idto.setItemImage3(mr.getFilesystemName("itemImage3"));
+				idto.setItemImage4(mr.getFilesystemName("itemImage4"));
+				idto.setItemStock(Integer.parseInt(mr.getParameter("itemStock")));
 				
+				idao.insertData(idto);
 				
-			idto.setItemImage2(mr.getFilesystemName("itemImage2"));
-			idto.setItemImage3(mr.getFilesystemName("itemImage3"));
-			idto.setItemImage4(mr.getFilesystemName("itemImage4"));
-			idto.setItemStock(Integer.parseInt(mr.getParameter("itemStock")));
-				
-			idao.insertData(idto);
+			}
 			
-			url = cp + "/main/item/list.do";
+			url = cp + "/main/item/detail.do";
 			resp.sendRedirect(url);
 			
 		}else if(uri.indexOf("detail.do")!=-1) { //상세페이지 화면 보여주기
 			
-			List<ItemDTO> lists = idao.getLists();
+			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+			
+			ItemDTO idto = idao.getReadData_detail(itemNum);
 					
 			String listUrl = cp + "/main/item/list.do";
 			
-			String imagePath = cp + "/pds/imageFile";
+			String imagePath = cp + "/pds/itemImageFile";
 			String deletePath = cp + "/image/deleted.do";
 			
 			req.setAttribute("imagePath", imagePath);
-			req.setAttribute("lists", lists);
+			req.setAttribute("idto", idto);
 			req.setAttribute("deletePath", deletePath);
+			req.setAttribute("itemNum", itemNum);
 			
 			url = "/item/detail.jsp";
 			forward(req, resp, url);
+			
+		}else if(uri.indexOf("deleted.do")!=-1) {
+			
+			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+			
+			
+			
+			
+			
+		}else if(uri.indexOf("updated.do")!=-1) {
+			
+			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+			
+			ItemDTO idto = idao.getReadData_detail(itemNum);
+			
+			
 			
 		}
 		
