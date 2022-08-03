@@ -267,23 +267,22 @@
                             
                             <div class="checkout__input">
                                 <p>Title<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="noticeTitle">
                             </div>
                             
                             <div class="checkout__input">
                                 <p>Image File<span>*</span></p>
-                                <input type="text">
                                 <div class="blog__sidebar__item__tags">
-                                <a href="<%=cp%>/notice/noticeUpload.jsp">파일첨부</a>
+                                <input type="file" name="upload"/>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Text<span>*</span></p>
-                                <textarea rows="15" cols="20"></textarea>
+                                <textarea rows="15" cols="20" name="noticeContent"></textarea>
                             </div>
                             
                             <div class="blog__sidebar__item__tags">
-                            <a href="<%=cp%>/notice/noticeMain.jsp">등록하기</a>
+                            <a href="<%=cp%>/main/notice/list.do">등록하기</a>
                             </div>
                			</div>
                      </div>
@@ -372,8 +371,6 @@
     <script src="<%=cp %>/Data/style/js/main.js"></script>
 
  
-
-
 
 </body></html>
 

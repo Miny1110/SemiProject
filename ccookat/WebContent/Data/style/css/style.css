@@ -2123,6 +2123,7 @@ ol {
 	height: 46px;
 	border: 1px solid #ebebeb;
 	padding-left: 20px;
+	padding-top: 8px;
 	font-size: 16px;
 	color: #b2b2b2;
 	border-radius: 4px;
@@ -2464,7 +2465,7 @@ ol {
 	text-transform: uppercase;
 }
 
-.blog__sidebar__item__tags a {
+.blog__sidebar__item__tags input {
 	font-size: 16px;
 	color: #6f6f6f;
 	background: #f5f5f5;
@@ -2473,6 +2474,7 @@ ol {
 	margin-right: 6px;
 	margin-bottom: 10px;
 }
+
 
 /*---------------------
   Blog Details Hero

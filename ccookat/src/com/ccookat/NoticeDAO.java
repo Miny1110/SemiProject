@@ -122,10 +122,7 @@ public class NoticeDAO {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
-		
-		
-		
+			
 	}
 	
 	//수정시 뿌려줄 데이터
