@@ -234,13 +234,15 @@ public class ReviewDAO {
 			String sql;
 				
 			try {
-				sql = "update review set reviewTitle=?,reviewContent=?,reviewImage=?,reviewCreated=sysdate ";
-				sql += "where customerId=?";
+				sql = "update review set customerId=? reviewTitle=?,reviewContent=?,reviewImage=?,reviewCreated=sysdate ";
+				sql += "where reviewNum=? ";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, rdto.getReviewTitle());
-				pstmt.setString(2, rdto.getReviewContent());
-				pstmt.setString(3, rdto.getReviewImage());
-				pstmt.setString(4, rdto.getCustomerId());
+				
+				pstmt.setString(1, rdto.getCustomerId());
+				pstmt.setString(2, rdto.getReviewTitle());
+				pstmt.setString(3, rdto.getReviewContent());
+				pstmt.setString(4, rdto.getReviewImage());
+				pstmt.setInt(5, rdto.getReviewNum());
 				result = pstmt.executeUpdate();
 				pstmt.close();
 					
