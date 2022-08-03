@@ -11,9 +11,42 @@
 		<welcome-file>default.html</welcome-file>
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
+	</welcome-file-list>	
+	<servlet>
+		<servlet-name>ccookatServlet</servlet-name>
+		<servlet-class>com.svt.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ccookatServlet</servlet-name>
+		<url-pattern>/main/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ccookatNoticeServlet</servlet-name>
+		<servlet-class>com.svt.NoticeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ccookatNoticeServlet</servlet-name>
+		<url-pattern>/main/notice/*</url-pattern>
+	</servlet-mapping>
 	
+		<servlet>
+		<servlet-name>ccookatCustomerServlet</servlet-name>
+		<servlet-class>com.svt.CustomerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ccookatCustomerServlet</servlet-name>
+		<url-pattern>/main/customer/*</url-pattern>
+	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>ccookatReviewServlet</servlet-name>
+		<servlet-class>com.svt.ReviewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ccookatReviewServlet</servlet-name>
+		<url-pattern>/main/review/*</url-pattern>
+	</servlet-mapping>
 </web-app>
 
 
