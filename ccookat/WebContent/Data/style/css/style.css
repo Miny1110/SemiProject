@@ -566,6 +566,7 @@ ol {
 
 .hero.hero-normal .hero__categories {
 	position: relative;
+	background: #FF5833;
 }
 
 .hero.hero-normal .hero__categories ul {

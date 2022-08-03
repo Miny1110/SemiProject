@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/login.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/singUp.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
 
@@ -230,7 +230,7 @@
 							</div>
 							<div class="hero__search__phone__text">
 								<h5>+02 123-4567</h5>
-								<span>고객센터 10:00~17:00</span>
+								<span>고객센터 10~17시 운영</span>
 							</div>
                         </div>	
                     </div>

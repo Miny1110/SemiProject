@@ -73,6 +73,7 @@
     padding-left: 10PX;
 }
 
+
 .box-size2 {
     width: 190px;
     height: 50px;
@@ -96,6 +97,7 @@
     padding-top: 4px;
   }
 
+
 .btn_address {
     font-size: 14px;
     border-color: #FF5833;
@@ -117,9 +119,14 @@ tr {
     border: none;
     border-radius: 5px;
     width: 300px;
+
     background-color: #FF5833;
     margin-bottom: 30px;
     color: white;
     height: 57px;
     margin: 10px;
+
 }
+
+}
+
