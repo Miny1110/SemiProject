@@ -58,24 +58,12 @@ public class ReviewServlet extends HttpServlet {
 		if(!f.exists()) {
 			f.mkdirs();
 		}
-	if(uri.indexOf("created.do")!=-1) {
+	if(uri.indexOf("main/review/created.do")!=-1) {
+		
 		url = "/review/created.jsp";
 		forward(req, resp, url);
-	}else if(uri.indexOf("created_ok.do")!=-1) {
-
-		//파일업로드
-		String encType = "UTF-8";
-		int maxSize = 10 * 1024 * 1024;
 		
-		MultipartRequest mr = 
-				new MultipartRequest(req, path, maxSize, encType,
-						new DefaultFileRenamePolicy()); 
-		
-		url = cp + "/main/review/list.do";
-		resp.sendRedirect(url);
-		
-		
-		if(uri.indexOf("main/review/list.do")!=-1) {
+	}else if(uri.indexOf("main/review/list.do")!=-1) {
 		//페이징 작업
 		String pageNum = req.getParameter("pageNum");
 		
@@ -140,34 +128,34 @@ public class ReviewServlet extends HttpServlet {
 		url = "/review/created.jsp";
 		forward(req, resp, url);
 	} else if (uri.indexOf("created_ok.do") != -1) {
+
+		//파일업로드
+		String encType = "UTF-8";
+		int maxSize = 10 * 1024 * 1024;
+		
+		
+		MultipartRequest mr = 
+				new MultipartRequest(req, path, maxSize, encType,
+						new DefaultFileRenamePolicy()); 
 		
 		ReviewDTO rdto = new ReviewDTO();
-		
 		int maxNum = rdao.getMaxNum();
 		
 		rdto.setReviewNum(maxNum+1);
-
+		rdto.setCustomerId(req.getParameter("customerId"));
 		rdto.setReviewTitle(req.getParameter("reviewTitle"));
 		rdto.setReviewContent(req.getParameter("reviewContent"));
 		rdto.setReviewImage(req.getParameter("reviewImage"));
-		//rdto.setItemNum(Integer.parseInt(req.getParameter("itemNum")));
+		rdto.setItemNum(Integer.parseInt(req.getParameter("itemNum")));
 		rdto.setReviewCreated(req.getParameter("reviewCreated"));
-	
 		
 		rdao.insertData(rdto);
 		
 		url = cp + "/main/review/list.do"; // 리다이렉트는 가상의주소로
 		resp.sendRedirect(url);
 		
-	} else if (uri.indexOf("list.do") != -1) {
-		
-		
-		
-		url = "/review/list.jsp";
-		forward(req, resp, url);
-	
+	} 
 
 }
 	}
-	}
-	}
+	

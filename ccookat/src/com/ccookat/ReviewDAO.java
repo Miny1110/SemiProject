@@ -24,7 +24,7 @@ public class ReviewDAO {
 		String sql;
 		
 		try {
-			sql ="select nvl(max(num),0) from review";
+			sql ="select nvl(max(reviewNum),0) from review";
 			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -94,8 +94,7 @@ public class ReviewDAO {
 			 pstmt.setString(3, rdto.getReviewContent());
 			 pstmt.setInt(4, rdto.getReviewNum());
 			 pstmt.setString(5, rdto.getReviewImage());
-			 pstmt.setInt(6, rdto.getItemNum());
-			 
+			
 			 result= pstmt.executeUpdate();
 			 
 			 pstmt.close();

@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/login.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/singUp.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
 
