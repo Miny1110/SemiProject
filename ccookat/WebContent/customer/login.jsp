@@ -3,6 +3,7 @@
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
 %>
 <html lang="zxx">
 <head>
@@ -13,6 +14,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>login</title>
+
+<script type="text/javascript">
+
+	function sendIt() {
+		
+		var f = documnet.myForm;
+		
+		if(!f.customerId.value){
+			alert("아이디를 올바르게 입력하세요");
+			f.customerId.focus();
+			return;
+		}
+		
+		if(!f.customerPwd.value) {
+			alert("패스워드를 입력해주세요");
+			f.customerPwd.focus();
+			return;
+		}
+		
+		f.submit();
+		
+	}
+
+</script>
+
+
  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
