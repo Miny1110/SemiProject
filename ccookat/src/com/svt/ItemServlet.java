@@ -75,13 +75,10 @@ public class ItemServlet extends HttpServlet {
 			idto.setItemNum(maxNum+1);
 			idto.setItemName(mr.getParameter("itemName"));
 			idto.setItemPrice(Integer.parseInt(mr.getParameter("itemPrice")));
-			System.out.println("왔니");
 			idto.setItemDiscount(Integer.parseInt(mr.getParameter("itemDiscount")));
 			idto.setItemType(mr.getParameter("itemType"));
 			idto.setItemContent(mr.getParameter("itemContent"));
 			idto.setItemImage1(mr.getFilesystemName("itemImage1"));
-				
-				
 			idto.setItemImage2(mr.getFilesystemName("itemImage2"));
 			idto.setItemImage3(mr.getFilesystemName("itemImage3"));
 			idto.setItemImage4(mr.getFilesystemName("itemImage4"));
@@ -89,7 +86,7 @@ public class ItemServlet extends HttpServlet {
 				
 			idao.insertData(idto);
 			
-			url = cp + "/main/item/list.do";
+			url = cp + "/main/item/detail.do";
 			resp.sendRedirect(url);
 			
 		}else if(uri.indexOf("detail.do")!=-1) { //상세페이지 화면 보여주기

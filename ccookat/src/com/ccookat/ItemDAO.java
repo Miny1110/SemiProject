@@ -27,7 +27,7 @@ public class ItemDAO {
 		
 		try {
 			
-			sql = "select nvl(max(num),0) from item";
+			sql = "select nvl(max(itemNum),0) from item";
 			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -203,6 +203,7 @@ public class ItemDAO {
 			pstmt.close();
 			
 		} catch (Exception e) {
+			System.out.println();
 			System.out.println(e.toString());
 		}
 		
