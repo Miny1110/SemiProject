@@ -1042,8 +1042,6 @@ ol {
 	display: flex;
 	align-items: center;
 	padding: 45px 0 40px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .breadcrumb__text h2 {
@@ -2472,11 +2470,8 @@ ol {
 
 .blog-details-hero {
 	height: 350px;
-	width: 70%;
 	display: flex;
 	align-items: center;
-	margin: auto;
-	padding: auto;
 }
 
 .blog__details__hero__text {
