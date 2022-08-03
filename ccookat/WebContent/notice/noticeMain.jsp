@@ -295,7 +295,7 @@
                                     </ul>
                                     <h5><a href="#">${ndto.noticeTitle }</a></h5>
                                     <p>${ndto.noticeContent }</p>
-                                    <a href="<%=cp %>/notice/noticeDetail.jsp?noticeNum=${ndto.noticeNum }" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                                    <a href="<%=cp %>/main/notice/detail.do?noticeNum=${ndto.noticeNum }&pageNum=${currentPage }" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>
                         </div>
