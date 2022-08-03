@@ -1,44 +1,37 @@
-<%@page import="java.util.List"%>
-<%@page import="com.util.MyPage"%>
-<%@page import="com.ccookat.ReviewDAO"%>
-<%@page import="com.util.DBConn"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="com.ccookat.ReviewDTO"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
+<% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-	
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="zxx"><head>
-    <meta charset="UTF-8">
+<html lang="zxx">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>뀨우우우우</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
+<title>review</title>
+ <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" type="text/css" href="<%=cp%>/review/css"/>
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/login.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
-</head>
 
+</head>
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder" style="display: none;">
-        <div class="loader" style="display: none;"></div>
+<!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
     </div>
 
     <!-- Humberger Begin -->
@@ -84,22 +77,7 @@
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
-        <div id="mobile-menu-wrap"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-            <ul>
-                <li class="active"><a href="./index.html" role="menuitem">Home</a></li>
-                <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
-                <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
-                    <span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
-                        <li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shoping Cart</a></li>
-                        <li><a href="./checkout.html" role="menuitem" tabindex="-1">Check Out</a></li>
-                        <li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html" role="menuitem">Blog</a></li>
-                <li><a href="./contact.html" role="menuitem">Contact</a></li>
-            </ul>
-        </nav></div></div>
+        <div id="mobile-menu-wrap"></div>
         <div class="header__top__right__social">
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -208,13 +186,13 @@
                         <ul>
                             <li><a href="#">Fresh Meat</a></li>
                             <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit &amp; Nut Gifts</a></li>
+                            <li><a href="#">Fruit & Nut Gifts</a></li>
                             <li><a href="#">Fresh Berries</a></li>
                             <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter &amp; Eggs</a></li>
+                            <li><a href="#">Butter & Eggs</a></li>
                             <li><a href="#">Fastfood</a></li>
                             <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya &amp; Crisps</a></li>
+                            <li><a href="#">Papayaya & Crisps</a></li>
                             <li><a href="#">Oatmeal</a></li>
                             <li><a href="#">Fresh Bananas</a></li>
                         </ul>
@@ -249,7 +227,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg" style="background-image: url(&quot;img/breadcrumb.jpg&quot;);">
+    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -274,14 +252,19 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large" src="img/product/details/product-details-1.jpg" alt="">
+                            <img class="product__details__pic__item--large"
+                                src="img/product/details/product-details-1.jpg" alt="">
                         </div>
-                        <div class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
-                            
-                            
-                            
-                            
-                        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-662px, 0px, 0px); transition: all 1.2s ease 0s; width: 1590px;"><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-3.jpg" src="img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-5.jpg" src="img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-4.jpg" src="img/product/details/thumb-4.jpg" alt=""></div><div class="owl-item" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-3.jpg" src="img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-5.jpg" src="img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-4.jpg" src="img/product/details/thumb-4.jpg" alt=""></div><div class="owl-item cloned active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-3.jpg" src="img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-5.jpg" src="img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-4.jpg" src="img/product/details/thumb-4.jpg" alt=""></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div></div>
+                        <div class="product__details__pic__slider owl-carousel">
+                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
+                                src="img/product/details/thumb-1.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
+                                src="img/product/details/thumb-2.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
+                                src="img/product/details/thumb-3.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
+                                src="img/product/details/thumb-4.jpg" alt="">
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -301,9 +284,9 @@
                             quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
-                                <div class="pro-qty"><span class="dec qtybtn">-</span>
+                                <div class="pro-qty">
                                     <input type="text" value="1">
-                                <span class="inc qtybtn">+</span></div>
+                                </div>
                             </div>
                         </div>
                         <a href="#" class="primary-btn">ADD TO CARD</a>
@@ -327,68 +310,92 @@
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="false">Description</a>
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                    aria-selected="true">Description</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">Information</a>
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                                    aria-selected="false">Information</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-3" role="tab" aria-selected="true">상품 리뷰 <span>${totalArticle}</span></a>
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                    aria-selected="false">상품 리뷰<span>${totalArticle}</span></a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane" id="tabs-1" role="tabpanel">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>Products Infomation</h6>
-                                    <p>이건 상품 디테일 설명이얌</p>
+                                    <p></p>
                                 </div>
                             </div>
-                            <div class="tab-pane active" id="tabs-3" role="tabpanel">
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>리뷰 페이지</h6>
-                                    <form action="" method="post" name="myForm">
-                   
-                   <input type="button" value=" 글올리기 " class="btn2" 
-				onclick="javascript:location.href='<%=cp%>/main/review/created.do';"/>
-				
-				
-			 	<c:forEach var="rdto" items="${lists}">
-					
-						<b>${rdto.customerId}&nbsp;${rdto.reviewCreated}</b>
-						
-						
-						 
-
-									
-				<a href="<%=cp%>/main/review/delete.do?num=${rdto.num}&pageNum=${pageNum }">삭제</a>
-								
-										<tr><td colspan="2" bgcolor="#dbdbdb" height="1"></td></tr>
-										 
-<tr>
-	<td bgcolor="#ffffff" colspan="2" height="20" valign="top" style="padding-left: 5px;">
-	<b>${rdto.reviewTitle }</b>
-	</td>
-</tr>	
-<tr><td colspan="2" bgcolor="#dbdbdb" height="3"></td></tr>
-<tr>
-	<td bgcolor="#ffffff" colspan="2" height="20" valign="top" style="padding-left: 5px;">
-	${rdto.reviewImage}
-<b>${rdto.reviewContent }</b>
-	</td>
-</tr>	
-
-
-
-
-										
-					
-			    
-		</c:forEach>  	
-			</form>                     
+                                    <h6>Products Infomation</h6>
+                                    <p>이건 상품 디테일 설명</p>
+                                  
+                       				 
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                               <div class="product__details__tab__desc">
+                               <p>구매고객 총 리뷰</p>
+                              <form action="" method="post">
+                              
+                               <div>
+                       				  	<input type="button" class="btn2" value=리뷰등록
+                       				  	onclick="location='/ccookat/main/review/created.do';">
+                       				   
+                       		
+                       				 </div>
+                              <c:forEach var="rdto" items="${lists}">
+                                    <div>
+                       				 <div style="border-bottom : 1px solid #d5d5d5;">
+                       				 
+                       			
+                       			 <div class="product__details__tab__desc">
+                       				${rdto.reviewNum}.&nbsp;&nbsp;${rdto.customerId}&nbsp;&nbsp;${rdto.reviewCreated}
+                       				  </div>
+                       				  <div align="right">
+                       				  
+                       				  </div>
+                       				   <div class="product__details__tab__desc">
+                       				  	${rdto.reviewTitle}
+                       				  	</div>
+                       				  	<div class="product__details__tab__desc">
+                       				  	${rdto.reviewContent}
+                       				  	  </div>
+                       				  	<div style="text-align: right;">
+                       				  	<input type="button" value="수정하기" onclick="location='/ccookat/main/review/created.do';">
+                       				  	<input type="button" value="삭제하기" onclick="location='/ccookat/main/review/deleted.do';">
+                       				  	</div>
+                       				  	
+                       				  
+                       				  	
+                       				  	</div>
+                       				  
+                       				  	</div>
+                       				  	
+                       				  	
+                       				  	
+                       				  
+                             		  
+                             		  
+                             		  
+                             		  
+                             		  </c:forEach> 
+                             		  		   <div class="product__pagination blog__pagination">
+                                ${pageIndexList }
+                            </div>
+                             		  </form>
+                            		</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+      
     </section>
     <!-- Product Details Section End -->
 
@@ -405,7 +412,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg" style="background-image: url(&quot;img/product/product-1.jpg&quot;);">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -420,7 +427,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg" style="background-image: url(&quot;img/product/product-2.jpg&quot;);">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -435,7 +442,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg" style="background-image: url(&quot;img/product/product-3.jpg&quot;);">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -450,7 +457,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg" style="background-image: url(&quot;img/product/product-7.jpg&quot;);">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -526,7 +533,7 @@
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright ©<script>document.write(new Date().getFullYear());</script>2022 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
                         <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
                     </div>
@@ -535,18 +542,15 @@
         </div>
     </footer>
     <!-- Footer Section End -->
-
+    
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
-
-
-
-</body></html>
+    <script src="<%=cp %>/Data/style/js/jquery-3.3.1.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/bootstrap.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/jquery.nice-select.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/jquery-ui.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/jquery.slicknav.js"></script>
+    <script src="<%=cp %>/Data/style/js/mixitup.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/owl.carousel.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/main.js"></script>
+</body>
+</html>

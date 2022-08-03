@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>login</title>
 
+
 <script type="text/javascript">
 
 	function sendIt() {
@@ -52,7 +53,7 @@
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">	
 
 </head>
 <body>
@@ -134,7 +135,7 @@
                             <div class="header__top__right__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
@@ -226,11 +227,11 @@
                         </div>
                         <div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
-								<i class="fa fa-phone"></i>
+								<i class="fa fa-truck"></i>
 							</div>
 							<div class="hero__search__phone__text">
-								<h5>+02 123-4567</h5>
-								<span>고객센터 10~17시 운영</span>
+								<h5>ccookat delivery</h5>
+								<span> 샛별ㆍ낮 배송</span>
 							</div>
                         </div>	
                     </div>
@@ -267,71 +268,57 @@
     <!-- Checkout Section End -->
 
     <!-- Footer Section Begin -->
-    <footer class="footer spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>주소 : 서울 강남구 테헤란로 124 4층 ccookat</li>
-                            <li>고객센터 번호: +02 123-4567</li>
-                            <li>E-Mail : ccokat@gmail.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                        <h6>Useful Links</h6>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="footer__widget">
-                        <h6>Join Our Newsletter Now</h6>
-                        <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your mail">
-                            <button type="submit" class="site-btn">Subscribe</button>
-                        </form>
-                        <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">ccookat</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+  <div id="footer">
+	<div class="footer-top">
+		<div class="inner_footer">
+			<div class="footer_cc">
+			<div>
+				<h2 class="tit_cc">고객행복센터</h2>
+				<div class="cc_view cc_call">
+					<h3>
+						<span class="tit">1234-5678</span>
+					</h3>
+					<dl class="list">
+						<dt>고객센터</dt>
+						<dd>AM 10:00 ~ PM 17:00</dd>
+					</dl>
+				</div>
+				<div class="cc_view cc_qna">
+					<h3>
+						<a href="index.jsp?folder=qna&category=qna_list" class="tit">질문 답변</a>
+					</h3>
+					<dl class="list">
+						<dt>24시간 접수 가능</dt>
+						<dd>고객센터 운영시간에 순차적으로 답변해드리겠습니다.</dd>
+					</dl>
+				</div>
+				</div>
+				<div class="company">
+					법인명 (상호) : 주식회사 ccookat <span class="bar">I</span> 사업자등록번호 : 123-45-6789 
+					<a class="link">사업자정보 확인</a> 
+					<br> 통신판매업 : 제 2018-서울강남-01646 호 
+						<span class="bar">I</span>
+						개인정보보호책임자:정민정
+					<br>
+						주소 : 서울시 강남구 테헤란로 124 삼원타워 4층 아이티윌 
+						<span class="bar">I</span>정민정 안시연 이은지 전은지 윤서혜
+					<br> 마케팅제휴 : <a class="link">itwill@ccookatcorp.com</a>
+					<br> 채용문의 : <a class="link">recruit@ccookatcorp.com</a>
+					<br> 팩스: 000 - 0000 - 0000 
+						<span class="bar">I</span> 
+						이메일 : <a class="link">help@ccookatcorp.com</a>
+					<br> 대량주문 문의 : <a class="link">ccookatgift@ccookatcorp.com</a> 
+					<br>
+						
+				</div>
+			</div>
+		</div>
+		<div class="footer_indemnification_clause">
+		
+			<em class="copy"><p>Copyright © itwill ccookat Corp. All rights reserved.</p></em>
+		</div>
+	</div>
+</div>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->

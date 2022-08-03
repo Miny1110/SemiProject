@@ -2,6 +2,8 @@ package com.svt;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.util.List;
 
@@ -17,6 +19,7 @@ import com.ccookat.NoticeDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
+import com.util.FileManager;
 import com.util.MyPage;
 
 @WebServlet("/NoticeServlet")
@@ -115,16 +118,16 @@ public class NoticeServlet extends HttpServlet {
 
 			if(mr.getFile("upload")!=null) {
 
-				NoticeDTO dto = new NoticeDTO();
+				NoticeDTO ndto = new NoticeDTO();
 
 				int maxnum = ndao.getMaxNum();
 				
-				dto.setNoticeNum(maxnum+1);
-				dto.setNoticeTitle(mr.getParameter("noticeTitle"));
-				dto.setNoticeImage(mr.getFilesystemName("upload"));
-				dto.setNoticeContent(mr.getParameter("noticeContent"));
+				ndto.setNoticeNum(maxnum+1);
+				ndto.setNoticeTitle(mr.getParameter("noticeTitle"));
+				ndto.setNoticeImage(mr.getFilesystemName("upload"));
+				ndto.setNoticeContent(mr.getParameter("noticeContent"));
 	
-				ndao.insertData(dto);
+				ndao.insertData(ndto);
 			}
 
 			url = cp + "/main/notice/list.do";
@@ -132,8 +135,51 @@ public class NoticeServlet extends HttpServlet {
 
 		}else if(uri.indexOf("detail.do")!=-1) {
 
+			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+			String pageNum = request.getParameter("pageNum");
+
+			String imagePath = cp + "/pds/noticeFile";
+			ndao.updateHitCount(noticeNum);
+			
+			NoticeDTO ndto = ndao.selectData(noticeNum);
+			
+			
+			if(ndto==null) {
+				url = cp + "/main/notice/list.do";
+				response.sendRedirect(url);
+			}
+			
+			
+			//int line = ndto.getNoticeContent().split("\n").length;
+
+			//ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\n\r", "<br/>"));
+
+
+			request.setAttribute("ndto", ndto);
+			//request.setAttribute("lineSu", line);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("imagePath", imagePath);
+			
+			url = "/notice/noticeDetail.jsp";
+			forward(request, response, url);
+			
 		}else if(uri.indexOf("delete.do")!=-1) {
 			
+			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+			String pageNum = request.getParameter("pageNum");
+			
+			System.out.println(noticeNum);
+			System.out.println(pageNum);
+			
+			NoticeDTO ndto = ndao.selectData(noticeNum);
+			
+			//파일에있는 이미지데이터 삭제
+			FileManager.doFileDelete(ndto.getNoticeImage(), path);
+			//DB데이터 삭제
+			ndao.deleteData(noticeNum);
+			
+			url = cp + "/main/notice/list.do?pageNum=" + pageNum;
+			response.sendRedirect(url);
 		}
 
 	}

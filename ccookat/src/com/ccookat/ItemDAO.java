@@ -21,6 +21,7 @@ public class ItemDAO {
 	public int getMaxNum() {
 		
 		int maxNum = 0;
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;

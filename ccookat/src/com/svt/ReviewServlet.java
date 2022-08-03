@@ -18,6 +18,7 @@ import com.ccookat.ReviewDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
+import com.util.FileManager;
 import com.util.MyPage;
 
 public class ReviewServlet extends HttpServlet {
@@ -74,7 +75,7 @@ public class ReviewServlet extends HttpServlet {
 		//처음 전체 데이터 갯수 구하기
 		int dataCount = rdao.getDataCount();
 		//하나의 페이지에 보일 페이지 갯수
-		int numPerPage = 10;
+		int numPerPage = 5;
 		int totalPage = myPage.getPageCount(numPerPage, dataCount);
 		
 		//삭제시 페이지수가 줄었을때 처리하는 방법 
@@ -108,7 +109,7 @@ public class ReviewServlet extends HttpServlet {
 		req.setAttribute("totalArticle", totalArticle);
 		req.setAttribute("currentPage", currentPage);
 		
-		
+		System.out.println();
 		url = "/review/list.jsp";
 		forward(req, resp, url);
 	
@@ -146,7 +147,7 @@ public class ReviewServlet extends HttpServlet {
 		rdto.setReviewTitle(req.getParameter("reviewTitle"));
 		rdto.setReviewContent(req.getParameter("reviewContent"));
 		rdto.setReviewImage(req.getParameter("reviewImage"));
-		rdto.setItemNum(Integer.parseInt(req.getParameter("itemNum")));
+		//rdto.setItemNum(Integer.parseInt(req.getParameter("itemNum")));
 		rdto.setReviewCreated(req.getParameter("reviewCreated"));
 		
 		rdao.insertData(rdto);
@@ -154,8 +155,51 @@ public class ReviewServlet extends HttpServlet {
 		url = cp + "/main/review/list.do"; // 리다이렉트는 가상의주소로
 		resp.sendRedirect(url);
 		
-	} 
+	} else if (uri.indexOf("updated.do") != -1) {
+		int reviewNum =Integer.parseInt(req.getParameter("reviewNum"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+	
+			ReviewDTO rdto = rdao.getReadData(reviewNum);
+			if (rdto == null) {
+				url = cp + "main/review/list.do";
+				resp.sendRedirect(url);}
+			
 
+			url = "/review/updated.jsp";
+			forward(req, resp, url);
+	
+	
+	} else if (uri.indexOf("updated_ok.do") != -1) {
+		
+		int reviewNum =Integer.parseInt(req.getParameter("reviewNum"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		ReviewDTO rdto = new ReviewDTO();
+		
+		rdto.setReviewNum(Integer.parseInt(req.getParameter("reviewNum")));
+		rdto.setCustomerId(req.getParameter("custocmerId"));
+		rdto.setReviewTitle(req.getParameter("reviewTitle"));
+		rdto.setReviewContent(req.getParameter("reviewContent"));
+		rdto.setReviewImage(req.getParameter("reviewImage"));
+		
+		rdao.updateData(rdto);
+		
+		url = cp + "/main/review/list.dopageNum="+pageNum ;
+		resp.sendRedirect(url);
+	} else if (uri.indexOf("deleted.do") != -1) {
+		
+		int reviewNum = Integer.parseInt(req.getParameter("reviewNum"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		ReviewDTO rdto = rdao.getReadData(reviewNum);
+		
+		rdao.deleteData(reviewNum);
+		
+		url = cp + "/main/review/list.do?pageNum="+pageNum ;
+		resp.sendRedirect(url);
+	}
+		
 }
 	}
+
 	
