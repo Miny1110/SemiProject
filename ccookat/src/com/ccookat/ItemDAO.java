@@ -50,33 +50,31 @@ public class ItemDAO {
 
 	
 	//상세페이지 게시글 작성 메소드 (관리자 권한)
-	public void insertData(ItemDTO dto) {
+	public void insertData(ItemDTO idto) {
 		
 		PreparedStatement pstmt = null;
 		String sql;
 		
 		try {
 			
-			sql = "insert into item (itemNum,itemName,itemCount,itemPrice,itemDiscount,)";
+			sql = "insert into item (itemNum,itemName,itemCount,itemPrice,itemDiscount,";
 			sql+= "itemType,itemContent,itemImage1,itemImage2,itemImage3,itemImage4,";
 			sql+= "itemStock,itemHitCount) ";
-			sql+= "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			sql+= "values (?,?,0,?,?,?,?,?,?,?,?,?,0)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, dto.getItemNum());
-			pstmt.setString(2, dto.getItemName());
-			pstmt.setInt(3, dto.getItemCount());
-			pstmt.setInt(4, dto.getItemPrice());
-			pstmt.setInt(5, dto.getItemDiscount());
-			pstmt.setString(6, dto.getItemType());
-			pstmt.setString(7, dto.getItemContent());
-			pstmt.setString(8, dto.getItemImage1());
-			pstmt.setString(9, dto.getItemImage2());
-			pstmt.setString(10, dto.getItemImage3());
-			pstmt.setString(11, dto.getItemImage4());
-			pstmt.setInt(12, dto.getItemStock());
-			pstmt.setInt(13, dto.getItemHitCount());
+			pstmt.setInt(1, idto.getItemNum());
+			pstmt.setString(2, idto.getItemName());
+			pstmt.setInt(3, idto.getItemPrice());
+			pstmt.setInt(4, idto.getItemDiscount());
+			pstmt.setString(5, idto.getItemType());
+			pstmt.setString(6, idto.getItemContent());
+			pstmt.setString(7, idto.getItemImage1());
+			pstmt.setString(8, idto.getItemImage2());
+			pstmt.setString(9, idto.getItemImage3());
+			pstmt.setString(10, idto.getItemImage4());
+			pstmt.setInt(11, idto.getItemStock());
 		
 			pstmt.executeUpdate();
 			
@@ -92,7 +90,7 @@ public class ItemDAO {
 	//상세페이지 게시글 수정 메소드 (관리자 권한)
 	public ItemDTO getReadData(int itemNum) {
 		
-		ItemDTO dto = null;
+		ItemDTO idto = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
@@ -112,21 +110,21 @@ public class ItemDAO {
 			
 			if(rs.next()) {
 				
-				dto = new ItemDTO();
+				idto = new ItemDTO();
 				
-				dto.setItemNum(rs.getInt("itemNum"));
-				dto.setItemName(rs.getString("itemName"));
-				dto.setItemCount(rs.getInt("itemCount"));
-				dto.setItemPrice(rs.getInt("itemPrice"));
-				dto.setItemDiscount(rs.getInt("itemDiscount"));
-				dto.setItemType(rs.getString("itemType"));
-				dto.setItemContent(rs.getString("itemContent"));
-				dto.setItemImage1(rs.getString("itemImage1"));
-				dto.setItemImage2(rs.getString("itemImage2"));
-				dto.setItemImage3(rs.getString("itemImage3"));
-				dto.setItemImage4(rs.getString("itemImage4"));
-				dto.setItemStock(rs.getInt("itemStock"));
-				dto.setItemHitCount(rs.getInt("itemHitCount"));
+				idto.setItemNum(rs.getInt("itemNum"));
+				idto.setItemName(rs.getString("itemName"));
+				idto.setItemCount(rs.getInt("itemCount"));
+				idto.setItemPrice(rs.getInt("itemPrice"));
+				idto.setItemDiscount(rs.getInt("itemDiscount"));
+				idto.setItemType(rs.getString("itemType"));
+				idto.setItemContent(rs.getString("itemContent"));
+				idto.setItemImage1(rs.getString("itemImage1"));
+				idto.setItemImage2(rs.getString("itemImage2"));
+				idto.setItemImage3(rs.getString("itemImage3"));
+				idto.setItemImage4(rs.getString("itemImage4"));
+				idto.setItemStock(rs.getInt("itemStock"));
+				idto.setItemHitCount(rs.getInt("itemHitCount"));
 				
 			}
 			
@@ -137,13 +135,13 @@ public class ItemDAO {
 			System.out.println(e.toString());
 		}
 		
-		return dto;
+		return idto;
 		
 	}
 	
 	
 	//상세페이지 게시글 삭제 메소드 (관리자 권한)
-	public void deleteDaata(int itemNum) {
+	public void deleteData(int itemNum) {
 		
 		PreparedStatement pstmt = null;
 		String sql;
@@ -188,16 +186,16 @@ public class ItemDAO {
 			
 			while(rs.next()) {
 				
-				ItemDTO dto = new ItemDTO();
+				ItemDTO idto = new ItemDTO();
 				
-				dto.setItemNum(rs.getInt("itemNum"));
-				dto.setItemName(rs.getString("itemName"));
-				dto.setItemPrice(rs.getInt("itemPrice"));
-				dto.setItemDiscount(rs.getInt("itemDiscount"));
-				dto.setItemType(rs.getString("itemType"));
-				dto.setItemImage1(rs.getString("itemImage1"));
+				idto.setItemNum(rs.getInt("itemNum"));
+				idto.setItemName(rs.getString("itemName"));
+				idto.setItemPrice(rs.getInt("itemPrice"));
+				idto.setItemDiscount(rs.getInt("itemDiscount"));
+				idto.setItemType(rs.getString("itemType"));
+				idto.setItemImage1(rs.getString("itemImage1"));
 				
-				lists.add(dto);
+				lists.add(idto);
 				
 			}
 
