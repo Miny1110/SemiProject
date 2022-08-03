@@ -1,8 +1,13 @@
+<%@page import="com.util.DBConn"%>
+<%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
 %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zxx"><head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -15,14 +20,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/ccookat/Data/style/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/ccookat/Data/style/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/ccookat/Data/style/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/ccookat/Data/style/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/ccookat/Data/style/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/ccookat/Data/style/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/ccookat/Data/style/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/ccookat/Data/style/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -35,7 +40,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="<%=cp %>/Data/style/img/logo.png" alt=""></a>
+            <a href="#"><img src="/ccookat/Data/style/img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -46,7 +51,7 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-                <img src="<%=cp %>/Data/style/img/language.png" alt="">
+                <img src="/ccookat/Data/style/img/language.png" alt="">
                 <div>English</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
@@ -80,6 +85,21 @@
                 <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
                 <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
                     <span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+                        <li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shoping Cart</a></li>
+                        <li><a href="./checkout.html" role="menuitem" tabindex="-1">Check Out</a></li>
+                        <li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blog.html" role="menuitem">Blog</a></li>
+                <li><a href="./contact.html" role="menuitem">Contact</a></li>
+            </ul>
+        </nav></div><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+            <ul>
+                <li class="active"><a href="./index.html" role="menuitem">Home</a></li>
+                <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
+                <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"></a><a href="#">Pages</a>
+                    <span class="slicknav_arrow">►</span><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
                         <li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
                         <li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shoping Cart</a></li>
                         <li><a href="./checkout.html" role="menuitem" tabindex="-1">Check Out</a></li>
@@ -127,7 +147,7 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="<%=cp %>/Data/style/img/language.png" alt="">
+                                <img src="/ccookat/Data/style/img/language.png" alt="">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
@@ -147,7 +167,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="<%=cp %>/Data/style/img/logo.png" alt=""></a>
+                        <a href="./index.html"><img src="/ccookat/Data/style/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -239,7 +259,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section" data-setbg="<%=cp %>/Data/style/img/breadcrumb.jpg" style="background-image: url(&quot;<%=cp %>/Data/style/img/breadcrumb.jpg&quot;);">
+    <section class="breadcrumb-section" data-setbg="/ccookat/Data/style/img/breadcrumb.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/breadcrumb.jpg&quot;);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -260,35 +280,39 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <h4>Notice Upload</h4>
-                <form action="<%=cp %>/main/notice/upload_ok.do" method="post"
-								enctype="multipart/form-data">
+                <h4>리뷰 작성</h4>
+                <form action="/ccookat/main/review/created_ok.do" method="post" enctype="multipart/form-data">
                     <div>
                         <div>
-                            
+                   	
+                               <div class="checkout__input">
+                                <p>ID<span>*</span></p>
+                                <input type="text" name="customerId">
+                                <br/>
+                            </div>
+                         
                             <div class="checkout__input">
                                 <p>Title<span>*</span></p>
-                                <input type="text" name="noticeTitle">
+                                <input type="text" name="reviewTitle">
                             </div>
                             
                             <div class="checkout__input">
                                 <p>Image File<span>*</span></p>
                                 <div class="blog__sidebar__item__tags">
-                                <input type="file" name="upload"/>
+                                <input type="file" name="reviewImage">
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Text<span>*</span></p>
-                                <textarea rows="15" cols="20" name="noticeContent"></textarea>
+                                <textarea rows="15" cols="20" name="reviewContent"></textarea>
                             </div>
-
+							
 							<div class="blog__sidebar__item__tags">
 								<input type="submit" value=" 등록하기 ">
-								<input type="reset" value="다시입력"
-									onclick="document.myForm.noticeTitle.focus();"/>
-								<input type="button" value="작성취소"
-									onclick="location='<%=cp%>/main/notice/list.do';" />
-
+								<input type="reset" value="다시입력" onclick="document.myForm.reviewTitle.focus();">
+								<input type="button" value="작성취소" onclick="location='/ccookat/main/review/list.do';">
+								
+		<input type="hidden" name="itemNum" >
 							</div>
 						</div>
                      </div>
@@ -305,7 +329,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="<%=cp %>/Data/style/img/logo.png" alt=""></a>
+                            <a href="./index.html"><img src="/ccookat/Data/style/img/logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -356,9 +380,9 @@
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright ©<script>document.write(new Date().getFullYear());</script>2022 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright ©<script>document.write(new Date().getFullYear());</script>20222022 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="footer__copyright__payment"><img src="<%=cp %>/Data/style/img/payment-item.png" alt=""></div>
+                        <div class="footer__copyright__payment"><img src="/ccookat/Data/style/img/payment-item.png" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -367,17 +391,19 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="<%=cp %>/Data/style/js/jquery-3.3.1.min.js"></script>
-    <script src="<%=cp %>/Data/style/js/bootstrap.min.js"></script>
-    <script src="<%=cp %>/Data/style/js/jquery.nice-select.min.js"></script>
-    <script src="<%=cp %>/Data/style/js/jquery-ui.min.js"></script>
-    <script src="<%=cp %>/Data/style/js/jquery.slicknav.js"></script>
-    <script src="<%=cp %>/Data/style/js/mixitup.min.js"></script>
-    <script src="<%=cp %>/Data/style/js/owl.carousel.min.js"></script>
-    <script src="<%=cp %>/Data/style/js/main.js"></script>
+    <script src="/ccookat/Data/style/js/jquery-3.3.1.min.js"></script>
+    <script src="/ccookat/Data/style/js/bootstrap.min.js"></script>
+    <script src="/ccookat/Data/style/js/jquery.nice-select.min.js"></script>
+    <script src="/ccookat/Data/style/js/jquery-ui.min.js"></script>
+    <script src="/ccookat/Data/style/js/jquery.slicknav.js"></script>
+    <script src="/ccookat/Data/style/js/mixitup.min.js"></script>
+    <script src="/ccookat/Data/style/js/owl.carousel.min.js"></script>
+    <script src="/ccookat/Data/style/js/main.js"></script>
 
  
 
-</body></html>
 
 
+
+</body>
+</html>
