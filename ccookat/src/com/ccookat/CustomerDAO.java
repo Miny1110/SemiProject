@@ -15,7 +15,7 @@ public class CustomerDAO {
 	}
 	
 	
-	public int getMaxNum() {
+	/*public int getMaxNum() {
 		
 		int maxNum = 0;
 		
@@ -25,7 +25,7 @@ public class CustomerDAO {
 		
 		try {
 			
-			sql = "select nvl(max(num),0) from customer";
+			sql = "select nvl(max(customernum),0) from customer";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -44,7 +44,7 @@ public class CustomerDAO {
 		
 		return maxNum;
 		
-	}
+	}*/
 	
 	
 	//입력
@@ -56,21 +56,19 @@ public class CustomerDAO {
 		
 		try {
 			
-			sql = "insert into customer (customerId,customerPwd,customerName,customerTel ";
-			sql+= "customerZipcode,customerAddr,customerYear,customerMonth, customerDay,customerCreated) ";
-			sql+= "values (?,?,?,?,?,?,?,?,?,sysdate)";
+			sql = "insert into customer (customerId,customerPwd1,customerPwd2,customerName,";
+			sql+= "customerEmail,customerTel,customerCreated) ";
+			sql+= "values (?,?,?,?,?,?,sysdate)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, dto.getCustomerId());
-			pstmt.setString(2, dto.getCustomerPwd());
-			pstmt.setString(3, dto.getCustomerName());
-			pstmt.setString(4, dto.getCustomerTel());
-			pstmt.setString(5, dto.getCustomerZipcode());
-			pstmt.setString(6, dto.getCustomerAddr());
-			pstmt.setString(7, dto.getCustomerYear());
-			pstmt.setString(8, dto.getCustomerMonth());
-			pstmt.setString(9, dto.getCustomerDay());
+			pstmt.setString(2, dto.getCustomerPwd1());
+			pstmt.setString(3, dto.getCustomerPwd2()); 
+			pstmt.setString(4, dto.getCustomerName());
+			pstmt.setString(5, dto.getCustomerEmail());
+			pstmt.setString(6, dto.getCustomerTel());
+			
 			
 			result = pstmt.executeUpdate();
 			
@@ -97,8 +95,8 @@ public class CustomerDAO {
 			
 			sql = "select * from (";
 			sql+= "select rownum rnum,data.* from (";
-			sql+= "select customerId,customerPwd,customerName,customerTel, ";
-			sql+= "customerZipcode,customerAddr,customerYear,customerMonth, customerDay, ";
+			sql+= "select customerId,customerPwd1,customerPwd2,";
+			sql+= "customerName,customerEmail,customerTel, ";
 			sql+= "to_char(created,'YYYY-MM-DD') created ";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -113,14 +111,11 @@ public class CustomerDAO {
 				CustomerDTO dto = new CustomerDTO();
 				
 				dto.setCustomerId(rs.getString("customerId"));
-				dto.setCustomerPwd(rs.getString("customerPwd"));
+				dto.setCustomerPwd1(rs.getString("customerPwd1"));
+				dto.setCustomerPwd2(rs.getString("customerPwd2"));
 				dto.setCustomerName(rs.getString("customerName"));
+				dto.setCustomerEmail(rs.getString("customerEmail"));
 				dto.setCustomerTel(rs.getString("customerTel"));
-				dto.setCustomerZipcode(rs.getString("customerZipcode"));
-				dto.setCustomerAddr(rs.getString("customerAddr"));
-				dto.setCustomerYear(rs.getString("customerYear"));
-				dto.setCustomerMonth(rs.getString("customerMonth"));
-				dto.setCustomerDay(rs.getString("customerDay"));
 				dto.setCustomerCreated(rs.getString("created"));
 				
 				lists.add(dto);
@@ -148,8 +143,8 @@ public class CustomerDAO {
 		
 		try {
 			
-			sql = "select customerId,customerPwd,customerName,customerTel,";
-			sql+= "customerZipcode,customerAddr,customerYear,customerMonth,customerDay,";
+			sql = "select customerId,customerPwd1,customerPwd2,";
+			sql+= "customerName,customerEmail,customerTel,";
 			sql+= "created from Customer where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -163,14 +158,11 @@ public class CustomerDAO {
 				dto = new CustomerDTO();
 				
 				dto.setCustomerId(rs.getString("customerId"));
-				dto.setCustomerPwd(rs.getString("customerPwd"));
+				dto.setCustomerPwd1(rs.getString("customerPwd1"));
+				dto.setCustomerPwd2(rs.getString("customerPwd2"));
 				dto.setCustomerName(rs.getString("customerName"));
+				dto.setCustomerEmail(rs.getString("customerEmail"));
 				dto.setCustomerTel(rs.getString("customerTel"));
-				dto.setCustomerZipcode(rs.getString("customerZipcode"));
-				dto.setCustomerAddr(rs.getString("customerAddr"));
-				dto.setCustomerYear(rs.getString("customerYear"));
-				dto.setCustomerMonth(rs.getString("customerMonth"));
-				dto.setCustomerDay(rs.getString("customerDay"));
 				dto.setCustomerCreated(rs.getString("created"));
 			}
 			
@@ -194,15 +186,15 @@ public class CustomerDAO {
 		
 		try {
 			
-			sql = "update customer set customerPwd=?,customerTel=?,";
-			sql+= "customerZipcode=?,customerAddr=? where customerId=?";
+			sql = "update customer set customerPwd1=?,customerPwd2=?, ";
+			sql+= "customerEmail=?,customerTel=?, where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dto.getCustomerPwd());
-			pstmt.setString(2, dto.getCustomerTel());
-			pstmt.setString(3, dto.getCustomerZipcode());
-			pstmt.setString(4, dto.getCustomerAddr());
+			pstmt.setString(1, dto.getCustomerPwd1());
+			pstmt.setString(2, dto.getCustomerPwd2());
+			pstmt.setString(3, dto.getCustomerEmail());
+			pstmt.setString(4, dto.getCustomerTel());
 			pstmt.setString(5, dto.getCustomerId());
 			
 			result = pstmt.executeUpdate();
