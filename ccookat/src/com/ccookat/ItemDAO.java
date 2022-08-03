@@ -203,7 +203,7 @@ public class ItemDAO {
 			pstmt.close();
 			
 		} catch (Exception e) {
-			System.out.println();
+			System.out.println("에러");
 			System.out.println(e.toString());
 		}
 		
