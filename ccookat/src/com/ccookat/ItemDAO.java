@@ -10,18 +10,6 @@ import java.util.List;
 public class ItemDAO {
 	
 	private Connection conn;
-	
-	public ItemDAO(Connection conn) {
-		
-		this.conn = conn;
-	}
-	
-	
-	
-	
-	
-
-	private Connection conn = null;
 
 	public ItemDAO(Connection conn) {
 		this.conn = conn;
