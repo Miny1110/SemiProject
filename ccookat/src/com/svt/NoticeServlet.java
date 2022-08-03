@@ -2,6 +2,8 @@ package com.svt;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.util.List;
 
@@ -17,6 +19,7 @@ import com.ccookat.NoticeDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
+import com.util.FileManager;
 import com.util.MyPage;
 
 @WebServlet("/NoticeServlet")
@@ -132,8 +135,60 @@ public class NoticeServlet extends HttpServlet {
 
 		}else if(uri.indexOf("detail.do")!=-1) {
 
+			int num = Integer.parseInt(request.getParameter("NoticeNum"));
+			String pageNum = request.getParameter("pageNum");
+
+			String searchKey = request.getParameter("searchKey");
+			String searchValue = request.getParameter("searchValue");
+
+			if(searchValue!=null && !searchValue.equals("")) {
+				searchValue = URLDecoder.decode(searchValue,"UTF-8");
+
+			}
+			
+			ndao.updateHitCount(num);
+			
+			NoticeDTO ndto = ndao.selectData(num);
+			
+			if(ndto==null) {
+				url = cp + "/main/notice/list.do";
+				response.sendRedirect(url);
+			}
+			
+			int lineSu = ndto.getNoticeContent().split("\n").length;
+
+			ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\r", "<br/>"));
+
+			String param = "pageNum=" + pageNum;
+
+			if(searchValue!=null&&!searchValue.equals("")) {
+
+				param += "&searchKey=" + searchKey;
+				param += "&searchValue=" + URLEncoder.encode(searchValue,"UTF-8");				
+			}
+
+			request.setAttribute("ndto", ndto);
+			request.setAttribute("params", param);
+			request.setAttribute("lineSu", lineSu);
+			request.setAttribute("pageNum", pageNum);
+
+			url = "/notice/noticeDetail.jsp";
+			forward(request, response, url);
+			
 		}else if(uri.indexOf("delete.do")!=-1) {
 			
+			int num = Integer.parseInt(request.getParameter("num"));
+			String pageNum = request.getParameter("pageNum");
+			
+			NoticeDTO ndto = ndao.selectData(num);
+			
+			//파일에있는 이미지데이터 삭제
+			FileManager.doFileDelete(ndto.getNoticeImage(), path);
+			//DB데이터 삭제
+			ndao.deleteData(num);
+			
+			url = cp + "/main/notice/list.do?pageNum=" + pageNum;
+			response.sendRedirect(url);
 		}
 
 	}
