@@ -1,0 +1,104 @@
+.ico {
+    color: red;
+}
+
+.tit_page{
+    overflow:hidden;
+    width: 1050px;
+    margin: 0 auto;
+    padding: 50px 0 51px;
+    align-items: center;
+}
+
+.page_sub {
+    width: 800px;
+    border-bottom: 2px solid black;
+    align: center;
+}
+
+.member_join .page_sub {
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: #666;
+    line-height: 17px;
+    text-align: right
+}
+
+.member_join .page_sub .ico {
+    padding-right: 2px;
+    color: #ee6a7b
+}
+
+.signUp-form{
+    text-align: center;
+    align-items: center;
+}
+
+.page_article {
+    display: inline-block;
+}
+
+.tbl_comm{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    
+}
+
+#formSubmit {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.signUp_btn {
+    font-size: 14px;
+    border-color: #FF5833;
+    border: solid 0.5px;
+    border-radius: 5px;
+    width: 100px;
+    background-color: white;
+    height: 50px;
+    color: #FF5833;
+    margin-left: 10px;
+    padding-top: 4px;
+  }
+
+.box-size {
+    width: 300px;
+    height: 50px;
+    border: rgb(166, 154, 154) solid 0.5px;
+    border-radius: 5px;
+    margin-left: 15px;
+    font-size: 13PX;
+    padding-left: 10PX;
+}
+
+
+
+.btn_address {
+    font-size: 14px;
+    border-color: #FF5833;
+    border: solid 0.5px;
+    border-radius: 5px;
+    width: 300px;
+    background-color: white;
+    color: #FF5833;
+    height: 57px;
+    margin-left: 15px;
+}
+
+tr {
+    height: 100px;
+}
+
+.btn_sign {
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+    background-color: #FF5833;
+    margin-bottom: 30px;
+    color: white;
+    height: 57px;
+    margin: 10px;
+}
