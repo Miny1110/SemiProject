@@ -17,17 +17,6 @@ public class ItemDAO {
 	}
 	
 	
-	
-	
-	
-
-	private Connection conn = null;
-
-	public ItemDAO(Connection conn) {
-		this.conn = conn;
-	}
-	
-	
 	//제품별 상세페이지 itemNum을 위한 메소드
 	public int getMaxNum() {
 		
@@ -222,42 +211,5 @@ public class ItemDAO {
 		return lists;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
