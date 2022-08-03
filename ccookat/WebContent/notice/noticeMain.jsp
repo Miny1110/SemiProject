@@ -265,7 +265,7 @@
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__search">
                             <form action="#">
-                                <input type="text" placeholder="공지사항 검색기능 나중에 할게요ㅠ">
+                                <input type="text" placeholder="공지사항 검색" name="searchvalue">
                                 <button type="submit"><span class="icon_search"></span></button>
                             </form>
                         </div>
@@ -287,7 +287,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="blog__item">
                                 <div class="blog__item__pic">
-                                    <img src="${imagePath }/${ndto.noticeImage }" width="auto"/>
+                                    <img src="${imagePath }/${ndto.noticeImage }" height="350"/>
                                 </div>
                                 <div class="blog__item__text">
                                     <ul>
@@ -307,7 +307,7 @@
                             </div>
                             <div align="right">
                              <div class="blog__sidebar__item__tags">
-                                <a href="<%=cp%>/main/notice/upload.do">글올리기</a></div>
+                                <a href="<%=cp%>/main/notice/upload.do?">글올리기</a></div>
                             </div>
                         </div>
                     </div>

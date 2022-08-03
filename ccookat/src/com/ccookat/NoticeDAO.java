@@ -116,6 +116,8 @@ public class NoticeDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, noticeNum);
+			
+			pstmt.executeUpdate();
 
 			pstmt.close();
 
@@ -128,7 +130,7 @@ public class NoticeDAO {
 	//수정시 뿌려줄 데이터
 	public NoticeDTO selectData(int noticeNum) {
 
-		NoticeDTO ndto =null;
+		NoticeDTO ndto=null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
