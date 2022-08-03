@@ -80,10 +80,13 @@ public class ReviewDAO {
 		String sql;
 		 
 		 try {
+			 /*System.out.println(rdto.getCustomerId());
+			 System.out.println(rdto.getReviewTitle());
+			 System.out.println(rdto.getReviewContent());*/
 			 
 			 sql = "insert into review (customerId,reviewTitle,reviewContent,";
 			 sql += "reviewNum,reviewImage,itemNum,reviewCreated,reviewLike) ";
-			 sql += "values (,?,?,?,?,1111,sysdate,0)";
+			 sql += "values (?,?,?,?,?,1111,sysdate,0)";
 			 
 			 pstmt = conn.prepareStatement(sql);
 			 

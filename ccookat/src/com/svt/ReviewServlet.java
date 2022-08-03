@@ -3,6 +3,7 @@ package com.svt;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.ccookat.ReviewDAO;
 import com.ccookat.ReviewDTO;
@@ -18,7 +18,6 @@ import com.ccookat.ReviewDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
-import com.util.FileManager;
 import com.util.MyPage;
 
 public class ReviewServlet extends HttpServlet {
@@ -131,7 +130,9 @@ public class ReviewServlet extends HttpServlet {
 	} else if (uri.indexOf("created_ok.do") != -1) {
 
 		//파일업로드
-		String encType = "UTF-8";
+		
+	
+	String encType = "UTF-8";
 		int maxSize = 10 * 1024 * 1024;
 		
 		
@@ -143,12 +144,12 @@ public class ReviewServlet extends HttpServlet {
 		int maxNum = rdao.getMaxNum();
 		
 		rdto.setReviewNum(maxNum+1);
-		rdto.setCustomerId(req.getParameter("customerId"));
-		rdto.setReviewTitle(req.getParameter("reviewTitle"));
-		rdto.setReviewContent(req.getParameter("reviewContent"));
-		rdto.setReviewImage(req.getParameter("reviewImage"));
+		rdto.setCustomerId(mr.getParameter("customerId"));
+		rdto.setReviewTitle(mr.getParameter("reviewTitle"));
+		rdto.setReviewContent(mr.getParameter("reviewContent"));
+		rdto.setReviewImage(mr.getParameter("reviewImage"));
 		//rdto.setItemNum(Integer.parseInt(req.getParameter("itemNum")));
-		rdto.setReviewCreated(req.getParameter("reviewCreated"));
+		rdto.setReviewCreated(mr.getParameter("reviewCreated"));
 		
 		rdao.insertData(rdto);
 		
@@ -171,16 +172,24 @@ public class ReviewServlet extends HttpServlet {
 	
 	} else if (uri.indexOf("updated_ok.do") != -1) {
 		
+		String encType = "UTF-8";
+		int maxSize = 10 * 1024 * 1024;
+		
+		
+		MultipartRequest mr = 
+				new MultipartRequest(req, path, maxSize, encType,
+						new DefaultFileRenamePolicy()); 
+		
 		int reviewNum =Integer.parseInt(req.getParameter("reviewNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		
 		ReviewDTO rdto = new ReviewDTO();
 		
-		rdto.setReviewNum(Integer.parseInt(req.getParameter("reviewNum")));
-		rdto.setCustomerId(req.getParameter("custocmerId"));
-		rdto.setReviewTitle(req.getParameter("reviewTitle"));
-		rdto.setReviewContent(req.getParameter("reviewContent"));
-		rdto.setReviewImage(req.getParameter("reviewImage"));
+		rdto.setReviewNum(Integer.parseInt(mr.getParameter("reviewNum")));
+		rdto.setCustomerId(mr.getParameter("custocmerId"));
+		rdto.setReviewTitle(mr.getParameter("reviewTitle"));
+		rdto.setReviewContent(mr.getParameter("reviewContent"));
+		rdto.setReviewImage(mr.getParameter("reviewImage"));
 		
 		rdao.updateData(rdto);
 		
@@ -195,7 +204,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.deleteData(reviewNum);
 		
-		url = cp + "/main/review/list.do?pageNum="+pageNum ;
+		url = cp + "/main/review/list.do" ;
 		resp.sendRedirect(url);
 	}
 		
