@@ -130,8 +130,6 @@ public class NoticeDAO {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
-		NoticeDTO ndto = null;
 		String sql;
 
 		try {
@@ -148,14 +146,14 @@ public class NoticeDAO {
 
 			if(rs.next()) {
 
-				ndto = new NoticeDTO();
+				NoticeDTO ndto = new NoticeDTO();
 
-				ndto.setNoticeNum(Integer.parseInt("noticeNum"));
-				ndto.setNoticeTitle("noticeTitle");
-				ndto.setNoticeCreated("noticeCreated");
-				ndto.setNoticeContent("noticeContent");
-				ndto.setNoticeHitCount(Integer.parseInt("noticeHitCount"));
-				ndto.setNoticeImage("noticeImage");
+				ndto.setNoticeNum(rs.getInt("noticeNum"));
+				ndto.setNoticeTitle(rs.getString("noticeTitle"));
+				ndto.setNoticeCreated(rs.getString("noticeCreated"));
+				ndto.setNoticeContent(rs.getString("noticeContent"));
+				ndto.setNoticeHitCount(rs.getInt("noticeHitCount"));
+				ndto.setNoticeImage(rs.getString("noticeImage"));
 
 			}
 
