@@ -1,0 +1,596 @@
+<%@page import="java.util.List"%>
+<%@page import="com.util.MyPage"%>
+<%@page import="com.ccookat.ReviewDAO"%>
+<%@page import="com.util.DBConn"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="com.ccookat.ReviewDTO"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+	
+	Connection conn = DBConn.getconnection();
+	ReviewDAO dao = new ReviewDAO(conn);
+	
+	MyPage mypage = new MyPage();
+	
+	String pageNum = request.getParameter("pageNum");
+	int currentPage = 1;
+	
+	if (pageNum != null) { // 여기 값이 있다는건 사용자가 몇페이지를 뿌려줘 이런의미로 온거니까
+		currentPage = Integer.parseInt(pageNum);
+	}
+	//처음
+	//전체데이터갯수 구하기
+	int dataCount = dao.getDataCount();
+
+	//하나의 페이지에 보여줄 데이터 갯수
+	int numPerPage = 5;
+
+	//전체 페이지 갯수
+	int totalPage = mypage.getPageCount(numPerPage, dataCount);
+
+	//삭제시 페이지수가 줄었을때 처리하는 방법 
+	if (currentPage > totalPage) {
+		currentPage = totalPage;
+	}
+
+	//데이터베이스에서 가져올 rownum의 시작과 끝 구하기
+	int start = (currentPage - 1) * numPerPage + 1;
+	int end = currentPage * numPerPage;
+	
+	List<ReviewDTO> lists = dao.getLists(start, end);
+
+	
+
+	//페이징 처리
+	String listUrl = cp + "/guest/guest.jsp";
+	String pageIndexList = mypage.pageIndexList(currentPage, totalPage, listUrl);
+	
+	DBConn.close();
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zxx"><head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" type="text/css" href="<%=cp%>/review/css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder" style="display: none;">
+        <div class="loader" style="display: none;"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <img src="img/language.png" alt="">
+                <div>English</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Spanis</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Login</a>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="./index.html">Home</a></li>
+                <li><a href="./shop-grid.html">Shop</a></li>
+                <li><a href="#">Pages</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="./shop-details.html">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+            <ul>
+                <li class="active"><a href="./index.html" role="menuitem">Home</a></li>
+                <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
+                <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
+                    <span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+                        <li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shoping Cart</a></li>
+                        <li><a href="./checkout.html" role="menuitem" tabindex="-1">Check Out</a></li>
+                        <li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blog.html" role="menuitem">Blog</a></li>
+                <li><a href="./contact.html" role="menuitem">Contact</a></li>
+            </ul>
+        </nav></div></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li>Free Shipping for all Order of $99</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                                <li>Free Shipping for all Order of $99</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <img src="img/language.png" alt="">
+                                <div>English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Spanis</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li><a href="./index.html">Home</a></li>
+                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        </ul>
+                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>All departments</span>
+                        </div>
+                        <ul>
+                            <li><a href="#">Fresh Meat</a></li>
+                            <li><a href="#">Vegetables</a></li>
+                            <li><a href="#">Fruit &amp; Nut Gifts</a></li>
+                            <li><a href="#">Fresh Berries</a></li>
+                            <li><a href="#">Ocean Foods</a></li>
+                            <li><a href="#">Butter &amp; Eggs</a></li>
+                            <li><a href="#">Fastfood</a></li>
+                            <li><a href="#">Fresh Onion</a></li>
+                            <li><a href="#">Papayaya &amp; Crisps</a></li>
+                            <li><a href="#">Oatmeal</a></li>
+                            <li><a href="#">Fresh Bananas</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    All Categories
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="What do yo u need?">
+                                <button type="submit" class="site-btn">SEARCH</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+65 11.188.888</h5>
+                                <span>support 24/7 time</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg" style="background-image: url(&quot;img/breadcrumb.jpg&quot;);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Vegetable’s Package</h2>
+                        <div class="breadcrumb__option">
+                            <a href="./index.html">Home</a>
+                            <a href="./index.html">Vegetables</a>
+                            <span>Vegetable’s Package</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large" src="img/product/details/product-details-1.jpg" alt="">
+                        </div>
+                        <div class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
+                            
+                            
+                            
+                            
+                        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-662px, 0px, 0px); transition: all 1.2s ease 0s; width: 1590px;"><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-3.jpg" src="img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-5.jpg" src="img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-4.jpg" src="img/product/details/thumb-4.jpg" alt=""></div><div class="owl-item" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-3.jpg" src="img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-5.jpg" src="img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-4.jpg" src="img/product/details/thumb-4.jpg" alt=""></div><div class="owl-item cloned active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-3.jpg" src="img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-5.jpg" src="img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-4.jpg" src="img/product/details/thumb-4.jpg" alt=""></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3>Vetgetable’s Package</h3>
+                        <div class="product__details__rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <span>(18 reviews)</span>
+                        </div>
+                        <div class="product__details__price">$50.00</div>
+                        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
+                            vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
+                            quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
+                        <div class="product__details__quantity">
+                            <div class="quantity">
+                                <div class="pro-qty"><span class="dec qtybtn">-</span>
+                                    <input type="text" value="1">
+                                <span class="inc qtybtn">+</span></div>
+                            </div>
+                        </div>
+                        <a href="#" class="primary-btn">ADD TO CARD</a>
+                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <ul>
+                            <li><b>Availability</b> <span>In Stock</span></li>
+                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                            <li><b>Weight</b> <span>0.5 kg</span></li>
+                            <li><b>Share on</b>
+                                <div class="share">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="false">Description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-3" role="tab" aria-selected="true">Reviews <span>(1)</span></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane" id="tabs-1" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>Products Infomation</h6>
+                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus
+                                        suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam
+                                        vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada.
+                                        Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur arcu erat,
+                                        accumsan id imperdiet et, porttitor at sem. Praesent sapien massa, convallis a
+                                        pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula
+                                        elementum sed sit amet dui. Vestibulum ante ipsum primis in faucibus orci luctus
+                                        et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
+                                        vel, ullamcorper sit amet ligula. Proin eget tortor risus.</p>
+                                        <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
+                                        ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet
+                                        elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
+                                        porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
+                                        nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+                                        Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed
+                                        porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum
+                                        sed sit amet dui. Proin eget tortor risus.</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane active" id="tabs-2" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>리뷰 페이지</h6>
+                                    <form action="" method="post" name="myForm">
+                       
+                                    <input type="button" value=" 글올리기 " class="btn2" 
+				onclick="javascript:location.href='<%=cp%>/review/created.jsp;"/>
+					<%for(ReviewDTO dto : lists){ %>
+					<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee">	
+						<tr height="10">	
+						<td align="left" style="padding-left: 5px;">
+						<b><%=dto.getCustomerId() %> <%=dto.getReviewTitle() %></b>
+						</td>
+						</tr>
+
+										<tr height="10">
+											<td align="right" style="padding: 5px;"><input
+												type="button" value=" 삭제 " class="btn2" onclick="deleted();" />
+											</td>
+										</tr>
+										<tr><td colspan="2" bgcolor="#dbdbdb" height="1"></td></tr>
+
+
+
+
+
+										</form>
+					
+                                   
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Details Section End -->
+
+    <!-- Related Product Section Begin -->
+    <section class="related-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related__product__title">
+                        <h2>Related Product</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg" style="background-image: url(&quot;img/product/product-1.jpg&quot;);">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg" style="background-image: url(&quot;img/product/product-2.jpg&quot;);">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg" style="background-image: url(&quot;img/product/product-3.jpg&quot;);">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg" style="background-image: url(&quot;img/product/product-7.jpg&quot;);">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related Product Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li>Address: 60-49 Road 11378 New York</li>
+                            <li>Phone: +65 11.188.888</li>
+                            <li>Email: hello@colorlib.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6>Useful Links</h6>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">About Our Shop</a></li>
+                            <li><a href="#">Secure Shopping</a></li>
+                            <li><a href="#">Delivery infomation</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Our Sitemap</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">Who We Are</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Innovation</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <h6>Join Our Newsletter Now</h6>
+                        <p>Get E-mail updates about our latest shop and special offers.</p>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your mail">
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright ©<script>document.write(new Date().getFullYear());</script>2022 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+
+</body></html>
