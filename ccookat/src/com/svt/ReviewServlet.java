@@ -108,7 +108,7 @@ public class ReviewServlet extends HttpServlet {
 		req.setAttribute("totalArticle", totalArticle);
 		req.setAttribute("currentPage", currentPage);
 		
-		
+		System.out.println();
 		url = "/review/list.jsp";
 		forward(req, resp, url);
 	
@@ -146,6 +146,7 @@ public class ReviewServlet extends HttpServlet {
 		rdto.setReviewTitle(req.getParameter("reviewTitle"));
 		rdto.setReviewContent(req.getParameter("reviewContent"));
 		rdto.setReviewImage(req.getParameter("reviewImage"));
+		//rdto.setItemNum(Integer.parseInt(req.getParameter("itemNum")));
 		rdto.setReviewCreated(req.getParameter("reviewCreated"));
 		
 		rdao.insertData(rdto);
