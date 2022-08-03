@@ -97,6 +97,20 @@
   }
 
 
+
+.btn_address {
+    font-size: 14px;
+    border-color: #FF5833;
+    border: solid 0.5px;
+    border-radius: 5px;
+    width: 300px;
+    background-color: white;
+    color: #FF5833;
+    height: 57px;
+    margin-left: 15px;
+}
+
+
 tr {
     height: 100px;
 }
@@ -106,9 +120,14 @@ tr {
     border: none;
     border-radius: 5px;
     width: 300px;
+
+
+
     background-color: #FF5833;
     margin-bottom: 30px;
     color: white;
     height: 57px;
     margin: 10px;
+
 }
+

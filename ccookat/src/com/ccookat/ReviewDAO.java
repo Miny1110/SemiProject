@@ -24,7 +24,7 @@ public class ReviewDAO {
 		String sql;
 		
 		try {
-			sql ="select nvl(max(num),0) from review";
+			sql ="select nvl(max(reviewNum),0) from review";
 			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -72,12 +72,10 @@ public class ReviewDAO {
 			return totalCount;
 		}
 
-	//입력하기
-	public int insertData(ReviewDTO dto) {
+	//업로드
+	public void insertData(ReviewDTO rdto) {
 		
 	
-		int result = 0;
-			
 		PreparedStatement pstmt = null;
 		String sql;
 		 
@@ -85,32 +83,31 @@ public class ReviewDAO {
 			 
 			 sql = "insert into review (customerId,reviewTitle,reviewContent,";
 			 sql += "reviewNum,reviewImage,itemNum,reviewCreated,reviewLike) ";
-			 sql += "values (?,?,?,?,?,?,sysdate,0)";
+			 sql += "values (,?,?,?,?,1111,sysdate,0)";
 			 
 			 pstmt = conn.prepareStatement(sql);
 			 
-			 pstmt.setString(1, dto.getCustomerId());
-			 pstmt.setString(2, dto.getReviewTitle());
-			 pstmt.setString(3, dto.getReviewContent());
-			 pstmt.setInt(4, dto.getReviewNum());
-			 pstmt.setString(5, dto.getReviewImage());
-			 pstmt.setInt(6, dto.getItemNum());
-			 
-			 result= pstmt.executeUpdate();
-			 
+			pstmt.setString(1, rdto.getCustomerId());
+			 pstmt.setString(2, rdto.getReviewTitle());
+			 pstmt.setString(3, rdto.getReviewContent());
+			 pstmt.setInt(4, rdto.getReviewNum());
+			 pstmt.setString(5, rdto.getReviewImage());
+			
+			
+			 pstmt.executeUpdate();
 			 pstmt.close();
 			
 			} catch (Exception e) {
 				 System.out.println(e.toString());
 			}
-			 return result;
+		
 			  }
 	
 	 //전체데이터 가져오기
 	 public List<ReviewDTO> getLists(int start, int end){
 			
 			List<ReviewDTO> lists = new ArrayList<ReviewDTO>();
-			
+			ReviewDTO rdto = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			String sql;
@@ -120,7 +117,7 @@ public class ReviewDAO {
 				sql = "select * from ("; 
 				sql+= "select rownum rnum, data.* from (";
 				sql+= "select customerId,reviewTitle,reviewContent,reviewNum,reviewImage,itemNum,reviewCreated,reviewLike ";
-				sql+= "from review order by num desc) data)";
+				sql+= "from review order by reviewNum desc) data)";
 				sql+= "where rnum>=? and rnum<=?";
 				
 				
@@ -133,18 +130,18 @@ public class ReviewDAO {
 				
 				while(rs.next()) {
 					
-					ReviewDTO dto = new ReviewDTO();
+					rdto = new ReviewDTO();
 					
-					dto.setCustomerId(rs.getString("customerId"));
-					dto.setReviewTitle(rs.getString("reviewTitle"));
-					dto.setReviewContent(rs.getString("reviewContent"));
-					dto.setReviewNum(rs.getInt("reviewNum"));
-					dto.setReviewImage(rs.getString("reviewImage"));
-					dto.setItemNum(rs.getInt("itemNum"));
-					dto.setReviewCreated(rs.getString("reviewCreated"));
-					dto.setReviewLike(rs.getInt("reviewLike"));
+					rdto.setCustomerId(rs.getString("customerId"));
+					rdto.setReviewTitle(rs.getString("reviewTitle"));
+					rdto.setReviewContent(rs.getString("reviewContent"));
+					rdto.setReviewNum(rs.getInt("reviewNum"));
+					rdto.setReviewImage(rs.getString("reviewImage"));
+					rdto.setItemNum(rs.getInt("itemNum"));
+					rdto.setReviewCreated(rs.getString("reviewCreated"));
+					rdto.setReviewLike(rs.getInt("reviewLike"));
 					
-					lists.add(dto);
+					lists.add(rdto);
 					
 				}
 				
@@ -162,7 +159,7 @@ public class ReviewDAO {
 	 //하나 읽어오기
 	 public ReviewDTO getReadData(int reviewNum) {
 		 
-		 ReviewDTO dto = null;
+		 ReviewDTO rdto = null;
 
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -180,16 +177,16 @@ public class ReviewDAO {
 				
 				if (rs.next()) {
 
-					dto = new ReviewDTO();
+					rdto = new ReviewDTO();
 
-					dto.setCustomerId(rs.getString("customerId"));
-					dto.setReviewTitle(rs.getString("reviewTitle"));
-					dto.setReviewContent(rs.getString("reviewContent"));
-					dto.setReviewNum(rs.getInt("reviewNum"));
-					dto.setReviewImage(rs.getString("reviewImage"));
-					dto.setItemNum(rs.getInt("itemNum"));
-					dto.setReviewCreated(rs.getString("reviewCreated"));
-					dto.setReviewLike(rs.getInt("reviewLike"));
+					rdto.setCustomerId(rs.getString("customerId"));
+					rdto.setReviewTitle(rs.getString("reviewTitle"));
+					rdto.setReviewContent(rs.getString("reviewContent"));
+					rdto.setReviewNum(rs.getInt("reviewNum"));
+					rdto.setReviewImage(rs.getString("reviewImage"));
+					rdto.setItemNum(rs.getInt("itemNum"));
+					rdto.setReviewCreated(rs.getString("reviewCreated"));
+					rdto.setReviewLike(rs.getInt("reviewLike"));
 
 				}
 				rs.close();
@@ -199,7 +196,7 @@ public class ReviewDAO {
 			} catch (Exception e) {
 				System.out.println(e.toString());
 			}
-			return dto;
+			return rdto;
 	 }
 	 //삭제하기
 	 public int deleteData(int reviewNum) {
@@ -230,20 +227,22 @@ public class ReviewDAO {
 		}
 	 
 	 //수정
-		public int updateData(ReviewDTO dto){
+		public int updateData(ReviewDTO rdto){
 			
 			int result = 0;
 			PreparedStatement pstmt = null;
 			String sql;
 				
 			try {
-				sql = "update review set reviewTitle=?,reviewContent=?,reviewImage=?,reviewCreated=sysdate ";
-				sql += "where customerId=?";
+				sql = "update review set customerId=? reviewTitle=?,reviewContent=?,reviewImage=?,reviewCreated=sysdate ";
+				sql += "where reviewNum=? ";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, dto.getReviewTitle());
-				pstmt.setString(2, dto.getReviewContent());
-				pstmt.setString(3, dto.getReviewImage());
-				pstmt.setString(4, dto.getCustomerId());
+				
+				pstmt.setString(1, rdto.getCustomerId());
+				pstmt.setString(2, rdto.getReviewTitle());
+				pstmt.setString(3, rdto.getReviewContent());
+				pstmt.setString(4, rdto.getReviewImage());
+				pstmt.setInt(5, rdto.getReviewNum());
 				result = pstmt.executeUpdate();
 				pstmt.close();
 					

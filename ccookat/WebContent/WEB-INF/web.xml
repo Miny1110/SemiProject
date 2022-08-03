@@ -47,6 +47,15 @@
 		<servlet-name>ccookatReviewServlet</servlet-name>
 		<url-pattern>/main/review/*</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ccookatItemServlet</servlet-name>
+		<servlet-class>com.svt.ItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ccookatItemServlet</servlet-name>
+		<url-pattern>/main/item/*</url-pattern>
+	</servlet-mapping>
 </web-app>
 
 
