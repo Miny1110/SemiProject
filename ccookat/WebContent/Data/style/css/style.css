@@ -2138,6 +2138,16 @@ ol {
 	color: #b2b2b2;
 }
 
+.checkout__input textarea {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ebebeb;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #b2b2b2;
+    border-radius: 4px;
+}
+
 .checkout__input__checkbox {
 	margin-bottom: 10px;
 }
