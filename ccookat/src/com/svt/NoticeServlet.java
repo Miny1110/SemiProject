@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ccookat.NoticeDAO;
 import com.ccookat.NoticeDTO;
-import com.imageTest.ImageTestDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
@@ -43,6 +42,7 @@ public class NoticeServlet extends HttpServlet {
 		MyPage myPage = new MyPage(); 
 
 		String cp = request.getContextPath();
+		System.out.println(cp);
 		String uri = request.getRequestURI();
 		String url;
 
@@ -74,39 +74,23 @@ public class NoticeServlet extends HttpServlet {
 					new MultipartRequest(request, path,maxSize,encType,
 							new DefaultFileRenamePolicy());
 
+			System.out.println("널일까?");
 			if(mr.getFile("upload")!=null) {
-
+				System.out.println("널은아님!");
 				NoticeDTO dto = new NoticeDTO();
 
-				int maxnum = dao.getMaxNum();
-
-				dto.setNum(maxnum + 1);
-				dto.setSubject(mr.getParameter("subject"));
-				dto.setSaveFileName(mr.getFilesystemName("upload"));
-
-				dao.insertData(dto);
+				int maxnum = ndao.getMaxNum();
+				
+				dto.setNoticeNum(maxnum+1);
+				dto.setNoticeTitle(mr.getParameter("noticeTitle"));
+				dto.setNoticeImage(mr.getFilesystemName("upload"));
+				dto.setNoticeContent(mr.getParameter("noticeContent"));
+	
+				ndao.insertData(dto);
 			}
 
-			url = cp + "/image/list.do";
+			url = cp + "/main/notice/list.do";
 			response.sendRedirect(url);
-
-
-
-
-
-
-			String encType = "UTF-8";
-			int maxSize = 10*1024*1024;
-
-			MultipartRequest mr = 
-					new MultipartRequest(request, path, maxSize, encType,
-							new DefaultFileRenamePolicy());
-
-			if(mr.getFile("upload.do")!=null) {
-
-
-			}
-
 
 		}else if(uri.indexOf("detail.do")!=-1) {
 

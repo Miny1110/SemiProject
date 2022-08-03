@@ -27,7 +27,7 @@ public class NoticeDAO {
 		
 		try {
 			
-			sql = "select nvl(max(num),0) from notice";
+			sql = "select nvl(max(noticeNum),0) from notice";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -56,9 +56,9 @@ public class NoticeDAO {
 		
 		try {
 			
-			sql = "insert into(noticeNum,noticeTitle,noticeCreated,";
+			sql = "insert into notice(noticeNum,noticeTitle,noticeCreated,";
 			sql+= "noticeContent,noticeHitCount,noticeImage) ";
-			sql+= "values(?,?,sysdate,?,?,?)";
+			sql+= "values(?,?,sysdate,?,0,?)";
 					
 			pstmt = conn.prepareStatement(sql);
 			
