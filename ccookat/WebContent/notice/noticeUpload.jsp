@@ -1,31 +1,28 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html lang="zxx"><head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>notice</title>
+    <title>Ogani | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -38,7 +35,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
+            <a href="#"><img src="<%=cp %>/Data/style/img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -49,7 +46,7 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-                <img src="img/language.png" alt="">
+                <img src="<%=cp %>/Data/style/img/language.png" alt="">
                 <div>English</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
@@ -130,7 +127,7 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
+                                <img src="<%=cp %>/Data/style/img/language.png" alt="">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
@@ -150,14 +147,14 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.html"><img src="<%=cp %>/Data/style/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
                             <li><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -166,7 +163,7 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li class="active"><a href="./blog.html">Blog</a></li>
+                            <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
@@ -241,182 +238,60 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Blog Details Hero Begin -->
-    <section class="blog-details-hero set-bg" data-setbg="img/blog/details/details-hero.jpg" style="background-image: url(&quot;img/blog/details/details-hero.jpg&quot;);">
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section" data-setbg="<%=cp %>/Data/style/img/breadcrumb.jpg" style="background-image: url(&quot;<%=cp %>/Data/style/img/breadcrumb.jpg&quot;);">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="blog__details__hero__text">
-                        <h2>The Moment You Need To Remove Garlic From The Menu</h2>
-                        <ul>
-                            <li>By Michael Scofield</li>
-                            <li>January 14, 2019</li>
-                            <li>8 Comments</li>
-                        </ul>
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Checkout</h2>
+                        <div class="breadcrumb__option">
+                            <a href="./index.html">Home</a>
+                            <span>Checkout</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Blog Details Hero End -->
+    <!-- Breadcrumb Section End -->
 
-    <!-- Blog Details Section Begin -->
-    <section class="blog-details spad">
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-5 order-md-1 order-2">
-                    <div class="blog__sidebar">
-                        <div class="blog__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="Search...">
-                                <button type="submit"><span class="icon_search"></span></button>
-                            </form>
-                        </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Categories</h4>
-                            <ul>
-                                <li><a href="#">All</a></li>
-                                <li><a href="#">Beauty (20)</a></li>
-                                <li><a href="#">Food (5)</a></li>
-                                <li><a href="#">Life Style (9)</a></li>
-                                <li><a href="#">Travel (10)</a></li>
-                            </ul>
-                        </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Recent News</h4>
-                            <div class="blog__sidebar__recent">
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="img/blog/sidebar/sr-1.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>09 Kinds Of Vegetables<br> Protect The Liver</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="img/blog/sidebar/sr-2.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>Tips You To Balance<br> Nutrition Meal Day</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="img/blog/sidebar/sr-3.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>4 Principles Help You Lose <br>Weight With Vegetables</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
+            <div class="checkout__form">
+                <h4>Notice Upload</h4>
+                <form action="#">
+                    <div>
+                        <div>
+                            
+                            <div class="checkout__input">
+                                <p>Title<span>*</span></p>
+                                <input type="text">
                             </div>
-                        </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Search By</h4>
+                            
+                            <div class="checkout__input">
+                                <p>Image File<span>*</span></p>
+                                <input type="text">
+                                <div class="blog__sidebar__item__tags">
+                                <a href="<%=cp%>/notice/noticeUpload.jsp">파일첨부</a>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Text<span>*</span></p>
+                                <textarea rows="15" cols="20"></textarea>
+                            </div>
+                            
                             <div class="blog__sidebar__item__tags">
-                                <a href="#">Apple</a>
-                                <a href="#">Beauty</a>
-                                <a href="#">Vegetables</a>
-                                <a href="#">Fruit</a>
-                                <a href="#">Healthy Food</a>
-                                <a href="#">Lifestyle</a>
+                            <a href="<%=cp%>/notice/noticeMain.jsp">등록하기</a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-7 order-md-1 order-1">
-                    <div class="blog__details__text">
-                        <img src="img/blog/details/details-pic.jpg" alt="">
-                        <p>Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                            dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit
-                            aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur
-                            sed, convallis at tellus. Sed porttitor lectus nibh. Donec sollicitudin molestie malesuada.
-                            Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus.
-                            Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis
-                            quis ac lectus. Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada
-                            feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
-                        <h3>The corner window forms a place within a place that is a resting point within the large
-                            space.</h3>
-                        <p>The study area is located at the back with a view of the vast nature. Together with the other
-                            buildings, a congruent story has been managed in which the whole has a reinforcing effect on
-                            the components. The use of materials seeks connection to the main house, the adjacent
-                            stables</p>
-                    </div>
-                    <div class="blog__details__content">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="blog__details__author">
-                                    <div class="blog__details__author__pic">
-                                        <img src="img/blog/details/details-author.jpg" alt="">
-                                    </div>
-                                    <div class="blog__details__author__text">
-                                        <h6>Michael Scofield</h6>
-                                        <span>Admin</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="blog__details__widget">
-                                    <ul>
-                                        <li><span>Categories:</span> Food</li>
-                                        <li><span>Tags:</span> All, Trending, Cooking, Healthy Food, Life Style</li>
-                                    </ul>
-                                    <div class="blog__details__social">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                                        <a href="#"><i class="fa fa-envelope"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               			</div>
+                     </div>
+                </form>
             </div>
         </div>
     </section>
-    <!-- Blog Details Section End -->
-
-    <!-- Related Blog Section Begin -->
-    <section class="contact spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <div class="contact__widget">
-                        <span class="icon_phone"></span>
-                        <h4>Phone</h4>
-                        <p>+01-3-8888-6868</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <div class="contact__widget">
-                        <span class="icon_pin_alt"></span>
-                        <h4>Address</h4>
-                        <p>60-49 Road 11378 New York</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <div class="contact__widget">
-                        <span class="icon_clock_alt"></span>
-                        <h4>Open time</h4>
-                        <p>10:00 am to 23:00 pm</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <div class="contact__widget">
-                        <span class="icon_mail_alt"></span>
-                        <h4>Email</h4>
-                        <p>hello@colorlib.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Related Blog Section End -->
+    <!-- Checkout Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -425,7 +300,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="./index.html"><img src="<%=cp %>/Data/style/img/logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -478,7 +353,7 @@
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
   Copyright ©<script>document.write(new Date().getFullYear());</script>2022 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                        <div class="footer__copyright__payment"><img src="<%=cp %>/Data/style/img/payment-item.png" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -487,17 +362,19 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="<%=cp %>/Data/style/js/jquery-3.3.1.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/bootstrap.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/jquery.nice-select.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/jquery-ui.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/jquery.slicknav.js"></script>
+    <script src="<%=cp %>/Data/style/js/mixitup.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/owl.carousel.min.js"></script>
+    <script src="<%=cp %>/Data/style/js/main.js"></script>
 
-
+ 
 
 
 
 </body></html>
+
+

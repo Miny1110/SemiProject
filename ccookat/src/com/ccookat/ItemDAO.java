@@ -6,7 +6,20 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ItemDAO {
+	
+	private Connection conn;
+	
+	public ItemDAO(Connection conn) {
+		
+		this.conn = conn;
+	}
+	
+	
+	
+	
+	
 
 	private Connection conn = null;
 
