@@ -77,7 +77,7 @@ public class ItemServlet extends HttpServlet {
 				
 				ItemDTO idto = new ItemDTO();
 				
-				int maxNum = idto.getItemNum();
+				int maxNum = idao.getMaxNum();
 				
 				idto.setItemNum(maxNum+1);
 				idto.setItemName(mr.getParameter("itemName"));

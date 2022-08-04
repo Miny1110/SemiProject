@@ -50,8 +50,9 @@ public class ItemDAO {
 
 	
 	//상세페이지 게시글 작성 메소드 (관리자 권한)
-	public void insertData(ItemDTO idto) {
+	public int insertData(ItemDTO idto) {
 		
+		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
 		
@@ -83,6 +84,8 @@ public class ItemDAO {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
+		
+		return result;
 		
 	}
 	
