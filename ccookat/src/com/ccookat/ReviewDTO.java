@@ -8,9 +8,9 @@ public class ReviewDTO {
 	private int reviewNum;
 	private String reviewCreated;
 	private String reviewImage;
+
 	private int itemNum;
 	private int reviewLike;
-	
 	
 	public String getCustomerId() {
 		return customerId;

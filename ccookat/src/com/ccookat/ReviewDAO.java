@@ -246,6 +246,7 @@ public class ReviewDAO {
 				pstmt.setString(2, rdto.getReviewContent());
 				pstmt.setString(3, rdto.getReviewImage());
 				pstmt.setInt(4, rdto.getReviewNum());
+				
 				result = pstmt.executeUpdate();
 				pstmt.close();
 					

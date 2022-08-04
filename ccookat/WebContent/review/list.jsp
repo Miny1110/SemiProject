@@ -347,9 +347,8 @@
                                <div>
                        				  	<input type="button" class="btn2" value=리뷰등록
                        				  	onclick="location='/ccookat/main/review/created.do';">
-                       				   
-                       		
                        				 </div>
+                       				 
                               <c:forEach var="rdto" items="${reviewlists}">
                                     <div>
                        				 <div style="border-bottom : 1px solid #d5d5d5;">
@@ -364,6 +363,11 @@
                        				   <div class="product__details__tab__desc">
                        				  	${rdto.reviewTitle}
                        				  	</div>
+                       				  	<c:if test="${rdto.reviewImage!=null}">
+                       				  	 <div >
+                                    <img src="${imagePath }/${rdto.reviewImage }" height="200" width="200"/>
+                                </div>
+                                </c:if>
                        				  	<div class="product__details__tab__desc">
                        				  	${rdto.reviewContent}
                        				  	  </div>
