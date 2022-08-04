@@ -61,12 +61,7 @@ public class ReviewServlet extends HttpServlet {
 		if(!f.exists()) {
 			f.mkdirs();
 		}
-	if(uri.indexOf("main/review/created.do")!=-1) {
-		
-		url = "/review/created.jsp";
-		forward(req, resp, url);
-		
-	}else if(uri.indexOf("/main/item/list.do")!=-1) {
+		if(uri.indexOf("/main/item/detail.do")!=-1) {
 		//페이징 작업
 		String pageNum = req.getParameter("pageNum");
 		
@@ -93,7 +88,7 @@ public class ReviewServlet extends HttpServlet {
 		start = (currentPage-1) * numPerPage + 1;
 		end = currentPage * numPerPage;
 		
-		String listUrl = cp + "/main/item/list.do";
+		String listUrl = cp + "/main/item/detail.do";
 		String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 		//리스트 나오게 하기
 		List<ReviewDTO> reviewlists = rdao.getLists(start, end);
@@ -112,10 +107,10 @@ public class ReviewServlet extends HttpServlet {
 		req.setAttribute("currentPage", currentPage);
 		
 		System.out.println();
-		url = "/review/list.jsp";
+		url = "/item/detail.jsp";
 		forward(req, resp, url);
 	//생성
-	}else if(uri.indexOf("created.do") != -1) {
+	}else if(uri.indexOf("main/review/created.do") != -1) {
 	/*		HttpSession session = req.getSession();
 			CustomInfo info = //이렇게 받을준비해서
 					(CustomInfo)session.getAttribute("customInfo");
@@ -132,7 +127,8 @@ public class ReviewServlet extends HttpServlet {
 		forward(req, resp, url);
 	} else if (uri.indexOf("created_ok.do") != -1) {
 
-
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 		
 		//파일업로드	
 	String encType = "UTF-8";
@@ -156,23 +152,24 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.insertData(rdto);
 		
-		url = cp + "/main/item/list.do"; // 리다이렉트는 가상의주소로
+		url = cp + "/main/item/detail.do?pageNum="+ pageNum +"&itemNum="+rdto.getItemNum(); // 리다이렉트는 가상의주소로
 		resp.sendRedirect(url);
 		//수정
 	} else if (uri.indexOf("main/review/updated.do") != -1) {
 		int reviewNum =Integer.parseInt(req.getParameter("reviewNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
-	
+		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 			ReviewDTO rdto = rdao.getReadData(reviewNum);
 			
 			
 			if (rdto == null) {
-				url = cp + "main/review/list.do";
+				url = cp + "main/item/detail.do?pageNum="+pageNum+"&itemNum="+rdto.getItemNum();
 				resp.sendRedirect(url);}
 			
 			
 			req.setAttribute("rdto", rdto);
 			req.setAttribute("pageNum", pageNum);
+			req.setAttribute("itemNum", itemNum);
 			req.setAttribute("reviewNum", reviewNum);
 			
 

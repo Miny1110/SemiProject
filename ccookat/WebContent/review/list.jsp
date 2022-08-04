@@ -327,8 +327,9 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p></p>
+                                    <h6>상품 설명</h6>
+                                    <p><img src="${imagePath }/${idto.itemImage1}"></p>
+                                    <p>${idto.itemContent }</p>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -416,13 +417,13 @@
     </section>
     <!-- Product Details Section End -->
 
-    <!-- Related Product Section Begin -->
+   <!-- Related Product Section Begin -->
     <section class="related-product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title related__product__title">
-                        <h2>Related Product</h2>
+                        <h2>관련 상품</h2>
                     </div>
                 </div>
             </div>

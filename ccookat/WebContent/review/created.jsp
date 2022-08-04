@@ -310,9 +310,9 @@
 							<div class="blog__sidebar__item__tags">
 								<input type="submit" value=" 등록하기 ">
 								<input type="reset" value="다시입력" onclick="document.myForm.reviewTitle.focus();">
-								<input type="button" value="작성취소" onclick="location='/ccookat/main/review/list.do';">
-								
-		<input type="hidden" name="itemNum" >
+								<input type="button" value="작성취소" onclick="location='/ccookat/main/item/detail.do?pageNum=${pageNum}&itemNum=${rdto.itemNum}';">
+			<input type="hidden" name="pageNum" value="${pageNum}">					
+		<input type="hidden" name="itemNum" value="${idto.itemNum}">
 							</div>
 						</div>
                      </div>
