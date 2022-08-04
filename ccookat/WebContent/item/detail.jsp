@@ -250,7 +250,7 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Product Details Section Begin -->
+<!-- 상품대표사진, 밑에 뜨는 사진들, 제품명, 가격 등등 정보 시작 -->
     <section class="product-details spad">
         <div class="container">
             <div class="row">
@@ -306,20 +306,23 @@
                         </ul>
                     </div>
                 </div>
+<!-- 상품대표사진, 밑에 뜨는 사진들, 제품명, 가격 등등 정보 시작 -->
                 <div class="col-lg-12">
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Description</a>
+                                    aria-selected="true">상품 설명</a>
                             </li>
-                            <li class="nav-item">
+                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
                                     aria-selected="false">Information</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+
                                     aria-selected="false">상품 리뷰<span>${totalArticle}</span></a>
+
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -349,7 +352,8 @@
                                         elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
                                         porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
                                         nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
-                                </div> 
+                                </div>
+                            </div>
                             </div>
                              <div class="tab-pane" id="tabs-3" role="tabpanel">
                                <div class="product__details__tab__desc">
