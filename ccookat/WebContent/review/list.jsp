@@ -355,22 +355,27 @@
                        				 
                        			
                        			 <div class="product__details__tab__desc">
-                       				${rdto.reviewNum}.&nbsp;&nbsp;${rdto.customerId}&nbsp;&nbsp;${rdto.reviewCreated}
+                       			<b>작성자 :&nbsp;</b>${rdto.customerId} <b>작성일 :&nbsp;</b>${rdto.reviewCreated}
                        				  </div>
                        				  <div align="right">
                        				  
                        				  </div>
-                       				   <div class="product__details__tab__desc">
+                       				<%--    <div class="product__details__tab__desc">
                        				  	${rdto.reviewTitle}
-                       				  	</div>
+                       				  	</div> --%>
                        				  	<c:if test="${rdto.reviewImage!=null}">
                        				  	 <div >
-                                    <img src="${imagePath }/${rdto.reviewImage }" height="200" width="200"/>
+                                    <img src="${imagePath }/${rdto.reviewImage }" height="200" width="200"/> ${rdto.reviewContent} 
+                             
+                                   
                                 </div>
                                 </c:if>
-                       				  	<div class="product__details__tab__desc">
+                                
+                                <c:if test="${rdto.reviewImage==null}">
+                       				  	 <div class="product__details__tab__desc">
                        				  	${rdto.reviewContent}
-                       				  	  </div>
+                       				  	  </div> 
+                                </c:if>	
                        				  	<div style="text-align: right;">
                        				 <%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
                        				  <%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>

@@ -66,7 +66,7 @@ public class ReviewServlet extends HttpServlet {
 		url = "/review/created.jsp";
 		forward(req, resp, url);
 		
-	}else if(uri.indexOf("main/review/list.do")!=-1) {
+	}else if(uri.indexOf("/main/item/list.do")!=-1) {
 		//페이징 작업
 		String pageNum = req.getParameter("pageNum");
 		
@@ -93,7 +93,7 @@ public class ReviewServlet extends HttpServlet {
 		start = (currentPage-1) * numPerPage + 1;
 		end = currentPage * numPerPage;
 		
-		String listUrl = cp + "/main/review/list.do";
+		String listUrl = cp + "/main/item/list.do";
 		String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 		//리스트 나오게 하기
 		List<ReviewDTO> reviewlists = rdao.getLists(start, end);
@@ -156,7 +156,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.insertData(rdto);
 		
-		url = cp + "/main/review/list.do"; // 리다이렉트는 가상의주소로
+		url = cp + "/main/item/list.do"; // 리다이렉트는 가상의주소로
 		resp.sendRedirect(url);
 		//수정
 	} else if (uri.indexOf("main/review/updated.do") != -1) {
@@ -208,7 +208,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.updateData(rdto);
 		
-		url = cp + "/main/review/list.do?pageNum="+pageNum ;
+		url = cp + "/main/item/list.do?pageNum="+pageNum ;
 		resp.sendRedirect(url);
 	} else if (uri.indexOf("main/review/deleted.do") != -1) {
 		
@@ -221,7 +221,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.deleteData(reviewNum);
 		
-		url = cp + "/main/review/list.do?pageNum="+pageNum;
+		url = cp + "/main/item/list.do?pageNum="+pageNum;
 		resp.sendRedirect(url);
 	}
 		
