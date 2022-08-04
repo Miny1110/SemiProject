@@ -54,34 +54,33 @@ public class CustomerServlet extends HttpServlet{
 			forward(req, resp, url);
 
 		} else if(uri.indexOf("created_ok.do")!=1) {
-
+					
 			CustomerDTO cdto = new CustomerDTO();
 
 			cdto.setCustomerId(req.getParameter("customerId"));
-			cdto.setCustomerPwd1(req.getParameter("customerPwd1"));
-			cdto.setCustomerPwd2(req.getParameter("customerPwd2"));
+			cdto.setCustomerPwd(req.getParameter("customerPwd"));
 			cdto.setCustomerName(req.getParameter("customerName"));
-			cdto.setCustomerEmail(req.getParameter("CustomerEmail"));
-			cdto.setCustomerTel(req.getParameter("CustomerTel"));
+			cdto.setCustomerEmail(req.getParameter("customerEmail"));
+			cdto.setCustomerTel(req.getParameter("customerTel"));
 
 			cdao.insertData(cdto);
 			
-			url = cp;
+			url = cp + "/main/customer/login.do";
 			resp.sendRedirect(url);
 			
 		}else if(uri.indexOf("login.do")!=-1) {
 			
-			url = "/customer/login.jsp";
+			url = cp+"/notice/noticeMain.jsp";
 			forward(req, resp, url);
 
 		}else if(uri.indexOf("login_ok.do")!=-1) {
 			
 			String customerId = req.getParameter("customerId");
-			String customerPwd1 = req.getParameter("customerPwd1");
+			String customerPwd = req.getParameter("customerPwd");
 			
 			CustomerDTO cdto = cdao.getReadData(customerId);
 			
-			if(cdto==null||!cdto.getCustomerPwd1().equals(customerPwd1)) {
+			if(cdto==null||!cdto.getCustomerPwd().equals(customerPwd)) {
 				
 				req.setAttribute("message", "아이디 또는 비밀번호를 정확히 입력하세요.");
 				
@@ -129,8 +128,7 @@ public class CustomerServlet extends HttpServlet{
 			CustomerDTO cdto = new CustomerDTO();
 			
 			cdto.setCustomerId(req.getParameter("customerId"));
-			cdto.setCustomerPwd1(req.getParameter("customerPwd1"));
-			cdto.setCustomerPwd2(req.getParameter("customerPwd2"));
+			cdto.setCustomerPwd(req.getParameter("customerPwd"));
 			cdto.setCustomerName(req.getParameter("customerName"));
 			cdto.setCustomerEmail(req.getParameter("customerEmail"));
 			cdto.setCustomerTel(req.getParameter("customerTel"));
