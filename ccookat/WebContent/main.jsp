@@ -55,9 +55,13 @@
                     <li><a href="#">English</a></li>
                 </ul>
             </div>
+        
             <div class="header__top__right__auth">
                 <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="#"><i class="fa fa-user"></i> Join</a>
             </div>
+           
+
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -153,18 +157,30 @@
 							<div class="header__top__right__social">
 								<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-instagram"></i></a> <a href="#"><i class="fa fa-pinterest-p"></i></a>
 							</div>
-							<div class="header__top__right__language">
-								<img src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
-								<div>한국어</div>
-								<span class="arrow_carrot-down"></span>
-								<ul>
+								<div class="header__top__right__language">
+									<img src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
+									<div>한국어</div>
+									<span class="arrow_carrot-down"></span>
+									<ul>
 									<li><a href="#">한국어</a></li>
 									<li><a href="#">English</a></li>
 								</ul>
 							</div>
-							<div class="header__top__right__auth">
-								<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
-							</div>
+								<c:choose>
+								<c:when test="${empty sessionScope.customInfo.customerId }">
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
+									</div>
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
+									</div>
+								</c:when>
+							       <c:otherwise>
+             						<div class="header__top__right__auth">
+               						<a href="#"><i class="fa fa-user"></i> Mypage</a>
+           						 </div>
+            </c:otherwise>
+</c:choose>
 						</div>
 					</div>
 				</div>
@@ -194,10 +210,20 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="header__cart">
+						<c:choose>
+								<c:when test="${empty sessionScope.customInfo.customerId }">
 						<ul>
-							<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-							<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+							<li><a href="<%=cp %>/main/customer/login.do"><i class="fa fa-heart"></i> <span>비</span></a></li>
+							<li><a href="<%=cp %>/main/customer/login.do"><i class="fa fa-shopping-bag"></i> <span>비</span></a></li>
 						</ul>
+						</c:when>
+						<c:otherwise>
+						<ul>
+							 <li><a href="#"><i class="fa fa-heart"></i> <span>로그인</span></a></li>
+							<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>로그인</span></a></li>   
+							</ul>
+							</c:otherwise>
+							</c:choose>
 						<div class="header__cart__price"></div>
 					</div>
 				</div>
