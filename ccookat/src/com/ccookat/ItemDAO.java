@@ -152,7 +152,7 @@ public class ItemDAO {
 		try {
 			
 			sql = "select itemNum,itemName,itemPrice,itemDiscount,itemType,";
-			sql+= "itemContent,itemImage1,itemImage2,itemImage3,itemImage4,itemStock) ";
+			sql+= "itemContent,itemImage1,itemImage2,itemImage3,itemImage4,itemStock ";
 			sql+= "from item where itemNum=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -218,7 +218,7 @@ public class ItemDAO {
 	
 	
 	//카테고리별 이미지 게시판에 데이터 불러오기
-	public List<ItemDTO> getLists(){
+	public List<ItemDTO> getLists(int start, int end){
 		
 		List<ItemDTO> lists = new ArrayList<ItemDTO>();
 		
@@ -230,10 +230,16 @@ public class ItemDAO {
 			
 			sql = "select * from (";
 			sql+= "select rownum rnum, data.* from (";
-			sql+= "select itemNum,itemName,itemPrice,itemDisccount,itemType,itemImage1 ";
+			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1 ";
 			sql+= "from item order by itemNum desc) data ) ";
+			sql+= "where rnum>=? and rnum<=?";
 			
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				
@@ -263,7 +269,36 @@ public class ItemDAO {
 	}
 	
 	
-
+	public int getDataCount() {
+		
+		int dataCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		
+		try {
+			
+			sql = "select nvl(count(*),0) from item ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dataCount = rs.getInt(1);
+			}
+			
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return dataCount;
+		
+	}
 
 	
 	
