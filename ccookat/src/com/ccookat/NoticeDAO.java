@@ -116,6 +116,8 @@ public class NoticeDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, noticeNum);
+			
+			pstmt.executeUpdate();
 
 			pstmt.close();
 
@@ -128,7 +130,7 @@ public class NoticeDAO {
 	//수정시 뿌려줄 데이터
 	public NoticeDTO selectData(int noticeNum) {
 
-		NoticeDTO ndto =null;
+		NoticeDTO ndto=null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
@@ -170,7 +172,7 @@ public class NoticeDAO {
 
 	//공지사항 목록에 뿌려줄 데이터
 
-	public List<NoticeDTO> selectAll(int start,int end) {
+	public List<NoticeDTO> selectAll(int start,int end,String searchValue) {
 
 		List<NoticeDTO> lists = new ArrayList<>();
 		NoticeDTO ndto = null;
@@ -180,16 +182,21 @@ public class NoticeDAO {
 
 		try {
 
+			searchValue = "%" + searchValue + "%";
+			
 			sql ="select * from(select rownum rnum,data.* from ";
 			sql+="(select noticeNum,noticeTitle,to_char(noticeCreated,'yyyy.mm.dd') noticeCreated,";
 			sql+="SUBSTR(noticeContent, 1, 30) noticeContent,noticeHitCount,noticeImage ";
-			sql+="from notice order by noticeNum desc) data) ";
+			sql+="from notice where noticecontent like ? or noticetitle like ?  ";			
+			sql+="order by noticeNum desc) data) ";
 			sql+="where rnum>=? and rnum<=?";
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setString(1, searchValue);
+			pstmt.setString(2, searchValue);
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, end);
 
 			rs = pstmt.executeQuery();
 
@@ -220,7 +227,7 @@ public class NoticeDAO {
 
 	//페이징 처리를 위한 전체 데이터 갯수 도출
 
-	public int getDataCount() {
+	public int getDataCount(String searchValue) {
 
 		int dataCount = 0;
 
@@ -230,10 +237,16 @@ public class NoticeDAO {
 
 		try {
 
-			sql = "select nvl(count(*),0) from notice";
-
+			searchValue = "%" + searchValue + "%";
+			
+			sql = "select nvl(count(*),0) from notice ";
+			sql+="where noticecontent like ? or noticetitle like ?";
+			
 			pstmt = conn.prepareStatement(sql);
 
+			pstmt.setString(1, searchValue);
+			pstmt.setString(2, searchValue);
+			
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
