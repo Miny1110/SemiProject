@@ -127,9 +127,6 @@ public class ReviewServlet extends HttpServlet {
 		forward(req, resp, url);
 	} else if (uri.indexOf("created_ok.do") != -1) {
 
-		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
-		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-		
 		//파일업로드	
 	String encType = "UTF-8";
 		int maxSize = 10 * 1024 * 1024;
@@ -152,7 +149,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.insertData(rdto);
 		
-		url = cp + "/main/item/detail.do?pageNum="+ pageNum +"&itemNum="+rdto.getItemNum(); // 리다이렉트는 가상의주소로
+		url = cp + "/main/item/list.do"; // 리다이렉트는 가상의주소로
 		resp.sendRedirect(url);
 		//수정
 	} else if (uri.indexOf("main/review/updated.do") != -1) {
