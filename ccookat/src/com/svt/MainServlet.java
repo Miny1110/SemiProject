@@ -40,14 +40,7 @@ public class MainServlet extends HttpServlet {
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		String url;
-		
-		
-		if(uri.indexOf("list.do")!=-1) {
-			
-			url = "/main.jsp";
-			forward(req, resp, url);
-		}
-		
+				
 	}
 	
 }
