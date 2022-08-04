@@ -86,7 +86,7 @@ public class ReviewDAO {
 			 
 			 sql = "insert into review (customerId,reviewTitle,reviewContent,";
 			 sql += "reviewNum,reviewImage,itemNum,reviewCreated,reviewLike) ";
-			 sql += "values (?,?,?,?,?,1111,sysdate,0)";
+			 sql += "values (?,?,?,?,?,?,sysdate,0)";
 			 
 			 pstmt = conn.prepareStatement(sql);
 			 
@@ -95,6 +95,7 @@ public class ReviewDAO {
 			 pstmt.setString(3, rdto.getReviewContent());
 			 pstmt.setInt(4, rdto.getReviewNum());
 			 pstmt.setString(5, rdto.getReviewImage());
+			 pstmt.setInt(6, rdto.getItemNum());
 			
 			
 			 pstmt.executeUpdate();

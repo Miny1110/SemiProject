@@ -219,19 +219,13 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                        <ul style="">
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit &amp; Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter &amp; Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya &amp; Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                       
+                              <ul>
+                             <li><a href="#">Vegetables & Fruit</a></li>
+                            <li><a href="#">Rice & Noodle & Bread</a></li>
+                            <li><a href="#">Fresh Meat & Egg</a></li>
                         </ul>
+                       
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -397,10 +391,9 @@
                     <div class="featured__controls">
                         <ul>
                             <li class="active mixitup-control-active" data-filter="*">All</li>
-                            <li data-filter=".oranges" class="">Oranges</li>
-                            <li data-filter=".fresh-meat" class="">Fresh Meat</li>
-                            <li data-filter=".vegetables" class="">Vegetables</li>
-                            <li data-filter=".fastfood" class="">Fastfood</li>
+                            <li data-filter=".Vegetables & Fruit" class="">Vegetables & Fruit</li>
+                            <li data-filter=".Rice & Noodle & Bread" class="">Rice & Noodle & Bread</li>
+                            <li data-filter=".Fresh Meat & Egg" class="">Fresh Meat & Egg</li>
                         </ul>
                     </div>
                 </div>
