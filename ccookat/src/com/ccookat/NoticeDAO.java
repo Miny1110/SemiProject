@@ -57,8 +57,8 @@ public class NoticeDAO {
 		try {
 
 			sql = "insert into notice(noticeNum,noticeTitle,noticeCreated,";
-			sql+= "noticeContent,noticeHitCount,noticeImage) ";
-			sql+= "values(?,?,sysdate,?,0,?)";
+			sql+= "noticeContent,noticeHitCount,noticeImage,noticeSearchKey) ";
+			sql+= "values(?,?,sysdate,?,0,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -66,7 +66,8 @@ public class NoticeDAO {
 			pstmt.setString(2, dto.getNoticeTitle());
 			pstmt.setString(3, dto.getNoticeContent());
 			pstmt.setString(4, dto.getNoticeImage());
-
+			pstmt.setString(5, dto.getnoticeSearchKey());
+			
 			pstmt.executeUpdate();
 			pstmt.close();
 
