@@ -287,25 +287,26 @@
                    	
                                <div class="checkout__input">
                                 <p>ID<span>*</span></p>
-                                <input value=${rdto.customerId} name="customerId">
+                              ${rdto.customerId}
+                              <input type="hidden" value=" ${rdto.customerId}" name = "customerId">
                                 <br/>
                             </div>
                          
                             <div class="checkout__input">
                                 <p>Title<span>*</span></p>
-                                <input type="text" name="reviewTitle">
+                                <input type="text" name="reviewTitle" value="${rdto.reviewTitle}">
                             </div>
                             
                             <div class="checkout__input">
                                 <p>Image File<span>*</span></p>
                                 <div class="blog__sidebar__item__tags">
-                                <input type="file" name="reviewImage">
+                                <input type="file" name="reviewImage" value="${rdto.reviewImage}">
                                 </div>
                             </div>
                             
                             <div class="checkout__input">
                                 <p>Text<span>*</span></p>
-                                <textarea rows="15" cols="20" name="reviewContent"></textarea>
+                                <textarea rows="15" cols="20" name="reviewContent">${rdto.reviewContent}</textarea>
                             </div>
                             
 							<div class="blog__sidebar__item__tags">
@@ -313,7 +314,9 @@
 								<input type="reset" value="다시입력" onclick="document.myForm.reviewTitle.focus();">
 								<input type="button" value="작성취소" onclick="location='/ccookat/main/review/list.do';">
 								
-		<input type="hidden" name="itemNum" >
+								<input type="hidden" value="${rdto.reviewNum}" name="reviewNum">
+								<input type="hidden" value="${pageNum}" name="pageNum">
+	
 							</div>
 						</div>
                      </div>

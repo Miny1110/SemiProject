@@ -232,20 +232,20 @@ public class ReviewDAO {
 	 //수정
 		public int updateData(ReviewDTO rdto){
 			
+			
 			int result = 0;
 			PreparedStatement pstmt = null;
 			String sql;
 				
 			try {
-				sql = "update review set customerId=? reviewTitle=?,reviewContent=?,reviewImage=?,reviewCreated=sysdate ";
+				sql = "update review set reviewTitle=?,reviewContent=?,reviewImage=?,reviewCreated=sysdate ";
 				sql += "where reviewNum=? ";
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setString(1, rdto.getCustomerId());
-				pstmt.setString(2, rdto.getReviewTitle());
-				pstmt.setString(3, rdto.getReviewContent());
-				pstmt.setString(4, rdto.getReviewImage());
-				pstmt.setInt(5, rdto.getReviewNum());
+				pstmt.setString(1, rdto.getReviewTitle());
+				pstmt.setString(2, rdto.getReviewContent());
+				pstmt.setString(3, rdto.getReviewImage());
+				pstmt.setInt(4, rdto.getReviewNum());
 				result = pstmt.executeUpdate();
 				pstmt.close();
 					

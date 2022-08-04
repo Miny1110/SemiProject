@@ -299,7 +299,7 @@
                             <div class="checkout__input">
                                 <p>Image File<span>*</span></p>
                                 <div class="blog__sidebar__item__tags">
-                                <input type="file" name="reviewImage">
+                                <input type="file" name="upload">
                                 </div>
                             </div>
                             <div class="checkout__input">
