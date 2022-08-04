@@ -173,7 +173,7 @@ public class NoticeDAO {
 
 	//공지사항 목록에 뿌려줄 데이터
 
-	public List<NoticeDTO> selectAll(int start,int end,String searchValue) {
+	public List<NoticeDTO> selectAll(int start,int end,String noticeSearchKey, String searchValue) {
 
 		List<NoticeDTO> lists = new ArrayList<>();
 		NoticeDTO ndto = null;
@@ -188,16 +188,17 @@ public class NoticeDAO {
 			sql ="select * from(select rownum rnum,data.* from ";
 			sql+="(select noticeNum,noticeTitle,to_char(noticeCreated,'yyyy.mm.dd') noticeCreated,";
 			sql+="SUBSTR(noticeContent, 1, 30) noticeContent,noticeHitCount,noticeImage ";
-			sql+="from notice where noticecontent like ? or noticetitle like ?  ";			
+			sql+="from notice where noticeSearchKey = ? and (noticecontent like ? or noticetitle like ?) ";			
 			sql+="order by noticeNum desc) data) ";
 			sql+="where rnum>=? and rnum<=?";
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, searchValue);
+			pstmt.setString(1, noticeSearchKey);
 			pstmt.setString(2, searchValue);
-			pstmt.setInt(3, start);
-			pstmt.setInt(4, end);
+			pstmt.setString(3, searchValue);
+			pstmt.setInt(4, start);
+			pstmt.setInt(5, end);
 
 			rs = pstmt.executeQuery();
 
@@ -228,7 +229,7 @@ public class NoticeDAO {
 
 	//페이징 처리를 위한 전체 데이터 갯수 도출
 
-	public int getDataCount(String searchValue) {
+	public int getDataCount(String searchValue,String noticeSearchKey) {
 
 		int dataCount = 0;
 
@@ -241,12 +242,13 @@ public class NoticeDAO {
 			searchValue = "%" + searchValue + "%";
 			
 			sql = "select nvl(count(*),0) from notice ";
-			sql+="where noticecontent like ? or noticetitle like ?";
+			sql+="where noticeSearchKey = ? and (noticecontent like ? or noticetitle like ?)";
 			
 			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, searchValue);
+			
+			pstmt.setString(1, noticeSearchKey);
 			pstmt.setString(2, searchValue);
+			pstmt.setString(3, searchValue);
 			
 			rs = pstmt.executeQuery();
 

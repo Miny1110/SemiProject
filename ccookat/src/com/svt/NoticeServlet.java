@@ -67,6 +67,8 @@ public class NoticeServlet extends HttpServlet {
 				currentPage = Integer.parseInt(pageNum);
 			}
 
+		
+			String noticeSearchKey = request.getParameter("noticeSearchKey");
 			String searchValue = request.getParameter("searchValue");
 			
 			if(searchValue!=null){
@@ -75,10 +77,15 @@ public class NoticeServlet extends HttpServlet {
 					searchValue = URLDecoder.decode(searchValue,"UTF-8");			
 				}	
 			}else{
-				searchValue = "";		
+				searchValue = "";	
 			}	
 			
-			int dataCount = ndao.getDataCount(searchValue);
+			if(noticeSearchKey==null){
+				noticeSearchKey = "gongji";			
+				}
+			
+			
+			int dataCount = ndao.getDataCount(searchValue,noticeSearchKey);
 
 			int numPerPage = 4;
 
@@ -92,11 +99,11 @@ public class NoticeServlet extends HttpServlet {
 			int start = (currentPage-1)*numPerPage+1;
 			int end = currentPage * numPerPage;
 
-			List<NoticeDTO> lists = ndao.selectAll(start, end,searchValue);		
+			List<NoticeDTO> lists = ndao.selectAll(start, end, noticeSearchKey, searchValue);		
 
 			String params = "";
 			if(searchValue!=null || !searchValue.equals("")) {
-				params = "?searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
+				params = "noticeSearchKey="+noticeSearchKey +"&searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
 			}
 			
 			String listUrl = cp + "/main/notice/list.do" + params;
@@ -159,7 +166,7 @@ public class NoticeServlet extends HttpServlet {
 				ndao.insertData(ndto);
 			}
 
-			url = cp + "/main/notice/list.do";
+			url = cp + "/main/notice/list.do?noticeSearchKey="+mr.getParameter("noticeSearchKey");
 			response.sendRedirect(url);
 
 		}else if(uri.indexOf("detail.do")!=-1) {
