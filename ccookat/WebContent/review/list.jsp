@@ -350,7 +350,7 @@
                        				   
                        		
                        				 </div>
-                              <c:forEach var="rdto" items="${lists}">
+                              <c:forEach var="rdto" items="${reviewlists}">
                                     <div>
                        				 <div style="border-bottom : 1px solid #d5d5d5;">
                        				 

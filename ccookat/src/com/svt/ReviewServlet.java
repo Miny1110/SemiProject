@@ -93,7 +93,7 @@ public class ReviewServlet extends HttpServlet {
 		String listUrl = cp + "/main/review/list.do";
 		String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 		//리스트 나오게 하기
-		List<ReviewDTO> lists = rdao.getLists(start, end);
+		List<ReviewDTO> reviewlists = rdao.getLists(start, end);
 		String deletePath = cp + "/main/review/delete.do";
 		String imagePath = cp + "/pds/imageFile";
 		
@@ -102,7 +102,7 @@ public class ReviewServlet extends HttpServlet {
 		req.setAttribute("imagePath", imagePath);
 		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("deletePath", deletePath);
-		req.setAttribute("lists", lists);
+		req.setAttribute("reviewlists", reviewlists);
 		req.setAttribute("pageIndexList", pageIndexList);
 		req.setAttribute("totalPage", totalPage);
 		req.setAttribute("totalArticle", totalArticle);

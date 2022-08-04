@@ -109,7 +109,7 @@ public class ReviewDAO {
 	 //전체데이터 가져오기
 	 public List<ReviewDTO> getLists(int start, int end){
 			
-			List<ReviewDTO> lists = new ArrayList<ReviewDTO>();
+			List<ReviewDTO> reviewlists = new ArrayList<ReviewDTO>();
 			ReviewDTO rdto = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -144,7 +144,7 @@ public class ReviewDAO {
 					rdto.setReviewCreated(rs.getString("reviewCreated"));
 					rdto.setReviewLike(rs.getInt("reviewLike"));
 					
-					lists.add(rdto);
+					reviewlists.add(rdto);
 					
 				}
 				
@@ -156,7 +156,7 @@ public class ReviewDAO {
 				
 			}
 			
-			return lists;
+			return reviewlists;
 			
 		}
 	 //하나 읽어오기
