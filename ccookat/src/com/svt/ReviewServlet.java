@@ -54,6 +54,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		String url;
 		
+		
 		// 이미지 파일저장경로
 		String root = getServletContext().getRealPath("/"); 
 		String path = root + "pds" + File.separator + "imageFile";
@@ -66,11 +67,13 @@ public class ReviewServlet extends HttpServlet {
 		
 		//리스트 뿌리기
 		
-		if(uri.indexOf("/main/item/detail.do")!=-1) {
+		if(uri.indexOf("/main/item/detail.do") != -1) {
+			
+			
 		//페이징 작업
 		String pageNum = req.getParameter("pageNum");
 		int itemNum =Integer.parseInt(req.getParameter("itemNum"));
-				
+			
 		int currentPage = 1;
 		if(pageNum!=null) 
 			currentPage = Integer.parseInt(pageNum);
@@ -102,7 +105,7 @@ public class ReviewServlet extends HttpServlet {
 		String deletePath = cp + "/main/review/delete.do";
 		String imagePath = cp + "/pds/imageFile";
 		
-		int totalArticle = rdao.getDataCount();
+		int reviewtotalArticle = rdao.getDataCount();
 		
 		req.setAttribute("itemNum", itemNum);
 		req.setAttribute("imagePath", imagePath);
@@ -111,7 +114,7 @@ public class ReviewServlet extends HttpServlet {
 		req.setAttribute("reviewlists", reviewlists);
 		req.setAttribute("pageIndexList", pageIndexList);
 		req.setAttribute("totalPage", totalPage);
-		req.setAttribute("totalArticle", totalArticle);
+		req.setAttribute("reviewtotalArticle", reviewtotalArticle);
 		req.setAttribute("currentPage", currentPage);
 		
 		url = "/item/detail.jsp";
@@ -147,8 +150,8 @@ public class ReviewServlet extends HttpServlet {
 		MultipartRequest mr = 
 				new MultipartRequest(req, path, maxSize, encType,
 						new DefaultFileRenamePolicy()); 
-		String pageNum = mr.getParameter("pageNum");
-		String itemNum = mr.getParameter("itemNum");
+		int pageNum = Integer.parseInt(mr.getParameter("pageNum"));
+		int itemNum = Integer.parseInt(mr.getParameter("itemNum"));
 		System.out.println(pageNum);
 		System.out.println(itemNum);
 		
