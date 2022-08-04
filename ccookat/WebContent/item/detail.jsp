@@ -255,6 +255,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h3>${idto.itemName }</h3>
+                  		  조회수:${idto.itemHitCount }
                         <a href="${deletePath }?pageNum=${currentPage }&num=${idto.itemNum}">[삭제]</a>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>

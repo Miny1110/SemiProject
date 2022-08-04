@@ -155,7 +155,7 @@ public class ItemDAO {
 		try {
 			
 			sql = "select itemNum,itemName,itemPrice,itemDiscount,itemType,";
-			sql+= "itemContent,itemImage1,itemImage2,itemImage3,itemImage4,itemStock ";
+			sql+= "itemContent,itemImage1,itemImage2,itemImage3,itemImage4,itemHitCount,itemStock ";
 			sql+= "from item where itemNum=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -178,6 +178,7 @@ public class ItemDAO {
 				idto.setItemImage2(rs.getString("itemImage2"));
 				idto.setItemImage3(rs.getString("itemImage3"));
 				idto.setItemImage4(rs.getString("itemImage4"));
+				idto.setItemHitCount(rs.getInt("itemHitCount"));
 				idto.setItemStock(rs.getInt("itemStock"));
 				
 			}
@@ -273,6 +274,7 @@ public class ItemDAO {
 	}
 	
 	
+	//전체데이터 개수 세기
 	public int getDataCount() {
 		
 		int dataCount = 0;
@@ -304,6 +306,37 @@ public class ItemDAO {
 		
 	}
 
+	
+	//조회수 증가
+	public int updateHitCount(int itemNum) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update item set itemHitCount = itemHitCount + 1 where itemNum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, itemNum);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return result;
+		
+	}
+	
+	
+	
 	
 	
 }
