@@ -65,8 +65,8 @@ public class CustomerServlet extends HttpServlet{
 
 			cdao.insertData(cdto);
 			
-			url = "/item/list.jsp";
-			forward(req, resp, url);
+			url = cp;
+			resp.sendRedirect(url);
 			
 		}else if(uri.indexOf("login.do")!=-1) {
 			
