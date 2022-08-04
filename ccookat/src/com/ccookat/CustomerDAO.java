@@ -56,18 +56,17 @@ public class CustomerDAO {
 		
 		try {
 			
-			sql = "insert into customer (customerId,customerPwd1,customerPwd2,customerName,";
+			sql = "insert into customer(customerId,customerPwd,customerName,";
 			sql+= "customerEmail,customerTel) ";
-			sql+= "values (?,?,?,?,?,?)";
+			sql+= "values(?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, cdto.getCustomerId());
-			pstmt.setString(2, cdto.getCustomerPwd1());
-			pstmt.setString(3, cdto.getCustomerPwd2()); 
-			pstmt.setString(4, cdto.getCustomerName());
-			pstmt.setString(5, cdto.getCustomerEmail());
-			pstmt.setString(6, cdto.getCustomerTel());
+			pstmt.setString(2, cdto.getCustomerPwd());
+			pstmt.setString(3, cdto.getCustomerName());
+			pstmt.setString(4, cdto.getCustomerEmail());
+			pstmt.setString(5, cdto.getCustomerTel());
 			
 			
 			//result = pstmt.executeUpdate();
@@ -94,7 +93,7 @@ public class CustomerDAO {
 			
 			sql = "select * from (";
 			sql+= "select rownum rnum,data.* from (";
-			sql+= "select customerId,customerPwd1,customerPwd2,";
+			sql+= "select customerId,customerPwd,";
 			sql+= "customerName,customerEmail,customerTel ";
 			//sql+= "to_char(created,'YYYY-MM-DD') created ";
 			
@@ -110,8 +109,7 @@ public class CustomerDAO {
 				CustomerDTO dto = new CustomerDTO();
 				
 				dto.setCustomerId(rs.getString("customerId"));
-				dto.setCustomerPwd1(rs.getString("customerPwd1"));
-				dto.setCustomerPwd2(rs.getString("customerPwd2"));
+				dto.setCustomerPwd(rs.getString("customerpwd"));
 				dto.setCustomerName(rs.getString("customerName"));
 				dto.setCustomerEmail(rs.getString("customerEmail"));
 				dto.setCustomerTel(rs.getString("customerTel"));
@@ -142,7 +140,7 @@ public class CustomerDAO {
 		
 		try {
 			
-			sql = "select customerId,customerPwd1,customerPwd2,";
+			sql = "select customerId,customerPwd,";
 			sql+= "customerName,customerEmail,customerTel,";
 			sql+= "from Customer where customerId=?";
 			
@@ -157,8 +155,7 @@ public class CustomerDAO {
 				cdto = new CustomerDTO();
 				
 				cdto.setCustomerId(rs.getString("customerId"));
-				cdto.setCustomerPwd1(rs.getString("customerPwd1"));
-				cdto.setCustomerPwd2(rs.getString("customerPwd2"));
+				cdto.setCustomerPwd(rs.getString("customerPwd"));
 				cdto.setCustomerName(rs.getString("customerName"));
 				cdto.setCustomerEmail(rs.getString("customerEmail"));
 				cdto.setCustomerTel(rs.getString("customerTel"));
@@ -185,12 +182,12 @@ public class CustomerDAO {
 		
 		try {
 			
-			sql = "update customer set customerPwd1=?,customerPwd2=?, ";
+			sql = "update customer set customerPwd=?,customerPwd2=?, ";
 			sql+= "customerEmail=?,customerTel=? from customer where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, cdto.getCustomerPwd1());
+			pstmt.setString(1, cdto.getCustomerPwd());
 			pstmt.setString(2, cdto.getCustomerPwd2());
 			pstmt.setString(3, cdto.getCustomerEmail());
 			pstmt.setString(4, cdto.getCustomerTel());
