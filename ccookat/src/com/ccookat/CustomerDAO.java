@@ -48,37 +48,36 @@ public class CustomerDAO {
 	
 	
 	//입력
-	public int insertData(CustomerDTO dto) {
+	public void insertData(CustomerDTO cdto) {
 		
-		int result = 0;
+		//int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
 		
 		try {
 			
 			sql = "insert into customer (customerId,customerPwd1,customerPwd2,customerName,";
-			sql+= "customerEmail,customerTel,customerCreated) ";
-			sql+= "values (?,?,?,?,?,?,sysdate)";
+			sql+= "customerEmail,customerTel) ";
+			sql+= "values (?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dto.getCustomerId());
-			pstmt.setString(2, dto.getCustomerPwd1());
-			pstmt.setString(3, dto.getCustomerPwd2()); 
-			pstmt.setString(4, dto.getCustomerName());
-			pstmt.setString(5, dto.getCustomerEmail());
-			pstmt.setString(6, dto.getCustomerTel());
+			pstmt.setString(1, cdto.getCustomerId());
+			pstmt.setString(2, cdto.getCustomerPwd1());
+			pstmt.setString(3, cdto.getCustomerPwd2()); 
+			pstmt.setString(4, cdto.getCustomerName());
+			pstmt.setString(5, cdto.getCustomerEmail());
+			pstmt.setString(6, cdto.getCustomerTel());
 			
 			
-			result = pstmt.executeUpdate();
+			//result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			
 			pstmt.close();
 			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		  
-		return result;
 		
 	}
 	
@@ -96,8 +95,8 @@ public class CustomerDAO {
 			sql = "select * from (";
 			sql+= "select rownum rnum,data.* from (";
 			sql+= "select customerId,customerPwd1,customerPwd2,";
-			sql+= "customerName,customerEmail,customerTel, ";
-			sql+= "to_char(created,'YYYY-MM-DD') created ";
+			sql+= "customerName,customerEmail,customerTel ";
+			//sql+= "to_char(created,'YYYY-MM-DD') created ";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -116,7 +115,7 @@ public class CustomerDAO {
 				dto.setCustomerName(rs.getString("customerName"));
 				dto.setCustomerEmail(rs.getString("customerEmail"));
 				dto.setCustomerTel(rs.getString("customerTel"));
-				dto.setCustomerCreated(rs.getString("created"));
+				//dto.setCustomerCreated(rs.getString("created"));
 				
 				lists.add(dto);
 			}
@@ -136,7 +135,7 @@ public class CustomerDAO {
 	//customerId로 한개의 데이터 가져오기
 	public CustomerDTO getReadData(String customerId) {
 		
-		CustomerDTO dto = null;
+		CustomerDTO cdto = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
@@ -145,7 +144,7 @@ public class CustomerDAO {
 			
 			sql = "select customerId,customerPwd1,customerPwd2,";
 			sql+= "customerName,customerEmail,customerTel,";
-			sql+= "created from Customer where customerId=?";
+			sql+= "from Customer where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -155,15 +154,15 @@ public class CustomerDAO {
 			
 			if(rs.next()) {
 				
-				dto = new CustomerDTO();
+				cdto = new CustomerDTO();
 				
-				dto.setCustomerId(rs.getString("customerId"));
-				dto.setCustomerPwd1(rs.getString("customerPwd1"));
-				dto.setCustomerPwd2(rs.getString("customerPwd2"));
-				dto.setCustomerName(rs.getString("customerName"));
-				dto.setCustomerEmail(rs.getString("customerEmail"));
-				dto.setCustomerTel(rs.getString("customerTel"));
-				dto.setCustomerCreated(rs.getString("created"));
+				cdto.setCustomerId(rs.getString("customerId"));
+				cdto.setCustomerPwd1(rs.getString("customerPwd1"));
+				cdto.setCustomerPwd2(rs.getString("customerPwd2"));
+				cdto.setCustomerName(rs.getString("customerName"));
+				cdto.setCustomerEmail(rs.getString("customerEmail"));
+				cdto.setCustomerTel(rs.getString("customerTel"));
+				//cdto.setCustomerCreated(rs.getString("created"));
 			}
 			
 			rs.close();
@@ -173,12 +172,12 @@ public class CustomerDAO {
 			System.out.println(e.toString());
 		}
 		
-		return dto;
+		return cdto;
 	}
 	
 	
 	//회원정보 수정
-	public int updateData(CustomerDTO dto) {
+	public int updateData(CustomerDTO cdto) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -187,15 +186,15 @@ public class CustomerDAO {
 		try {
 			
 			sql = "update customer set customerPwd1=?,customerPwd2=?, ";
-			sql+= "customerEmail=?,customerTel=?, where customerId=?";
+			sql+= "customerEmail=?,customerTel=? from customer where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dto.getCustomerPwd1());
-			pstmt.setString(2, dto.getCustomerPwd2());
-			pstmt.setString(3, dto.getCustomerEmail());
-			pstmt.setString(4, dto.getCustomerTel());
-			pstmt.setString(5, dto.getCustomerId());
+			pstmt.setString(1, cdto.getCustomerPwd1());
+			pstmt.setString(2, cdto.getCustomerPwd2());
+			pstmt.setString(3, cdto.getCustomerEmail());
+			pstmt.setString(4, cdto.getCustomerTel());
+			pstmt.setString(5, cdto.getCustomerId());
 			
 			result = pstmt.executeUpdate();
 			

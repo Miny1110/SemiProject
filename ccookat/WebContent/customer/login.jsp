@@ -18,12 +18,12 @@
 
 <script type="text/javascript">
 
-	function sendIt() {
+	function login() {
 		
-		var f = documnet.myForm;
+		var f = document.myForm;
 		
 		if(!f.customerId.value){
-			alert("아이디를 올바르게 입력하세요");
+			alert("아이디를 입력하세요");
 			f.customerId.focus();
 			return;
 		}
@@ -34,6 +34,7 @@
 			return;
 		}
 		
+		f.action = "<%=cp %>/customer/login_ok.do";
 		f.submit();
 		
 	}
@@ -107,7 +108,7 @@
         <div class="header__top__right__social">
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
             <a href="#"><i class="fa fa-pinterest-p"></i></a>
         </div>
         <div class="humberger__menu__contact">
@@ -260,8 +261,10 @@
         </div>
 
         <div>
-            <input type="button" value="로그인" class="btn1">
-            <input type="button" value="회원가입" class="btn2">
+            <input type="button" value="로그인" class="btn1"
+            onclick="login();"/>
+            <input type="button" value="회원가입" class="btn2"
+            onclick="location='<%=cp %>/member/created.do';">
         </div>
       </div>
 	
