@@ -108,7 +108,7 @@ public class ReviewDAO {
 			  }
 	
 	 //전체데이터 가져오기
-	 public List<ReviewDTO> getLists(int start, int end){
+	 public List<ReviewDTO> getLists(int start, int end,int itemNum){
 			
 			List<ReviewDTO> reviewlists = new ArrayList<ReviewDTO>();
 			ReviewDTO rdto = null;
@@ -121,14 +121,16 @@ public class ReviewDAO {
 				sql = "select * from ("; 
 				sql+= "select rownum rnum, data.* from (";
 				sql+= "select customerId,reviewTitle,reviewContent,reviewNum,reviewImage,itemNum,reviewCreated,reviewLike ";
-				sql+= "from review order by reviewNum desc) data)";
+				sql+= "from review where itemNum=? order by reviewNum desc) data)";
 				sql+= "where rnum>=? and rnum<=?";
 				
 				
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setInt(1, start);
-				pstmt.setInt(2, end);
+				pstmt.setInt(1, itemNum);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				
 				
 				rs = pstmt.executeQuery();
 				

@@ -295,7 +295,7 @@
                             <div class="checkout__input">
                                 <p>Title<span>*</span></p>
                                 <input type="text" name="reviewTitle">
-                                <input type="hidden" name="itemNum" value="${idto.itemNum}">
+                                <input type="hidden" name="itemNum" value="${itemNum}">
                             </div>
                             
                             		

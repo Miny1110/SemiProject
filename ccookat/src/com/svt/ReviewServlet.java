@@ -60,12 +60,17 @@ public class ReviewServlet extends HttpServlet {
 		
 		File f =  new File(path);
 		if(!f.exists()) {
-			f.mkdirs();
-		}
+			f.mkdirs();}
+		
+		
+		
+		//리스트 뿌리기
+		
 		if(uri.indexOf("/main/item/detail.do")!=-1) {
 		//페이징 작업
 		String pageNum = req.getParameter("pageNum");
-		
+		int itemNum =Integer.parseInt(req.getParameter("itemNum"));
+				
 		int currentPage = 1;
 		if(pageNum!=null) 
 			currentPage = Integer.parseInt(pageNum);
@@ -91,12 +96,15 @@ public class ReviewServlet extends HttpServlet {
 		String listUrl = cp + "/main/item/detail.do";
 		String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 		//리스트 나오게 하기
-		List<ReviewDTO> reviewlists = rdao.getLists(start, end);
+		List<ReviewDTO> reviewlists = rdao.getLists(start, end, itemNum);
+	
+		
 		String deletePath = cp + "/main/review/delete.do";
 		String imagePath = cp + "/pds/imageFile";
 		
 		int totalArticle = rdao.getDataCount();
 		
+		req.setAttribute("itemNum", itemNum);
 		req.setAttribute("imagePath", imagePath);
 		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("deletePath", deletePath);
@@ -106,7 +114,6 @@ public class ReviewServlet extends HttpServlet {
 		req.setAttribute("totalArticle", totalArticle);
 		req.setAttribute("currentPage", currentPage);
 		
-		System.out.println();
 		url = "/item/detail.jsp";
 		forward(req, resp, url);
 		
@@ -124,6 +131,9 @@ public class ReviewServlet extends HttpServlet {
 			
 			
 					*/
+		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+		
+		req.setAttribute("itemNum", itemNum);
 		url = "/review/created.jsp";
 		forward(req, resp, url);
 	} else if (uri.indexOf("created_ok.do") != -1) {
@@ -148,26 +158,26 @@ public class ReviewServlet extends HttpServlet {
 		ItemDTO idto = new ItemDTO();
 		int maxNum = rdao.getMaxNum();
 	
-		Enumeration enums = req.getParameterNames();
+		/*Enumeration enums = req.getParameterNames();
 
 		while(enums.hasMoreElements()) {
 		 
 			String key = (String)enums.nextElement();
 		  String value = req.getParameter(key);
 	  System.out.println("이넘: " + key + " : " + value+"<br>");
-	 }
+	 }*/
 		
 		rdto.setReviewNum(maxNum+1);
 		rdto.setCustomerId(mr.getParameter("customerId"));
 		rdto.setReviewTitle(mr.getParameter("reviewTitle"));
 		rdto.setReviewContent(mr.getParameter("reviewContent"));
 		rdto.setReviewImage(mr.getFilesystemName("upload"));
-		rdto.setItemNum(Integer.parseInt(req.getParameter("itemNum")));
+		rdto.setItemNum(Integer.parseInt(mr.getParameter("itemNum")));
 		rdto.setReviewCreated(mr.getParameter("reviewCreated"));
 		
 		rdao.insertData(rdto);
 		
-		url = cp + "/main/item/detail.do?pageNum=" + pageNum + "&itemNum="+idto.getItemNum() ; // 리다이렉트는 가상의주소로
+		url = cp + "/main/item/detail.do?pageNum=" + pageNum + "&itemNum="+ itemNum ; // 리다이렉트는 가상의주소로
 		resp.sendRedirect(url);
 		//수정
 	} else if (uri.indexOf("main/review/updated.do") != -1) {
