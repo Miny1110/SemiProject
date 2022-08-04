@@ -154,7 +154,8 @@ public class NoticeServlet extends HttpServlet {
 				ndto.setNoticeTitle(mr.getParameter("noticeTitle"));
 				ndto.setNoticeImage(mr.getFilesystemName("upload"));
 				ndto.setNoticeContent(mr.getParameter("noticeContent"));
-	
+				ndto.setnoticeSearchKey(mr.getParameter("noticeSearchKey"));
+				
 				ndao.insertData(ndto);
 			}
 
