@@ -16,6 +16,7 @@ import com.ccookat.ItemDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
+import com.util.FileManager;
 import com.util.MyPage;
 
 public class ItemServlet extends HttpServlet {
@@ -102,8 +103,7 @@ public class ItemServlet extends HttpServlet {
 			
 			//제품번호 가져와
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-			String currentPage = req.getParameter("currentPage");
-			
+			String currentPage = req.getParameter("pageNum");
 			//제품번호 매개로 객체 불러와
 			ItemDTO idto = idao.getReadData_detail(itemNum);
 			
@@ -117,24 +117,41 @@ public class ItemServlet extends HttpServlet {
 			//제품설명 텍스트 엔터는 엔터로 변경
 			//idto.setItemContent(idto.getItemContent().replaceAll("\n", "<br/>"));
 			
-			String params = "pageNum=" + currentPage;
+			//String params = "pageNum=" + currentPage;
 			String imagePath = cp + "/pds/itemImageFile";
-			String deletePath = cp + "/image/deleted.do";
+			String deletePath = cp + "/main/item/deleted.do";
 			
 			req.setAttribute("imagePath", imagePath);
 			req.setAttribute("idto", idto);
 			req.setAttribute("deletePath", deletePath);
-			req.setAttribute("params", params);
+			//req.setAttribute("params", params);
+			req.setAttribute("currentPage", currentPage);
 			
 			url = "/item/detail.jsp";
 			forward(req, resp, url);
 			
 		}else if(uri.indexOf("deleted.do")!=-1) {
 			
-		
+			//num과 pageNum을 받아온다. 리다이렉트 주소를 만들기 위해 필요한 값
+			int itemNum = Integer.parseInt(req.getParameter("num"));
+			String currentPage = req.getParameter("pageNum");
 			
+			//삭제하려는 데이터의 num을 사용해서 그 하나의 데이터 정보를 읽어온다
+			ItemDTO idto = idao.getReadData_detail(itemNum);
 			
+			//그 데이터의 파일저장명과 동일한 데이터를 삭제한다. (물리적 데이터 삭제)
+			FileManager.doFileDelete(idto.getItemImage1(), path);
+			FileManager.doFileDelete(idto.getItemImage2(), path);
+			FileManager.doFileDelete(idto.getItemImage3(), path);
+			FileManager.doFileDelete(idto.getItemImage4(), path);
 			
+			//DB 테이블에 저장된 데이터 삭제
+			idao.deleteData(itemNum);
+			
+			url = cp + "/main/item/list.do?pageNum=" + currentPage;
+			resp.sendRedirect(url);
+			
+			return;
 			
 			
 		}else if(uri.indexOf("updated.do")!=-1) {
