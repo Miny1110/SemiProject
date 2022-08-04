@@ -118,7 +118,7 @@
                     </ul>
                 </li>
                 <li><a href="./blog.html" role="menuitem">Blog</a></li>
-                <li><a href="./contact.html" role="menuitem">Contact</a></li>
+                <li><a href="/contact.html" role="menuitem">Contact</a></li>
             </ul>
         </nav></div></div>
         <div class="header__top__right__social">
@@ -163,7 +163,7 @@
 								</ul>
 							</div>
 							<div class="header__top__right__auth">
-								<a href="#"><i class="fa fa-user"></i> Login</a>
+								<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
 							</div>
 						</div>
 					</div>
@@ -174,21 +174,21 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="./index.html"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+						<a href="<%=cp %>"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li><a href="./index.html">Home</a></li>
-							<li><a href="./shop-grid.html">Shop</a></li>
+							<li><a href="<%=cp%>">Home</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
 							<li><a href="#">Pages</a>
 								<ul class="header__menu__dropdown">
 									<li><a href="./shop-details.html">Shop Details</a></li>
 									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
 									<li><a href="./checkout.html">Check Out</a></li>
 								</ul></li>
-							<li><a href="./contact.html">Contact</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
