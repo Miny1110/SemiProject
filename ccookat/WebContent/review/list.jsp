@@ -368,8 +368,14 @@
                        				  	${rdto.reviewContent}
                        				  	  </div>
                        				  	<div style="text-align: right;">
-                       				  	<input type="button" value="수정하기" onclick="location='/ccookat/main/review/uadated.do';">
-                       				  	<input type="button" value="삭제하기" onclick="location='/ccookat/main/review/deleted.do';">
+                       				 <%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
+                       				  <%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
+                       				  	
+                       				  	<input type="button" value="수정하기" onclick="location='/ccookat/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}';">
+                       				  	
+                       				  	<input type="button" value="삭제하기" onclick="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}';">
+                       				  	
+                       					
                        				  	</div>
                        				  	
                        				  
