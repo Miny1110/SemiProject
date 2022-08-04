@@ -4,8 +4,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<html lang="zxx">
-<head>
+<html lang="zxx"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
 <meta name="description" content="Ogani Template">
@@ -14,34 +13,21 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>qnaDetail</title>
 
-<link href="<%=cp %>/Data/style/img/ccookat/favicon.ico"
-	rel="shortcut icon" type="image/x-icon">
+<link href="/ccookat/Data/style/img/ccookat/favicon.ico" rel="shortcut icon" type="image/x-icon">
 <!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
 
 <!-- Css Styles -->
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/login.css"
-	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css"
-	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css"
-	type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/login.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/signUp.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/style.css" type="text/css">
 
 </head>
 
@@ -55,8 +41,7 @@
 	<div class="humberger__menu__overlay"></div>
 	<div class="humberger__menu__wrapper">
 		<div class="humberger__menu__logo">
-			<a href="#"><img
-				src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+			<a href="#"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 		</div>
 		<div class="humberger__menu__cart">
 			<ul>
@@ -69,8 +54,7 @@
 		</div>
 		<div class="humberger__menu__widget">
 			<div class="header__top__right__language">
-				< <img class="korean"
-					src="<%=cp %>/Data/style/img/ccookat/korean.jpg" alt="">
+				&lt; <img class="korean" src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
 				<div>한국어</div>
 				<span class="arrow_carrot-down"></span>
 				<ul>
@@ -95,32 +79,33 @@
 				<li><a href="./contact.html">Contact</a></li>
 			</ul>
 		</nav>
-		<div id="mobile-menu-wrap">
+		<div id="mobile-menu-wrap"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+			<ul>
+				<li><a href="./index.html" role="menuitem">Home</a></li>
+				<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
+				<li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
+					<span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+						<li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
+						<li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shopping Cart</a></li>
+						<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check Out</a></li>
+					</ul></li>
+				<li><a href="./contact.html" role="menuitem">Contact</a></li>
+			</ul>
+		</nav></div>
 			<div class="slicknav_menu">
-				<a href="#" aria-haspopup="true" role="button" tabindex="0"
-					class="slicknav_btn slicknav_collapsed" style=""><span
-					class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span
-						class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span
-						class="slicknav_icon-bar"></span></span></a>
-				<nav class="slicknav_nav slicknav_hidden" aria-hidden="true"
-					role="menu" style="display: none;">
+				<a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a>
+				<nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
 					<ul>
 						<li><a href="./index.html" role="menuitem">Home</a></li>
 						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
-						<li class="slicknav_collapsed slicknav_parent"><a href="#"
-							role="menuitem" aria-haspopup="true" tabindex="-1"
-							class="slicknav_item slicknav_row" style=""><a href="#">Pages</a>
-								<span class="slicknav_arrow">►</span></a>
-						<ul class="header__menu__dropdown slicknav_hidden" role="menu"
-								aria-hidden="true" style="display: none;">
-								<li><a href="./shop-details.html" role="menuitem"
-									tabindex="-1">Shop Details</a></li>
-								<li><a href="./shoping-cart.html" role="menuitem"
-									tabindex="-1">Shoping Cart</a></li>
+						<li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"></a><a href="#">Pages</a>
+								<span class="slicknav_arrow">►</span>
+						<ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+								<li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
+								<li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shoping Cart</a></li>
 								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
 										Out</a></li>
-								<li><a href="./blog-details.html" role="menuitem"
-									tabindex="-1">Blog Details</a></li>
+								<li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
 							</ul></li>
 						<li><a href="./contact.html" role="menuitem">Contact</a></li>
 					</ul>
@@ -128,14 +113,11 @@
 			</div>
 		</div>
 		<div class="header__top__right__social">
-			<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-				class="fa fa-twitter"></i></a> <a href="#"><i
-				class="fa fa-instagram"></i></a> <a href="#"><i
-				class="fa fa-pinterest-p"></i></a>
+			<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-instagram"></i></a> <a href="#"><i class="fa fa-pinterest-p"></i></a>
 		</div>
 		<div class="humberger__menu__contact">
 			<ul>
-				<li><i class="fa fa-envelope"></i> ccokat@gmail.com<</li>
+				<li><i class="fa fa-envelope"></i> ccokat@gmail.com&lt;</li>
 			</ul>
 		</div>
 	</div>
@@ -156,13 +138,10 @@
 					<div class="col-lg-6">
 						<div class="header__top__right">
 							<div class="header__top__right__social">
-								<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-									class="fa fa-twitter"></i></a> <a href="#"><i
-									class="fa fa-linkedin"></i></a> <a href="#"><i
-									class="fa fa-pinterest-p"></i></a>
+								<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a> <a href="#"><i class="fa fa-pinterest-p"></i></a>
 							</div>
 							<div class="header__top__right__language">
-								<img src="<%=cp %>/Data/style/img/ccookat/korean.jpg" alt="">
+								<img src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
 								<div>한국어</div>
 								<span class="arrow_carrot-down"></span>
 								<ul>
@@ -182,8 +161,7 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="./index.html"><img
-							src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+						<a href="./index.html"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -228,9 +206,9 @@
 							<i class="fa fa-bars"></i> <span>Cateories</span>
 						</div>
 						<ul>
-							<li><a href="#">Vegetables & Fruit</a></li>
-							<li><a href="#">Rice & Noodle & Bread</a></li>
-							<li><a href="#">Fresh Meat & Egg</a></li>
+							<li><a href="#">Vegetables &amp; Fruit</a></li>
+							<li><a href="#">Rice &amp; Noodle &amp; Bread</a></li>
+							<li><a href="#">Fresh Meat &amp; Egg</a></li>
 						</ul>
 					</div>
 				</div>
@@ -262,9 +240,7 @@
 	<!-- Hero Section End -->
 
 	<!-- Blog Details Hero Begin -->
-	<section class="breadcrumb-section"
-		data-setbg="<%=cp %>/Data/style/img/breadcrumb.jpg"
-		style="background-image: url(&quot;<%=cp %>/Data/style/img/breadcrumb.jpg&quot;);">
+	<section class="breadcrumb-section" data-setbg="/ccookat/Data/style/img/breadcrumb.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/breadcrumb.jpg&quot;);">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -282,58 +258,62 @@
 	<section class="blog-details spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 col-md-5 order-md-1 order-2">
-					<div class="blog__sidebar">
-						<div class="blog__sidebar__search">
-							<form action="<%=cp%>/main/notice/list.do">
-								<input type="text" placeholder="공지사항 검색" name="searchValue">
-								<button type="submit">
-									<span class="icon_search"></span>
-								</button>
-							</form>
-						</div>
-						<div class="blog__sidebar__item">
-							<h4>Categories</h4>
-							<ul>
-								<li><a
-									href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">공지사항</a></li>
-								<li><a
-									href="<%=cp %>/main/notice/list.do?noticeSearchKey=jaju">자주하는질문</a></li>
-								<li><a
-									href="<%=cp %>/main/notice/list.do?noticeSearchKey=ildaeil">1:1문의</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-8 col-md-7 order-md-1 order-1">
-					<div class="blog__details__text">
-						<h3>${ndto.noticeTitle }</h3>
-						<img src="${imagePath }/${ndto.noticeImage }" alt="">
-						<p>${ndto.noticeContent }</p>
-					</div>
-					<div class="blog__details__content">
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="blog__details__author">
-									<div class="blog__details__author__text">
-										<div class="blog__sidebar__item__tags">
-											<a
-												href="${deletePath }?noticeNum=${ndto.noticeNum }&pageNum=${pageNum }">삭제</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="blog__details__widget">
-									<ul>
-										<li><span>조회수:</span> ${ndto.noticeHitCount }</li>
-										<li><span>작성일:</span> ${ndto.noticeCreated }</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div id="qna_detail">
+	<br><br><br>
+	<h1>질문과 답변</h1><br><br>
+	<table>
+		<tbody><tr>
+			<th>작성자</th>
+			<td style="text-align: center;">
+			
+				monkey1004
+			
+			</td>
+		</tr>
+		<tr>	
+			<th>작성일</th>
+			<td style="text-align: center;">
+				2022-07-05
+			</td>
+		</tr>
+		<tr>	
+			<th>제목</th>
+			<td style="padding: 10px;" class="subject">
+				
+				
+				배송 언제 오나요??
+			</td>
+		</tr>
+		<tr>	
+			<th>내용</th>
+			<td style="padding: 10px;" class="content">
+				배송이 너무 느려요 ㅡㅡ
+			</td>
+		</tr>
+	</tbody></table>
+	
+	<div id="qna_menu">
+			
+			
+		<button type="button" class="w-btn" id="listBtn">목록</button>	
+	</div>
+	
+	
+	<form method="post" id="menuForm">
+		
+		<input type="hidden" name="num" value="75">
+
+		
+		<input type="hidden" name="ref" value="75">
+		<input type="hidden" name="reStep" value="0">
+		<input type="hidden" name="reLevel" value="0">
+		
+		
+		<input type="hidden" name="pageNum" value="1">
+		<input type="hidden" name="search" value="">
+		<input type="hidden" name="keyword" value="">
+	</form>
+</div>
 			</div>
 		</div>
 	</section>
@@ -394,7 +374,7 @@
 						</div>
 						<div class="cc_view cc_qna">
 							<h3>
-								<a href="index.jsp?folder=qna&category=qna_list" class="tit">질문
+								<a href="index.jsp?folder=qna&amp;category=qna_list" class="tit">질문
 									답변</a>
 							</h3>
 							<dl class="list">
@@ -410,9 +390,7 @@
 						주소 : 서울시 강남구 테헤란로 124 삼원타워 4층 아이티윌 <span class="bar">I</span>정민정
 						안시연 이은지 전은지 윤서혜 <br> 마케팅제휴 : <a class="link">itwill@ccookatcorp.com</a>
 						<br> 채용문의 : <a class="link">recruit@ccookatcorp.com</a> <br>
-						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a
-							class="link">help@ccookatcorp.com</a> <br> 대량주문 문의 : <a
-							class="link">ccookatgift@ccookatcorp.com</a> <br>
+						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a class="link">help@ccookatcorp.com</a> <br> 대량주문 문의 : <a class="link">ccookatgift@ccookatcorp.com</a> <br>
 
 					</div>
 				</div>
@@ -424,22 +402,21 @@
 			</div>
 		</div>
 	</div>
-	</footer>
+	
 	<!-- Footer Section End -->
 
 	<!-- Js Plugins -->
-	<script src="<%=cp %>/Data/style/js/jquery-3.3.1.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/bootstrap.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/jquery.nice-select.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/jquery-ui.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/jquery.slicknav.js"></script>
-	<script src="<%=cp %>/Data/style/js/mixitup.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/owl.carousel.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/main.js"></script>
+	<script src="/ccookat/Data/style/js/jquery-3.3.1.min.js"></script>
+	<script src="/ccookat/Data/style/js/bootstrap.min.js"></script>
+	<script src="/ccookat/Data/style/js/jquery.nice-select.min.js"></script>
+	<script src="/ccookat/Data/style/js/jquery-ui.min.js"></script>
+	<script src="/ccookat/Data/style/js/jquery.slicknav.js"></script>
+	<script src="/ccookat/Data/style/js/mixitup.min.js"></script>
+	<script src="/ccookat/Data/style/js/owl.carousel.min.js"></script>
+	<script src="/ccookat/Data/style/js/main.js"></script>
 
 
 
 
 
-</body>
-</html>
+</body></html>
