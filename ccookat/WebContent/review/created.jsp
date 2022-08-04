@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@page import="com.util.DBConn"%>
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
@@ -294,7 +295,10 @@
                             <div class="checkout__input">
                                 <p>Title<span>*</span></p>
                                 <input type="text" name="reviewTitle">
+                                <input type="hidden" name="itemNum" value="${idto.itemNum}">
                             </div>
+                            
+                            		
                             
                             <div class="checkout__input">
                                 <p>Image File<span>*</span></p>
@@ -312,7 +316,7 @@
 								<input type="reset" value="다시입력" onclick="document.myForm.reviewTitle.focus();">
 								<input type="button" value="작성취소" onclick="location='/ccookat/main/item/detail.do?pageNum=${pageNum}&itemNum=${rdto.itemNum}';">
 			<input type="hidden" name="pageNum" value="${pageNum}">					
-		<input type="hidden" name="itemNum" value="${idto.itemNum}">
+
 							</div>
 						</div>
                      </div>
