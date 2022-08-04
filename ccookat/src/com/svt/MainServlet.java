@@ -44,7 +44,7 @@ public class MainServlet extends HttpServlet {
 		
 		if(uri.indexOf("list.do")!=-1) {
 			
-			url = "/item/list.jsp";
+			url = "/main.jsp";
 			forward(req, resp, url);
 		}
 		
