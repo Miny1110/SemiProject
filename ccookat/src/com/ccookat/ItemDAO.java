@@ -221,7 +221,7 @@ public class ItemDAO {
 	
 	
 	//카테고리별 이미지 게시판에 데이터 불러오기
-	public List<ItemDTO> getLists(int start, int end){
+	public List<ItemDTO> getLists(String itemType, int start, int end){
 		
 		List<ItemDTO> lists = new ArrayList<ItemDTO>();
 		
@@ -234,13 +234,14 @@ public class ItemDAO {
 			sql = "select * from (";
 			sql+= "select rownum rnum, data.* from (";
 			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1 ";
-			sql+= "from item order by itemNum desc) data ) ";
+			sql+= "from item where itemType=? order by itemNum desc) data ) ";
 			sql+= "where rnum>=? and rnum<=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setString(1, itemType);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			
 			rs = pstmt.executeQuery();
 			

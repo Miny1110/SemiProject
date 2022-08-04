@@ -181,7 +181,7 @@
 					<nav class="header__menu">
 						<ul>
 							<li><a href="<%=cp%>">Home</a></li>
-							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
 							<li><a href="#">Pages</a>
 								<ul class="header__menu__dropdown">
 									<li><a href="./shop-details.html">Shop Details</a></li>
@@ -221,9 +221,11 @@
                         </div>
                        
                               <ul>
-                             <li><a href="#">Vegetables & Fruit</a></li>
-                            <li><a href="#">Rice & Noodle & Bread</a></li>
-                            <li><a href="#">Fresh Meat & Egg</a></li>
+                             <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
+                            <li><a href="<%=cp%>/main/item/created.do"> [상품등록]</a></li>
+                            
                         </ul>
                        
                     </div>

@@ -313,7 +313,7 @@
                             </div>
 
                             <div class="checkout__input">
-                                <p>상품 이미지(4)<span>*</span></p>
+                                <p>상품 상세정보 이미지<span>*</span></p>
                                 <div class="blog__sidebar__item__tags">
                                 <input type="file" name="itemImage4"/>
                                 </div>
