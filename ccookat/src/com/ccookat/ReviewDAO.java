@@ -80,10 +80,13 @@ public class ReviewDAO {
 		String sql;
 		 
 		 try {
+			 /*System.out.println(rdto.getCustomerId());
+			 System.out.println(rdto.getReviewTitle());
+			 System.out.println(rdto.getReviewContent());*/
 			 
 			 sql = "insert into review (customerId,reviewTitle,reviewContent,";
 			 sql += "reviewNum,reviewImage,itemNum,reviewCreated,reviewLike) ";
-			 sql += "values (,?,?,?,?,1111,sysdate,0)";
+			 sql += "values (?,?,?,?,?,1111,sysdate,0)";
 			 
 			 pstmt = conn.prepareStatement(sql);
 			 
@@ -106,7 +109,7 @@ public class ReviewDAO {
 	 //전체데이터 가져오기
 	 public List<ReviewDTO> getLists(int start, int end){
 			
-			List<ReviewDTO> lists = new ArrayList<ReviewDTO>();
+			List<ReviewDTO> reviewlists = new ArrayList<ReviewDTO>();
 			ReviewDTO rdto = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -141,7 +144,7 @@ public class ReviewDAO {
 					rdto.setReviewCreated(rs.getString("reviewCreated"));
 					rdto.setReviewLike(rs.getInt("reviewLike"));
 					
-					lists.add(rdto);
+					reviewlists.add(rdto);
 					
 				}
 				
@@ -153,7 +156,7 @@ public class ReviewDAO {
 				
 			}
 			
-			return lists;
+			return reviewlists;
 			
 		}
 	 //하나 읽어오기
