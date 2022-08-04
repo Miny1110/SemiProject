@@ -28,7 +28,6 @@
 	<servlet-mapping>
 		<servlet-name>ccookatNoticeServlet</servlet-name>
 		<url-pattern>/main/notice/*</url-pattern>
-		<url-pattern>/main/qna/*</url-pattern>
 	</servlet-mapping>
 	
 		<servlet>
