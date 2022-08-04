@@ -362,7 +362,7 @@
                               
                                <div>
                        				  	<input type="button" class="btn2" value=리뷰등록
-                       				  	onclick="location='/ccookat/main/review/created.do?itemNum=${idto.itemNum}';">
+                       				  	onclick="location='/ccookat/main/review/created.do?pageNum=${currentPage }&itemNum=${idto.itemNum}';">
                        				 </div>
                        				 
                               <c:forEach var="rdto" items="${reviewlists}">
