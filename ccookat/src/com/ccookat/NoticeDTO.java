@@ -8,8 +8,15 @@ public class NoticeDTO {
 	private String noticeContent;
 	private int noticeHitCount;
 	private String noticeImage;
+	private String noticeSearchKey;
 	
 	
+	public String getnoticeSearchKey() {
+		return noticeSearchKey;
+	}
+	public void setnoticeSearchKey(String noticeSearchKey) {
+		this.noticeSearchKey = noticeSearchKey;
+	}
 	public int getNoticeNum() {
 		return noticeNum;
 	}
