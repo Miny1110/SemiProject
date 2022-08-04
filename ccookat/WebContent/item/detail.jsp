@@ -15,18 +15,20 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>review</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
+ 	<link rel="stylesheet" href="<%=cp %>/Data/style/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/login.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
 </head>
@@ -318,7 +320,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">상품 리뷰 <span>(1)</span></a>
+
+                                    aria-selected="false">상품 리뷰<span>${totalArticle}</span></a>
+
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -351,27 +355,80 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
-                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
-                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
-                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent
-                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac
-                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante
-                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                                        Proin eget tortor risus.</p>
+                             <div class="tab-pane" id="tabs-3" role="tabpanel">
+                               <div class="product__details__tab__desc">
+                               <p>구매고객 총 리뷰</p>
+                              <form action="" method="post">
+                              
+                               <div>
+                       				  	<input type="button" class="btn2" value=리뷰등록
+                       				  	onclick="location='/ccookat/main/review/created.do?itemNum=${idto.itemNum}';">
+                       				 </div>
+                       				 
+                              <c:forEach var="rdto" items="${reviewlists}">
+                                    <div>
+                       				 <div style="border-bottom : 1px solid #d5d5d5;">
+                       				 
+                       			
+                       			 <div class="product__details__tab__desc">
+                       			<b>작성자 :&nbsp;</b>${rdto.customerId} <b>작성일 :&nbsp;</b>${rdto.reviewCreated}
+                       				  </div>
+                       				  <div align="right">
+                       				  
+                       				  </div>
+                       				<%--    <div class="product__details__tab__desc">
+                       				  	${rdto.reviewTitle}
+                       				  	</div> --%>
+                       				  	<c:if test="${rdto.reviewImage!=null}">
+                       				  	 <div >
+                                    <img src="${imagePath }/${rdto.reviewImage }" height="200" width="200"/> ${rdto.reviewContent} 
+                             
+                                   
+                                </div>
+                                </c:if>
+                                
+                                <c:if test="${rdto.reviewImage==null}">
+                       				  	 <div class="product__details__tab__desc">
+                       				  	${rdto.reviewContent}
+                       				  	  </div> 
+                                </c:if>	
+                       				  	<div style="text-align: right;">
+                       				 <%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
+                       				  <%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
+                       				  	
+                       				  	<input type="button" value="수정하기" onclick="location='/ccookat/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}';">
+                       				  	
+                       				  	<input type="button" value="삭제하기" onclick="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}';">
+                       				  	
+                       					
+                       				  	</div>
+                       				  	
+                       				  
+                       				  	
+                       				  	</div>
+                       				  
+                       				  	</div>
+                       				  	
+                       				  	
+                       				  	
+                       				  
+                             		  
+                             		  
+                             		  
+                             		  
+                             		  </c:forEach> 
+                             		  		   <div class="product__pagination blog__pagination">
+                                ${pageIndexList }
+                            </div>
+                             		  </form>
+                            		</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+      
     </section>
     <!-- Product Details Section End -->
 

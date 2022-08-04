@@ -327,8 +327,9 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p></p>
+                                    <h6>상품 설명</h6>
+                                    <p><img src="${imagePath }/${idto.itemImage1}"></p>
+                                    <p>${idto.itemContent }</p>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -355,22 +356,27 @@
                        				 
                        			
                        			 <div class="product__details__tab__desc">
-                       				${rdto.reviewNum}.&nbsp;&nbsp;${rdto.customerId}&nbsp;&nbsp;${rdto.reviewCreated}
+                       			<b>작성자 :&nbsp;</b>${rdto.customerId} <b>작성일 :&nbsp;</b>${rdto.reviewCreated}
                        				  </div>
                        				  <div align="right">
                        				  
                        				  </div>
-                       				   <div class="product__details__tab__desc">
+                       				<%--    <div class="product__details__tab__desc">
                        				  	${rdto.reviewTitle}
-                       				  	</div>
+                       				  	</div> --%>
                        				  	<c:if test="${rdto.reviewImage!=null}">
                        				  	 <div >
-                                    <img src="${imagePath }/${rdto.reviewImage }" height="200" width="200"/>
+                                    <img src="${imagePath }/${rdto.reviewImage }" height="200" width="200"/> ${rdto.reviewContent} 
+                             
+                                   
                                 </div>
                                 </c:if>
-                       				  	<div class="product__details__tab__desc">
+                                
+                                <c:if test="${rdto.reviewImage==null}">
+                       				  	 <div class="product__details__tab__desc">
                        				  	${rdto.reviewContent}
-                       				  	  </div>
+                       				  	  </div> 
+                                </c:if>	
                        				  	<div style="text-align: right;">
                        				 <%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
                        				  <%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
@@ -411,13 +417,13 @@
     </section>
     <!-- Product Details Section End -->
 
-    <!-- Related Product Section Begin -->
+   <!-- Related Product Section Begin -->
     <section class="related-product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title related__product__title">
-                        <h2>Related Product</h2>
+                        <h2>관련 상품</h2>
                     </div>
                 </div>
             </div>
