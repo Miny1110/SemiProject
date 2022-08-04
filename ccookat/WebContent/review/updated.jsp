@@ -300,7 +300,7 @@
                             <div class="checkout__input">
                                 <p>Image File<span>*</span></p>
                                 <div class="blog__sidebar__item__tags">
-                                <input type="file" name="reviewImage" value="${rdto.reviewImage}">
+                                <input type="file" name="upload" value="${rdto.reviewImage}">
                                 </div>
                             </div>
                             

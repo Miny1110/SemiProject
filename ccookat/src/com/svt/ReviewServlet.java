@@ -12,12 +12,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.http.fileupload.UploadContext;
+
 import com.ccookat.ReviewDAO;
 import com.ccookat.ReviewDTO;
 //import com.join.CustomInfo;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
+import com.util.FileManager;
 import com.util.MyPage;
 
 public class ReviewServlet extends HttpServlet {
@@ -190,12 +193,17 @@ public class ReviewServlet extends HttpServlet {
 		int reviewNum =Integer.parseInt(mr.getParameter("reviewNum"));
 		int pageNum = Integer.parseInt(mr.getParameter("pageNum"));
 		
+	
 		
 		ReviewDTO rdto = new ReviewDTO();
 		
 		rdto.setReviewNum(Integer.parseInt(mr.getParameter("reviewNum")));
 		rdto.setReviewTitle(mr.getParameter("reviewTitle"));
 		rdto.setReviewContent(mr.getParameter("reviewContent"));
+		
+		if(rdto.getReviewImage()!=null) {
+			FileManager.doFileDelete(rdto.getReviewImage(), path);
+		}
 		rdto.setReviewImage(mr.getFilesystemName("upload"));
 		
 		rdao.updateData(rdto);
@@ -208,6 +216,8 @@ public class ReviewServlet extends HttpServlet {
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		
 		ReviewDTO rdto = rdao.getReadData(reviewNum);
+		
+		FileManager.doFileDelete(rdto.getReviewImage(), path);
 		
 		rdao.deleteData(reviewNum);
 		
