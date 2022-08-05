@@ -260,14 +260,20 @@
                        
                     </div>
                 </div>
+                
                 <div class="col-lg-9">
                     <div class="hero__search">
-                        <div class="hero__search__form">
+                        <div class="hero__search__form " >
                             <form action="">
                                 <div class="hero__search__categories">
-                                   	모든항목
+                               항목선택
                                     <span class="arrow_carrot-down"></span>
                                 </div>
+                                <ul>
+                             
+                            
+                        </ul>
+                            
                                 <input type="text" placeholder="검색어를 입력하세요">
                                 <button type="submit" class="site-btn">검색하기</button>
                             </form>

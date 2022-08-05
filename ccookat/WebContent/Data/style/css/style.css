@@ -640,6 +640,7 @@ ol {
 	width: 610px;
 	height: 50px;
 	border: 1px solid #ebebeb;
+	cursor: pointer;
 	position: relative;
 	float: left;
 }
