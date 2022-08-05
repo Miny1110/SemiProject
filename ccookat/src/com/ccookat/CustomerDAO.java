@@ -106,16 +106,16 @@ public class CustomerDAO {
 			
 			while(rs.next()) {
 				
-				CustomerDTO dto = new CustomerDTO();
+				CustomerDTO cdto = new CustomerDTO();
 				
-				dto.setCustomerId(rs.getString("customerId"));
-				dto.setCustomerPwd(rs.getString("customerpwd"));
-				dto.setCustomerName(rs.getString("customerName"));
-				dto.setCustomerEmail(rs.getString("customerEmail"));
-				dto.setCustomerTel(rs.getString("customerTel"));
+				cdto.setCustomerId(rs.getString("customerId"));
+				cdto.setCustomerPwd(rs.getString("customerpwd"));
+				cdto.setCustomerName(rs.getString("customerName"));
+				cdto.setCustomerEmail(rs.getString("customerEmail"));
+				cdto.setCustomerTel(rs.getString("customerTel"));
 				//dto.setCustomerCreated(rs.getString("created"));
 				
-				lists.add(dto);
+				lists.add(cdto);
 			}
 			
 			rs.close();

@@ -274,7 +274,7 @@
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" value="1" name="itemCount">
                                 </div>
                             </div>
                         </div>
@@ -336,10 +336,14 @@
                                <div class="product__details__tab__desc">
                                <p>구매고객 총 리뷰</p>
 								<form action="" method="post">
+								
+									<c:if test="${!empty sessionScope.customInfo.customerId}">
 									<div>
 										<input type="button" class="btn2" value=리뷰등록
 											onclick="location='/ccookat/main/review/created.do?pageNum=${currentPage }&itemNum=${idto.itemNum}';">
 									</div>
+									</c:if>
+									
 
 									<c:forEach var="rdto" items="${reviewlists}">
 										<c:if test="${itemNum==rdto.itemNum }">

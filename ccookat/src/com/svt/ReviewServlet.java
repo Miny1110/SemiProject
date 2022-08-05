@@ -190,7 +190,6 @@ public class ReviewServlet extends HttpServlet {
 		
 			ReviewDTO rdto = rdao.getReadData(reviewNum);
 			
-			
 			if (rdto == null) {
 				url = cp + "main/item/detail.do?pageNum="+pageNum+"&itemNum="+rdto.getItemNum();
 				resp.sendRedirect(url);}

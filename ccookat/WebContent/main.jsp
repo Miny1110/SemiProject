@@ -166,21 +166,23 @@
 									<li><a href="#">English</a></li>
 								</ul>
 							</div>
-								<c:choose>
-								<c:when test="${empty sessionScope.customInfo.customerId }">
+								
+								<c:if test="${empty sessionScope.customInfo.customerId}">
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
 									</div>
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
 									</div>
-								</c:when>
-							       <c:otherwise>
+							</c:if>
+							<c:if test="${!empty sessionScope.customInfo.customerId}">
              						<div class="header__top__right__auth">
                						<a href="#"><i class="fa fa-user"></i> Mypage</a>
            						 </div>
-            </c:otherwise>
-</c:choose>
+           						 <div class="header__top__right__auth">
+           						 <a href="#"><i class="fa fa-user"></i> Logout</a>
+           						 </div>
+           						 </c:if>
 						</div>
 					</div>
 				</div>
@@ -210,24 +212,20 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="header__cart">
-						<c:choose>
-
-							<c:when test="${empty sessionScope.customInfo.customerId }">
+			<c:if test="${empty sessionScope.customInfo.userId}">
 								<ul>
 									<li><a href="<%=cp%>/main/customer/login.do"><i
 											class="fa fa-heart"></i></a></li>
 									<li><a href="<%=cp%>/main/customer/login.do"><i
 											class="fa fa-shopping-bag"></i></a></li>
 								</ul>
-							</c:when>
-							<c:otherwise>
+							</c:if>
+							<c:if test="${!empty sessionScope.customInfo.userId}">
 								<ul>
-									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i> <span>5</span></a></li>
+									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i> <span>55</span></a></li>
 									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>장바구니수량</span></a></li>
 								</ul>
-
-							</c:otherwise>
-						</c:choose>
+									</c:if>
 						<div class="header__cart__price"></div>
 					</div>
 				</div>
@@ -288,13 +286,8 @@
 							</div>
 						</div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="/ccookat/Data/style/img/hero/banner.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/hero/banner.jpg&quot;);">
-                        <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br>100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
-                        </div>
+                    <div class="hero__item set-bg" style="padding-left: 0">
+                    <img src="/ccookat/Data/style/img/banner/event_main.jpg" alt="" align="middle">
                     </div>
                 </div>
             </div>
@@ -303,116 +296,31 @@
     <!-- Hero Section End -->
 
     <!-- Categories Section Begin -->
-    <section class="categories">
+   <section class="categories">
         <div class="container">
             <div class="row">
-                <div class="categories__slider owl-carousel owl-loaded owl-drag">
-                    
-                    
-                    
-                    
-                    
-                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-4095px, 0px, 0px); transition: all 1.2s ease 0s; width: 11408px;"><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-3.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-3.jpg&quot;);">
-                            <h5><a href="#">Vegetables</a></h5>
+                <div class="categories__slider owl-carousel">
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_1.jpg">
                         </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-4.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-4.jpg&quot;);">
-                            <h5><a href="#">drink fruits</a></h5>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_2.jpg">
                         </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-5.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-5.jpg&quot;);">
-                            <h5><a href="#">drink fruits</a></h5>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_3.jpg">
                         </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-2.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-2.jpg&quot;);">
-                            <h5><a href="#">Dried Fruit</a></h5>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_4.jpg">
                         </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-3.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-3.jpg&quot;);">
-                            <h5><a href="#">Vegetables</a></h5>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_5.jpg">
                         </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-4.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-4.jpg&quot;);">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-5.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-5.jpg&quot;);">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-1.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-1.jpg&quot;);">
-                            <h5><a href="#">Fresh Fruit</a></h5>
-                        </div>
-                    </div></div><div class="owl-item animated owl-animated-in fadeIn cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-2.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-2.jpg&quot;);">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-3.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-3.jpg&quot;);">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div></div><div class="owl-item" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-1.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-1.jpg&quot;);">
-                            <h5><a href="#">Fresh Fruit</a></h5>
-                        </div>
-                    </div></div><div class="owl-item animated owl-animated-in fadeIn" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-2.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-2.jpg&quot;);">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div></div><div class="owl-item" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-3.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-3.jpg&quot;);">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div></div><div class="owl-item" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-4.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-4.jpg&quot;);">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div></div><div class="owl-item active" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-5.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-5.jpg&quot;);">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned active" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-3.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-3.jpg&quot;);">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned active" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-4.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-4.jpg&quot;);">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned active" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-5.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-5.jpg&quot;);">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-1.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-1.jpg&quot;);">
-                            <h5><a href="#">Fresh Fruit</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-2.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-2.jpg&quot;);">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-3.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-3.jpg&quot;);">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-4.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-4.jpg&quot;);">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-1.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-1.jpg&quot;);">
-                            <h5><a href="#">Fresh Fruit</a></h5>
-                        </div>
-                    </div></div><div class="owl-item animated owl-animated-in fadeIn cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-2.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-2.jpg&quot;);">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/cat-3.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/categories/cat-3.jpg&quot;);">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span class="fa fa-angle-left"><span></span></span></button><button type="button" role="presentation" class="owl-next"><span class="fa fa-angle-right"><span></span></span></button></div><div class="owl-dots disabled"></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span class="fa fa-angle-left"><span></span></span></button><button type="button" role="presentation" class="owl-next"><span class="fa fa-angle-right"><span></span></span></button></div><div class="owl-dots disabled"></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span class="fa fa-angle-left"><span></span></span></button><button type="button" role="presentation" class="owl-next"><span class="fa fa-angle-right"><span></span></span></button></div><div class="owl-dots disabled"></div></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -424,12 +332,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Featured Product</h2>
+                        <h2>인기 상품</h2>
                     </div>
                     <div class="featured__controls">
                         <ul>
                             <li class="active mixitup-control-active" data-filter="*">All</li>
-                            <li data-filter=".Vegetables & Fruit" class="">Vegetables & Fruit</li>
+                            <li value="fruit">Vegetables & Fruit</li>
                             <li data-filter=".Rice & Noodle & Bread" class="">Rice & Noodle & Bread</li>
                             <li data-filter=".Fresh Meat & Egg" class="">Fresh Meat & Egg</li>
                         </ul>
@@ -437,6 +345,9 @@
                 </div>
             </div>
             <div class="row featured__filter" id="MixItUp8D53A2" style="">
+            
+            
+            
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" style="">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-1.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-1.jpg&quot;);">
@@ -446,52 +357,18 @@
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h6><a href="#"></a></h6>
                             <h5>$30.00</h5>
                         </div>
                     </div>
+                    
+                    
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood" style="">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-2.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-2.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <!--  여기부터 상품 이미지 게시판 사진, 페이징 시작   -->          
-                       <div class="row featured__filter" id="MixItUp8D53A2" style="">
-                              <c:forEach var="idto" items="${itemMainList }">
-                       <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood" style="">
-                           <div class="featured__item">
-                                <div class="featured__item__pic set-bg">
-                                <a href="<%=cp %>/main/item/list.do?itemType=fruit">
-                                	<img src="${imagePath }/${idto.itemImage1}"></a>
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="featured__item__text">
-                                    <h6><a href="<%=cp %>/main/item/list.do?itemType=fruit">Crab Pool Security</a></h6>
-                           			 <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>                       
-                     </c:forEach>
-                       
-                  <%--   <div class="product__pagination">
-                        ${pageIndexList }
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                    </div> --%>
-                   <!--  여기까지 상품 이미지 게시판 사진, 페이징 끝   -->          
-                    </div>
-            
 
-                
-                    </div>
-                </div>
+
+
+
+
             </div>
         </div>
     </section>
@@ -503,12 +380,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="/ccookat/Data/style/img/banner/banner-1.jpg" alt="">
+                        <img src="/ccookat/Data/style/img/banner/event_banner_1.jpg" alt="" >
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="/ccookat/Data/style/img/banner/banner-2.jpg" alt="">
+                        <img src="/ccookat/Data/style/img/banner/event_banner_2.jpg" alt="">
                     </div>
                 </div>
             </div>
