@@ -1,66 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	id="WebApp_ID" version="3.1">
-	<display-name>ccookat</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>main.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>	
-	<servlet>
-		<servlet-name>ccookatServlet</servlet-name>
-		<servlet-class>com.svt.MainServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ccookatServlet</servlet-name>
-		<url-pattern>/main/*</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>ccookatNoticeServlet</servlet-name>
-		<servlet-class>com.svt.NoticeServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ccookatNoticeServlet</servlet-name>
-		<url-pattern>/main/notice/*</url-pattern>
-	</servlet-mapping>
-	
-		<servlet>
-		<servlet-name>ccookatCustomerServlet</servlet-name>
-		<servlet-class>com.svt.CustomerServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ccookatCustomerServlet</servlet-name>
-		<url-pattern>/main/customer/*</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>ccookatReviewServlet</servlet-name>
-		<servlet-class>com.svt.ReviewServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ccookatReviewServlet</servlet-name>
-		<url-pattern>/main/review/*</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>ccookatItemServlet</servlet-name>
-		<servlet-class>com.svt.ItemServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ccookatItemServlet</servlet-name>
-		<url-pattern>/main/item/*</url-pattern>
-	</servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>ccookat</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>main.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>ccookatServlet</servlet-name>
+    <servlet-class>com.svt.MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatServlet</servlet-name>
+    <url-pattern>/main/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ccookatNoticeServlet</servlet-name>
+    <servlet-class>com.svt.NoticeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatNoticeServlet</servlet-name>
+    <url-pattern>/main/notice/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ccookatCustomerServlet</servlet-name>
+    <servlet-class>com.svt.CustomerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatCustomerServlet</servlet-name>
+    <url-pattern>/main/customer/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ccookatReviewServlet</servlet-name>
+    <servlet-class>com.svt.ReviewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatReviewServlet</servlet-name>
+    <url-pattern>/main/review/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ccookatItemServlet</servlet-name>
+    <servlet-class>com.svt.ItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatItemServlet</servlet-name>
+    <url-pattern>/main/item/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ccookatQnaServlet</servlet-name>
+    <servlet-class>com.svt.QnaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatQnaServlet</servlet-name>
+    <url-pattern>/main/qna/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ccookatCartServlet</servlet-name>
+    <servlet-class>com.svt.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatCartServlet</servlet-name>
+    <url-pattern>/main/cart/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
-
-
-
-
-
-
-
