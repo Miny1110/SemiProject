@@ -34,7 +34,7 @@
 			return;
 		}
 		
-		f.action = "<%=cp %>/customer/login_ok.do";
+		f.action = "<%=cp %>/main/customer/login_ok.do";
 		f.submit();
 		
 	}

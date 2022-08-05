@@ -65,12 +65,12 @@ public class CustomerServlet extends HttpServlet{
 
 			cdao.insertData(cdto);
 			
-			url = cp;
-			resp.sendRedirect(url);
+			url = "/ccookat/customer/login.jsp";
+			forward(req, resp, url);
 			
 		}else if(uri.indexOf("login.do")!=-1) {
 			
-			url = "/notice/noticeMain.jsp";
+			url = "/ccookat/customer/login.jsp";
 			forward(req, resp, url);
 
 		}else if(uri.indexOf("login_ok.do")!=-1) {
@@ -105,7 +105,7 @@ public class CustomerServlet extends HttpServlet{
 			session.setAttribute("customerInfo", info);
 			
 			url = cp;
-			resp.sendRedirect(url);
+			forward(req, resp, url);
 			
 		}else if(uri.indexOf("logout.do")!=-1) {
 			
@@ -115,7 +115,7 @@ public class CustomerServlet extends HttpServlet{
 			session.invalidate();
 			
 			url = cp;
-			resp.sendRedirect(url);
+			forward(req, resp, url);
 			
 		}
 		
@@ -136,7 +136,7 @@ public class CustomerServlet extends HttpServlet{
 			cdao.updateData(cdto);
 			
 			url = "/customer/updated.jsp";
-			resp.sendRedirect(url);
+			forward(req, resp, url);
 			
 		}
 
