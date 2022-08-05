@@ -75,7 +75,7 @@ public class MainServlet extends HttpServlet {
 			
 	
 		
-	List<ItemDTO> itemMainList = idao.gethitConut;
+/*	List<ItemDTO> itemMainList = idao.getitemHitCount();
 			
 			//제품메인 이미지 게시판 가짜주소(페이징 처리에 필요)
 			String itemMainUrl = cp + "/main/item/list.do?itemType=" + itemType;
@@ -98,7 +98,7 @@ public class MainServlet extends HttpServlet {
 			
 			url = "/item/list.jsp";
 			forward(req, resp, url);
-			
+			*/
 				
 	
 	}

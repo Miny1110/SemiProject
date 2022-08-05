@@ -126,61 +126,10 @@ public class ItemServlet extends HttpServlet {
 			}
 
 
-				int currentPage = 1;
-				if(pageNum!=null) 
-					currentPage = Integer.parseInt(pageNum);
-				
-				//처음 전체 데이터 갯수 구하기
-				int dataCount = rdao.getDataCount();
-				//하나의 페이지에 보일 페이지 갯수
-				int numPerPage = 5;
-				int totalPage = myPage.getPageCount(numPerPage, dataCount);
-				
-				//삭제시 페이지수가 줄었을때 처리하는 방법 
-				if (currentPage > totalPage) {
-					currentPage = totalPage;
-				}
-
-				//데이터베이스에서 가져올 rownum의 시작과 끝 구하기
-				int start = (currentPage-1)*numPerPage+1;
-				int end = currentPage*numPerPage; 
-								
-				start = (currentPage-1) * numPerPage + 1;
-				end = currentPage * numPerPage;
-				
-				String listUrl = cp + "/main/item/detail.do";
-				String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
-				//리스트 나오게 하기
-				List<ReviewDTO> reviewlists = rdao.getLists(start, end, itemNum);
-					
-				/* 이부분 변수명 정리함 */
-				String reviewdDeletePath = cp + "/main/review/delete.do";
-				String reviewImagePath = cp + "/pds/imageFile";			
-				//String params = "pageNum=" + currentPage;
-				String itemImagePath = cp + "/pds/itemImageFile";
-				String itemIdeletePath = cp + "/main/item/deleted.do";
-				
-				int reviewtotalArticle = rdao.getDataCount();				
-				
-				//제품설명 텍스트 엔터는 엔터로 변경
-				//idto.setItemContent(idto.getItemContent().replaceAll("\n", "<br/>"));
-				
-				req.setAttribute("currentPage", currentPage);
-				req.setAttribute("itemNum", itemNum);
-				req.setAttribute("itemImagePath", itemImagePath);
-				req.setAttribute("itemIdeletePath", itemIdeletePath);
-				req.setAttribute("reviewImagePath", reviewImagePath);
-				req.setAttribute("reviewdDeletePath", reviewdDeletePath);
-				req.setAttribute("pageIndexList", pageIndexList);
-				req.setAttribute("currentPage", currentPage);
-				req.setAttribute("idto", idto);
-				req.setAttribute("reviewlists", reviewlists);
-
-				//req.setAttribute("params", params);
-
-
-				url = "/item/detail.jsp";
-
+			int currentPage = 1;
+			if(pageNum!=null) {
+				currentPage = Integer.parseInt(pageNum);
+			}
 
 			//처음 전체 데이터 갯수 구하기
 			int dataCount = idao.getDataCount();
