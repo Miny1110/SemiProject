@@ -63,18 +63,11 @@
                     <li><a href="#">English</a></li>
                 </ul>
             </div>
-            	<c:if test="${empty sessionScope.customerInfo.customerId}">
+            
             <div class="header__top__right__auth">
-                <a href="<%=cp %>/main/customer/login.do""><i class="fa fa-user"></i> Login</a>
-                
+                <a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
             </div>
-            </c:if>
-            <c:if test="${empty sessionScope.customerInfo.customerId }">
-            <div class="header__top__right__auth">
-                <a href="<%=cp %>/main/customer/login.do""><i class="fa fa-user"></i> 마이페이지</a>
-                    <a href="#"><i class="fa fa-user"></i> Logout</a>
-            </div>
-            </c:if>
+         
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -134,9 +127,22 @@
 									<li><a href="#">English</a></li>
 								</ul>
 							</div>
-							<div class="header__top__right__auth">
-								<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
-							</div>
+							<c:if test="${empty sessionScope.customerInfo.customerId}">
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
+									</div>
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
+									</div>
+							</c:if>
+							<c:if test="${!empty sessionScope.customerInfo.customerId}">
+             						<div class="header__top__right__auth">
+               						<a href="#"><i class="fa fa-user"></i> Mypage</a>
+           						 </div>
+           						 <div class="header__top__right__auth">
+           						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
+           						 </div>
+           						 </c:if>
 						</div>
 					</div>
 				</div>
