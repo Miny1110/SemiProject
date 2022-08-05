@@ -108,8 +108,6 @@ public class CustomerServlet extends HttpServlet{
 			
 			session.setAttribute("customerInfo", customerInfo);
 			
-			System.out.println(customerInfo.getCustomerId());
-			
 			url = cp;
 			resp.sendRedirect(url);
 			

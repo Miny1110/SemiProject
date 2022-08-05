@@ -41,38 +41,25 @@ public class MainServlet extends HttpServlet {
 		Connection conn = DBConn.getconnection();
 		ItemDAO idao = new ItemDAO(conn);
 		
-		MyPage myPage= new MyPage(); 
 		
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		String url;
 		
-		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-
-		
-		//페이지번호 가져와
-		String pageNum = req.getParameter("pageNum");
-
-		//제품번호 매개로 조회수  업데이트
-		idao.updateHitCount(itemNum);
-
-
-		//제품번호 매개로 객체 불러와
 		if(uri.indexOf("ccookat")!=-1) {
-		ItemDTO idto = idao.getReadData_detail(itemNum);
+			
+			String itemType = req.getParameter("itemType");
+			String itemImagePath = cp + "/pds/itemImageFile";
+			
+			List<ItemDTO> mainList = idao.getHitCountLists(itemType);
+			
+			req.setAttribute("itemImagePath", itemImagePath);
+			req.setAttribute("mainList", mainList);
+			
+			url = cp ;
+			forward(req, resp, url);
 		}
 		
-		/*//널이면 리스트로 가
-		if(idto==null) {
-			url = cp + "/main/item/list.do";
-			resp.sendRedirect(url);
-			return;
-		}*/
-
-
-			
-	//여기까지 페이징 처리
-			
 	
 		
 /*	List<ItemDTO> itemMainList = idao.getitemHitCount();
