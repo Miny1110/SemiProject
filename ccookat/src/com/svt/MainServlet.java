@@ -2,6 +2,7 @@ package com.svt;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ccookat.ItemDAO;
+import com.ccookat.ItemDTO;
+import com.ccookat.ReviewDTO;
 import com.util.DBConn;
+import com.util.MyPage;
 
 public class MainServlet extends HttpServlet {
 	
@@ -37,10 +41,67 @@ public class MainServlet extends HttpServlet {
 		Connection conn = DBConn.getconnection();
 		ItemDAO idao = new ItemDAO(conn);
 		
+		MyPage myPage= new MyPage(); 
+		
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		String url;
+		
+		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+
+		
+		//페이지번호 가져와
+		String pageNum = req.getParameter("pageNum");
+
+		//제품번호 매개로 조회수  업데이트
+		idao.updateHitCount(itemNum);
+
+
+		//제품번호 매개로 객체 불러와
+		if(uri.indexOf("ccookat")!=-1) {
+		ItemDTO idto = idao.getReadData_detail(itemNum);
+		}
+		
+		/*//널이면 리스트로 가
+		if(idto==null) {
+			url = cp + "/main/item/list.do";
+			resp.sendRedirect(url);
+			return;
+		}*/
+
+
+			
+	//여기까지 페이징 처리
+			
+	
+		
+	List<ItemDTO> itemMainList = idao.gethitConut;
+			
+			//제품메인 이미지 게시판 가짜주소(페이징 처리에 필요)
+			String itemMainUrl = cp + "/main/item/list.do?itemType=" + itemType;
+			//제품별 상세페이지 가짜주소(페이지번호 들고감)
+			String itemDetailUrl = cp + "/main/item/detail.do?itemType=" + itemType + "&pageNum=" + currentPage;
+			
+			String pageIndexList = MyPage.
+			
+			//이미지 실제 주소
+			String imagepath = cp + "/pds/itemImageFile";
+			//삭제 주소
+			String deletePath = cp + "/item/deleted.do";
+
+			req.setAttribute("imagePath", imagePath);
+			req.setAttribute("itemMainList", itemMainList);
+			req.setAttribute("pageIndexList", pageIndexList);
+			req.setAttribute("dataCount", dataCount);
+			req.setAttribute("deletePath", deletePath);
+			req.setAttribute("itemDetailUrl", itemDetailUrl);
+			
+			url = "/item/list.jsp";
+			forward(req, resp, url);
+			
 				
+	
 	}
+	
 	
 }

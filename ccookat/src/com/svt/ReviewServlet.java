@@ -239,6 +239,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		int reviewNum = Integer.parseInt(req.getParameter("reviewNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 		
 		ReviewDTO rdto = rdao.getReadData(reviewNum);
 		
@@ -246,7 +247,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.deleteData(reviewNum);
 		
-		url = cp + "/main/item/list.do?pageNum="+pageNum;
+		url = cp + "/main/item/list.do?pageNum="+pageNum+"&itemNum"+itemNum;
 		resp.sendRedirect(url);
 	}
 		

@@ -140,29 +140,28 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
+              <div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="header__logo">
+						<a href="<%=cp %>"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<nav class="header__menu">
+						<ul>
+							<li><a href="<%=cp%>">Home</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="#">Pages</a>
+								<ul class="header__menu__dropdown">
+									<li><a href="./shop-details.html">Shop Details</a></li>
+									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
+									<li><a href="./checkout.html">Check Out</a></li>
+								</ul></li>
+							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
@@ -179,7 +178,7 @@
         </div>
     </header>
     <!-- Header Section End -->
-
+    
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
