@@ -336,7 +336,7 @@
 							<tr id="lists">
 								
 									<td class="qna_tr">${qdto.qnaNum }</td>
-									<td><a href="${articleUrl }&num=${qdto.qnaNum}">
+									<td><a href="${detailUrl }&num=${qdto.qnaNum}">
 									${qdto.qnaContent }</a></td>
 									<td class="qna_tr">${qdto.customerId }</td>
 									<td class="qna_tr">${qdto.qnaCreated }</td>

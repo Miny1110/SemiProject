@@ -293,7 +293,8 @@
 	
 	
 	<div id="qna_menu">
-		<button type="button" class="w-btn" id="listBtn">목록</button>	
+		<button type="button" class="w-btn" id="listBtn"
+		onclick="location='<%=cp %>/main/qna/list.do?pageNum=${pageNum }';">목록</button>	
 		<button type="button" class="w-btn">답변</button>
 	</div>
 	
