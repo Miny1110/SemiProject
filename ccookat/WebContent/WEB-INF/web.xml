@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <servlet-name>ccookatServlet</servlet-name>
     <servlet-class>com.svt.MainServlet</servlet-class>
@@ -17,6 +18,8 @@
     <servlet-name>ccookatServlet</servlet-name>
     <url-pattern>/main/*</url-pattern>
   </servlet-mapping>
+  
+  
   <servlet>
     <servlet-name>ccookatNoticeServlet</servlet-name>
     <servlet-class>com.svt.NoticeServlet</servlet-class>
@@ -25,6 +28,8 @@
     <servlet-name>ccookatNoticeServlet</servlet-name>
     <url-pattern>/main/notice/*</url-pattern>
   </servlet-mapping>
+  
+  
   <servlet>
     <servlet-name>ccookatCustomerServlet</servlet-name>
     <servlet-class>com.svt.CustomerServlet</servlet-class>
@@ -33,6 +38,8 @@
     <servlet-name>ccookatCustomerServlet</servlet-name>
     <url-pattern>/main/customer/*</url-pattern>
   </servlet-mapping>
+  
+  
   <servlet>
     <servlet-name>ccookatReviewServlet</servlet-name>
     <servlet-class>com.svt.ReviewServlet</servlet-class>
@@ -41,6 +48,8 @@
     <servlet-name>ccookatReviewServlet</servlet-name>
     <url-pattern>/main/review/*</url-pattern>
   </servlet-mapping>
+  
+  
   <servlet>
     <servlet-name>ccookatItemServlet</servlet-name>
     <servlet-class>com.svt.ItemServlet</servlet-class>
@@ -50,7 +59,8 @@
     <url-pattern>/main/item/*</url-pattern>
   </servlet-mapping>
   
-   <servlet>
+  
+  <servlet>
     <servlet-name>ccookatQnaServlet</servlet-name>
     <servlet-class>com.svt.QnaServlet</servlet-class>
   </servlet>
@@ -58,4 +68,14 @@
     <servlet-name>ccookatQnaServlet</servlet-name>
     <url-pattern>/main/qna/*</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ccookatCartServlet</servlet-name>
+    <servlet-class>com.svt.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatCartServlet</servlet-name>
+    <url-pattern>/main/cart/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
