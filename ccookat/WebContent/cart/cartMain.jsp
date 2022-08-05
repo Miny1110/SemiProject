@@ -258,8 +258,10 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>		
-								<c:forEach var="ctdto" items="lists">
+
+                            <tbody>
+                            <c:forEach var="idto" items="lists">
+
                                 <tr>
                                     <td class="shoping__cart__item">
                                         <img src="${itemImagePath }/${ctdto.itemName}" alt="">
