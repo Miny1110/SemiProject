@@ -165,22 +165,23 @@ public class QnaDAO {
 	}
 
 	//Q&A 업로드
-	public void insertData(QnaDTO dto) {
+	public void insertData(QnaDTO qdto) {
 
 		PreparedStatement pstmt = null;
 		String sql;
 
 		try {
 
-			sql = "insert into qna(qnaNum,qnaTitle,qnaCreated,";
+			sql = "insert into qna(qnaNum,qnaTitle,qnaCreated,customerId,";
 			sql+= "qnaContent,qnaHitCount) ";
-			sql+= "values(?,?,sysdate,?,0)";
+			sql+= "values(?,?,sysdate,?,?,0)";
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, dto.getQnaNum());
-			pstmt.setString(2, dto.getQnaTitle());
-			pstmt.setString(3, dto.getQnaContent());
+			pstmt.setInt(1, qdto.getQnaNum());
+			pstmt.setString(2, qdto.getQnaTitle());
+			pstmt.setString(3, qdto.getCustomerId());
+			pstmt.setString(4, qdto.getQnaContent());
 
 			pstmt.executeUpdate();
 			pstmt.close();
@@ -191,7 +192,7 @@ public class QnaDAO {
 	}
 	
 	//updata Data
-	public void updateData(QnaDTO dto) {
+	public void updateData(QnaDTO qdto) {
 
 		PreparedStatement pstmt = null;
 		String sql;
@@ -203,9 +204,9 @@ public class QnaDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dto.getQnaTitle());
-			pstmt.setString(2, dto.getQnaContent());
-			pstmt.setInt(3, dto.getQnaNum());
+			pstmt.setString(1, qdto.getQnaTitle());
+			pstmt.setString(2, qdto.getQnaContent());
+			pstmt.setInt(3, qdto.getQnaNum());
 			
 			pstmt.executeUpdate();
 			pstmt.close();

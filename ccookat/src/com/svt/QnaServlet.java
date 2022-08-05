@@ -13,8 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-
+import com.ccookat.CustomerInfo;
 import com.ccookat.QnaDAO;
 import com.ccookat.QnaDTO;
 import com.oreilly.servlet.MultipartRequest;
@@ -131,6 +132,7 @@ public class QnaServlet extends HttpServlet {
 
 			}else if(uri.indexOf("upload.do")!=-1) {
 
+				
 			url = "/qna/qnaUpload.jsp";
 			forward(request, response, url);
 
@@ -143,6 +145,7 @@ public class QnaServlet extends HttpServlet {
 					qdto.setQnaNum(maxnum+1);
 					qdto.setQnaTitle(request.getParameter("qnaTitle"));
 					qdto.setQnaContent(request.getParameter("qnaContent"));
+					qdto.setCustomerId(request.getParameter("customerId"));
 					
 					qdao.insertData(qdto);
 					
