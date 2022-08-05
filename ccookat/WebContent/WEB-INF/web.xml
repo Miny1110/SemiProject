@@ -50,12 +50,21 @@
     <url-pattern>/main/item/*</url-pattern>
   </servlet-mapping>
   
-   <servlet>
+  <servlet>
     <servlet-name>ccookatQnaServlet</servlet-name>
     <servlet-class>com.svt.QnaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ccookatQnaServlet</servlet-name>
     <url-pattern>/main/qna/*</url-pattern>
+  </servlet-mapping>
+   
+  <servlet>
+    <servlet-name>ccookatCartServlet</servlet-name>
+    <servlet-class>com.svt.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatCartServlet</servlet-name>
+    <url-pattern>/main/cart/*</url-pattern>
   </servlet-mapping>
 </web-app>

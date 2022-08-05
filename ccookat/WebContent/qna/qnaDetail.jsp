@@ -131,7 +131,7 @@
 					<div class="col-lg-6">
 						<div class="header__top__left">
 							<ul>
-								<li><i class="fa fa-envelope"></i> ccookg@gmail.com</li>
+								<li><i class="fa fa-envelope"></i> ccookat@gmail.com</li>
 							</ul>
 						</div>
 					</div>
@@ -245,7 +245,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="blog__details__hero__text">
-						<h2>NOTICE</h2>
+						<h2>Q&nbsp;&&nbsp;A</h2>
 
 					</div>
 				</div>
@@ -319,44 +319,46 @@
 	</section>
 	<!-- Blog Details Section End -->
 
-	<!-- Related Blog Section Begin -->
-	<section class="contact spad">
+	<!-- Footer Section Begin1 -->
+	<section class="contact spad footer-details">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_phone"></span>
-						<h4>Phone</h4>
-						<p>+01-3-8888-6868</p>
+						<h4>Call Center</h4>
+						<p>+02-1234-6868</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_pin_alt"></span>
 						<h4>Address</h4>
-						<p>60-49 Road 11378 New York</p>
+						<p>
+							서울시 강남구 테헤란로 <br>124 삼원타워 4층 아이티윌
+						</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_clock_alt"></span>
 						<h4>Open time</h4>
-						<p>10:00 am to 23:00 pm</p>
+						<p>24 hour Open Service</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_mail_alt"></span>
 						<h4>Email</h4>
-						<p>hello@colorlib.com</p>
+						<p>ccookat@gmail.com</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Related Blog Section End -->
+	<!-- Footer Section End1 -->
 
-	<!-- Footer Section Begin -->
+	<!-- Footer Section Begin2 -->
 	<div id="footer">
 		<div class="footer-top">
 			<div class="inner_footer">
@@ -374,7 +376,7 @@
 						</div>
 						<div class="cc_view cc_qna">
 							<h3>
-								<a href="index.jsp?folder=qna&amp;category=qna_list" class="tit">질문
+								<a href="index.jsp?folder=qna&category=qna_list" class="tit">질문
 									답변</a>
 							</h3>
 							<dl class="list">
@@ -390,20 +392,21 @@
 						주소 : 서울시 강남구 테헤란로 124 삼원타워 4층 아이티윌 <span class="bar">I</span>정민정
 						안시연 이은지 전은지 윤서혜 <br> 마케팅제휴 : <a class="link">itwill@ccookatcorp.com</a>
 						<br> 채용문의 : <a class="link">recruit@ccookatcorp.com</a> <br>
-						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a class="link">help@ccookatcorp.com</a> <br> 대량주문 문의 : <a class="link">ccookatgift@ccookatcorp.com</a> <br>
+						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a
+							class="link">help@ccookatcorp.com</a> <br> 대량주문 문의 : <a
+							class="link">ccookatgift@ccookatcorp.com</a> <br>
 
 					</div>
 				</div>
 			</div>
 			<div class="footer_indemnification_clause">
-
-				<em class="copy"><p>Copyright © itwill ccookat Corp. All
-						rights reserved.</p></em>
+				<em class="copy">
+					<p>Copyright © itwill ccookat Corp. All rights reserved.</p>
+				</em>
 			</div>
 		</div>
 	</div>
-	
-	<!-- Footer Section End -->
+	<!-- Footer Section End2 -->
 
 	<!-- Js Plugins -->
 	<script src="/ccookat/Data/style/js/jquery-3.3.1.min.js"></script>
