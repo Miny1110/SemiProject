@@ -185,16 +185,13 @@ public class NoticeServlet extends HttpServlet {
 			if(ndto==null) {
 				url = cp + "/main/notice/list.do";
 				response.sendRedirect(url);
-			}
+			}			
 			
-			
-			//int line = ndto.getNoticeContent().split("\n").length;
-
-			//ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\n\r", "<br/>"));
+			//띄어쓰기
+			ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\r", "<br/>"));
 
 			request.setAttribute("deletePath", deletePath);
 			request.setAttribute("ndto", ndto);
-			//request.setAttribute("lineSu", line);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("imagePath", imagePath);
 			request.setAttribute("pageNum", pageNum);

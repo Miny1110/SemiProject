@@ -145,29 +145,28 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
+       <div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="header__logo">
+						<a href="<%=cp %>"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<nav class="header__menu">
+						<ul>
+							<li><a href="<%=cp%>">Home</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="#">Pages</a>
+								<ul class="header__menu__dropdown">
+									<li><a href="./shop-details.html">Shop Details</a></li>
+									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
+									<li><a href="./checkout.html">Check Out</a></li>
+								</ul></li>
+							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
@@ -185,7 +184,7 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Hero Section Begin -->
+     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
             <div class="row">
@@ -193,13 +192,13 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>Cateories</span>
+                            <span>All departments</span>
                         </div>
                         <ul>
-                              <li><a href="#">Vegetables & Fruit</a></li>
+                           <li><a href="#">Vegetables & Fruit</a></li>
                             <li><a href="#">Rice & Noodle & Bread</a></li>
                             <li><a href="#">Fresh Meat & Egg</a></li>
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -211,19 +210,20 @@
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="검색어를 입력해주세요">
+                                <input type="text" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
+                       <div class="hero__search__phone">
+							<div class="hero__search__phone__icon">
+								<i class="fa fa-truck"></i>
+							</div>
+							<div class="hero__search__phone__text">
+								<h5>ccookat delivery</h5>
+								<span> 샛별ㆍ낮 배송</span>
+							</div>
+						</div>
+                    
                     </div>
                 </div>
             </div>
@@ -237,7 +237,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>NOTICE</h2>
+                        <h2>상품 추가</h2>
                     </div>
                 </div>
             </div>
