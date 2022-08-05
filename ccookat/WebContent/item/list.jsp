@@ -61,8 +61,9 @@
                     <li><a href="#">English</a></li>
                 </ul>
             </div>
-            <div class="header__top__right__auth">
+             <div class="header__top__right__auth">
                 <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="#"><i class="fa fa-user"></i> Join</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
