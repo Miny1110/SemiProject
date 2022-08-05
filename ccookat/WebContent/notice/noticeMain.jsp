@@ -292,10 +292,12 @@
                             <div class="product__pagination blog__pagination">
                                 ${pageIndexList }
                             </div>
+                            	 <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>		
                             <div align="right">
                              <div class="blog__sidebar__item__tags">
                                 <a href="<%=cp%>/main/notice/upload.do?">글올리기</a></div>
                             </div>
+                            </c:if>
                         </div>
                     </div>
                 </div>

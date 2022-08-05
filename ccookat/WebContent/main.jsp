@@ -251,8 +251,9 @@
                              <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
                             <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
                             <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
+                             <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>	
                             <li><a href="<%=cp%>/main/item/created.do"> [상품등록]</a></li>
-                            
+                            </c:if>
                         </ul>
                        
                     </div>
