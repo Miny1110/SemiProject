@@ -334,11 +334,11 @@
 							<c:forEach var="qdto" items="${lists }">
 							<tr id="lists">
 								
-									<td>${qdto.qnaNum }</td>
+									<td class="qna_tr">${qdto.qnaNum }</td>
 									<td>${qdto.qnaContent }</td>
-									<td>${qdto.customerId }</td>
-									<td>${qdto.qnaCreated }</td>
-									<td>${qdto.qnaHitCount }</td>
+									<td class="qna_tr">${qdto.customerId }</td>
+									<td class="qna_tr">${qdto.qnaCreated }</td>
+									<td class="qna_tr">${qdto.qnaHitCount }</td>
 								
 							</tr>	
 							</c:forEach>

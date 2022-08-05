@@ -40,6 +40,8 @@ public class QnaServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		
 		Connection conn = DBConn.getconnection();
 		QnaDAO qdao = new QnaDAO(conn);
 
