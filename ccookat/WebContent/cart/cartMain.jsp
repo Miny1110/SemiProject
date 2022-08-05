@@ -262,11 +262,11 @@
 								<c:forEach var="ctdto" items="lists">
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
+                                        <img src="${itemImagePath }/${ctdto.itemName}" alt="">
+                                        <h5>${ctdto.itemName}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        $55.00
+                                        ${ctdto.carttotprice }
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
