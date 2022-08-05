@@ -157,17 +157,16 @@
 							<div class="header__top__right__social">
 								<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-instagram"></i></a> <a href="#"><i class="fa fa-pinterest-p"></i></a>
 							</div>
-								<div class="header__top__right__language">
-									<img src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
-									<div>한국어</div>
-									<span class="arrow_carrot-down"></span>
-									<ul>
+							<div class="header__top__right__language">
+								<img src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
+								<div>한국어</div>
+								<span class="arrow_carrot-down"></span>
+								<ul>
 									<li><a href="#">한국어</a></li>
 									<li><a href="#">English</a></li>
 								</ul>
-							</div>
-								
-								<c:if test="${empty sessionScope.customInfo.customerId}">
+							</div>		
+							<c:if test="${empty sessionScope.customerInfo.customerId}">
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
 									</div>
@@ -175,14 +174,14 @@
 									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
 									</div>
 							</c:if>
-							<c:if test="${!empty sessionScope.customInfo.customerId}">
+							<c:if test="${!empty sessionScope.customerInfo.customerId}">
              						<div class="header__top__right__auth">
                						<a href="#"><i class="fa fa-user"></i> Mypage</a>
            						 </div>
            						 <div class="header__top__right__auth">
            						 <a href="#"><i class="fa fa-user"></i> Logout</a>
            						 </div>
-           						 </c:if>
+           					 </c:if>
 						</div>
 					</div>
 				</div>
