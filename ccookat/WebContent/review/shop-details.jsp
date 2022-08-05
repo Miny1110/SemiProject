@@ -348,9 +348,7 @@
                        				 </div>
                               <c:forEach var="rdto" items="lists">
                                     <div>
-                       				 <div>
-                       				 
-                       				
+                       				 <div>               				
                        				   <div class="product__details__tab__desc">
                        				  ${customerId}<span>*</span>${reviewCreated}
                        				  </div>

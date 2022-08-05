@@ -243,13 +243,13 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="${imagePath }/${idto.itemImage1}">
+                                src="${itemImagePath }/${idto.itemImage1}">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
-                            <img src="${imagePath }/${idto.itemImage1}">
-                            <img src="${imagePath }/${idto.itemImage2}">
-                            <img src="${imagePath }/${idto.itemImage3}">
-                            <img src="${imagePath }/${idto.itemImage4}">
+                            <img src="${itemImagePath }/${idto.itemImage1}">
+                            <img src="${itemImagePath }/${idto.itemImage2}">
+                            <img src="${itemImagePath }/${idto.itemImage3}">
+                            <img src="${itemImagePath }/${idto.itemImage4}">
                         </div>
                     </div>
                 </div>
@@ -314,7 +314,7 @@
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>상품 설명</h6>
-                                    <p><img src="${imagePath }/${idto.itemImage1}"></p>
+                                    <p><img src="${itemImagePath }/${idto.itemImage1}"></p>
                                     <p>${idto.itemContent }</p>
                                 </div>
                             </div>
@@ -328,71 +328,53 @@
                              <div class="tab-pane" id="tabs-3" role="tabpanel">
                                <div class="product__details__tab__desc">
                                <p>구매고객 총 리뷰</p>
-                              <form action="" method="post">
-                              
-                               <div>
-                       				  	<input type="button" class="btn2" value=리뷰등록
-                       				  	onclick="location='/ccookat/main/review/created.do?pageNum=${currentPage }&itemNum=${idto.itemNum}';">
-                       				 </div>
-                       		
-                              <c:forEach var="rdto" items="${reviewlists}">
-                              <c:if test="${itemNum==rdto.itemNum }">	  
-                                    <div>
-                       				 <div style="border-bottom : 1px solid #d5d5d5;">
-                       				
-                       			
-                       			 <div class="product__details__tab__desc">
-                       			<b>작성자 :&nbsp;</b>${rdto.customerId} <b>작성일 :&nbsp;</b>${rdto.reviewCreated}
-                       				  </div>
-                       				  <div align="right">
-                       				  
-                       				  </div>
-                       				<%--    <div class="product__details__tab__desc">
+								<form action="" method="post">
+									<div>
+										<input type="button" class="btn2" value=리뷰등록
+											onclick="location='/ccookat/main/review/created.do?pageNum=${currentPage }&itemNum=${idto.itemNum}';">
+									</div>
+
+									<c:forEach var="rdto" items="${reviewlists}">
+										<c:if test="${itemNum==rdto.itemNum }">
+											<div>
+												<div style="border-bottom: 1px solid #d5d5d5;">
+													<div class="product__details__tab__desc">
+														<b>작성자 :&nbsp;</b>${rdto.customerId} <b>작성일 :&nbsp;</b>${rdto.reviewCreated}
+													</div>
+													<div align="right"></div>
+													<%--    <div class="product__details__tab__desc">
                        				  	${rdto.reviewTitle}
                        				  	</div> --%>
-                       				  	<c:if test="${rdto.reviewImage!=null}">
-                       				  	 <div >
-                                    <img src="${imagePath }/${rdto.reviewImage }" height="200" width="200"/> ${rdto.reviewContent} 
-                             
-                                   
-                                </div>
-                                </c:if>
-                                
-                                <c:if test="${rdto.reviewImage==null}">
-                       				  	 <div class="product__details__tab__desc">
-                       				  	${rdto.reviewContent}
-                       				  	  </div> 
-                                </c:if>	
-                       				  	<div style="text-align: right;">
-                       				 <%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
-                       				  <%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
-                       				  	
-                       				  	<input type="button" value="수정하기" onclick="location='/ccookat/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}';">
-                       				  	
-                       				  	<input type="button" value="삭제하기" onclick="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}';">
-                       				  	
-                       					
-                       				  	</div>
-                       				  	
-                       				  
-                       				  	
-                       				  	</div>
-                       				  
-                       				  	</div>
-                       				  	
-                       				  	
-                       				  	
-                       				  
-                             		  
-                             		  
-                             		  
-                             		  </c:if>
-                             		  </c:forEach> 
-                             		   
-                             		  		   <div class="product__pagination blog__pagination">
+													<c:if test="${rdto.reviewImage!=null}">
+														<div>
+															<img src="${reviewImagePath }/${rdto.reviewImage }"
+																height="200" width="200" /> ${rdto.reviewContent}
+														</div>
+													</c:if>
+													<c:if test="${rdto.reviewImage==null}">
+														<div class="product__details__tab__desc">
+															${rdto.reviewContent}</div>
+													</c:if>
+													<div style="text-align: right;">
+														<%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
+														<%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
+														<div class="blog__sidebar__item__tags">
+															<a href="location='/ccookat/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
+																수정하기</a>
+															<a href="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
+																삭제하기</a>	
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</c:if>
+									</c:forEach>
+								</form>
+								<div class="product__pagination blog__pagination">
                                 ${pageIndexList }
                             </div>
-                             		  </form>
+                             	
                             		</div>
                                 </div>
                             </div>
@@ -417,7 +399,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="<%=cp %>/Data/style/img/product/product-1.jpg">
+                        <div class="product__item__pic set-bg" data-setbg="<%=cp%>/Data/style/img/product/product-1.jpg">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
