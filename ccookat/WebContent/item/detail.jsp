@@ -64,21 +64,17 @@
                 </ul>
             </div>
             	<c:if test="${empty sessionScope.customerInfo.customerId}">
-									<div class="header__top__right__auth">
-									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
-									</div>
-									<div class="header__top__right__auth">
-									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
-									</div>
-							</c:if>
-							<c:if test="${!empty sessionScope.customerInfo.customerId}">
-             						<div class="header__top__right__auth">
-               						<a href="#"><i class="fa fa-user"></i> Mypage</a>
-           						 </div>
-           						 <div class="header__top__right__auth">
-           						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
-           						 </div>
-           					 </c:if>
+            <div class="header__top__right__auth">
+                <a href="<%=cp %>/main/customer/login.do""><i class="fa fa-user"></i> Login</a>
+                
+            </div>
+            </c:if>
+            <c:if test="${empty sessionScope.customerInfo.customerId }">
+            <div class="header__top__right__auth">
+                <a href="<%=cp %>/main/customer/login.do""><i class="fa fa-user"></i> 마이페이지</a>
+                    <a href="#"><i class="fa fa-user"></i> Logout</a>
+            </div>
+            </c:if>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -103,7 +99,6 @@
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#"><i class="fa fa-pinterest-p"></i></a>
         </div>
-        
         <div class="humberger__menu__contact">
             <ul>
                 <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
@@ -268,7 +263,9 @@
                     <div class="product__details__text">
                         <h3>${idto.itemName }</h3>
                   		  조회수:${idto.itemHitCount }
+                  		   <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>
                         <a href="${itemDeletePath }&itemNum=${idto.itemNum}">[삭제]</a>
+                        </c:if>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -292,7 +289,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="<%=cp %>/main/cart/list.do" class="primary-btn">ADD TO CART</a>
+                        <a href="#" class="primary-btn">ADD TO CART</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>Availability</b> <span>${idto.itemStock }개</span></li>
@@ -351,7 +348,7 @@
                                <p>구매고객 총 리뷰</p>
 								<form action="" method="post">
 								
-									<c:if test="${empty sessionScope.customerInfo.customerId}">
+									<c:if test="${!empty sessionScope.customerInfo.customerId}">
 									<div>
 										<input type="button" class="btn2" value=리뷰등록
 											onclick="location='/ccookat/main/review/created.do?pageNum=${currentPage }&itemNum=${idto.itemNum}';">
@@ -383,12 +380,22 @@
 													<div style="text-align: right;">
 														<%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
 														<%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
+														 <c:if test="${sessionScope.customerInfo.customerId==rdto.customerId}"	>													
 														<div class="blog__sidebar__item__tags">
 															<a href="location='/ccookat/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
 																수정하기</a>
 															<a href="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
 																삭제하기</a>	
 														</div>
+														</c:if>
+														
+														 <c:if test="${sessionScope.customerInfo.customerId=='admin'}"	>													
+														<div class="blog__sidebar__item__tags">
+															<a href="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
+																삭제하기</a>	
+														</div>
+														</c:if>
+														
 													</div>
 												</div>
 											</div>
