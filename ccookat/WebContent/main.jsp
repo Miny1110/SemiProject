@@ -166,21 +166,23 @@
 									<li><a href="#">English</a></li>
 								</ul>
 							</div>
-								<c:choose>
-								<c:when test="${empty sessionScope.customInfo.customerId }">
+								
+								<c:if test="${empty sessionScope.customInfo.customerId}">
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
 									</div>
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
 									</div>
-								</c:when>
-							       <c:otherwise>
+							</c:if>
+							<c:if test="${!empty sessionScope.customInfo.customerId}">
              						<div class="header__top__right__auth">
                						<a href="#"><i class="fa fa-user"></i> Mypage</a>
            						 </div>
-            </c:otherwise>
-</c:choose>
+           						 <div class="header__top__right__auth">
+           						 <a href="#"><i class="fa fa-user"></i> Logout</a>
+           						 </div>
+           						 </c:if>
 						</div>
 					</div>
 				</div>
@@ -210,24 +212,20 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="header__cart">
-						<c:choose>
-
-							<c:when test="${empty sessionScope.customInfo.customerId }">
+			<c:if test="${empty sessionScope.customInfo.userId}">
 								<ul>
 									<li><a href="<%=cp%>/main/customer/login.do"><i
 											class="fa fa-heart"></i></a></li>
 									<li><a href="<%=cp%>/main/customer/login.do"><i
 											class="fa fa-shopping-bag"></i></a></li>
 								</ul>
-							</c:when>
-							<c:otherwise>
+							</c:if>
+							<c:if test="${!empty sessionScope.customInfo.userId}">
 								<ul>
-									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i> <span>5</span></a></li>
+									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i> <span>55</span></a></li>
 									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>장바구니수량</span></a></li>
 								</ul>
-
-							</c:otherwise>
-						</c:choose>
+									</c:if>
 						<div class="header__cart__price"></div>
 					</div>
 				</div>

@@ -97,16 +97,18 @@ public class CustomerServlet extends HttpServlet{
 			//로그인 성공
 			
 			//세션에 올릴 데이터 객체
-			CustomerInfo info = new CustomerInfo();
+			CustomerInfo customerInfo = new CustomerInfo();
 			
-			info.setCustomerId(cdto.getCustomerId());
-			info.setCustomerName(cdto.getCustomerName());
+			customerInfo.setCustomerId(cdto.getCustomerId());
+			customerInfo.setCustomerName(cdto.getCustomerName());
 			
 			
 			//세션 생성
 			HttpSession session = req.getSession();
 			
-			session.setAttribute("customerInfo", info);
+			session.setAttribute("customerInfo", customerInfo);
+			
+			System.out.println(customerInfo.getCustomerId());
 			
 			url = cp;
 			resp.sendRedirect(url);
