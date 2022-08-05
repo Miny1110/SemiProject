@@ -35,7 +35,7 @@
 		}
 		
 		f.action = "<%=cp %>/main/customer/login_ok.do";
-		f.submit();d
+		f.submit();
 		
 	}
 
