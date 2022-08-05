@@ -261,7 +261,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="" items="">
+                            <c:forEach var="idto" items="lists">
                                 <tr>
                                     <td class="shoping__cart__item">
                                         <img src="img/cart/cart-1.jpg" alt="">
