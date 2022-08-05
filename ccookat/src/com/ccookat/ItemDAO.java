@@ -234,7 +234,7 @@ public class ItemDAO {
 			
 			sql = "select * from (";
 			sql+= "select rownum rnum, data.* from (";
-			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1 ";
+			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
 			sql+= "from item where itemType=? order by itemNum desc) data ) ";
 			sql+= "where rnum>=? and rnum<=?";
 			
@@ -256,6 +256,7 @@ public class ItemDAO {
 				idto.setItemDiscount(rs.getInt("itemDiscount"));
 				idto.setItemType(rs.getString("itemType"));
 				idto.setItemImage1(rs.getString("itemImage1"));
+				idto.setItemHitCount(rs.getInt("itemHitCount"));
 				
 				lists.add(idto);
 				
@@ -332,6 +333,59 @@ public class ItemDAO {
 		}
 		
 		return result;
+		
+	}
+	
+	
+	//조회순으로 정렬
+	//카테고리별 이미지 게시판에 데이터 불러오기
+	public List<ItemDTO> getHitCountLists(String itemType){
+		
+		List<ItemDTO> lists = new ArrayList<ItemDTO>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;	
+		
+		try {
+			
+			sql = "select * from (";
+			sql+= "select rownum rnum, data.* from (";
+			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
+			sql+= "from item where itemType=? order by itemHitCount desc) data ) ";
+			sql+= "where rnum>=1 and rnum<=3";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, itemType);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ItemDTO idto = new ItemDTO();
+				
+				idto.setItemNum(rs.getInt("itemNum"));
+				idto.setItemName(rs.getString("itemName"));
+				idto.setItemPrice(rs.getInt("itemPrice"));
+				idto.setItemDiscount(rs.getInt("itemDiscount"));
+				idto.setItemType(rs.getString("itemType"));
+				idto.setItemImage1(rs.getString("itemImage1"));
+				idto.setItemHitCount(rs.getInt("itemHitCount"));
+				
+				lists.add(idto);
+				
+			}
+
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println("에러");
+			System.out.println(e.toString());
+		}
+		
+		return lists;
 		
 	}
 	
