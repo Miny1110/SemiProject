@@ -137,9 +137,21 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
-                           <div class="header__top__right__auth">
-								<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
-							</div>
+                           	<c:choose>
+								<c:when test="${empty sessionScope.customInfo.customerId }">
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
+									</div>
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
+									</div>
+								</c:when>
+							       <c:otherwise>
+             						<div class="header__top__right__auth">
+               						<a href="#"><i class="fa fa-user"></i> Mypage</a>
+           						 </div>
+            </c:otherwise>
+</c:choose>
                         </div>
                     </div>
                 </div>

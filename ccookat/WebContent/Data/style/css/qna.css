@@ -106,12 +106,21 @@ td {
 
 .qna_submit_a {
 	font-size: 14px;
+	border:none;
     border-radius: 5px;
     width: 80px;
     background-color: #FF5833;
-    margin: 30px;
-    padding: 7px;
+    margin-bottom: 30px;
     color: #ffffff;
-    height: 60px;
+    height: 40px;
     margin: 10px;
 }
+
+.qna_submit_a a {
+	color: white;
+}
+
+.qna_submit_a{
+	color: white;
+}
+

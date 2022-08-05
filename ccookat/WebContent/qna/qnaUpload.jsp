@@ -40,6 +40,44 @@
 <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css"
 	type="text/css">
 
+<script type="text/javascript">
+
+	function sendIt() {
+		
+		var f = document.myForm;
+		
+		str = f.qnaTitle.value;
+		str = str.trim();
+		
+		if(!str) {
+			alert("\n제목을 입력하세요.");
+			f.qnaTitle.focus();
+			return;
+			
+		}
+		f.qnaTitle.value = str;
+		
+		str = f.qnaContent.value;
+		str = str.trim();
+		
+		if(!str) {
+			alert("\n내용을 입력하세요.");
+			f.qnaContent.focus();
+			return;
+			
+		}
+		f.qnaContent.value = str;
+		
+		f.action = "<%=cp%>/main/qna/upload_ok.do";
+		f.submit();
+	
+		
+		
+	}
+
+
+</script>
+
 </head>
 
 <body>
@@ -263,7 +301,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>NOTICE</h2>
+						<h2>Q&A </h2>
 					</div>
 				</div>
 			</div>
@@ -275,51 +313,37 @@
 	<section class="checkout spad">
 		<div class="container">
 			<div class="checkout__form">
-				<h4>Notice Upload</h4>
-				<form action="<%=cp %>/main/notice/upload_ok.do" method="post"
-					enctype="multipart/form-data">
+				<h3>1:1 문의</h3>
+				<br>
+				<form action="" method="post" name="myForm">
 					<div>
 						<div>
-							<div class="col-lg-4 col-md-5">
-								<div class="filter__sort">
-									<span>카테고리 선택</span> 
-									<select style="display: none;" name="noticeSearchKey">
-										<option value="gongji">공지사항</option>
-										<option value="jaju">자주하는질문</option>
-										<option value="ildaeil">1:1문의</option>
-									</select>
-									<div class="nice-select" tabindex="0">
-										<span class="current">공지사항</span>
-										<ul class="list">
-											<li data-value="gongji" class="option selected focus">공지사항</li>
-											<li data-value="jaju" class="option">자주하는질문</li>
-											<li data-value="ildaeil" class="option">1:1문의</li>
-										</ul>
-									</div>
-								</div>
-							</div>
+						
 							<div class="checkout__input">
 								<p>
 									Title<span>*</span>
 								</p>
-								<input type="text" name="noticeTitle">
+								<input type="text" name="qnaTitle">
 							</div>
 							
 							<div class="checkout__input">
 								<p>
 									Text<span>*</span>
 								</p>
-								<textarea rows="15" cols="20" name="noticeContent"></textarea>
+								<textarea rows="15" cols="20" name="qnaContent"></textarea>
 							</div>
 
 							<div class="blog__sidebar__item__tags">
-								<input type="submit" value=" 등록하기 "> <input type="reset"
-									value="다시입력" onclick="document.myForm.noticeTitle.focus();" />
+								<input type="button" value=" 등록하기"	onclick="sendIt();"> 
+								<input type="reset"
+									value="다시입력" onclick="document.myForm.subject.focus();" />
 								<input type="button" value="작성취소"
-									onclick="location='<%=cp%>/main/notice/list.do';" />
+									onclick="location='<%=cp%>/main/qna/list.do';" />
 
 							</div>
+							
 						</div>
+							
 					</div>
 				</form>
 			</div>
