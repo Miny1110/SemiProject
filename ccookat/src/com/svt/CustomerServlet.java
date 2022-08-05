@@ -118,8 +118,8 @@ public class CustomerServlet extends HttpServlet{
 			session.removeAttribute("customerInfo");
 			session.invalidate();
 			
-			url = cp;
-			forward(req, resp, url);
+			url = cp ;
+			resp.sendRedirect(url);
 			
 		}
 		

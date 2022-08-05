@@ -190,21 +190,22 @@
 									<li><a href="#">English</a></li>
 								</ul>
 							</div>
-								<c:choose>
-								<c:when test="${empty sessionScope.customInfo.customerId }">
+							<c:if test="${empty sessionScope.customerInfo.customerId}">
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
 									</div>
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
 									</div>
-								</c:when>
-							       <c:otherwise>
+							</c:if>
+							<c:if test="${!empty sessionScope.customerInfo.customerId}">
              						<div class="header__top__right__auth">
                						<a href="#"><i class="fa fa-user"></i> Mypage</a>
            						 </div>
-            </c:otherwise>
-</c:choose>
+           						 <div class="header__top__right__auth">
+           						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
+           						 </div>
+           					 </c:if>
 						</div>
 					</div>
 				</div>
@@ -335,7 +336,8 @@
 							<tr id="lists">
 								
 									<td class="qna_tr">${qdto.qnaNum }</td>
-									<td>${qdto.qnaContent }</td>
+									<td><a href="${detailUrl }&num=${qdto.qnaNum}">
+									${qdto.qnaContent }</a></td>
 									<td class="qna_tr">${qdto.customerId }</td>
 									<td class="qna_tr">${qdto.qnaCreated }</td>
 									<td class="qna_tr">${qdto.qnaHitCount }</td>

@@ -122,7 +122,7 @@
 				<li><a href="#">Pages</a>
 					<ul class="header__menu__dropdown">
 						<li><a href="./shop-details.html">Shop Details</a></li>
-						<li><a href="./shoping-cart.html">Shoping Cart</a></li>
+						<li><a href="./shoping-cart.html">Shopping Cart</a></li>
 						<li><a href="./checkout.html">Check Out</a></li>
 					</ul></li>
 				<li><a href="./contact.html">Contact</a></li>
@@ -334,6 +334,7 @@
 							</div>
 
 							<div class="blog__sidebar__item__tags">
+								<input type="hidden" name="customerId" value="${sessionScope.customerInfo.customerId}">
 								<input type="button" value=" 등록하기"	onclick="sendIt();"> 
 								<input type="reset"
 									value="다시입력" onclick="document.myForm.subject.focus();" />

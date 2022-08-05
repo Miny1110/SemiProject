@@ -178,6 +178,7 @@ public class ReviewServlet extends HttpServlet {
 		rdto.setItemNum(Integer.parseInt(mr.getParameter("itemNum")));
 		rdto.setReviewCreated(mr.getParameter("reviewCreated"));
 		
+		
 		rdao.insertData(rdto);
 		
 		url = cp + "/main/item/detail.do?pageNum=" + pageNum + "&itemNum="+ itemNum ; // 리다이렉트는 가상의주소로
