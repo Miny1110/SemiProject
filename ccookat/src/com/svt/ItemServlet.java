@@ -125,7 +125,6 @@ public class ItemServlet extends HttpServlet {
 				return;
 			}
 
-
 				int currentPage = 1;
 				if(pageNum!=null) 
 					currentPage = Integer.parseInt(pageNum);

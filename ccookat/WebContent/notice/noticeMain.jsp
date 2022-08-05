@@ -263,7 +263,7 @@
                             <ul>
                                 <li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">공지사항</a></li>
                                 <li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=jaju">자주하는질문</a></li>
-                                <li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=ildaeil">1:1문의</a></li>
+                                <li><a href="<%=cp %>/main/qna/list.do?">1:1문의</a></li>
                             </ul>
                         </div>
                     </div>
