@@ -346,11 +346,10 @@
             </div>
             <div class="row featured__filter" id="MixItUp8D53A2" style="">
             
-            
-            
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" style="">
+               <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" style="">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-1.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-1.jpg&quot;);">
+                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-1.jpg" 
+                       		 style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-1.jpg&quot;);">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
@@ -361,11 +360,7 @@
                             <h5>$30.00</h5>
                         </div>
                     </div>
-                    
-                    
                 </div>
-
-
 
 
 

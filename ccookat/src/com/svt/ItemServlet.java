@@ -277,7 +277,9 @@ public class ItemServlet extends HttpServlet {
 			url = "/item/list.jsp";
 			forward(req, resp, url);
 
-		}/*else if(uri.indexOf("cart/list.do")!=-1){
+		}	
+		
+		/*else if(uri.indexOf("cart/list.do")!=-1){
 			
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 			
