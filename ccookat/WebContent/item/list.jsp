@@ -411,8 +411,9 @@
                                 <div class="col-lg-4">
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg">
-                                            <img src="${itemImagePath }/${idto.itemImage1}">
-                                            <div class="product__discount__percent"></div>
+                                            <a href="${itemDetailUrl }&pageNum=${currentPage }&itemNum=${idto.itemNum}">
+                                            <img src="${itemImagePath }/${idto.itemImage1}"></a>
+                                            <div class="product__discount__percent">BEST</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
