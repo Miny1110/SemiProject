@@ -155,7 +155,7 @@ public class ItemDAO {
 		try {
 			
 			sql = "select itemNum,itemName,itemPrice,itemDiscount,itemType,";
-			sql+= "itemContent,itemImage1,itemImage2,itemImage3,itemImage4,itemStock ";
+			sql+= "itemContent,itemImage1,itemImage2,itemImage3,itemImage4,itemHitCount,itemStock ";
 			sql+= "from item where itemNum=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -178,6 +178,7 @@ public class ItemDAO {
 				idto.setItemImage2(rs.getString("itemImage2"));
 				idto.setItemImage3(rs.getString("itemImage3"));
 				idto.setItemImage4(rs.getString("itemImage4"));
+				idto.setItemHitCount(rs.getInt("itemHitCount"));
 				idto.setItemStock(rs.getInt("itemStock"));
 				
 			}
@@ -221,7 +222,7 @@ public class ItemDAO {
 	
 	
 	//카테고리별 이미지 게시판에 데이터 불러오기
-	public List<ItemDTO> getLists(int start, int end){
+	public List<ItemDTO> getLists(String itemType, int start, int end){
 		
 		List<ItemDTO> lists = new ArrayList<ItemDTO>();
 		
@@ -234,13 +235,14 @@ public class ItemDAO {
 			sql = "select * from (";
 			sql+= "select rownum rnum, data.* from (";
 			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1 ";
-			sql+= "from item order by itemNum desc) data ) ";
+			sql+= "from item where itemType=? order by itemNum desc) data ) ";
 			sql+= "where rnum>=? and rnum<=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setString(1, itemType);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -272,6 +274,7 @@ public class ItemDAO {
 	}
 	
 	
+	//전체데이터 개수 세기
 	public int getDataCount() {
 		
 		int dataCount = 0;
@@ -303,6 +306,37 @@ public class ItemDAO {
 		
 	}
 
+	
+	//조회수 증가
+	public int updateHitCount(int itemNum) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update item set itemHitCount = itemHitCount + 1 where itemNum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, itemNum);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return result;
+		
+	}
+	
+	
+	
 	
 	
 }

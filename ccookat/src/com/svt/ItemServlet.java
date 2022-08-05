@@ -98,7 +98,7 @@ public class ItemServlet extends HttpServlet {
 				
 			}
 			
-			url = cp + "/main/item/list.do";
+			url = cp ;
 			resp.sendRedirect(url);
 			return;
 			
@@ -106,7 +106,15 @@ public class ItemServlet extends HttpServlet {
 			
 			//제품번호 가져와
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-			String pageNum = req.getParameter("pageNum");
+
+			
+			//페이지번호 가져와
+			String currentPage = req.getParameter("pageNum");
+
+			//제품번호 매개로 조회수  업데이트
+			idao.updateHitCount(itemNum);
+
+
 			//제품번호 매개로 객체 불러와
 			ItemDTO idto = idao.getReadData_detail(itemNum);
 			
@@ -116,6 +124,7 @@ public class ItemServlet extends HttpServlet {
 				resp.sendRedirect(url);
 				return;
 			}
+
 
 				int currentPage = 1;
 				if(pageNum!=null) 
@@ -171,6 +180,7 @@ public class ItemServlet extends HttpServlet {
 
 
 				url = "/item/detail.jsp";
+
 			forward(req, resp, url);
 			
 		}else if(uri.indexOf("deleted.do")!=-1) {
@@ -208,6 +218,10 @@ public class ItemServlet extends HttpServlet {
 			
 	//여기서부터 페이징 처리
 			String pageNum = req.getParameter("pageNum");
+			String itemType = req.getParameter("itemType");
+			if(itemType==null) {
+				itemType = "fruit";
+			}
 			
 			int currentPage = 1;
 			
@@ -227,12 +241,12 @@ public class ItemServlet extends HttpServlet {
 			int end = currentPage * numPerPage;
 	//여기까지 페이징 처리
 			
-			List<ItemDTO> itemMainList = idao.getLists(start, end);
+			List<ItemDTO> itemMainList = idao.getLists(itemType, start, end);
 			
 			//제품메인 이미지 게시판 가짜주소(페이징 처리에 필요)
-			String itemMainUrl = cp + "/main/item/list.do";
+			String itemMainUrl = cp + "/main/item/list.do?itemType=" + itemType;
 			//제품별 상세페이지 가짜주소(페이지번호 들고감)
-			String itemDetailUrl = cp + "/main/item/detail.do?pageNum=" + currentPage;
+			String itemDetailUrl = cp + "/main/item/detail.do?itemType=" + itemType + "&pageNum=" + currentPage;
 			
 			String pageIndexList = myPage.pageIndexList(currentPage, totalPage, itemMainUrl);
 			

@@ -180,9 +180,9 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                           <li><a href="#">Vegetables & Fruit</a></li>
-                            <li><a href="#">Rice & Noodle & Bread</a></li>
-                            <li><a href="#">Fresh Meat & Egg</a></li>
+                             <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
 
                         </ul>
                     </div>
@@ -243,16 +243,9 @@
                         <div class="sidebar__item">
                             <h4>Department</h4>
                             <ul>
-                                <li><a href="#">Fresh Meat</a></li>
-                                <li><a href="#">Vegetables</a></li>
-                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                <li><a href="#">Fresh Berries</a></li>
-                                <li><a href="#">Ocean Foods</a></li>
-                                <li><a href="#">Butter & Eggs</a></li>
-                                <li><a href="#">Fastfood</a></li>
-                                <li><a href="#">Fresh Onion</a></li>
-                                <li><a href="#">Papayaya & Crisps</a></li>
-                                <li><a href="#">Oatmeal</a></li>
+                             <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
                             </ul>
                         </div>
                         <div class="sidebar__item">
@@ -555,7 +548,8 @@
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg">
-                                	<a href="${itemDetailUrl }&itemNum=${idto.itemNum}"><img src="${imagePath }/${idto.itemImage1}"></a>
+                                	<a href="${itemDetailUrl }&itemNum=${idto.itemNum}">
+                                	<img src="${imagePath }/${idto.itemImage1}"></a>
                                     <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>

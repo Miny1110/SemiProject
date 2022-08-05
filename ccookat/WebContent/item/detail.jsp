@@ -246,16 +246,18 @@
                                 src="${itemImagePath }/${idto.itemImage1}">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
-                            <img src="${itemImagePath }/${idto.itemImage1}">
-                            <img src="${itemImagePath }/${idto.itemImage2}">
-                            <img src="${itemImagePath }/${idto.itemImage3}">
-                            <img src="${itemImagePath }/${idto.itemImage4}">
+
+                            <img src="${imagePath }/${idto.itemImage1}">
+                            <img src="${imagePath }/${idto.itemImage2}">
+                            <img src="${imagePath }/${idto.itemImage3}">
+
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h3>${idto.itemName }</h3>
+                  		  조회수:${idto.itemHitCount }
                         <a href="${deletePath }?pageNum=${currentPage }&num=${idto.itemNum}">[삭제]</a>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
@@ -277,7 +279,7 @@
                         <a href="#" class="primary-btn">ADD TO CARD</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
-                            <li><b>Availability</b> <span>In Stock</span></li>
+                            <li><b>Availability</b> <span>${idto.itemStock }개</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                             <li><b>Weight</b> <span>0.5 kg</span></li>
                             <li><b>Share on</b>
@@ -311,13 +313,16 @@
                             </li>
                         </ul>
                         <div class="tab-content">
+<!-- 상품설명창 시작 -->                       
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>상품 설명</h6>
-                                    <p><img src="${itemImagePath }/${idto.itemImage1}"></p>
                                     <p>${idto.itemContent }</p>
+                                    <p align="center"><img src="${imagePath }/${idto.itemImage4}" ></p>
                                 </div>
                             </div>
+<!-- 상품설명창 끝 -->                       
+                            
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>Products Infomation</h6>
