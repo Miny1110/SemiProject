@@ -109,7 +109,7 @@ public class ItemServlet extends HttpServlet {
 
 			
 			//페이지번호 가져와
-			String currentPage = req.getParameter("pageNum");
+			String pageNum = req.getParameter("pageNum");
 
 			//제품번호 매개로 조회수  업데이트
 			idao.updateHitCount(itemNum);
