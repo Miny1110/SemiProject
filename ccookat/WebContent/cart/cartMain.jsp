@@ -233,9 +233,7 @@
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>NOTICE</h2>
-                        <div class="breadcrumb__option">
-                            
-                            
+                        <div class="breadcrumb__option">                                                     
                         </div>
                     </div>
                 </div>
@@ -253,15 +251,15 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="shoping__product">Products</th>
-                                    <th>Price</th>
+                                    <th class="shoping__product">상품</th>
+                                    <th>가격</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                            <c:forEach var="" items="">
+                            <tbody>		
+								<c:forEach var="ctdto" items="lists">
                                 <tr>
                                     <td class="shoping__cart__item">
                                         <img src="img/cart/cart-1.jpg" alt="">

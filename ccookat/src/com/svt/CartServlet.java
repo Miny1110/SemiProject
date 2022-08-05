@@ -13,8 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ccookat.CartDAO;
+import com.ccookat.CartDTO;
+import com.ccookat.CustomerInfo;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
@@ -49,6 +52,29 @@ public class CartServlet extends HttpServlet {
 
 		if(uri.indexOf("list.do")!=-1) {
 			
+			String itemImagePath = cp + "/pds/itemImageFile";
+			
+			HttpSession session = request.getSession();
+			
+			CustomerInfo customerInfo = new CustomerInfo();
+			
+			session.getAttribute("customerInfo");
+			
+			String customerId = customerInfo.getCustomerId();
+						
+			List<CartDTO> lists = ctdao.selectAll(customerId);
+			
+			if(lists==null) {				
+				
+
+				url = "/cart/cartMain.jsp";
+				forward(request, response, url);	
+				return;
+			}
+			request.setAttribute("message",	"장바구니에 담긴 상품이 없습니다.");
+			request.setAttribute("itemImagePath", itemImagePath);
+			request.setAttribute("lists", lists);
+					
 			url = "/cart/cartMain.jsp";
 			forward(request, response, url);	
 		}
