@@ -247,9 +247,9 @@
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
 
-                            <img src="${imagePath }/${idto.itemImage1}">
-                            <img src="${imagePath }/${idto.itemImage2}">
-                            <img src="${imagePath }/${idto.itemImage3}">
+                            <img src="${itemImagePath }/${idto.itemImage1}">
+                            <img src="${itemImagePath }/${idto.itemImage2}">
+                            <img src="${itemImagePath }/${idto.itemImage3}">
 
                         </div>
                     </div>
@@ -258,7 +258,7 @@
                     <div class="product__details__text">
                         <h3>${idto.itemName }</h3>
                   		  조회수:${idto.itemHitCount }
-                        <a href="${deletePath }?pageNum=${currentPage }&num=${idto.itemNum}">[삭제]</a>
+                        <a href="${itemDeletePath }&itemNum=${idto.itemNum}">[삭제]</a>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -267,7 +267,20 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">${idto.itemPrice }원</div>
+                        
+                        <div class="product__discount__item__text">
+                            <div class="product__item__price">
+                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
+                            pattern=""/>원
+                            <span>${idto.itemPrice }원</span></div>
+                        </div>                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         <p>${idto.itemContent }</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
@@ -318,7 +331,7 @@
                                 <div class="product__details__tab__desc">
                                     <h6>상품 설명</h6>
                                     <p>${idto.itemContent }</p>
-                                    <p align="center"><img src="${imagePath }/${idto.itemImage4}" ></p>
+                                    <p align="center"><img src="${itemImagePath }/${idto.itemImage4}" ></p>
                                 </div>
                             </div>
 <!-- 상품설명창 끝 -->                       
