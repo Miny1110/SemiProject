@@ -7,8 +7,22 @@ public class CartDTO {
 	private int itemNum;
 	private int cartItemCount;
 	private int cartTotPrice;
+	private String itemName;
+	private String itemImage1;
 	
 	
+	public String getItemName() {
+		return itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+	public String getItemImage1() {
+		return itemImage1;
+	}
+	public void setItemImage1(String itemImage1) {
+		this.itemImage1 = itemImage1;
+	}
 	public int getCartNum() {
 		return cartNum;
 	}
