@@ -339,7 +339,7 @@
                     <div class="featured__controls">
                         <ul>
                             <li class="active mixitup-control-active" data-filter="*">All</li>
-                            <li data-filter=".Vegetables & Fruit" class="">Vegetables & Fruit</li>
+                            <li value="fruit">Vegetables & Fruit</li>
                             <li data-filter=".Rice & Noodle & Bread" class="">Rice & Noodle & Bread</li>
                             <li data-filter=".Fresh Meat & Egg" class="">Fresh Meat & Egg</li>
                         </ul>
@@ -347,6 +347,9 @@
                 </div>
             </div>
             <div class="row featured__filter" id="MixItUp8D53A2" style="">
+            
+            
+            
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" style="">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-1.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-1.jpg&quot;);">
@@ -356,52 +359,18 @@
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h6><a href="#"></a></h6>
                             <h5>$30.00</h5>
                         </div>
                     </div>
+                    
+                    
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood" style="">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-2.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-2.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <!--  여기부터 상품 이미지 게시판 사진, 페이징 시작   -->          
-                       <div class="row featured__filter" id="MixItUp8D53A2" style="">
-                              <c:forEach var="idto" items="${itemMainList }">
-                       <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood" style="">
-                           <div class="featured__item">
-                                <div class="featured__item__pic set-bg">
-                                <a href="<%=cp %>/main/item/list.do?itemType=fruit">
-                                	<img src="${imagePath }/${idto.itemImage1}"></a>
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="featured__item__text">
-                                    <h6><a href="<%=cp %>/main/item/list.do?itemType=fruit">Crab Pool Security</a></h6>
-                           			 <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>                       
-                     </c:forEach>
-                       
-                  <%--   <div class="product__pagination">
-                        ${pageIndexList }
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                    </div> --%>
-                   <!--  여기까지 상품 이미지 게시판 사진, 페이징 끝   -->          
-                    </div>
-            
 
-                
-                    </div>
-                </div>
+
+
+
+
             </div>
         </div>
     </section>
