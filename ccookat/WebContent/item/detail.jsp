@@ -6,6 +6,7 @@
 	String cp = request.getContextPath();
 	
 %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -182,9 +183,9 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                           <li><a href="#">Vegetables & Fruit</a></li>
-                            <li><a href="#">Rice & Noodle & Bread</a></li>
-                            <li><a href="#">Fresh Meat & Egg</a></li>
+                           <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
                         </ul>
                     </div>
                 </div>
@@ -222,12 +223,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Vegetable’s Package</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <a href="./index.html">Vegetables</a>
-                            <span>Vegetable’s Package</span>
-                        </div>
+                        <h2>${idto.itemType }</h2>
                     </div>
                 </div>
             </div>
@@ -247,9 +243,9 @@
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
 
-                            <img src="${imagePath }/${idto.itemImage1}">
-                            <img src="${imagePath }/${idto.itemImage2}">
-                            <img src="${imagePath }/${idto.itemImage3}">
+                            <img src="${itemImagePath }/${idto.itemImage1}">
+                            <img src="${itemImagePath }/${idto.itemImage2}">
+                            <img src="${itemImagePath }/${idto.itemImage3}">
 
                         </div>
                     </div>
@@ -258,7 +254,7 @@
                     <div class="product__details__text">
                         <h3>${idto.itemName }</h3>
                   		  조회수:${idto.itemHitCount }
-                        <a href="${deletePath }?pageNum=${currentPage }&num=${idto.itemNum}">[삭제]</a>
+                        <a href="${itemDeletePath }&itemNum=${idto.itemNum}">[삭제]</a>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -267,7 +263,13 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">${idto.itemPrice }원</div>
+                        
+                        <div class="product__details__price">
+                        <span><fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" pattern=""/>원</span>
+                        <span style="font-size: 12pt; color: #707070; font-weight: lighter; text-decoration: line-through;"><fmt:formatNumber value="${idto.itemPrice }" pattern=""/>원</span>
+                                            
+                        </div>                        
+                        
                         <p>${idto.itemContent }</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
@@ -318,7 +320,7 @@
                                 <div class="product__details__tab__desc">
                                     <h6>상품 설명</h6>
                                     <p>${idto.itemContent }</p>
-                                    <p align="center"><img src="${imagePath }/${idto.itemImage4}" ></p>
+                                    <p align="center"><img src="${itemImagePath }/${idto.itemImage4}" ></p>
                                 </div>
                             </div>
 <!-- 상품설명창 끝 -->                       

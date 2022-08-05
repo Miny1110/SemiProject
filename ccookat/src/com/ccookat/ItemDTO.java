@@ -42,8 +42,10 @@ public class ItemDTO {
 		this.itemPrice = itemPrice;
 	}
 	public int getItemDiscount() {
+		//itemDiscount = (itemPrice * (100-itemDiscount) / 100);
 		return itemDiscount;
 	}
+	
 	public void setItemDiscount(int itemDiscount) {
 		this.itemDiscount = itemDiscount;
 	}

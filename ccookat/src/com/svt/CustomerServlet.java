@@ -47,7 +47,8 @@ public class CustomerServlet extends HttpServlet{
 		MyPage myPage = new MyPage();
 
 		String url;
-
+		
+		//회원정보 입력
 		if(uri.indexOf("created.do")!=-1){
 
 			url = "/customer/signUp.jsp";
@@ -56,7 +57,7 @@ public class CustomerServlet extends HttpServlet{
 		} else if(uri.indexOf("created_ok.do")!=1) {
 					
 			CustomerDTO cdto = new CustomerDTO();
-
+			
 			cdto.setCustomerId(req.getParameter("customerId"));
 			cdto.setCustomerPwd(req.getParameter("customerPwd"));
 			cdto.setCustomerName(req.getParameter("customerName"));
@@ -65,12 +66,14 @@ public class CustomerServlet extends HttpServlet{
 
 			cdao.insertData(cdto);
 			
-			url = cp;
-			resp.sendRedirect(url);
+			url = "/customer/login.jsp";
+			forward(req, resp, url);
 			
-		}else if(uri.indexOf("login.do")!=-1) {
+		}
+		//로그인창
+		else if(uri.indexOf("login.do")!=-1) {
 			
-			url = "/notice/noticeMain.jsp";
+			url = "/customer/signUp.jsp";
 			forward(req, resp, url);
 
 		}else if(uri.indexOf("login_ok.do")!=-1) {
@@ -105,7 +108,7 @@ public class CustomerServlet extends HttpServlet{
 			session.setAttribute("customerInfo", info);
 			
 			url = cp;
-			resp.sendRedirect(url);
+			forward(req, resp, url);
 			
 		}else if(uri.indexOf("logout.do")!=-1) {
 			
@@ -115,7 +118,7 @@ public class CustomerServlet extends HttpServlet{
 			session.invalidate();
 			
 			url = cp;
-			resp.sendRedirect(url);
+			forward(req, resp, url);
 			
 		}
 		
@@ -136,7 +139,7 @@ public class CustomerServlet extends HttpServlet{
 			cdao.updateData(cdto);
 			
 			url = "/customer/updated.jsp";
-			resp.sendRedirect(url);
+			forward(req, resp, url);
 			
 		}
 

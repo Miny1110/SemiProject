@@ -77,7 +77,7 @@ public class CustomerDAO {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
+
 	}
 	
 	//전체 데이터 가져오기
@@ -141,7 +141,7 @@ public class CustomerDAO {
 		try {
 			
 			sql = "select customerId,customerPwd,";
-			sql+= "customerName,customerEmail,customerTel,";
+			sql+= "customerName,customerEmail,customerTel ";
 			sql+= "from Customer where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);

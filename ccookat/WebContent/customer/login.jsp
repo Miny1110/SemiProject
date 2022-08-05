@@ -28,13 +28,13 @@
 			return;
 		}
 		
-		if(!f.customerPwd1.value) {
+		if(!f.customerPwd.value) {
 			alert("패스워드를 입력해주세요");
 			f.customerPwd1.focus();
 			return;
 		}
 		
-		f.action = "<%=cp %>/customer/login_ok.do";
+		f.action = "<%=cp %>/main/customer/login_ok.do";
 		f.submit();
 		
 	}
@@ -262,7 +262,7 @@
 			<input type="text" name="customerId" class="text-field"
 				placeholder="아이디를 입력해주세요"> 
 			<input type="password"
-				name="customerPwd1" class="text-field" placeholder="비밀번호를 입력해주세요">
+				name="customerPwd" class="text-field" placeholder="비밀번호를 입력해주세요">
 
 			<div class="links">
 				<a href="#">아이디 찾기 |</a> <a href="#">비밀번호 찾기</a>

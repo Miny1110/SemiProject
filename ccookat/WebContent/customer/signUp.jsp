@@ -53,14 +53,26 @@
 			return;
 		}
 		
+		if(!f.idDuplication.value) {
+			alert("아이디 중복체크를 해주세요.");
+			return;
+		}
+		
 		if(!f.customerPwd.value){
 			alert("비밀번호를 입력하세요.");
-			f.customerPwd1.focus();
+			f.customerPwd.focus();
 			return;
 		}
 		
 		if(!f.customerPwd2.value){
-			alert("비밀번호를 입력하세요.");
+			alert("비밀번호를 다시 한번 입력하세요.");
+			f.customerPwd2.focus();
+			return;
+		}
+		
+		if(f.customerPwd.value != customerPwd2.value){
+			alert("비밀번호가 다릅니다.");
+			f.customerPwd.focus();
 			f.customerPwd2.focus();
 			return;
 		}
@@ -83,9 +95,21 @@
 			return;
 		}
 		
-		f.action = "<%=cp%>/main/customer/created_ok.do";
+		f.action = "<%=cp%>
+	/main/customer/created_ok.do";
 		f.submit();
 
+	}
+
+	function jungbokId() {
+
+		if (!f.customerId.value) {
+			alert("아이디를 입력하세요.");
+			f.customerId.focus();
+			return;
+		}
+
+		f.submit();
 	}
 </script>
 </head>
@@ -273,6 +297,30 @@
 	<!-- Hero Section End -->
 
 
+	<%
+		String customerId = request.getParameter("id");
+		if (customerId == null) {
+			customerId = "";
+		}
+		String jungbokId = (String) request.getAttribute("jungbokId");
+
+		String result;
+
+		if (jungbokId == "") {
+
+			result = customerId + "는 사용 가능합니다.";
+
+		} else if (jungbokId == null && customerId == "") {
+
+			result = "";
+
+		} else {
+
+			result = customerId + "는 이미 사용 중입니다.";
+
+		}
+	%>
+
 	<!-- Checkout Section Begin -->
 	<div class="signUp-form">
 		<div class="tit_page">
@@ -287,11 +335,11 @@
 					<table class="tbl_comm">
 						<tr>
 							<th>아이디<span class="ico">*</span></th>
-							<td>
-								<input class="box-size" type="text" name="customerId"
-								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"> 
-								<input type="button" value="중복확인" class="signUp_btn">
-							</td>
+							<td><input class="box-size" type="text" name="customerId"
+								id="customerId" value='<%=customerId%>'
+								placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"> <input
+								type="button" value="중복확인" class="signUp_btn"
+								onclick="jungbokId();" /> <%=result%></td>
 						</tr>
 						<tr>
 							<th>비밀번호<span class="ico">*</span></th>
@@ -301,11 +349,9 @@
 						</tr>
 						<tr class="member_pwd">
 							<th>비밀번호확인<span class="ico">*</span></th>
-							<td>
-								<input class="box-size" type="password"
+							<td><input class="box-size" type="password"
 								name="customerPwd2" id="customerPwd2"
-								placeholder="비밀번호를 한번 더 입력해주세요">
-							</td>
+								placeholder="비밀번호를 한번 더 입력해주세요"></td>
 						</tr>
 						<tr>
 							<th>이름<span class="ico">*</span></th>
@@ -326,19 +372,21 @@
 						</tr>
 						<tr>
 							<th>우편번호<span class="ico">*</span></th>
-							<td><input type="button" value="우편번호찾기" class="btn_zipcode">
-								<a href="javascript:void(0);"
-								onclick="popupZipSearch();return false;"></a> <input
-								class="box-size2" type="text" name="zipcode" id="zipcode"
-								maxlength="3" readonly="readonly"></td>
+							<td><input class="box-size2" type="text"
+								id="sample6_postcode" placeholder="우편번호" maxlength="5"
+								readonly="readonly"> 
+								<input type="button" value="우편번호찾기"
+								class="btn_zipcode" onclick="sample6_execDaumPostcode()"></td>
+
+
 						</tr>
 
 						<tr>
 							<th>주소<span class="ico">*</span></th>
-							<td><input class="box-size" type="text" name="address"
-								class="address" id="address" readonly="readonly"> <input
-								class="box-size2" type="text" name="address2" class="address2"
-								id="address2" readonly="readonly"></td>
+							<td><input class="box-size" type="text" placeholder="주소"
+								id="sample6_address" readonly="readonly"> <input
+								class="box-size2" type="text" placeholder="상세주소"
+								id="sample6_detailAddress"></td>
 						</tr>
 					</table>
 
@@ -346,6 +394,62 @@
 						<input type="button" value="가입하기" class="btn_sign"
 							onclick="sendIt();" />
 					</div>
+
+
+					<script
+						src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+					
+					<script>
+					    function sample6_execDaumPostcode() {
+					        new daum.Postcode({
+					            oncomplete: function(data) {
+					                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+					
+					                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+					                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+					                var addr = ''; // 주소 변수
+					                var extraAddr = ''; // 참고항목 변수
+					
+					                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+					                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+					                    addr = data.roadAddress;
+					                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+					                    addr = data.jibunAddress;
+					                }
+					
+					                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+					                if(data.userSelectedType === 'R'){
+					                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+					                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+					                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+					                        extraAddr += data.bname;
+					                    }
+					                    // 건물명이 있고, 공동주택일 경우 추가한다.
+					                    if(data.buildingName !== '' && data.apartment === 'Y'){
+					                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+					                    }
+					                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+					                    if(extraAddr !== ''){
+					                        extraAddr = ' (' + extraAddr + ')';
+					                    }
+					                    // 주소변수 문자열과 참고항목 문자열 합치기.
+					                    addr += extraAddr;
+					                
+					                } else {
+					                    addr += '';
+					                }
+					
+					                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+					                document.getElementById('sample6_postcode').value = data.zonecode;
+					                document.getElementById("sample6_address").value = addr;
+					                // 커서를 상세주소 필드로 이동한다.
+					                document.getElementById("sample6_detailAddress").focus();
+					            }
+					        }).open();
+					    }
+				</script>
+
+
 				</form>
 			</div>
 		</div>
@@ -451,49 +555,6 @@
 	<script src="<%=cp%>/Data/style/js/mixitup.min.js"></script>
 	<script src="<%=cp%>/Data/style/js/owl.carousel.min.js"></script>
 	<script src="<%=cp%>/Data/style/js/main.js"></script>
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<!-- <script>
-	function popupZipSearch(){
-		new daum.Postcode({
-			oncomplete : function(data) {
-				
-				var fullAddr = '';
-				var extraAddr ='';
-				
-				if(data.userSelectedType === 'R') {
-					fullAddr = data.roadAddress;
-				}else {
-					fullAddr = data.jubunAddress;
-				}
-				
-				
-				if(data.userSelectedType === 'R'){
-					
-					if(data.bname !== '') {
-						extraAddr += data.bname;
-					}
-					
-					if(data.buildingName !== '') {
-						extraAddr += (extraAddr !== '' ? ',' + data.buildingName : data.buildingName);
-					}
-					
-					fullAddr += (extraAddr !== ''? ' (' + extraAddr +')' : '');
-				}
-				
-				fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
-			}
-		
-		document.getElementById('me_org_zip').value = data.zonecode;
-		document.getElementById("me_org_addr1").value = fullAddr;
-		
-		document.getElementById("me_org_addr2").focus();
-		}
-		
-		}).open();
-		
-		
-	}
-	</script> -->
+
 </body>
 </html>
