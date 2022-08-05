@@ -10,7 +10,7 @@
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>noticeUpload</title>
+<title>Q&A Upload</title>
 <link href="<%=cp %>/Data/style/img/ccookat/favicon.ico"
 	rel="shortcut icon" type="image/x-icon">
 <!-- Google Font -->
@@ -104,8 +104,8 @@
 						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
 						<li class="slicknav_collapsed slicknav_parent"><a href="#"
 							role="menuitem" aria-haspopup="true" tabindex="-1"
-							class="slicknav_item slicknav_row" style="outline: none;"><a
-								href="#">Pages</a> <span class="slicknav_arrow">►</span></a>
+							class="slicknav_item slicknav_row" style="outline: none;">
+							<a href="#">Pages</a> <span class="slicknav_arrow">►</span></a>
 						<ul class="header__menu__dropdown slicknav_hidden" role="menu"
 								aria-hidden="true" style="display: none;">
 								<li><a href="./shop-details.html" role="menuitem"
@@ -187,7 +187,7 @@
 							<li><a href="#">Pages</a>
 								<ul class="header__menu__dropdown">
 									<li><a href="./shop-details.html">Shop Details</a></li>
-									<li><a href="./shoping-cart.html">Shoping Cart</a></li>
+									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
 									<li><a href="./checkout.html">Check Out</a></li>
 								</ul></li>
 							<li><a href="./contact.html">Contact</a></li>
@@ -241,11 +241,11 @@
 						</div>
 						<div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
-								<i class="fa fa-phone"></i>
+								<i class="fa fa-truck"></i>
 							</div>
 							<div class="hero__search__phone__text">
-								<h5>+65 11.188.888</h5>
-								<span>support 24/7 time</span>
+								<h5>ccookat delivery</h5>
+								<span> 샛별ㆍ낮 배송</span>
 							</div>
 						</div>
 					</div>
@@ -282,8 +282,8 @@
 						<div>
 							<div class="col-lg-4 col-md-5">
 								<div class="filter__sort">
-									<span>카테고리 선택</span> <select style="display: none;"
-										name="noticeSearchKey">
+									<span>카테고리 선택</span> 
+									<select style="display: none;" name="noticeSearchKey">
 										<option value="gongji">공지사항</option>
 										<option value="jaju">자주하는질문</option>
 										<option value="ildaeil">1:1문의</option>
@@ -304,15 +304,7 @@
 								</p>
 								<input type="text" name="noticeTitle">
 							</div>
-
-							<div class="checkout__input">
-								<p>
-									Image File<span>*</span>
-								</p>
-								<div class="blog__sidebar__item__tags">
-									<input type="file" name="upload" />
-								</div>
-							</div>
+							
 							<div class="checkout__input">
 								<p>
 									Text<span>*</span>
@@ -335,44 +327,46 @@
 	</section>
 	<!-- Checkout Section End -->
 
-	<!-- Related Blog Section Begin -->
-	<section class="contact spad">
+	<!-- Footer Section Begin1 -->
+	<section class="contact spad footer-details">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_phone"></span>
-						<h4>Phone</h4>
-						<p>+01-3-8888-6868</p>
+						<h4>Call Center</h4>
+						<p>+02-1234-6868</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_pin_alt"></span>
 						<h4>Address</h4>
-						<p>60-49 Road 11378 New York</p>
+						<p>
+							서울시 강남구 테헤란로 <br>124 삼원타워 4층 아이티윌
+						</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_clock_alt"></span>
 						<h4>Open time</h4>
-						<p>10:00 am to 23:00 pm</p>
+						<p>24 hour Open Service</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_mail_alt"></span>
 						<h4>Email</h4>
-						<p>hello@colorlib.com</p>
+						<p>ccookat@gmail.com</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Related Blog Section End -->
+	<!-- Footer Section End1 -->
 
-	<!-- Footer Section Begin -->
+	<!-- Footer Section Begin2 -->
 	<div id="footer">
 		<div class="footer-top">
 			<div class="inner_footer">
@@ -414,13 +408,14 @@
 				</div>
 			</div>
 			<div class="footer_indemnification_clause">
-
-				<em class="copy"><p>Copyright © itwill ccookat Corp. All
-						rights reserved.</p></em>
+				<em class="copy">
+					<p>Copyright © itwill ccookat Corp. All rights reserved.</p>
+				</em>
 			</div>
 		</div>
 	</div>
-	<!-- Footer Section End -->
+	<!-- Footer Section End2 -->
+	
 	<!-- Js Plugins -->
 	<script src="<%=cp %>/Data/style/js/jquery-3.3.1.min.js"></script>
 	<script src="<%=cp %>/Data/style/js/bootstrap.min.js"></script>
