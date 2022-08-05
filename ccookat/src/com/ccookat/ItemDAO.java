@@ -101,8 +101,7 @@ public class ItemDAO {
 		try {
 			
 			sql = "select itemNum,itemName,itemCount,itemPrice,itemDiscount,";
-			sql+= "itemType,itemContent,itemImage1,itemImage2,itemImage3,itemImage4,";
-			sql+= "itemStock,itemHitCount) ";
+			sql+= "itemType,itemContent,itemImage1) ";
 			sql+= "from item where itemNum=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -123,11 +122,6 @@ public class ItemDAO {
 				idto.setItemType(rs.getString("itemType"));
 				idto.setItemContent(rs.getString("itemContent"));
 				idto.setItemImage1(rs.getString("itemImage1"));
-				idto.setItemImage2(rs.getString("itemImage2"));
-				idto.setItemImage3(rs.getString("itemImage3"));
-				idto.setItemImage4(rs.getString("itemImage4"));
-				idto.setItemStock(rs.getInt("itemStock"));
-				idto.setItemHitCount(rs.getInt("itemHitCount"));
 				
 			}
 			
