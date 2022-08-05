@@ -67,9 +67,8 @@ public class ReviewServlet extends HttpServlet {
 		
 		//리스트 뿌리기
 		
-		if(uri.indexOf("/main/item/detail.do") != -1) {
-			
-			
+		if(uri.indexOf("list.do") != -1) {
+					
 		//페이징 작업
 		String pageNum = req.getParameter("pageNum");
 		int itemNum =Integer.parseInt(req.getParameter("itemNum"));
@@ -116,12 +115,13 @@ public class ReviewServlet extends HttpServlet {
 		req.setAttribute("totalPage", totalPage);
 		req.setAttribute("reviewtotalArticle", reviewtotalArticle);
 		req.setAttribute("currentPage", currentPage);
+		req.setAttribute("reviewtotalArticle", reviewtotalArticle);
 		
-		url = "/item/detail.jsp";
+		url = "/item/detail.jsp?pageNum="+pageNum;
 		forward(req, resp, url);
 		
 	//생성
-	}else if(uri.indexOf("main/review/created.do") != -1) {
+	}else if(uri.indexOf("created.do") != -1) {
 	/*		HttpSession session = req.getSession();
 			CustomInfo info = //이렇게 받을준비해서
 					(CustomInfo)session.getAttribute("customInfo");
@@ -130,13 +130,16 @@ public class ReviewServlet extends HttpServlet {
 				//여기 작성하기
 				forward(req, resp, url);
 				return;
-				
-			
-			
+
 					*/
 		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+
 		
 		req.setAttribute("itemNum", itemNum);
+		req.setAttribute("pageNum", pageNum);
+
+		
 		url = "/review/created.jsp";
 		forward(req, resp, url);
 	} else if (uri.indexOf("created_ok.do") != -1) {
@@ -150,13 +153,10 @@ public class ReviewServlet extends HttpServlet {
 		MultipartRequest mr = 
 				new MultipartRequest(req, path, maxSize, encType,
 						new DefaultFileRenamePolicy()); 
+		
 		int pageNum = Integer.parseInt(mr.getParameter("pageNum"));
 		int itemNum = Integer.parseInt(mr.getParameter("itemNum"));
-		System.out.println(pageNum);
-		System.out.println(itemNum);
-		
-		
-		
+	
 		ReviewDTO rdto = new ReviewDTO();
 		ItemDTO idto = new ItemDTO();
 		int maxNum = rdao.getMaxNum();
@@ -183,7 +183,7 @@ public class ReviewServlet extends HttpServlet {
 		url = cp + "/main/item/detail.do?pageNum=" + pageNum + "&itemNum="+ itemNum ; // 리다이렉트는 가상의주소로
 		resp.sendRedirect(url);
 		//수정
-	} else if (uri.indexOf("main/review/updated.do") != -1) {
+	} else if (uri.indexOf("updated.do") != -1) {
 		int reviewNum =Integer.parseInt(req.getParameter("reviewNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
@@ -206,7 +206,7 @@ public class ReviewServlet extends HttpServlet {
 			forward(req, resp, url);
 	
 	
-	} else if (uri.indexOf("main/review/updated_ok.do") != -1) {
+	} else if (uri.indexOf("updated_ok.do") != -1) {
 		
 		String encType = "UTF-8";
 		int maxSize = 10 * 1024 * 1024;
@@ -235,7 +235,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		url = cp + "/main/item/list.do?pageNum="+pageNum ;
 		resp.sendRedirect(url);
-	} else if (uri.indexOf("main/review/deleted.do") != -1) {
+	} else if (uri.indexOf("deleted.do") != -1) {
 		
 		int reviewNum = Integer.parseInt(req.getParameter("reviewNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
