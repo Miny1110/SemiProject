@@ -103,8 +103,8 @@
 						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
 						<li class="slicknav_collapsed slicknav_parent"><a href="#"
 							role="menuitem" aria-haspopup="true" tabindex="-1"
-							class="slicknav_item slicknav_row" style="outline: none;">
-							<a href="#">Pages</a> <span class="slicknav_arrow">►</span></a>
+							class="slicknav_item slicknav_row" style="outline: none;"> <a
+								href="#">Pages</a> <span class="slicknav_arrow">►</span></a>
 							<ul class="header__menu__dropdown slicknav_hidden" role="menu"
 								aria-hidden="true" style="display: none;">
 								<li><a href="./shop-details.html" role="menuitem"
@@ -190,9 +190,21 @@
 									<li><a href="#">English</a></li>
 								</ul>
 							</div>
-							<div class="header__top__right__auth">
-								<a href="#"><i class="fa fa-user"></i> Login</a>
-							</div>
+								<c:choose>
+								<c:when test="${empty sessionScope.customInfo.customerId }">
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
+									</div>
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
+									</div>
+								</c:when>
+							       <c:otherwise>
+             						<div class="header__top__right__auth">
+               						<a href="#"><i class="fa fa-user"></i> Mypage</a>
+           						 </div>
+            </c:otherwise>
+</c:choose>
 						</div>
 					</div>
 				</div>
@@ -306,36 +318,32 @@
 				<div id="qna_list">
 					<br> <br> <br>
 					<div id="qna_title">
-						질문과 답변<span class="sub">컬리에게 질문해 주시면 최대한 빠르게 답변해 드립니다.</span>
+						질문과 답변<span class="sub">꾸캣에게 질문해 주시면 최대한 빠르게 답변해 드립니다.</span>
 					</div>
 
 					<table class="qna_table">
 						<tbody>
-							<tr>
+						
+							<tr id="lists">
 								<th class="qna_tr" width="100">번호</th>
 								<th width="500">제목</th>
 								<th class="qna_tr" width="100">작성자</th>
 								<th class="qna_tr" width="200">작성일</th>
+								<th class="qna_tr" width="100">조회수</th>
 							</tr>
-
+							<c:forEach var="qdto" items="${lists }">
 							<tr id="lists">
-								<c:forEach var="qdto" items="${lists }">
-									<td class="subject ">
-										<dl>
-											<dd class="num">${dto.num }</dd>
-											<dd class="subject">
-												<a href="${articleUrl }&num=${qdto.num}">${dto.subject }</a>
-											</dd>
-											<dd class="name">${qdto.qnaNum }</dd>
-											<dd class="created">${qdto.created }</dd>
-											<dd class="hitCount">${qdto.hitCount }</dd>
-										</dl>
-								</c:forEach>
+								
+									<td>${qdto.qnaNum }</td>
+									<td>${qdto.qnaContent }</td>
+									<td>${qdto.customerId }</td>
+									<td>${qdto.qnaCreated }</td>
+									<td>${qdto.qnaHitCount }</td>
+								
+							</tr>	
+							</c:forEach>
 						</tbody>
 					</table>
-
-
-
 
 					<div class="col-lg-12">
 						<div class="product__pagination blog__pagination">
@@ -343,23 +351,26 @@
 					</div>
 					<br>
 
-					<form action="index.jsp?folder=qna&amp;category=qna_list" method="post">
+					<form action="index.jsp?folder=qna&amp;category=qna_list"
+						method="post">
 						<div class="qna_table_box">
-						  <div>
-							<select name="search">
-								<option value="q_name" selected="selected">&nbsp;작성자&nbsp;</option>
-								<option value="q_title">&nbsp;제목&nbsp;</option>
-								<option value="q_content">&nbsp;내용&nbsp;</option>
-							</select> <input type="text" name="keyword">
-							<button class="qna_submit" type="submit">검색</button>
-							<a class="qna_submit_a" href="<%=cp%>/main/qna/upload.do?">글올리기</a>
+							<div>
+								<select name="search">
+									<option value="q_name" selected="selected">&nbsp;작성자&nbsp;</option>
+									<option value="q_title">&nbsp;제목&nbsp;</option>
+									<option value="q_content">&nbsp;내용&nbsp;</option>
+								</select> <input type="text" name="keyword">
+								<button class="qna_submit" type="submit">검색</button>
+								<button class="qna_submit_a">
+									<a href="<%=cp%>/main/qna/upload.do?">글올리기</a>
+								</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-		
+
 	</section>
 	<!-- Blog Section End -->
 
