@@ -47,7 +47,8 @@ public class CustomerServlet extends HttpServlet{
 		MyPage myPage = new MyPage();
 
 		String url;
-
+		
+		//회원정보 입력
 		if(uri.indexOf("created.do")!=-1){
 
 			url = "/customer/signUp.jsp";
@@ -56,7 +57,7 @@ public class CustomerServlet extends HttpServlet{
 		} else if(uri.indexOf("created_ok.do")!=1) {
 					
 			CustomerDTO cdto = new CustomerDTO();
-
+			
 			cdto.setCustomerId(req.getParameter("customerId"));
 			cdto.setCustomerPwd(req.getParameter("customerPwd"));
 			cdto.setCustomerName(req.getParameter("customerName"));
@@ -68,7 +69,9 @@ public class CustomerServlet extends HttpServlet{
 			url = cp;
 			resp.sendRedirect(url);
 			
-		}else if(uri.indexOf("login.do")!=-1) {
+		}
+		//로그인창
+		else if(uri.indexOf("login.do")!=-1) {
 			
 			url = "/notice/noticeMain.jsp";
 			forward(req, resp, url);
