@@ -10,7 +10,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>ccookat</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
@@ -213,8 +213,8 @@
 						<c:choose>
 								<c:when test="${empty sessionScope.customInfo.customerId }">
 						<ul>
-							<li><a href="<%=cp %>/main/customer/login.do"><i class="fa fa-heart"></i> <span>비</span></a></li>
-							<li><a href="<%=cp %>/main/customer/login.do"><i class="fa fa-shopping-bag"></i> <span>비</span></a></li>
+							<li><a href="<%=cp %>/main/customer/login.do"><i class="fa fa-heart"></i> </a></li>
+							<li><a href="<%=cp %>/main/customer/login.do"><i class="fa fa-shopping-bag"></i> </a></li>
 						</ul>
 						</c:when>
 						<c:otherwise>
@@ -259,13 +259,13 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form action="">
                                 <div class="hero__search__categories">
-                                    All Categories
+                                   	모든항목
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="검색어를 입력하세요">
+                                <button type="submit" class="site-btn">검색하기</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -432,7 +432,6 @@
                         <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-1.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-1.jpg&quot;);">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
@@ -447,104 +446,40 @@
                         <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-2.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-2.jpg&quot;);">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
+                        <!--  여기부터 상품 이미지 게시판 사진, 페이징 시작   -->          
+                       <div class="row featured__filter" id="MixItUp8D53A2" style="">
+                              <c:forEach var="idto" items="${itemMainList }">
+                       <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood" style="">
+                           <div class="featured__item">
+                                <div class="featured__item__pic set-bg">
+                                <a href="<%=cp %>/main/item/list.do?itemType=fruit">
+                                	<img src="${imagePath }/${idto.itemImage1}"></a>
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="featured__item__text">
+                                    <h6><a href="<%=cp %>/main/item/list.do?itemType=fruit">Crab Pool Security</a></h6>
+                           			 <h5>$30.00</h5>
+                                </div>
+                            </div>
+                        </div>                       
+                     </c:forEach>
+                       
+                  <%--   <div class="product__pagination">
+                        ${pageIndexList }
+                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    </div> --%>
+                   <!--  여기까지 상품 이미지 게시판 사진, 페이징 끝   -->          
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat" style="">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-3.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-3.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges" style="">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-4.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-4.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables" style="">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-5.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-5.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood" style="">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="<%=cp %>/Data/style/img/featured/feature-6.jpg" style="background-image: url(&quot;<%=cp %>/Data/style/img/featured/feature-6.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables" style="">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-7.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-7.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables" style="">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-8.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-8.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
+            
+
+                
                     </div>
                 </div>
             </div>
