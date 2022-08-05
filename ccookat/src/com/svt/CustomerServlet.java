@@ -54,7 +54,7 @@ public class CustomerServlet extends HttpServlet{
 			url = "/customer/signUp.jsp";
 			forward(req, resp, url);
 
-		} else if(uri.indexOf("created_ok.do")!=1) {
+		} else if(uri.indexOf("created_ok.do")!=-1) {
 					
 			CustomerDTO cdto = new CustomerDTO();
 			
@@ -73,13 +73,14 @@ public class CustomerServlet extends HttpServlet{
 		//로그인창
 		else if(uri.indexOf("login.do")!=-1) {
 			
-			url = "/customer/signUp.jsp";
+			url = "/customer/login.jsp";
 			forward(req, resp, url);
 
 		}else if(uri.indexOf("login_ok.do")!=-1) {
 			
 			String customerId = req.getParameter("customerId");
 			String customerPwd = req.getParameter("customerPwd");
+			
 			
 			CustomerDTO cdto = cdao.getReadData(customerId);
 			
@@ -108,7 +109,7 @@ public class CustomerServlet extends HttpServlet{
 			session.setAttribute("customerInfo", info);
 			
 			url = cp;
-			forward(req, resp, url);
+			resp.sendRedirect(url);
 			
 		}else if(uri.indexOf("logout.do")!=-1) {
 			
