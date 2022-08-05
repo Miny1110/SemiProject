@@ -353,7 +353,7 @@ public class ItemDAO {
 			sql+= "select rownum rnum, data.* from (";
 			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
 			sql+= "from item where itemType=? order by itemHitCount desc) data ) ";
-			sql+= "where rnum>=1 and rnum<=3";
+			sql+= "where rnum>=1 and rnum<=4";
 			
 			pstmt = conn.prepareStatement(sql);
 			
