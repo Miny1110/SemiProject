@@ -133,29 +133,17 @@ public class QnaServlet extends HttpServlet {
 			forward(request, response, url);
 
 			}else if(uri.indexOf("upload_ok.do")!=-1) {
-
-				String encType = "UTF-8";
-				int maxSize = 10*1054*1024;
-
-				MultipartRequest mr = 
-						new MultipartRequest(request, path, maxSize,encType,
-								new DefaultFileRenamePolicy());
-
-
-				if(mr.getFile("upload")!=null) {
 	
 					QnaDTO qdto = new QnaDTO();
 
 					int maxnum = qdao.getMaxNum();
 					
 					qdto.setQnaNum(maxnum+1);
-					qdto.setQnaTitle(mr.getParameter("qnaTitle"));
-					qdto.setQnaContent(mr.getParameter("qnaContent"));
+					qdto.setQnaTitle(request.getParameter("qnaTitle"));
+					qdto.setQnaContent(request.getParameter("qnaContent"));
 					
 					qdao.insertData(qdto);
 					
-				}
-				
 				url = cp + "/main/qna/list.do?";
 				response.sendRedirect(url);
 			
@@ -182,7 +170,7 @@ public class QnaServlet extends HttpServlet {
 				request.setAttribute("qdto", qdto);
 				request.setAttribute("pageNum", pageNum);
 				
-				url = "/notice/noticeDetail.jsp";
+				url = "/qna/qnaDetail.jsp";
 				forward(request, response, url);
 			
 			} else if(uri.indexOf("delete.do")!=-1) {

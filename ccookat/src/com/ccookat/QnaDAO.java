@@ -62,7 +62,7 @@ public class QnaDAO {
 			searchValue = "%" + searchValue + "%";
 
 			sql = "select nvl(count(*),0) from qna ";
-			sql+= "where qnaContent like ? or anqTitle like ?";
+			sql+= "where qnaContent like ? or qnaTitle like ?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -92,7 +92,7 @@ public class QnaDAO {
 
 		try {
 
-			sql = "update qna set qnahitCount=anqhitCount+1 where noticeNum=?";
+			sql = "update qna set qnahitCount=qnahitCount+1 where qnaNum=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -172,7 +172,7 @@ public class QnaDAO {
 
 		try {
 
-			sql = "insert into notice(qnaNum,qnaTitle,qnaCreated,";
+			sql = "insert into qna(qnaNum,qnaTitle,qnaCreated,";
 			sql+= "qnaContent,qnaHitCount) ";
 			sql+= "values(?,?,sysdate,?,0)";
 

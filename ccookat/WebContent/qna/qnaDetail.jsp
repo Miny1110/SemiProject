@@ -25,7 +25,6 @@
 <link rel="stylesheet" href="/ccookat/Data/style/css/login.css" type="text/css">
 <link rel="stylesheet" href="/ccookat/Data/style/css/nice-select.css" type="text/css">
 <link rel="stylesheet" href="/ccookat/Data/style/css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="/ccookat/Data/style/css/signUp.css" type="text/css">
 <link rel="stylesheet" href="/ccookat/Data/style/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="/ccookat/Data/style/css/style.css" type="text/css">
 
@@ -292,10 +291,10 @@
 		</tr>
 	</tbody></table>
 	
+	
 	<div id="qna_menu">
-			
-			
 		<button type="button" class="w-btn" id="listBtn">목록</button>	
+		<button type="button" class="w-btn">답변</button>
 	</div>
 	
 	
