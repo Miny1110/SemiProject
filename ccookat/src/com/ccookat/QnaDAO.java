@@ -16,7 +16,7 @@ public class QnaDAO {
 
 	}
 
-	//Q&A  넘버 삭제시에도 밀리지 않게 해주는 maxnum코드
+	//Q&A 넘버 삭제시에도 밀리지 않게 해주는 maxnum코드
 	public int getMaxNum() {
 
 		int maxNum =0;
@@ -48,6 +48,91 @@ public class QnaDAO {
 		return maxNum;
 	}
 
+	//Q&A 업로드(입력메소드)
+	public int insertData(QnaDTO qdto) {
+
+		int qnaResult = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+
+		try {
+
+			sql = "insert into qna (qnaNum,qnaTitle,qnaCreated,customerId,";
+			sql+= "qnaContent,qnaHitCount) ";
+			sql+= "values (?,?,sysdate,?,?,0)";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, qdto.getQnaNum());
+			pstmt.setString(2, qdto.getQnaTitle());
+			pstmt.setString(3, qdto.getCustomerId());
+			pstmt.setString(4, qdto.getQnaContent());
+
+			pstmt.executeUpdate();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return qnaResult;
+	}
+
+	//Q&A 목록에 뿌려줄 전체 데이터
+	public List<QnaDTO> selectAll(int start,int end,
+			String searchKey, String searchValue) {
+
+		List<QnaDTO> lists = new ArrayList<QnaDTO>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+
+			searchValue = "%" + searchValue + "%";
+
+			//rownum의 시작값(start)과 끝값(end)을 받을것임
+			//rownum은 무조건 별칭을 만들어주어야함
+			sql ="select * from(select rownum rnum,data.* from ";
+			sql+="(select qnaNum,qnaTitle,qnaContent,";
+			sql+="customerId,to_char(qnaCreated,'yyyy.mm.dd') qnaCreated,qnaHitCount ";
+			sql+="from qna where " + searchKey + " like ? ";			
+			sql+="order by qnaNum desc) data) ";
+			sql+="where rnum>=? and rnum<=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, searchValue);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				QnaDTO qdto = new QnaDTO();
+
+				qdto.setQnaNum(rs.getInt("qnaNum"));
+				qdto.setQnaTitle(rs.getString("qnaTitle"));
+				qdto.setQnaContent(rs.getString("qnaContent"));
+				qdto.setCustomerId(rs.getString("customerId"));
+				qdto.setQnaCreated(rs.getString("qnaCreated"));
+				qdto.setQnaHitCount(rs.getInt("qnaHitCount"));
+
+				lists.add(qdto);
+
+			}
+
+			pstmt.close();
+			rs.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		return lists;
+	}
+
 	//페이징 처리를 위한 전체 데이터 갯수 도출
 	public int getDataCount(String searchkey, String searchValue) {
 
@@ -68,11 +153,9 @@ public class QnaDAO {
 
 			pstmt.setString(1, searchValue);
 
-
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
-
 				dataCount = rs.getInt(1);							
 			}
 
@@ -84,179 +167,18 @@ public class QnaDAO {
 		}		
 		return dataCount;
 	}
-
-	public void updateHitCount(int qnaNum) {
-
-		PreparedStatement pstmt = null;
-		String sql;
-
-		try {
-
-			sql = "update qna set qnahitCount=qnahitCount+1 where qnaNum=?";
-
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setInt(1, qnaNum);
-
-			pstmt.executeUpdate();
-
-			pstmt.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-
-	}
-
-
-	//Q&A 목록에 뿌려줄 데이터
-	public List<QnaDTO> selectAll(int start,int end,
-			String searchKey, String searchValue) {
-
-		List<QnaDTO> lists = new ArrayList<>();
+	
+	//num으로 한개의 데이터 가져오기
+	public QnaDTO getReadData(int qnaNum) {
+		
 		QnaDTO qdto = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
 
 		try {
-
-			searchValue = "%" + searchValue + "%";
-
-			sql ="select * from(select rownum rnum,data.* from ";
-			sql+="(select qnaNum,qnaTitle,SUBSTR(qnaContent, 1, 30) qnaContent,";
-			sql+="customerId,to_char(qnaCreated,'yyyy.mm.dd') qnaCreated,qnaAnswer,qnaHitCount ";
-			sql+="from qna where " + searchKey + " like ? ";			
-			sql+="order by qnaNum desc) data) ";
-			sql+="where rnum>=? and rnum<=?";
-
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, searchValue);
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
-
-			rs = pstmt.executeQuery();
-
-			while(rs.next()) {
-
-				qdto = new QnaDTO();
-
-				qdto.setQnaNum(rs.getInt("qnaNum"));
-				qdto.setQnaTitle(rs.getString("qnaTitle"));
-				qdto.setQnaContent(rs.getString("qnaContent"));
-				qdto.setCustomerId(rs.getString("customerId"));
-				qdto.setQnaCreated(rs.getString("qnaCreated"));
-				qdto.setQnaAnswer(rs.getString("qnaAnswer"));
-				qdto.setQnaHitCount(rs.getInt("qnaHitCount"));
-
-				lists.add(qdto);
-
-			}
-
-			pstmt.close();
-			rs.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-
-		return lists;
-	}
-
-	//Q&A 업로드
-	public void insertData(QnaDTO qdto) {
-
-		PreparedStatement pstmt = null;
-		String sql;
-
-		try {
-
-			sql = "insert into qna(qnaNum,qnaTitle,qnaCreated,customerId,";
-			sql+= "qnaContent,qnaHitCount) ";
-			sql+= "values(?,?,sysdate,?,?,0)";
-
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setInt(1, qdto.getQnaNum());
-			pstmt.setString(2, qdto.getQnaTitle());
-			pstmt.setString(3, qdto.getCustomerId());
-			pstmt.setString(4, qdto.getQnaContent());
-
-			pstmt.executeUpdate();
-			pstmt.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-	}
-	
-	//updata Data
-	public void updateData(QnaDTO qdto) {
-
-		PreparedStatement pstmt = null;
-		String sql;
-
-		try {
-			
-			sql = "update qna set qnaTitle=?,qnaContent=?, ";
-			sql+= "where qnaNum=?";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, qdto.getQnaTitle());
-			pstmt.setString(2, qdto.getQnaContent());
-			pstmt.setInt(3, qdto.getQnaNum());
-			
-			pstmt.executeUpdate();
-			pstmt.close();
-		
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-	}	
-	
-	
-	//delete Data
-	public void deleteData(int qnaNum) {
-		
-		PreparedStatement pstmt = null;
-		String sql;
-		
-		try {
-			
-			sql = "delete from qna where qnaNum=?";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, qnaNum);
-			
-			pstmt.executeUpdate();
-			
-			pstmt.close();
-			
-			
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		
-		
-	}	
-
-		
-	//수정시 뿌려줄 데이터
-	public QnaDTO selectData(int qnaNum) {
-
-		QnaDTO qdto=null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
-
-		try {
-
-			sql ="select qnaNum,qnaTitle,qnaCreated,";
-			sql+="qnaContent,qnaHitCount ";
-			sql+="from qna where qnaNum=?";
+			sql = "select qnaNum,customerId,qnaCreated,qnaTitle,qnaContent ";
+			sql+= "from qna where qnaNum=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -265,41 +187,53 @@ public class QnaDAO {
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
-
-				qdto = new QnaDTO();
 				
+				qdto = new QnaDTO();
+
 				qdto.setQnaNum(rs.getInt("qnaNum"));
-				qdto.setQnaTitle(rs.getString("qnaTitle"));
+				qdto.setCustomerId(rs.getString("customerId"));
 				qdto.setQnaCreated(rs.getString("qnaCreated"));
+				qdto.setQnaTitle(rs.getString("qnaTitle"));
 				qdto.setQnaContent(rs.getString("qnaContent"));
-				qdto.setQnaHitCount(rs.getInt("qnaHitCount"));
+
 			}
 
-			pstmt.close();
 			rs.close();
+			pstmt.close();
 
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-
-		return qdto;
-	}	
-
-	
-	//num으로 한개의 데이터 가져오기
-	public QnaDTO getReadData(int qnaNum) {
-		QnaDTO qdto = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
-		
-		try {
-			sql = "select 
-			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 		return qdto;
 	}
+	
+	//조회수 증가
+	public int updateHitCount(int qnaNum) {
+
+		int qnaResult = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+
+		try {
+
+			sql = "update qna set qnaHitCount = qnaHitCount + 1 where qnaNum=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, qnaNum);
+
+			qnaResult = pstmt.executeUpdate();
+
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		return qnaResult;
+		
+	}
+	
+
 
 }
