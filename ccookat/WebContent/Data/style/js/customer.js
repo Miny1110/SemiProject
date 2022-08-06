@@ -148,7 +148,25 @@ function login() {
 }
 
 
-
+function customerPwdChk(){
+	
+	var f = document.myForm;
+	
+	if(!f.customerPwd.value){
+		alert("비밀번호를 입력하세요");
+		f.customerPwd.focus();
+		return;
+	}
+	
+	f.action = "/ccookat/main/customer/customerPwdChk_ok.do";
+	f.submit();
+	
+	
+	
+	
+	
+	
+}
 
 
 

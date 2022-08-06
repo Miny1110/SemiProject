@@ -178,7 +178,7 @@
 							</c:if>
 							<c:if test="${!empty sessionScope.customerInfo.customerId}">
              						<div class="header__top__right__auth">
-               						<a href="<%=cp %>/main/customer/updated.do"><i class="fa fa-user"></i> Mypage</a>
+               						<a href="<%=cp %>/main/customer/customerPwdChk.do"><i class="fa fa-user"></i> Mypage</a>
            						 </div>
            						 <div class="header__top__right__auth">
            						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
