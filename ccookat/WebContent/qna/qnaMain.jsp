@@ -370,11 +370,6 @@
 						<div class="qna_table_box">
 							<div>
 							<form action="" method="post" name="searchForm">
-								<select name="searchkey" value="searchkey">
-									<option value="qnaTitle" selected="selected">&nbsp;제목&nbsp;</option>
-									<option value="customerId" >&nbsp;작성자&nbsp;</option>
-									<option value="qnaContent">&nbsp;내용&nbsp;</option>
-								</select> 
 								<input type="text" name="searchValue">
 								<input class="qna_submit" type="button" value="검색" onclick="sendIt();"/>
 								<button class="qna_submit_a">

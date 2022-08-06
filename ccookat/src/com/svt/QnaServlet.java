@@ -89,6 +89,20 @@ public class QnaServlet extends HttpServlet {
 
 		} else if(uri.indexOf("list.do") != -1) {
 
+			HttpSession session = request.getSession();
+
+			CustomerInfo customerInfo = new CustomerInfo();
+
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo==null) {
+				url = "/main/customer/login.do";
+				forward(request, response, url);
+				return;
+			}
+			
+			String customerId = customerInfo.getCustomerId();
+			
 			String pageNum = request.getParameter("pageNum");
 
 			int currentPage = 1;
@@ -99,17 +113,16 @@ public class QnaServlet extends HttpServlet {
 			}
 
 			//검색
-			String searchKey = request.getParameter("searchKey");
+			String searchKey="qnaTitle";
 			String searchValue = request.getParameter("searchValue");
 
 			if(searchValue==null){
-
-				searchKey="qnaTitle";
+				
 				searchValue = "";
 
 			}	
 
-			int dataCount = qdao.getDataCount(searchKey, searchValue);
+			int dataCount = qdao.getDataCount(searchKey, searchValue,customerId);
 			
 			int numPerPage = 5;
 
@@ -125,18 +138,18 @@ public class QnaServlet extends HttpServlet {
 
 			//실제 rownum가져오기
 			List<QnaDTO> lists = 
-					qdao.selectAll(start, end, searchKey, searchValue);
+					qdao.selectAll(start, end, searchKey, searchValue,customerId);
 
 			String params = "";
 			if(searchValue!=null && !searchValue.equals("")) {
-				params = "searchKey=" + searchKey; 
+				params = "?searchKey=" + searchKey; 
 				params += "&searchValue=" + searchValue;
 			}
 
 			String listUrl = cp + "/main/qna/list.do";
 
 			if(!params.equals("")) {
-				listUrl += "?" + params;			
+				listUrl += params;			
 			}
 
 			String pageIndexList = 

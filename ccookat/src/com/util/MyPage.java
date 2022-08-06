@@ -31,9 +31,6 @@ public class MyPage {
 		
 		if(listUrl.indexOf("?")!=-1) { // 
 			listUrl = listUrl + "&";	
-		}else {
-			listUrl = listUrl + "?";
-
 		}
 		
 		currentPageSetup = (currentPage/numPerBlock) * numPerBlock;
