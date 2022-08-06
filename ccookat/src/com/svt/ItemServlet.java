@@ -107,12 +107,10 @@ public class ItemServlet extends HttpServlet {
 			//제품번호 가져와
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 
+
 			//페이지번호 가져와
 			String pageNum = req.getParameter("pageNum");
 
-			
-			//리뷰번호 들고와
-			//int reviewNum = Integer.parseInt(req.getParameter("reviewNum"));
 			
 			//제품번호 매개로 조회수  업데이트
 			idao.updateHitCount(itemNum);
@@ -173,7 +171,6 @@ public class ItemServlet extends HttpServlet {
 			req.setAttribute("currentPage", currentPage);
 
 			req.setAttribute("itemNum", itemNum);
-			//req.setAttribute("reviewNum", reviewNum);
 			req.setAttribute("itemImagePath", itemImagePath);
 			req.setAttribute("itemDeletePath", itemDeletePath);
 			req.setAttribute("reviewImagePath", reviewImagePath);
@@ -310,6 +307,8 @@ public class ItemServlet extends HttpServlet {
 
 
 	}
+
+
 
 
 
