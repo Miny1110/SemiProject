@@ -349,7 +349,7 @@
 							<tr id="lists">
 								
 									<td class="qna_tr">${qdto.qnaNum }</td>
-									<td><a href="${detailUrl }&num=${qdto.qnaNum}">
+									<td><a href="${detailUrl }&qnaNum=${qdto.qnaNum}">
 									${qdto.qnaTitle }</a></td>
 									<td class="qna_tr">${qdto.customerId }</td>
 									<td class="qna_tr">${qdto.qnaCreated }</td>
@@ -366,10 +366,11 @@
 					</div>
 					<br>
 
-					<form action="" method="post" name="searchForm">
+					
 						<div class="qna_table_box">
 							<div>
-								<select name="searchkey">
+							<form action="" method="post" name="searchForm">
+								<select name="searchkey" value="searchkey">
 									<option value="qnaTitle" selected="selected">&nbsp;제목&nbsp;</option>
 									<option value="customerId" >&nbsp;작성자&nbsp;</option>
 									<option value="qnaContent">&nbsp;내용&nbsp;</option>
@@ -377,11 +378,17 @@
 								<input type="text" name="searchValue">
 								<input class="qna_submit" type="button" value="검색" onclick="sendIt();"/>
 								<button class="qna_submit_a">
-									<a href="<%=cp%>/main/qna/upload.do?">글올리기</a>
+								<c:if test="${!empty sessionScope.customerInfo.customerId}">
+									<a href="<%=cp%>/main/qna/upload.do">글올리기</a>
+									</c:if>
+									<c:if test="${empty sessionScope.customerInfo.customerId}">
+									<a href="<%=cp%>/main/customer/login.do">글올리기</a>
+									</c:if>
 								</button>
+							</form>	
 							</div>
 						</div>
-					</form>
+					
 				</div>
 			</div>
 		</div>
