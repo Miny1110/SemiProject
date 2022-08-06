@@ -388,8 +388,7 @@ public class ItemDAO {
 	//전체상품 조회순으로 정렬
 	public List<ItemDTO> getHitCountLists(){
 		
-		List<ItemDTO> lists = new ArrayList<ItemDTO>();
-		
+		List<ItemDTO> mainLists = new ArrayList<ItemDTO>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;	
@@ -418,7 +417,7 @@ public class ItemDAO {
 				idto.setItemImage1(rs.getString("itemImage1"));
 				idto.setItemHitCount(rs.getInt("itemHitCount"));
 				
-				lists.add(idto);
+				mainLists.add(idto);
 				
 			}
 
@@ -430,7 +429,7 @@ public class ItemDAO {
 			System.out.println(e.toString());
 		}
 		
-		return lists;
+		return mainLists;
 		
 	}
 	
