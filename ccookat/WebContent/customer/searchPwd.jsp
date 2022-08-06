@@ -286,9 +286,9 @@
 				name="customerTel" class="text-field" placeholder="전화번호를 입력해주세요">
 
 			<div>
-				<input type="button" value="입력완료" class="btn1" onclick="login();" />
-			
+				<input type="button" value="입력완료" class="btn1" onclick="<%=cp%>/main/customer/searchPwd_ok.do" />
 				<input type="reset" value="다시입력" class="btn1" onclick="document.myForm.customerId.focus();">
+				<input type="button" value="돌아가기" class="btn1" onclick="<%=cp%>/main/customer/login.do" />
 			</div>
 		</form>
 	</div>
