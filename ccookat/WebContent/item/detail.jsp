@@ -297,7 +297,6 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">ADD TO CART</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>Availability</b> <span>${idto.itemStock }개</span></li>
@@ -391,8 +390,10 @@
 														 <c:if test="${sessionScope.customerInfo.customerId==rdto.customerId}"	>													
 														<div class="blog__sidebar__item__tags">
 															<a href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
+															<a href="location='/ccookat/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
 																수정하기</a>
 															<a href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
+															<a href="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
 																삭제하기</a>	
 														</div>
 														</c:if>
