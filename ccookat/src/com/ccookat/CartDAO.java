@@ -14,8 +14,39 @@ public class CartDAO {
 		this.conn = conn;	
 	}
 	
+	public int getMaxNum() {
+
+		int maxNum =0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+
+			sql = "select nvl(max(cartNum),0) from cart";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+
+				maxNum = rs.getInt(1); 								
+			}
+
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		return maxNum;
+	}
+
+	
 	//장바구니에 넣어져있는 데이터를 가져오기
-	//조건절에 customerId 일치할때 넣기
 	//아이템 가격을 item 테이블에서 가져오고
 	//totprice는 연산을 통해서 값을 저장하는 걸로 코드 바꿔야할거같음
 	public List<CartDTO> selectAll(String customerId) {
@@ -31,7 +62,7 @@ public class CartDAO {
 			
 			sql = "select a.cartnum,a.customerid,a.itemnum,a.cartitemcount,";
 			sql+= "a.carttotprice, b.itemname,b.itemImage1 from cart a join item b ";
-			sql+= "on a.itemnum = b.itemnum where customerid=?";
+			sql+= "on a.itemnum = b.itemnum where customerid=? order by a.cartnum desc";
 			
 			pstmt = conn.prepareStatement(sql);
 			
