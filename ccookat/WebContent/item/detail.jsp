@@ -297,7 +297,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="<%=cp %>/main/cart/cartin.do" class="primary-btn">장바구니</a>
+                        <a href="#" class="primary-btn">ADD TO CART</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>Availability</b> <span>${idto.itemStock }개</span></li>

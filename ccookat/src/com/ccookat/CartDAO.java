@@ -47,6 +47,8 @@ public class CartDAO {
 
 	
 	//장바구니에 넣어져있는 데이터를 가져오기
+	//아이템 가격을 item 테이블에서 가져오고
+	//totprice는 연산을 통해서 값을 저장하는 걸로 코드 바꿔야할거같음
 	public List<CartDTO> selectAll(String customerId) {
 		
 		PreparedStatement pstmt = null;

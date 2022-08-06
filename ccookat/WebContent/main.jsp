@@ -222,7 +222,7 @@
 							</c:if>
 							<c:if test="${!empty sessionScope.customerInfo.customerId}">
 								<ul>
-									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i> <span>5</span></a></li>
+									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i> <span>55</span></a></li>
 									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>장바구니수량</span></a></li>
 								</ul>
 									</c:if>
