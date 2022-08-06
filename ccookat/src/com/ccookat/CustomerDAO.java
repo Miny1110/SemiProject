@@ -142,7 +142,7 @@ public class CustomerDAO {
 			
 			sql = "select customerId,customerPwd,";
 			sql+= "customerName,customerEmail,customerTel ";
-			sql+= "from Customer where customerId=?";
+			sql+= "from customer where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -182,16 +182,14 @@ public class CustomerDAO {
 		
 		try {
 			
-			sql = "update customer set customerPwd=?,customerPwd2=?, ";
-			sql+= "customerEmail=?,customerTel=? from customer where customerId=?";
+			sql = "update customer set customerPwd=?,customerEmail=?,customerTel=? ";
+			sql+= "where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, cdto.getCustomerPwd());
-			pstmt.setString(2, cdto.getCustomerPwd2());
-			pstmt.setString(3, cdto.getCustomerEmail());
-			pstmt.setString(4, cdto.getCustomerTel());
-			pstmt.setString(5, cdto.getCustomerId());
+			pstmt.setString(2, cdto.getCustomerEmail());
+			pstmt.setString(3, cdto.getCustomerTel());
 			
 			result = pstmt.executeUpdate();
 			

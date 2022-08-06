@@ -117,6 +117,20 @@ function sample6_execDaumPostcode() {
 }
 
 
+function sendIt() {
+	
+	var f= document.myForm;
+	
+	f.action = "/ccookat/main/customer/updated_ok.do";
+	f.submit();
+}	
+
+
+
+
+
+
+
 
 
 

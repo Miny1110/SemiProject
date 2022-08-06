@@ -107,6 +107,7 @@ public class CustomerServlet extends HttpServlet{
 			
 			url = cp;
 			resp.sendRedirect(url);
+			return;
 			
 		}else if(uri.indexOf("logout.do")!=-1) {
 			
@@ -117,6 +118,7 @@ public class CustomerServlet extends HttpServlet{
 			
 			url = cp ;
 			resp.sendRedirect(url);
+			return;
 			
 		}
 		
@@ -126,7 +128,31 @@ public class CustomerServlet extends HttpServlet{
 		
 		else if(uri.indexOf("updated.do")!=-1) {
 			
-			CustomerDTO cdto = new CustomerDTO();
+			String customerId = req.getParameter("customerId");
+			
+			CustomerDTO cdto = cdao.getReadData(customerId);
+			
+			if(cdto==null) {
+				url = cp;
+				resp.sendRedirect(url);
+				return;
+			}
+			
+			
+			
+			req.setAttribute("cdto", cdto);
+			
+			url = "/customer/updated.jsp";
+			forward(req, resp, url);
+			
+			
+			
+			
+		}else if(uri.indexOf("updated_ok.do")!=-1) {
+			
+			String customerId = req.getParameter("customerId");
+			
+			CustomerDTO cdto = cdao.getReadData(customerId);
 			
 			cdto.setCustomerId(req.getParameter("customerId"));
 			cdto.setCustomerPwd(req.getParameter("customerPwd"));
@@ -136,10 +162,19 @@ public class CustomerServlet extends HttpServlet{
 			
 			cdao.updateData(cdto);
 			
-			url = "/customer/updated.jsp";
-			forward(req, resp, url);
+			url = cp;
+			resp.sendRedirect(url);
+			return;
+			
+			
 			
 		}
+		//아이디 찾기
+				else if(uri.indexOf("searchId.do")!=-1) {
+					
+					url = "/customer/searchId.jsp";
+					forward(req, resp, url);
+				}
 
 }
 
