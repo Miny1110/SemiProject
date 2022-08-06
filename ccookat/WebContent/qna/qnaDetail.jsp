@@ -375,6 +375,47 @@
 		</div>
 	</section>
 	<!-- Blog Details Section End -->
+	
+	 <c:if test="${redto.qnaContent!=null}"	>
+	<div class="container">
+			<div class="row">
+				<div id="qna_detail">
+					<br>
+					<br>
+					<br>
+					<h1>답변</h1>
+					<br>
+					<br>
+					<table>
+						<tbody>
+							<tr>
+								<th>작성자</th>
+								<td style="padding: 10px;">${redto.customerId }</td>
+							</tr>
+							<tr>
+								<th>작성일</th>
+								<td style="padding: 10px;">${redto.qnaCreated }</td>
+							</tr>
+							<tr>	<th>내용</th>
+								<td style="padding: 10px;" class="content">
+									${redto.qnaContent }</td>
+							</tr>
+						</tbody>
+					</table>
+
+
+					
+			</div>
+		</div>
+	</div>
+</c:if>
+<div id="qna_menu">
+						<button type="button" class="w-btn" id="listBtn" onclick="location='/ccookat/main/qna/list.do?pageNum=1';">목록</button>
+								 
+											
+
+
+				</div>
 
 	<!-- Footer Section Begin1 -->
 	<section class="contact spad footer-details">
