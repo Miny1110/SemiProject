@@ -454,7 +454,12 @@
 				</div>
 				<div class="cc_view cc_qna">
 					<h3>
-						<a href="index.jsp?folder=qna&amp;category=qna_list" class="tit">질문 답변</a>
+					<c:if test="${empty sessionScope.customerInfo.customerId}">
+						<a href="<%=cp %>/main/customer/login.do" class="tit">질문 답변</a>
+					</c:if>
+					<c:if test="${!empty sessionScope.customerInfo.customerId}">
+						<a href="<%=cp %>/main/qna/list.do" class="tit">질문 답변</a>
+					</c:if>
 					</h3>
 					<dl class="list">
 						<dt>24시간 접수 가능</dt>
