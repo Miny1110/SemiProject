@@ -40,9 +40,9 @@
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
-        </div>
+       <div class="header__logo">
+						<a href="<%=cp %>/main"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+					</div>
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
@@ -135,9 +135,22 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                           <c:if test="${empty sessionScope.customerInfo.customerId}">
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
+									</div>
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
+									</div>
+							</c:if>
+							<c:if test="${!empty sessionScope.customerInfo.customerId}">
+             						<div class="header__top__right__auth">
+               						<a href="<%=cp %>/main/customer/updated.do"><i class="fa fa-user"></i> Mypage</a>
+           						 </div>
+           						 <div class="header__top__right__auth">
+           						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
+           						 </div>
+           					 </c:if>
                         </div>
                     </div>
                 </div>
