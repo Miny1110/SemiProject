@@ -139,15 +139,15 @@
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
 									</div>
-							</c:if>
-							<c:if test="${!empty sessionScope.customerInfo.customerId}">
+								</c:if>
+								<c:if test="${!empty sessionScope.customerInfo.customerId}">
              						<div class="header__top__right__auth">
                						<a href="#"><i class="fa fa-user"></i> Mypage</a>
            						 </div>
            						 <div class="header__top__right__auth">
            						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
            						 </div>
-           					 </c:if>
+           						 </c:if>
         </div>
 						</div>
 					</div>
@@ -274,7 +274,7 @@
                             </thead>
 
                             <tbody>
-                            <c:forEach var="idto" items="lists">
+                            <c:forEach var="ctdto" items="${lists}">
 
                                 <tr>
                                     <td class="shoping__cart__item">
@@ -282,7 +282,7 @@
                                         <h5>${ctdto.itemName}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        ${ctdto.carttotprice }
+                                        ${ctdto.cartTotPrice }
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">

@@ -16,6 +16,8 @@ public class CartDAO {
 	
 	//장바구니에 넣어져있는 데이터를 가져오기
 	//조건절에 customerId 일치할때 넣기
+	//아이템 가격을 item 테이블에서 가져오고
+	//totprice는 연산을 통해서 값을 저장하는 걸로 코드 바꿔야할거같음
 	public List<CartDTO> selectAll(String customerId) {
 		
 		PreparedStatement pstmt = null;
@@ -41,13 +43,13 @@ public class CartDAO {
 				
 				ctdto = new CartDTO();
 				
-				ctdto.setCartNum(rs.getInt("cartnum"));
-				ctdto.setCustomerId(rs.getString("customerid"));
-				ctdto.setItemNum(rs.getInt("itemnum"));
-				ctdto.setCartItemCount(rs.getInt("cartitemcount"));
-				ctdto.setCartTotPrice(rs.getInt("carttotprice"));
-				ctdto.setItemName(rs.getString("itemname"));
-				ctdto.setItemImage1(rs.getString("itemImage1"));				
+				ctdto.setCartNum(rs.getInt(1));
+				ctdto.setCustomerId(rs.getString(2));
+				ctdto.setItemNum(rs.getInt(3));
+				ctdto.setCartItemCount(rs.getInt(4));
+				ctdto.setCartTotPrice(rs.getInt(5));
+				ctdto.setItemName(rs.getString(6));
+				ctdto.setItemImage1(rs.getString(7));				
 				
 				lists.add(ctdto);
 		
@@ -66,6 +68,7 @@ public class CartDAO {
 	//장바구니에 담기
 	//고객이 장바구니에 담으면 아이템넘버랑 수량 고객정보 가져와서 넣어야함
 	//totalprice가격이 있는데 이건 주문으로 넘어갈때 담아서 넘겨줌
+	//생각해보니까 maxnum있어야함 그걸로 cartnum 순서대로 관리해야됨
 	public void insertData(CartDTO ctdto) {
 		
 		PreparedStatement pstmt = null;
