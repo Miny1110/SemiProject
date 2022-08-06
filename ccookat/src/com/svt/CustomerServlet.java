@@ -44,8 +44,6 @@ public class CustomerServlet extends HttpServlet{
 		Connection conn = DBConn.getconnection();
 		CustomerDAO cdao = new CustomerDAO(conn);
 
-		MyPage myPage = new MyPage();
-
 		String url;
 		
 		//회원정보 입력
@@ -69,9 +67,8 @@ public class CustomerServlet extends HttpServlet{
 			url = "/customer/login.jsp";
 			forward(req, resp, url);
 			
-		}
-		//로그인창
-		else if(uri.indexOf("login.do")!=-1) {
+		}else if(uri.indexOf("login.do")!=-1) {
+			//로그인창
 			
 			url = "/customer/login.jsp";
 			forward(req, resp, url);
@@ -110,6 +107,7 @@ public class CustomerServlet extends HttpServlet{
 			
 			url = cp;
 			resp.sendRedirect(url);
+			return;
 			
 		}else if(uri.indexOf("logout.do")!=-1) {
 			
@@ -120,16 +118,41 @@ public class CustomerServlet extends HttpServlet{
 			
 			url = cp ;
 			resp.sendRedirect(url);
+			return;
 			
 		}
 		
-		//아이디 비번찾기 할지 말지
+	
 		
 		//회원정보 수정
 		
 		else if(uri.indexOf("updated.do")!=-1) {
 			
-			CustomerDTO cdto = new CustomerDTO();
+			String customerId = req.getParameter("customerId");
+			
+			CustomerDTO cdto = cdao.getReadData(customerId);
+			
+			if(cdto==null) {
+				url = cp;
+				resp.sendRedirect(url);
+				return;
+			}
+			
+			
+			
+			req.setAttribute("cdto", cdto);
+			
+			url = "/customer/updated.jsp";
+			forward(req, resp, url);
+			
+			
+			
+			
+		}else if(uri.indexOf("updated_ok.do")!=-1) {
+			
+			String customerId = req.getParameter("customerId");
+			
+			CustomerDTO cdto = cdao.getReadData(customerId);
 			
 			cdto.setCustomerId(req.getParameter("customerId"));
 			cdto.setCustomerPwd(req.getParameter("customerPwd"));
@@ -139,10 +162,19 @@ public class CustomerServlet extends HttpServlet{
 			
 			cdao.updateData(cdto);
 			
-			url = "/customer/updated.jsp";
-			forward(req, resp, url);
+			url = cp;
+			resp.sendRedirect(url);
+			return;
+			
+			
 			
 		}
+		//아이디 찾기
+				else if(uri.indexOf("searchId.do")!=-1) {
+					
+					url = "/customer/searchId.jsp";
+					forward(req, resp, url);
+				}
 
 }
 

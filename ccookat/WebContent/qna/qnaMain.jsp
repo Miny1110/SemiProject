@@ -13,6 +13,19 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>qnaMain</title>
 
+<script type="text/javascript">
+
+	function sendIt() {
+	var f = document.searchForm;
+	
+	f.action = "<%=cp%>/main/qna/list.do";
+	f.submit();
+	//boardServlet에서 만들어준 데이터들 풀어서 출력함
+	
+	}
+
+</script>
+
 <link href="/ccookat/Data/style/img/ccookat/favicon.ico"
 	rel="shortcut icon" type="image/x-icon">
 <!-- Google Font -->
@@ -337,7 +350,7 @@
 								
 									<td class="qna_tr">${qdto.qnaNum }</td>
 									<td><a href="${detailUrl }&num=${qdto.qnaNum}">
-									${qdto.qnaContent }</a></td>
+									${qdto.qnaTitle }</a></td>
 									<td class="qna_tr">${qdto.customerId }</td>
 									<td class="qna_tr">${qdto.qnaCreated }</td>
 									<td class="qna_tr">${qdto.qnaHitCount }</td>
@@ -353,16 +366,16 @@
 					</div>
 					<br>
 
-					<form action="index.jsp?folder=qna&amp;category=qna_list"
-						method="post">
+					<form action="" method="post" name="searchForm">
 						<div class="qna_table_box">
 							<div>
-								<select name="search">
-									<option value="q_name" selected="selected">&nbsp;작성자&nbsp;</option>
-									<option value="q_title">&nbsp;제목&nbsp;</option>
-									<option value="q_content">&nbsp;내용&nbsp;</option>
-								</select> <input type="text" name="keyword">
-								<button class="qna_submit" type="submit">검색</button>
+								<select name="searchkey">
+									<option value="qnaTitle" selected="selected">&nbsp;제목&nbsp;</option>
+									<option value="customerId" >&nbsp;작성자&nbsp;</option>
+									<option value="qnaContent">&nbsp;내용&nbsp;</option>
+								</select> 
+								<input type="text" name="searchValue">
+								<input class="qna_submit" type="button" value="검색" onclick="sendIt();"/>
 								<button class="qna_submit_a">
 									<a href="<%=cp%>/main/qna/upload.do?">글올리기</a>
 								</button>

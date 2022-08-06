@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% 
+<%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-	
 %>
 <html lang="zxx">
 <head>
@@ -13,61 +12,38 @@
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>login</title>
-
-
-<script type="text/javascript">
-
-	function login() {
-		
-		var f = document.myForm;
-	
-		if(!f.customerId.value){
-			alert("아이디를 입력하세요");
-			f.customerId.focus();
-			return;
-		}
-		
-		if(!f.customerPwd.value) {
-			alert("패스워드를 입력해주세요");
-			f.customerPwd.focus();
-			return;
-		}
-		
-		f.action = "<%=cp %>/main/customer/login_ok.do";
-		f.submit();
-		
-	}
-
-</script>
-
-<link href="<%=cp %>/Data/style/img/ccookat/favicon.ico"
+<title>회원가입</title>
+<link href="<%=cp%>/Data/style/img/ccookat/favicon.ico"
 	rel="shortcut icon" type="image/x-icon">
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
 
 <!-- Css Styles -->
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/bootstrap.min.css"
+<link rel="stylesheet" href="<%=cp%>/Data/style/css/bootstrap.min.css"
 	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="<%=cp %>/Data/style/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/login.css"
-	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/nice-select.css"
+<link rel="stylesheet" href="<%=cp%>/Data/style/css/elegant-icons.css"
 	type="text/css">
 <link rel="stylesheet"
-	href="<%=cp %>/Data/style/css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css"
+	href="<%=cp%>/Data/style/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="<%=cp%>/Data/style/css/jquery-ui.min.css"
 	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css"
+<link rel="stylesheet" href="<%=cp%>/Data/style/css/login.css"
 	type="text/css">
-<link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css"
+<link rel="stylesheet" href="<%=cp%>/Data/style/css/nice-select.css"
 	type="text/css">
+<link rel="stylesheet"
+	href="<%=cp%>/Data/style/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="<%=cp%>/Data/style/css/signUp.css"
+	type="text/css">
+<link rel="stylesheet" href="<%=cp%>/Data/style/css/slicknav.min.css"
+	type="text/css">
+<link rel="stylesheet" href="<%=cp%>/Data/style/css/style.css"
+	type="text/css">
+
+<script type="text/javascript" src="<%=cp%>/Data/style/js/customer.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 
 </head>
 <body>
@@ -81,7 +57,7 @@
 	<div class="humberger__menu__wrapper">
 		<div class="humberger__menu__logo">
 			<a href="#"><img
-				src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+				src="<%=cp%>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 		</div>
 		<div class="humberger__menu__cart">
 			<ul>
@@ -92,7 +68,7 @@
 		</div>
 		<div class="humberger__menu__widget">
 			<div class="header__top__right__language">
-				<img class="korean" src="<%=cp %>/Data/style/img/ccookat/korean.jpg"
+				<img class="korean" src="<%=cp%>/Data/style/img/ccookat/korean.jpg"
 					alt="">
 				<div>한국어</div>
 				<span class="arrow_carrot-down"></span>
@@ -107,7 +83,7 @@
 		</div>
 		<nav class="humberger__menu__nav mobile-menu">
 			<ul>
-				<li class="active"><a href="./index.html">Home</a></li>
+				<li><a href="./index.html">Home</a></li>
 				<li><a href="./shop-grid.html">Shop</a></li>
 				<li><a href="#">Pages</a>
 					<ul class="header__menu__dropdown">
@@ -121,13 +97,12 @@
 		<div id="mobile-menu-wrap"></div>
 		<div class="header__top__right__social">
 			<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-				class="fa fa-twitter"></i></a> <a href="#"><i
-				class="fa fa-instagram"></i></a> <a href="#"><i
-				class="fa fa-pinterest-p"></i></a>
+				class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-pinterest-p"></i></a>
 		</div>
 		<div class="humberger__menu__contact">
 			<ul>
-				<li><i class="fa fa-envelope"></i> ccokat@gmail.com</li>
+				<li><i class="fa fa-envelope"></i> ccookat@gmail.com<</li>
 			</ul>
 		</div>
 	</div>
@@ -154,7 +129,7 @@
 									class="fa fa-pinterest-p"></i></a>
 							</div>
 							<div class="header__top__right__language">
-								<img src="<%=cp %>/Data/style/img/ccookat/korean.jpg" alt="">
+								<img src="<%=cp%>/Data/style/img/ccookat/korean.jpg" alt="">
 								<div>한국어</div>
 								<span class="arrow_carrot-down"></span>
 								<ul>
@@ -162,22 +137,9 @@
 									<li><a href="#">English</a></li>
 								</ul>
 							</div>
-								<c:if test="${empty sessionScope.customerInfo.customerId}">
-									<div class="header__top__right__auth">
-									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
-									</div>
-									<div class="header__top__right__auth">
-									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
-									</div>
-							</c:if>
-							<c:if test="${!empty sessionScope.customerInfo.customerId}">
-             						<div class="header__top__right__auth">
-               						<a href="#"><i class="fa fa-user"></i> Mypage</a>
-           						 </div>
-           						 <div class="header__top__right__auth">
-           						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
-           						 </div>
-           					 </c:if>
+							<div class="header__top__right__auth">
+								<a href="#"><i class="fa fa-user"></i> Login</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -187,40 +149,31 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="<%=cp %>"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+						<a href="./index.html"><img
+							src="<%=cp%>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li><a href="<%=cp%>">Home</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
+							<li><a href="./index.html">Home</a></li>
+							<li><a href="./shop-grid.html">Shop</a></li>
 							<li><a href="#">Pages</a>
 								<ul class="header__menu__dropdown">
 									<li><a href="./shop-details.html">Shop Details</a></li>
 									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
 									<li><a href="./checkout.html">Check Out</a></li>
 								</ul></li>
-							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
+							<li><a href="./contact.html">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__cart">
-			<c:if test="${empty sessionScope.customerInfo.customerId}">
-								<ul>
-									<li><a href="<%=cp%>/main/customer/login.do"><i
-											class="fa fa-heart"></i></a></li>
-									<li><a href="<%=cp%>/main/customer/login.do"><i
-											class="fa fa-shopping-bag"></i></a></li>
-								</ul>
-							</c:if>
-							<c:if test="${!empty sessionScope.customerInfo.customerId}">
-								<ul>
-									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i> <span>55</span></a></li>
-									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>장바구니수량</span></a></li>
-								</ul>
-									</c:if>
+						<ul>
+							<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+							<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+						</ul>
 						<div class="header__cart__price"></div>
 					</div>
 				</div>
@@ -241,24 +194,24 @@
 						<div class="hero__categories__all">
 							<i class="fa fa-bars"></i> <span>Cateories</span>
 						</div>
-						
-                              <ul>
-                             <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
+						<ul>
+							<li><a href="#">Vegetables & Fruit</a></li>
+							<li><a href="#">Rice & Noodle & Bread</a></li>
+							<li><a href="#">Fresh Meat & Egg</a></li>
+
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
-						<form action="#">
+							<form action="#">
 								<div class="hero__search__categories">
 									All Categories <span class="arrow_carrot-down"></span>
 								</div>
 								<input type="text" placeholder="검색어를 입력해주세요">
 								<button type="submit" class="site-btn">SEARCH</button>
-						</form>
+							</form>
 						</div>
 						<div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
@@ -277,36 +230,88 @@
 	<!-- Hero Section End -->
 
 
+
+
 	<!-- Checkout Section Begin -->
-	<div class="login-form">
-		<form action="" method="post" name="myForm">
-			<div id="login-name">로그인</div>
+	<div class="signUp-form">
+		<div class="tit_page">
+			<h3 class="tit">회원정보수정</h3>
+		</div>
+		<div class="page_article">
+			<div class="type_form member_join">
+				<p class="page_sub">
+					<span class="ico">*</span>필수입력사항
+				</p>
+				<form action="" method="post" name="myForm" id="join">
+					<table class="tbl_comm">
+						<tr>
+							<th>아이디<span class="ico">*</span></th>
+							<td><input class="box-size" type="text" name="customerId"
+								id="customerId" >
+								</td>
+						</tr>
+						<tr>
+							<th>비밀번호<span class="ico">*</span></th>
+							<td><input class="box-size" type="password"
+								name="customerPwd" id="customerPwd" placeholder="비밀번호를 입력해주세요">
+							</td>
+						</tr>
+						<tr class="member_pwd">
+							<th>비밀번호확인<span class="ico">*</span></th>
+							<td><input class="box-size" type="password"
+								name="customerPwd2" id="customerPwd2"
+								placeholder="비밀번호를 한번 더 입력해주세요"></td>
+						</tr>
+						<tr>
+							<th>이름<span class="ico">*</span></th>
+							<td><input class="box-size" type="text" name="customerName"
+								id="customerName" placeholder="이름을 입력해주세요"></td>
+						</tr>
+						<tr>
+							<th>이메일<span class="ico">*</span></th>
+							<td><input class="box-size" type="text" name="customerEmail"
+								class="email" id="customerEmail"
+								placeholder="예: marketkurly@kurly.com">
+								<input type="button" value="중복확인" class="signUp_btn"></td>
+						</tr>
+						<tr class="field_phone">
+							<th>휴대폰<span class="ico">*</span></th>
+							<td><input class="box-size" type="text" name="customerTel"
+								id="customerTel" maxlength="11" placeholder="숫자만 입력해주세요.">
+						</tr>
+						<tr>
+							<th>우편번호<span class="ico">*</span></th>
+							<td><input class="box-size2" type="text"
+								id="sample6_postcode" placeholder="우편번호" maxlength="5"
+								readonly="readonly"> 
+								<input type="button" value="우편번호찾기"
+								class="btn_zipcode" onclick="sample6_execDaumPostcode();"></td>
 
-			<input type="text" name="customerId" class="text-field"
-				placeholder="아이디를 입력해주세요"> 
-			<input type="password"
-				name="customerPwd" class="text-field" placeholder="비밀번호를 입력해주세요">
 
-			<div class="links">
-				<a href="<%=cp %>/main/customer/searchId.do">아이디 찾기 |</a> <a href="#">비밀번호 찾기</a>
+						</tr>
+
+						<tr>
+							<th>주소<span class="ico">*</span></th>
+							<td><input class="box-size" type="text" placeholder="주소"
+								id="sample6_address" readonly="readonly">
+								<input class="box-size2" type="text" placeholder="상세주소"
+								id="sample6_detailAddress"></td>
+						</tr>
+					</table>
+
+					<div id="formSubmit" class="form_footer">
+						<input type="button" value="수정하기" class="btn_sign" onclick="updated();" />
+						<input type="button" value="탈퇴하기" class="btn_sign" onclick="sendIt();" />
+					</div>
+
+
+
+				</form>
 			</div>
-
-			<div>
-				<input type="button" value="로그인" class="btn1" onclick="login();" />
-				<input type="button" value="회원가입" class="btn2"
-					onclick="location='<%=cp %>/customer/created.do';">
-			</div>
-		</form>
+		</div>
 	</div>
 
-	<br />
-	<br />
-	<br />
-	<br />
-
 	<!-- Checkout Section End -->
-
-
 
 	<!-- Footer Section Begin1 -->
 	<section class="contact spad footer-details">
@@ -389,23 +394,23 @@
 				</div>
 			</div>
 			<div class="footer_indemnification_clause">
-				<em class="copy">
-					<p>Copyright © itwill ccookat Corp. All rights reserved.</p>
-				</em>
+
+				<em class="copy"><p>Copyright © itwill ccookat Corp. All
+						rights reserved.</p></em>
 			</div>
 		</div>
 	</div>
 	<!-- Footer Section End2 -->
 
 	<!-- Js Plugins -->
-	<script src="<%=cp %>/Data/style/js/jquery-3.3.1.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/bootstrap.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/jquery.nice-select.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/jquery-ui.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/jquery.slicknav.js"></script>
-	<script src="<%=cp %>/Data/style/js/mixitup.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/owl.carousel.min.js"></script>
-	<script src="<%=cp %>/Data/style/js/main.js"></script>
+	<script src="<%=cp%>/Data/style/js/jquery-3.3.1.min.js"></script>
+	<script src="<%=cp%>/Data/style/js/bootstrap.min.js"></script>
+	<script src="<%=cp%>/Data/style/js/jquery.nice-select.min.js"></script>
+	<script src="<%=cp%>/Data/style/js/jquery-ui.min.js"></script>
+	<script src="<%=cp%>/Data/style/js/jquery.slicknav.js"></script>
+	<script src="<%=cp%>/Data/style/js/mixitup.min.js"></script>
+	<script src="<%=cp%>/Data/style/js/owl.carousel.min.js"></script>
+	<script src="<%=cp%>/Data/style/js/main.js"></script>
 
 </body>
 </html>

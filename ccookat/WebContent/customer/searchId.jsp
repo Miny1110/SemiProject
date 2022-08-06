@@ -22,15 +22,15 @@
 		
 		var f = document.myForm;
 	
-		if(!f.customerId.value){
-			alert("아이디를 입력하세요");
-			f.customerId.focus();
+		if(!f.customerName.value){
+			alert("이름를 입력하세요");
+			f.customerName.focus();
 			return;
 		}
 		
-		if(!f.customerPwd.value) {
-			alert("패스워드를 입력해주세요");
-			f.customerPwd.focus();
+		if(!f.customerTel.value) {
+			alert("전화번호를 입력해주세요");
+			f.customerTel.focus();
 			return;
 		}
 		
@@ -162,7 +162,7 @@
 									<li><a href="#">English</a></li>
 								</ul>
 							</div>
-								<c:if test="${empty sessionScope.customerInfo.customerId}">
+							<c:if test="${empty sessionScope.customerInfo.customerId}">
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
 									</div>
@@ -182,7 +182,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3">
@@ -190,7 +189,7 @@
 						<a href="<%=cp %>"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
-				<div class="col-lg-6">
+					<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
 							<li><a href="<%=cp%>">Home</a></li>
@@ -241,8 +240,7 @@
 						<div class="hero__categories__all">
 							<i class="fa fa-bars"></i> <span>Cateories</span>
 						</div>
-						
-                              <ul>
+						      <ul>
                              <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
                             <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
                             <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
@@ -280,21 +278,21 @@
 	<!-- Checkout Section Begin -->
 	<div class="login-form">
 		<form action="" method="post" name="myForm">
-			<div id="login-name">로그인</div>
+			<div id="login-name">아이디찾기</div>
 
-			<input type="text" name="customerId" class="text-field"
-				placeholder="아이디를 입력해주세요"> 
-			<input type="password"
-				name="customerPwd" class="text-field" placeholder="비밀번호를 입력해주세요">
+			<input type="text" name="customerName" class="text-field"
+				placeholder="이름를 입력해주세요"> 
+			<input type="text"
+				name="customerTel" class="text-field" placeholder="전화번호를 입력해주세요">
 
 			<div class="links">
-				<a href="<%=cp %>/main/customer/searchId.do">아이디 찾기 |</a> <a href="#">비밀번호 찾기</a>
+			 <a href="#">비밀번호 찾기</a>
 			</div>
 
 			<div>
-				<input type="button" value="로그인" class="btn1" onclick="login();" />
-				<input type="button" value="회원가입" class="btn2"
-					onclick="location='<%=cp %>/customer/created.do';">
+			<input type="button" value="입력완료" class="btn1" onclick="<%=cp%>/main/customer/searchId_ok.do" />
+			<input type="reset" value="다시입력" class="btn1" onclick="document.myForm.customerName.focus();">
+			<input type="button" value="돌아가기" class="btn1" onclick="<%=cp%>/main/customer/login.do" />
 			</div>
 		</form>
 	</div>
