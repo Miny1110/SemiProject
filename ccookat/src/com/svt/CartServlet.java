@@ -1,6 +1,5 @@
 package com.svt;
 
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
@@ -15,9 +14,6 @@ import javax.servlet.http.HttpSession;
 import com.ccookat.CartDAO;
 import com.ccookat.CartDTO;
 import com.ccookat.CustomerInfo;
-import com.ccookat.NoticeDTO;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
 
 public class CartServlet extends HttpServlet {
@@ -45,21 +41,21 @@ public class CartServlet extends HttpServlet {
 
 
 		if(uri.indexOf("list.do")!=-1) {
-			
+
 			String itemImagePath = cp + "/pds/itemImageFile";
-			
+
 			HttpSession session = request.getSession();
-			
+
 			CustomerInfo customerInfo = new CustomerInfo();
-			
+
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
-			
+
 			String customerId = customerInfo.getCustomerId();
-				
+
 			List<CartDTO> lists = ctdao.selectAll(customerId);
-			
+
 			if(lists==null) {				
-				
+
 				request.setAttribute("message",	"장바구니에 담긴 상품이 없습니다.");				
 				url = "/cart/cartMain.jsp";
 				forward(request, response, url);	
@@ -67,10 +63,10 @@ public class CartServlet extends HttpServlet {
 			}
 			request.setAttribute("itemImagePath", itemImagePath);
 			request.setAttribute("lists", lists);
-					
+
 			url = "/cart/cartMain.jsp";
 			forward(request, response, url);	
-			
+
 		}else if(uri.indexOf("cartin.do")!=-1) {
 
 			//아이템 넘버랑, 데이터 카운트랑, 세션에 올라가 있는 아이디 받아서 
@@ -89,14 +85,19 @@ public class CartServlet extends HttpServlet {
 
 			ctdto.setCartNum(maxnum+1);
 			ctdto.setCustomerId(customerId);
-			ctdto.setItemNum(Integer.parseInt(request.getParameter("itemNum")));
+			int itemNum = Integer.parseInt(request.getParameter("itemNum"));
+			ctdto.setItemNum(itemNum);
+			int itemPrice = Integer.parseInt(request.getParameter("itemPrice"));
+			int cartItemCount = Integer.parseInt(request.getParameter("cartItemCount"));
+			ctdto.setCartItemCount(cartItemCount);
+			ctdto.setCartTotPrice(itemPrice*cartItemCount);
 
 			ctdao.insertData(ctdto);
 
 
-			url = cp + "/main/notice/list.do?noticeSearchKey="+mr.getParameter("noticeSearchKey");
+			url = cp +"/main/item/detail.do?itemNum="+itemNum; //여기에 원래 있던 주소로 돌려주는 코딩해야함 
 			response.sendRedirect(url);
 
+		}
 	}
-
 }
