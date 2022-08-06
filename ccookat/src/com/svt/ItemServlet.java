@@ -98,7 +98,7 @@ public class ItemServlet extends HttpServlet {
 
 			}
 
-			url = cp ;
+			url = cp + "/main" ;
 			resp.sendRedirect(url);
 			return;
 
@@ -132,10 +132,11 @@ public class ItemServlet extends HttpServlet {
 			}
 
 			//처음 전체 데이터 갯수 구하기
-			int dataCount = idao.getDataCount();
+			//int dataCount = idao.getDataCount(itemType);
 			//하나의 페이지에 보일 페이지 갯수
+			int reviewtotalArticle = rdao.getDataCount();				
 			int numPerPage = 5;
-			int totalPage = myPage.getPageCount(numPerPage, dataCount);
+			int totalPage = myPage.getPageCount(numPerPage, reviewtotalArticle);
 			
 			
 			//삭제시 페이지수가 줄었을때 처리하는 방법 
@@ -163,7 +164,6 @@ public class ItemServlet extends HttpServlet {
 			String itemDeletePath = cp + "/main/item/deleted.do";
 			
 			
-			int reviewtotalArticle = rdao.getDataCount();				
 
 			//제품설명 텍스트 엔터는 엔터로 변경
 			idto.setItemContent(idto.getItemContent().replaceAll("\n", "<br/>"));
@@ -234,7 +234,7 @@ public class ItemServlet extends HttpServlet {
 			}
 
 			int numPerPage = 9; 
-			int dataCount = idao.getDataCount();
+			int dataCount = idao.getDataCount(itemType);
 			int totalPage = myPage.getPageCount(numPerPage, dataCount);
 
 			if(currentPage>totalPage) {

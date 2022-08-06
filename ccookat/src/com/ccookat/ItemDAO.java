@@ -270,7 +270,7 @@ public class ItemDAO {
 	
 	
 	//전체데이터 개수 세기
-	public int getDataCount() {
+	public int getDataCount(String itemType) {
 		
 		int dataCount = 0;
 		
@@ -280,9 +280,11 @@ public class ItemDAO {
 		
 		try {
 			
-			sql = "select nvl(count(*),0) from item ";
+			sql = "select nvl(count(*),0) from item where itemType=?";
 			
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, itemType);
 			
 			rs = pstmt.executeQuery();
 			

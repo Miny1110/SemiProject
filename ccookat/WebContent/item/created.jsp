@@ -325,7 +325,7 @@
                             </div>
                             
 							<div class="blog__sidebar__item__tags">
-								<input type="button" value=" 등록하기 " onclick="sendIt();">
+								<input type="button" value=" 등록하기 " onclick="insertItem();">
 								<input type="reset" value="다시입력"
 									onclick="document.myForm.itemName.focus();"/>
 								<input type="button" value="작성취소"
