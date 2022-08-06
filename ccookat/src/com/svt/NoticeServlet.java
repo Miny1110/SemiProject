@@ -67,6 +67,8 @@ public class NoticeServlet extends HttpServlet {
 				currentPage = Integer.parseInt(pageNum);
 			}
 
+		
+			String noticeSearchKey = request.getParameter("noticeSearchKey");
 			String searchValue = request.getParameter("searchValue");
 			
 			if(searchValue!=null){
@@ -75,10 +77,15 @@ public class NoticeServlet extends HttpServlet {
 					searchValue = URLDecoder.decode(searchValue,"UTF-8");			
 				}	
 			}else{
-				searchValue = "";		
+				searchValue = "";	
 			}	
 			
-			int dataCount = ndao.getDataCount(searchValue);
+			if(noticeSearchKey==null){
+				noticeSearchKey = "gongji";			
+				}
+			
+			
+			int dataCount = ndao.getDataCount(searchValue,noticeSearchKey);
 
 			int numPerPage = 4;
 
@@ -92,11 +99,11 @@ public class NoticeServlet extends HttpServlet {
 			int start = (currentPage-1)*numPerPage+1;
 			int end = currentPage * numPerPage;
 
-			List<NoticeDTO> lists = ndao.selectAll(start, end,searchValue);		
+			List<NoticeDTO> lists = ndao.selectAll(start, end, noticeSearchKey, searchValue);		
 
 			String params = "";
 			if(searchValue!=null || !searchValue.equals("")) {
-				params = "?searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
+				params = "noticeSearchKey="+noticeSearchKey +"&searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
 			}
 			
 			String listUrl = cp + "/main/notice/list.do" + params;
@@ -154,11 +161,12 @@ public class NoticeServlet extends HttpServlet {
 				ndto.setNoticeTitle(mr.getParameter("noticeTitle"));
 				ndto.setNoticeImage(mr.getFilesystemName("upload"));
 				ndto.setNoticeContent(mr.getParameter("noticeContent"));
-	
+				ndto.setnoticeSearchKey(mr.getParameter("noticeSearchKey"));
+				
 				ndao.insertData(ndto);
 			}
 
-			url = cp + "/main/notice/list.do";
+			url = cp + "/main/notice/list.do?noticeSearchKey="+mr.getParameter("noticeSearchKey");
 			response.sendRedirect(url);
 
 		}else if(uri.indexOf("detail.do")!=-1) {
@@ -177,16 +185,13 @@ public class NoticeServlet extends HttpServlet {
 			if(ndto==null) {
 				url = cp + "/main/notice/list.do";
 				response.sendRedirect(url);
-			}
+			}			
 			
-			
-			//int line = ndto.getNoticeContent().split("\n").length;
-
-			//ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\n\r", "<br/>"));
+			//띄어쓰기
+			ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\r", "<br/>"));
 
 			request.setAttribute("deletePath", deletePath);
 			request.setAttribute("ndto", ndto);
-			//request.setAttribute("lineSu", line);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("imagePath", imagePath);
 			request.setAttribute("pageNum", pageNum);
@@ -211,5 +216,8 @@ public class NoticeServlet extends HttpServlet {
 		}
 
 	}
+	
+	
+	//QnA servlet
 
 }

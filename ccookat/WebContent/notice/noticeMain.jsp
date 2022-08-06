@@ -66,7 +66,7 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
+                <li><a href="./index.html">Home</a></li>
                 <li><a href="./shop-grid.html">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
@@ -80,7 +80,7 @@
         </nav>
         <div id="mobile-menu-wrap"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style=""><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
             <ul>
-                <li class="active"><a href="./index.html" role="menuitem">Home</a></li>
+                <li><a href="./index.html" role="menuitem">Home</a></li>
                 <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
                 <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style=""><a href="#">Pages</a>
                     <span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
@@ -143,29 +143,28 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
+            <div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="header__logo">
+						<a href="<%=cp %>"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<nav class="header__menu">
+						<ul>
+							<li><a href="<%=cp%>">Home</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="#">Pages</a>
+								<ul class="header__menu__dropdown">
+									<li><a href="./shop-details.html">Shop Details</a></li>
+									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
+									<li><a href="./checkout.html">Check Out</a></li>
+								</ul></li>
+							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
@@ -182,6 +181,7 @@
         </div>
     </header>
     <!-- Header Section End -->
+
 
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
@@ -261,11 +261,9 @@
                         <div class="blog__sidebar__item">
                             <h4>Categories</h4>
                             <ul>
-                                <li><a href="#">All</a></li>
-                                <li><a href="#">Beauty (20)</a></li>
-                                <li><a href="#">Food (5)</a></li>
-                                <li><a href="#">Life Style (9)</a></li>
-                                <li><a href="#">Travel (10)</a></li>
+                                <li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">공지사항</a></li>
+                                <li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=jaju">자주하는질문</a></li>
+                                <li><a href="<%=cp %>/main/qna/list.do">1:1문의</a></li>
                             </ul>
                         </div>
                     </div>
@@ -294,10 +292,12 @@
                             <div class="product__pagination blog__pagination">
                                 ${pageIndexList }
                             </div>
+                            	 <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>		
                             <div align="right">
                              <div class="blog__sidebar__item__tags">
                                 <a href="<%=cp%>/main/notice/upload.do?">글올리기</a></div>
                             </div>
+                            </c:if>
                         </div>
                     </div>
                 </div>

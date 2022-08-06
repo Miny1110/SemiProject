@@ -63,7 +63,7 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
+                <li><a href="./index.html">Home</a></li>
                 <li><a href="./shop-grid.html">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
@@ -77,7 +77,7 @@
         </nav>
         <div id="mobile-menu-wrap"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
             <ul>
-                <li class="active"><a href="./index.html" role="menuitem">Home</a></li>
+                <li><a href="./index.html" role="menuitem">Home</a></li>
                 <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
                 <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
                     <span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
@@ -140,29 +140,28 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
+              <div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="header__logo">
+						<a href="<%=cp %>"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<nav class="header__menu">
+						<ul>
+							<li><a href="<%=cp%>">Home</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="#">Pages</a>
+								<ul class="header__menu__dropdown">
+									<li><a href="./shop-details.html">Shop Details</a></li>
+									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
+									<li><a href="./checkout.html">Check Out</a></li>
+								</ul></li>
+							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
@@ -179,7 +178,7 @@
         </div>
     </header>
     <!-- Header Section End -->
-
+    
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -232,11 +231,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Checkout</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>NOTICE</span>
-                        </div>
+                        <h2>NOTICE</h2>
                     </div>
                 </div>
             </div>
@@ -253,8 +248,25 @@
 								enctype="multipart/form-data">
                     <div>
                         <div>
-                            
-                            <div class="checkout__input">
+							<div class="col-lg-4 col-md-5">
+								<div class="filter__sort">
+									<span>카테고리 선택</span> 
+									<select style="display: none;" name="noticeSearchKey">
+										<option value="gongji">공지사항</option>
+										<option value="jaju">자주하는질문</option>
+										<option value="ildaeil">1:1문의</option>
+									</select>
+									<div class="nice-select" tabindex="0">
+										<span class="current">공지사항</span>
+										<ul class="list">
+											<li data-value="gongji" class="option selected focus">공지사항</li>
+											<li data-value="jaju" class="option">자주하는질문</li>
+											<li data-value="ildaeil" class="option">1:1문의</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="checkout__input">
                                 <p>Title<span>*</span></p>
                                 <input type="text" name="noticeTitle">
                             </div>

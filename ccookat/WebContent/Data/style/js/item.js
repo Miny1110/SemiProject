@@ -6,7 +6,7 @@ function sendIt(){
 	str = f.itemName.value;
 	str = str.trim();
 	if(!str){
-		alert("내용을 입력하세요");
+		alert("상품명을 입력하세요");
 		f.itemName.focus();
 		return;
 	}
@@ -16,7 +16,7 @@ function sendIt(){
 	str = f.itemPrice.value;
 	str = str.trim();
 	if(!str){
-		alert("내용을 입력하세요");
+		alert("상품가격을 입력하세요");
 		f.itemPrice.focus();
 		return;
 	}
@@ -26,7 +26,7 @@ function sendIt(){
 	str = f.itemDiscount.value;
 	str = str.trim();
 	if(!str){
-		alert("내용을 입력하세요");
+		alert("할인율을 입력하세요");
 		f.itemDiscount.focus();
 		return;
 	}
@@ -36,7 +36,7 @@ function sendIt(){
 	str = f.itemType.value;
 	str = str.trim();
 	if(!str){
-		alert("내용을 입력하세요");
+		alert("상품 카테고리를 선택하세요");
 		f.itemType.focus();
 		return;
 	}
@@ -46,17 +46,17 @@ function sendIt(){
 	str = f.itemContent.value;
 	str = str.trim();
 	if(!str){
-		alert("내용을 입력하세요");
+		alert("상품설명을 입력하세요");
 		f.itemContent.focus();
 		return;
 	}
 	f.itemContent.value = str;
 	
-/*	//상품이미지1
+	//상품이미지1
 	str = f.itemImage1.value;
 	str = str.trim();
 	if(!str){
-		alert("내용을 입력하세요");
+		alert("상품사진을 첨부하세요");
 		f.itemImage1.focus();
 		return;
 	}
@@ -66,7 +66,7 @@ function sendIt(){
 	str = f.itemImage2.value;
 	str = str.trim();
 	if(!str){
-		alert("내용을 입력하세요");
+		alert("상품사진을 첨부하세요");
 		f.itemImage2.focus();
 		return;
 	}
@@ -76,7 +76,7 @@ function sendIt(){
 	str = f.itemImage3.value;
 	str = str.trim();
 	if(!str){
-		alert("내용을 입력하세요");
+		alert("상품사진을 첨부하세요");
 		f.itemImage3.focus();
 		return;
 	}
@@ -86,11 +86,11 @@ function sendIt(){
 	str = f.itemImage4.value;
 	str = str.trim();
 	if(!str){
-		alert("내용을 입력하세요");
+		alert("상품사진을 첨부하세요");
 		f.itemImage4.focus();
 		return;
 	}
-	f.itemImage4.value = str;*/
+	f.itemImage4.value = str;
 	
 	f.action = "/ccookat/main/item/created_ok.do";
 	f.submit();

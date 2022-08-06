@@ -3,7 +3,7 @@ package com.ccookat;
 public class CustomerDTO {
 
 	private String customerId;
-	private String customerPwd1;
+	private String customerPwd;
 	private String customerPwd2;
 	private String customerName;
 	private String customerEmail;
@@ -17,11 +17,11 @@ public class CustomerDTO {
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
-	public String getCustomerPwd1() {
-		return customerPwd1;
+	public String getCustomerPwd() {
+		return customerPwd;
 	}
-	public void setCustomerPwd1(String customerPwd) {
-		this.customerPwd1 = customerPwd;
+	public void setCustomerPwd(String customerPwd) {
+		this.customerPwd = customerPwd;
 	}
 	public String getCustomerPwd2() {
 		return customerPwd2;
