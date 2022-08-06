@@ -288,7 +288,8 @@
 				name="customerPwd" class="text-field" placeholder="비밀번호를 입력해주세요">
 
 			<div class="links">
-				<a href="<%=cp %>/main/customer/searchId.do">아이디 찾기 |</a> <a href="#">비밀번호 찾기</a>
+				<a href="<%=cp %>/main/customer/searchId.do">아이디 찾기 |</a> 
+				<a href="<%=cp %>/main/customer/searchPwd.do">비밀번호 찾기</a>
 			</div>
 
 			<div>

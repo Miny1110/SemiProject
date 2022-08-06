@@ -277,25 +277,30 @@
 
 	<!-- Checkout Section Begin -->
 	<div class="login-form">
-		<form action="" method="post" name="myForm">
+		<form action="/ccookat/main/customer/searchId_ok.do" method="post" name="myForm">
 			<div id="login-name">아이디찾기</div>
 
 			<input type="text" name="customerName" class="text-field"
 				placeholder="이름를 입력해주세요"> 
 			<input type="text"
 				name="customerTel" class="text-field" placeholder="전화번호를 입력해주세요">
+				<div class="links">
+				<b>${message }</b>
+			</div>
+	
 
 			<div class="links">
-			 <a href="#">비밀번호 찾기</a>
+			<a href="<%=cp %>/main/customer/searchPwd.do">비밀번호 찾기</a>
 			</div>
 
 			<div>
-			<input type="button" value="입력완료" class="btn1" onclick="<%=cp%>/main/customer/searchId_ok.do" />
+			<input type="submit" value="입력완료" class="btn1" />
 			<input type="reset" value="다시입력" class="btn1" onclick="document.myForm.customerName.focus();">
-			<input type="button" value="돌아가기" class="btn1" onclick="<%=cp%>/main/customer/login.do" />
+			<input type="button" value="돌아가기" class="btn1" onclick="location='/ccookat/main/customer/login.do';"/>
 			</div>
 		</form>
 	</div>
+		
 
 	<br />
 	<br />
