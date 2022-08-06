@@ -15,32 +15,6 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>login</title>
 
-
-<script type="text/javascript">
-
-	function login() {
-		
-		var f = document.myForm;
-	
-		if(!f.customerId.value){
-			alert("아이디를 입력하세요");
-			f.customerId.focus();
-			return;
-		}
-		
-		if(!f.customerTel.value) {
-			alert("전화번호를 입력해주세요");
-			f.customerTel.focus();
-			return;
-		}
-		
-		f.action = "<%=cp %>/main/customer/login_ok.do";
-		f.submit();
-		
-	}
-
-</script>
-
 <link href="<%=cp %>/Data/style/img/ccookat/favicon.ico"
 	rel="shortcut icon" type="image/x-icon">
 <link

@@ -126,10 +126,47 @@ function sendIt() {
 }	
 
 
+function login() {
+	
+	var f = document.myForm;
+
+	if(!f.customerId.value){
+		alert("아이디를 입력하세요");
+		f.customerId.focus();
+		return;
+	}
+	
+	if(!f.customerPwd.value) {
+		alert("패스워드를 입력해주세요");
+		f.customerPwd.focus();
+		return;
+	}
+	
+	f.action = "/ccookat/main/customer/login_ok.do";
+	f.submit();
+	
+}
 
 
-
-
+function customerPwdChk(){
+	
+	var f = document.myForm;
+	
+	if(!f.customerPwd.value){
+		alert("비밀번호를 입력하세요");
+		f.customerPwd.focus();
+		return;
+	}
+	
+	f.action = "/ccookat/main/customer/customerPwdChk_ok.do";
+	f.submit();
+	
+	
+	
+	
+	
+	
+}
 
 
 

@@ -104,6 +104,7 @@ public class CustomerServlet extends HttpServlet{
 			HttpSession session = req.getSession();
 			
 			session.setAttribute("customerInfo", customerInfo);
+			session.setMaxInactiveInterval(10*60); //10분동안 세션 유지
 			
 			url = cp+"/main";
 			resp.sendRedirect(url);
@@ -122,11 +123,40 @@ public class CustomerServlet extends HttpServlet{
 			
 		}
 		
-	
+		else if(uri.indexOf("customerPwdChk.do")!=-1) {
+			
+			url = "/customer/mypageEnter.jsp";
+			forward(req, resp, url);
+			
+		}else if(uri.indexOf("customerPwdChk_ok.do")!=-1) {
+			
+			HttpSession session = req.getSession();
+			CustomerInfo customerInfo = new CustomerInfo();
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+			String customerId = customerInfo.getCustomerId();
+			
+			String customerPwd = req.getParameter("customerPwd");
+			
+			CustomerDTO cdto = cdao.getReadData(customerId);
+			
+			if(cdto==null || !cdto.getCustomerPwd().equals(customerPwd)) {
+				req.setAttribute("message", "비밀번호가 틀렸습니다.");
+				
+				url = "/customer/mypageEnter.jsp";
+				forward(req, resp, url);
+			}else {
+				url = "/customer/updated.jsp";
+				forward(req, resp, url);
+			}
+			
+		}
+		
+		
+		
 		
 		//회원정보 수정
 		
-		else if(uri.indexOf("/updated.do")!=-1) {
+/*		else if(uri.indexOf("updated.do")!=-1) {
 			
 			String customerId = req.getParameter("customerId");
 			
@@ -168,7 +198,7 @@ public class CustomerServlet extends HttpServlet{
 			
 			
 			
-		}
+		}*/
 		//아이디 찾기
 				else if(uri.indexOf("searchId.do")!=-1) {
 					
@@ -189,8 +219,8 @@ public class CustomerServlet extends HttpServlet{
 						forward(req, resp, url);
 						
 					} else {
-						String coustomerId = cdto.getCustomerId();
-						req.setAttribute("message", "아이디는["+ coustomerId + "]입니다");
+						String customerId = cdto.getCustomerId();
+						req.setAttribute("message", "아이디는["+ customerId + "]입니다");
 					
 					
 					url = "/customer/searchId.jsp";
