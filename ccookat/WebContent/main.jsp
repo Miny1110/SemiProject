@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -346,21 +347,24 @@
             </div>
             <div class="row featured__filter" id="MixItUp8D53A2" style="">
             
+            
+            <c:forEach var="idto" items="${mainList }">
                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" style="">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/ccookat/Data/style/img/featured/feature-1.jpg" 
-                       		 style="background-image: url(&quot;/ccookat/Data/style/img/featured/feature-1.jpg&quot;);">
+                        <div class="featured__item__pic set-bg" >
+                        <img src="/ccookat/Data/style/img/banner/event_banner_1.jpg" alt="" >
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#"></a></h6>
-                            <h5>$30.00</h5>
+                            <h6><a href="#">상품명</a></h6>
+                            <h5>${idto.itemPrice }원</h5>
                         </div>
                     </div>
                 </div>
+            </c:forEach>
 
 
 

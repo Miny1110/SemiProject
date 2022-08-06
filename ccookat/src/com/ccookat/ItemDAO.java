@@ -385,6 +385,56 @@ public class ItemDAO {
 	
 	
 	
+	//전체상품 조회순으로 정렬
+	public List<ItemDTO> getHitCountLists(){
+		
+		List<ItemDTO> lists = new ArrayList<ItemDTO>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;	
+		
+		try {
+			
+			sql = "select * from (";
+			sql+= "select rownum rnum, data.* from (";
+			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
+			sql+= "from item order by itemHitCount desc) data ) ";
+			sql+= "where rnum>=1 and rnum<=4";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ItemDTO idto = new ItemDTO();
+				
+				idto.setItemNum(rs.getInt("itemNum"));
+				idto.setItemName(rs.getString("itemName"));
+				idto.setItemPrice(rs.getInt("itemPrice"));
+				idto.setItemDiscount(rs.getInt("itemDiscount"));
+				idto.setItemType(rs.getString("itemType"));
+				idto.setItemImage1(rs.getString("itemImage1"));
+				idto.setItemHitCount(rs.getInt("itemHitCount"));
+				
+				lists.add(idto);
+				
+			}
+
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println("에러");
+			System.out.println(e.toString());
+		}
+		
+		return lists;
+		
+	}
+	
+	
 	
 	
 }
