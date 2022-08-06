@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/signUp.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
+    
+    <script type="text/javascript" src="<%=cp%>/Data/style/js/item.js"></script>
 </head>
 
 <body>

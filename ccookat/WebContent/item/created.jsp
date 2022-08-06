@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="/ccookat/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/ccookat/Data/style/css/style.css" type="text/css">
     
-    <script type="text/javascript" src="<%=cp%>/Data/style/js/itemCreated.js"></script>
+    <script type="text/javascript" src="<%=cp%>/Data/style/js/item.js"></script>
 
 </head>
 
@@ -237,7 +237,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>상품 추가</h2>
+                        <h2>상품 등록</h2>
                     </div>
                 </div>
             </div>
@@ -249,7 +249,7 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <h4>Notice Upload</h4>
+                <h4>상품 등록</h4>
 				<form name="myForm" method="post" enctype="multipart/form-data">
                     <div>
                         <div>
@@ -282,7 +282,7 @@
                             </div>
                             
 							<div class="checkout__input">
-                                <p>할인율<span>*</span></p>
+                                <p>할인율(%)<span>*</span></p>
                                 <input type="text" name="itemDiscount">
                             </div>
 
