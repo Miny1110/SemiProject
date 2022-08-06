@@ -49,7 +49,7 @@ public class QnaDAO {
 	}
 
 	//페이징 처리를 위한 전체 데이터 갯수 도출
-	public int getDataCount(String searchValue) {
+	public int getDataCount(String searchkey, String searchValue) {
 
 		int dataCount = 0;
 
@@ -62,12 +62,12 @@ public class QnaDAO {
 			searchValue = "%" + searchValue + "%";
 
 			sql = "select nvl(count(*),0) from qna ";
-			sql+= "where qnaContent like ? or qnaTitle like ?";
+			sql+= "where " + searchkey + " like ? ";
 
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, searchValue);
-			pstmt.setString(2, searchValue);
+
 
 			rs = pstmt.executeQuery();
 
@@ -110,7 +110,8 @@ public class QnaDAO {
 
 
 	//Q&A 목록에 뿌려줄 데이터
-	public List<QnaDTO> selectAll(int start,int end, String searchValue) {
+	public List<QnaDTO> selectAll(int start,int end,
+			String searchKey, String searchValue) {
 
 		List<QnaDTO> lists = new ArrayList<>();
 		QnaDTO qdto = null;
@@ -123,18 +124,17 @@ public class QnaDAO {
 			searchValue = "%" + searchValue + "%";
 
 			sql ="select * from(select rownum rnum,data.* from ";
-			sql+="(select qnaNum,qnaTitle,SUBSTR(qnaContent, 1, 30) qnaContent, ";
+			sql+="(select qnaNum,qnaTitle,SUBSTR(qnaContent, 1, 30) qnaContent,";
 			sql+="customerId,to_char(qnaCreated,'yyyy.mm.dd') qnaCreated,qnaAnswer,qnaHitCount ";
-			sql+="from qna where (qnacontent like ? or qnatitle like ?) ";			
+			sql+="from qna where " + searchKey + " like ? ";			
 			sql+="order by qnaNum desc) data) ";
 			sql+="where rnum>=? and rnum<=?";
 
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, searchValue);
-			pstmt.setString(2, searchValue);
-			pstmt.setInt(3, start);
-			pstmt.setInt(4, end);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 
 			rs = pstmt.executeQuery();
 
@@ -245,7 +245,7 @@ public class QnaDAO {
 
 		
 	//수정시 뿌려줄 데이터
-	public QnaDTO slectData(int qnaNum) {
+	public QnaDTO selectData(int qnaNum) {
 
 		QnaDTO qdto=null;
 		PreparedStatement pstmt = null;
@@ -285,5 +285,21 @@ public class QnaDAO {
 		return qdto;
 	}	
 
+	
+	//num으로 한개의 데이터 가져오기
+	public QnaDTO getReadData(int qnaNum) {
+		QnaDTO qdto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		
+		try {
+			sql = "select 
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return qdto;
+	}
 
 }
