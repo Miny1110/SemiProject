@@ -282,7 +282,7 @@
                             </div>
                             
 							<div class="checkout__input">
-                                <p>할인율<span>*</span></p>
+                                <p>할인율(%)<span>*</span></p>
                                 <input type="text" name="itemDiscount">
                             </div>
 
