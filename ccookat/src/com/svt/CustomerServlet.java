@@ -123,7 +123,7 @@ public class CustomerServlet extends HttpServlet{
 			
 		}
 		
-		//아이디 비번찾기 할지 말지
+	
 		
 		//회원정보 수정
 		
