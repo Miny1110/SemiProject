@@ -56,35 +56,7 @@ public class MainServlet extends HttpServlet {
 
 		url = cp ;
 		forward(req, resp, url);
-		//System.out.println(cp);
-
-
-		/*	List<ItemDTO> itemMainList = idao.getitemHitCount();
-
-			//제품메인 이미지 게시판 가짜주소(페이징 처리에 필요)
-			String itemMainUrl = cp + "/main/item/list.do?itemType=" + itemType;
-			//제품별 상세페이지 가짜주소(페이지번호 들고감)
-			String itemDetailUrl = cp + "/main/item/detail.do?itemType=" + itemType + "&pageNum=" + currentPage;
-
-			String pageIndexList = MyPage.
-
-			//이미지 실제 주소
-			String imagepath = cp + "/pds/itemImageFile";
-			//삭제 주소
-			String deletePath = cp + "/item/deleted.do";
-
-			req.setAttribute("imagePath", imagePath);
-			req.setAttribute("itemMainList", itemMainList);
-			req.setAttribute("pageIndexList", pageIndexList);
-			req.setAttribute("dataCount", dataCount);
-			req.setAttribute("deletePath", deletePath);
-			req.setAttribute("itemDetailUrl", itemDetailUrl);
-
-			url = "/item/list.jsp";
-			forward(req, resp, url);
-		 */
-
-
+		
 	}
 
 
