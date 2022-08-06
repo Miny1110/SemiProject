@@ -80,7 +80,7 @@ public class CustomerDAO {
 
 	}
 	
-	//전체 데이터 가져오기
+/*	//전체 데이터 가져오기
 	public List<CustomerDTO> getLists(int start,int end) {
 		
 		List<CustomerDTO> lists = new ArrayList<CustomerDTO>();
@@ -127,7 +127,7 @@ public class CustomerDAO {
 		
 		return lists;
 		
-	}
+	}*/
 	
 	
 	//customerId로 한개의 데이터 가져오기
@@ -213,10 +213,15 @@ public class CustomerDAO {
 			return cdto;
 		}
 	
-	//회원정보 수정
-	public int updateData(CustomerDTO cdto) {
+	
+	
 		
-		int result = 0;
+		
+		
+		
+	//회원정보 수정
+	public void updateData(CustomerDTO cdto) {
+		
 		PreparedStatement pstmt = null;
 		String sql;
 		
@@ -230,16 +235,15 @@ public class CustomerDAO {
 			pstmt.setString(1, cdto.getCustomerPwd());
 			pstmt.setString(2, cdto.getCustomerEmail());
 			pstmt.setString(3, cdto.getCustomerTel());
+			pstmt.setString(4, cdto.getCustomerId());
 			
-			result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			
 			pstmt.close();
 			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
-		return result;
 		
 	}
 	
