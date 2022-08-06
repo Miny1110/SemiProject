@@ -110,7 +110,10 @@ public class CustomerServlet extends HttpServlet{
 			resp.sendRedirect(url);
 			return;
 			
-		}else if(uri.indexOf("logout.do")!=-1) {
+		}
+		
+		//로그아웃
+		else if(uri.indexOf("logout.do")!=-1) {
 			
 			HttpSession session = req.getSession();
 
@@ -123,6 +126,7 @@ public class CustomerServlet extends HttpServlet{
 			
 		}
 		
+		//회원정보수정 페이지 들어가기 전 비밀번호 확인
 		else if(uri.indexOf("customerPwdChk.do")!=-1) {
 			
 			url = "/customer/mypageEnter.jsp";
@@ -145,44 +149,30 @@ public class CustomerServlet extends HttpServlet{
 				url = "/customer/mypageEnter.jsp";
 				forward(req, resp, url);
 			}else {
-				url = "/customer/updated.jsp";
-				forward(req, resp, url);
+				url = cp + "/main/customer/updated.do";
+				resp.sendRedirect(url);
+				return;
 			}
 			
 		}
 		
 		
-		
-		
 		//회원정보 수정
-		
-/*		else if(uri.indexOf("updated.do")!=-1) {
+		else if(uri.indexOf("updated.do")!=-1) {
 			
-			String customerId = req.getParameter("customerId");
+			HttpSession session = req.getSession();
+			CustomerInfo customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 			
-			CustomerDTO cdto = cdao.getReadData(customerId);
-			
-			if(cdto==null) {
-				url = cp+"/main";
-				resp.sendRedirect(url);
-				return;
-			}
-			
-			
+			CustomerDTO cdto = cdao.getReadData(customerInfo.getCustomerId());
 			
 			req.setAttribute("cdto", cdto);
 			
 			url = "/customer/updated.jsp";
 			forward(req, resp, url);
 			
-			
-			
-			
 		}else if(uri.indexOf("updated_ok.do")!=-1) {
 			
-			String customerId = req.getParameter("customerId");
-			
-			CustomerDTO cdto = cdao.getReadData(customerId);
+			CustomerDTO cdto = new CustomerDTO();
 			
 			cdto.setCustomerId(req.getParameter("customerId"));
 			cdto.setCustomerPwd(req.getParameter("customerPwd"));
@@ -192,13 +182,11 @@ public class CustomerServlet extends HttpServlet{
 			
 			cdao.updateData(cdto);
 			
-			url = cp + "/main";
+			url = cp + "/customer/updated.do";
 			resp.sendRedirect(url);
 			return;
 			
-			
-			
-		}*/
+		}
 		//아이디 찾기
 				else if(uri.indexOf("searchId.do")!=-1) {
 					

@@ -246,14 +246,13 @@
 					<table class="tbl_comm">
 						<tr>
 							<th>아이디<span class="ico">*</span></th>
-							<td><input class="box-size" type="text" name="customerId"
-								id="customerId" >
+							<td>${sessionScope.customerInfo.customerId }
 								</td>
 						</tr>
 						<tr>
 							<th>비밀번호<span class="ico">*</span></th>
-							<td><input class="box-size" type="password"
-								name="customerPwd" id="customerPwd" placeholder="비밀번호를 입력해주세요">
+							<td><input class="box-size" type="text"
+								name="customerPwd" id="customerPwd" value="${cdto.customerPwd }">
 							</td>
 						</tr>
 						<tr class="member_pwd">
@@ -264,20 +263,18 @@
 						</tr>
 						<tr>
 							<th>이름<span class="ico">*</span></th>
-							<td><input class="box-size" type="text" name="customerName"
-								id="customerName" placeholder="이름을 입력해주세요"></td>
+							<td>${sessionScope.customerInfo.customerName }</td>
 						</tr>
 						<tr>
 							<th>이메일<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerEmail"
-								class="email" id="customerEmail"
-								placeholder="예: marketkurly@kurly.com">
+								class="email" id="customerEmail" value="${cdto.customerEmail }">
 								<input type="button" value="중복확인" class="signUp_btn"></td>
 						</tr>
 						<tr class="field_phone">
 							<th>휴대폰<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerTel"
-								id="customerTel" maxlength="11" placeholder="숫자만 입력해주세요.">
+								id="customerTel" maxlength="11" value=${cdto.customerTel }>
 						</tr>
 						<tr>
 							<th>우편번호<span class="ico">*</span></th>
@@ -300,7 +297,9 @@
 					</table>
 
 					<div id="formSubmit" class="form_footer">
-						<input type="button" value="수정하기" class="btn_sign" onclick="updated();" />
+						<input type="hidden" name="customerId" value="${sessionScope.customerInfo.customerId }">
+						<input type="hidden" name="customerName" value="${sessionScope.customerInfo.customerName }">
+						<input type="button" value="수정하기" class="btn_sign" onclick="location='<%=cp %>/main/customer/updated_ok.do';" />
 						<input type="button" value="탈퇴하기" class="btn_sign" onclick="sendIt();" />
 					</div>
 
