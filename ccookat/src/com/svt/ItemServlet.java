@@ -107,11 +107,9 @@ public class ItemServlet extends HttpServlet {
 			//제품번호 가져와
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 
-
 			//페이지번호 가져와
 			String pageNum = req.getParameter("pageNum");
 
-			
 			//제품번호 매개로 조회수  업데이트
 			idao.updateHitCount(itemNum);
 
