@@ -174,8 +174,61 @@ public class CustomerServlet extends HttpServlet{
 					
 					url = "/customer/searchId.jsp";
 					forward(req, resp, url);
-				}
+				
+				}else if(uri.indexOf("searchId_ok.do")!=-1) {
+					
+					String customerName = req.getParameter("customerName");
+					String customerTel = req.getParameter("customerTel");
+					
+					CustomerDTO cdto =cdao.getReadData(customerName, customerTel);
+					
+					if(cdto==null||!cdto.getCustomerTel().equals(customerTel)) {
+						req.setAttribute("message", "회원정보가 존재하지 않습니다.");
+						
+						url = "/customer/searchId.jsp";
+						forward(req, resp, url);
+						
+					} else {
+						String coustomerId = cdto.getCustomerId();
+						req.setAttribute("message", "아이디는["+ coustomerId + "]입니다");
+					
+					
+					url = "/customer/searchId.jsp";
+					forward(req, resp, url);
+		
+		
+					}
+					//비밀번호 찾기
+				}else if(uri.indexOf("searchPwd.do")!=-1) {
+					
+					url = "/customer/searchPwd.jsp";
+					forward(req, resp, url);
+					
+					
+					
+				}else if(uri.indexOf("searchPwd_ok.do")!=-1) {
+					String customerId = req.getParameter("customerId");
+					String customerTel = req.getParameter("customerTel");
+					
+					CustomerDTO cdto =cdao.getReadData(customerId);
 
+					if(cdto==null||!cdto.getCustomerTel().equals(customerTel)) {
+						req.setAttribute("message", "회원정보가 존재하지 않습니다.");
+						
+						url = "/customer/searchPwd.jsp";
+						forward(req, resp, url);
+					} else {
+						String coustomerPwd = cdto.getCustomerPwd();
+						req.setAttribute("message", "비밀번호는["+ coustomerPwd + "]입니다");
+					
+					url = "/customer/searchPwd.jsp";
+					forward(req, resp, url);
+					
+			}
+		}
+	}
 }
 
-}
+	
+
+
