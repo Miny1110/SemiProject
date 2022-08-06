@@ -45,11 +45,12 @@ public class MainServlet extends HttpServlet {
 		String cp = req.getContextPath();
 		//String uri = req.getRequestURI();
 		String url;
-
+		
+		String itemType = req.getParameter("itemType");
 
 		String itemImagePath = cp + "/pds/itemImageFile";
-
-		List<ItemDTO> mainList = idao.getHitCountLists();
+		System.out.println("dkdk");
+		List<ItemDTO> mainList = idao.getHitCountLists(itemType);
 
 		req.setAttribute("itemImagePath", itemImagePath);
 		req.setAttribute("mainList", mainList);
