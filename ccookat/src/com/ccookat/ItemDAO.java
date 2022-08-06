@@ -419,9 +419,9 @@ public class ItemDAO {
 				
 				mainLists.add(idto);
 				
+				
 			}
 
-			System.out.println("에러");
 			rs.close();
 			pstmt.close();
 			
