@@ -230,34 +230,12 @@
 	<!-- Hero Section End -->
 
 
-	<%
-		String customerId = request.getParameter("id");
-		if (customerId == null) {
-			customerId = "";
-		}
-		String jungbokId = (String) request.getAttribute("jungbokId");
 
-		String result;
-
-		if (jungbokId == "") {
-
-			result = customerId + "는 사용 가능합니다.";
-
-		} else if (jungbokId == null && customerId == "") {
-
-			result = "";
-
-		} else {
-
-			result = customerId + "는 이미 사용 중입니다.";
-
-		}
-	%>
 
 	<!-- Checkout Section Begin -->
 	<div class="signUp-form">
 		<div class="tit_page">
-			<h3 class="tit">회원가입</h3>
+			<h3 class="tit">회원정보수정</h3>
 		</div>
 		<div class="page_article">
 			<div class="type_form member_join">
@@ -269,9 +247,8 @@
 						<tr>
 							<th>아이디<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerId"
-								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합">
-								<input type="button" value="중복확인" class="signUp_btn"
-								onclick="jungbokId();" /> <%=result%></td>
+								id="customerId" >
+								</td>
 						</tr>
 						<tr>
 							<th>비밀번호<span class="ico">*</span></th>
@@ -323,8 +300,8 @@
 					</table>
 
 					<div id="formSubmit" class="form_footer">
-						<input type="button" value="가입하기" class="btn_sign"
-							onclick="sendIt();" />
+						<input type="button" value="수정하기" class="btn_sign" onclick="updated();" />
+						<input type="button" value="탈퇴하기" class="btn_sign" onclick="sendIt();" />
 					</div>
 
 
