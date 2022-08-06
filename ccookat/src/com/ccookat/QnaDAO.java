@@ -79,7 +79,7 @@ public class QnaDAO {
 
 	//Q&A 목록에 뿌려줄 전체 데이터
 	public List<QnaDTO> selectAll(int start,int end,
-			String searchKey, String searchValue) {
+			String searchKey, String searchValue, String customerId) {
 
 		List<QnaDTO> lists = new ArrayList<QnaDTO>();
 		
@@ -96,15 +96,16 @@ public class QnaDAO {
 			sql ="select * from(select rownum rnum,data.* from ";
 			sql+="(select qnaNum,qnaTitle,qnaContent,";
 			sql+="customerId,to_char(qnaCreated,'yyyy.mm.dd') qnaCreated,qnaHitCount ";
-			sql+="from qna where " + searchKey + " like ? ";			
+			sql+="from qna where customerId = ? and " + searchKey + " like ? ";			
 			sql+="order by qnaNum desc) data) ";
 			sql+="where rnum>=? and rnum<=?";
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, searchValue);
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
+			pstmt.setString(1, customerId);
+			pstmt.setString(2, searchValue);
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, end);
 
 			rs = pstmt.executeQuery();
 
@@ -134,7 +135,7 @@ public class QnaDAO {
 	}
 
 	//페이징 처리를 위한 전체 데이터 갯수 도출
-	public int getDataCount(String searchkey, String searchValue) {
+	public int getDataCount(String searchkey, String searchValue,String customerId) {
 
 		int dataCount = 0;
 
@@ -147,11 +148,12 @@ public class QnaDAO {
 			searchValue = "%" + searchValue + "%";
 
 			sql = "select nvl(count(*),0) from qna ";
-			sql+= "where " + searchkey + " like ? ";
+			sql+= "where customerId =? and " + searchkey + " like ? ";
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, searchValue);
+			pstmt.setString(1, customerId);
+			pstmt.setString(2, searchValue);
 
 			rs = pstmt.executeQuery();
 
