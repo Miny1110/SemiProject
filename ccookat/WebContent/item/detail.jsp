@@ -272,7 +272,7 @@
                         <h3>${idto.itemName }</h3>
                   		  조회수:${idto.itemHitCount }
                   		   <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>
-                        <a href="${itemDeletePath }&itemNum=${idto.itemNum}">[삭제]</a>
+                        <a href="${itemDeletePath }?itemNum=${idto.itemNum}&pageNum=${currentPage}">[삭제]</a>
                         </c:if>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>

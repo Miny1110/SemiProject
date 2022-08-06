@@ -155,11 +155,11 @@ public class ItemServlet extends HttpServlet {
 			List<ReviewDTO> reviewlists = rdao.getLists(start, end, itemNum);
 
 			/* 이부분 변수명 정리함 */
-			String reviewdDeletePath = cp + "/review/delete.do";
+			String reviewdDeletePath = cp + "/main/review/delete.do";
 			String reviewImagePath = cp + "/pds/imageFile";			
 			//String params = "pageNum=" + currentPage;
 			String itemImagePath = cp + "/pds/itemImageFile";
-			String itemDeletePath = cp + "/item/deleted.do";
+			String itemDeletePath = cp + "/main/item/deleted.do";
 			
 			
 
@@ -188,7 +188,9 @@ public class ItemServlet extends HttpServlet {
 
 			//num과 pageNum을 받아온다. 리다이렉트 주소를 만들기 위해 필요한 값
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+			System.out.println(itemNum);
 			int currentPage = Integer.parseInt(req.getParameter("pageNum"));
+			System.out.println(currentPage);
 			
 
 			//삭제하려는 데이터의 num을 사용해서 그 하나의 데이터 정보를 읽어온다
@@ -203,7 +205,7 @@ public class ItemServlet extends HttpServlet {
 			//DB 테이블에 저장된 데이터 삭제
 			idao.deleteData(itemNum);
 
-			url = cp + "/item/list.do?pageNum=" + currentPage;
+			url = cp + "/main/item/list.do?pageNum=" + currentPage;
 			resp.sendRedirect(url);
 
 			return;
@@ -250,7 +252,7 @@ public class ItemServlet extends HttpServlet {
 			//제품메인 이미지 게시판 가짜주소(페이징 처리에 필요)
 			String itemMainUrl = cp + "/main/item/list.do?itemType=" + itemType;
 			//제품별 상세페이지 가짜주소(페이지번호 들고감)
-			String itemDetailUrl = cp + "/main/item/detail.do?itemType=" + itemType + "&pageNum" + currentPage;
+			String itemDetailUrl = cp + "/main/item/detail.do?itemType=" + itemType;
 			
 			String pageUrl = cp+"/main/item/detail.do";
 
