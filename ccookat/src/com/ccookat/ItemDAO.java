@@ -335,7 +335,7 @@ public class ItemDAO {
 	//카테고리별 이미지 게시판에 데이터 불러오기
 	public List<ItemDTO> getHitCountLists(String itemType){
 		
-		List<ItemDTO> lists = new ArrayList<ItemDTO>();
+		List<ItemDTO> mainLists = new ArrayList<ItemDTO>();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -367,7 +367,7 @@ public class ItemDAO {
 				idto.setItemImage1(rs.getString("itemImage1"));
 				idto.setItemHitCount(rs.getInt("itemHitCount"));
 				
-				lists.add(idto);
+				mainLists.add(idto);
 				
 			}
 
@@ -379,13 +379,13 @@ public class ItemDAO {
 			System.out.println(e.toString());
 		}
 		
-		return lists;
+		return mainLists;
 		
 	}
 	
 	
 	
-	//전체상품 조회순으로 정렬
+	/*//전체상품 조회순으로 정렬
 	public List<ItemDTO> getHitCountLists(){
 		
 		List<ItemDTO> mainLists = new ArrayList<ItemDTO>();
@@ -432,7 +432,7 @@ public class ItemDAO {
 		
 		return mainLists;
 		
-	}
+	}*/
 	
 	
 	
