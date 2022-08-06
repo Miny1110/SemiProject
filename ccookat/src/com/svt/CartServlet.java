@@ -49,19 +49,20 @@ public class CartServlet extends HttpServlet {
 			
 			CustomerInfo customerInfo = new CustomerInfo();
 			
-			session.getAttribute("customerInfo");
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 			
 			String customerId = customerInfo.getCustomerId();
-						
+				
+			System.out.println(customerId);
 			List<CartDTO> lists = ctdao.selectAll(customerId);
 			
 			if(lists==null) {				
-
+				
+				request.setAttribute("message",	"장바구니에 담긴 상품이 없습니다.");				
 				url = "/cart/cartMain.jsp";
 				forward(request, response, url);	
 				return;
 			}
-			request.setAttribute("message",	"장바구니에 담긴 상품이 없습니다.");
 			request.setAttribute("itemImagePath", itemImagePath);
 			request.setAttribute("lists", lists);
 					
