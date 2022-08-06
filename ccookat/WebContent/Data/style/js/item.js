@@ -1,4 +1,4 @@
-function sendIt(){
+function insertItem(){
 	
 	f = document.myForm;
 	
