@@ -29,6 +29,7 @@ public class MainServlet extends HttpServlet {
 	}
 
 	protected void forward(HttpServletRequest req, HttpServletResponse resp, String url) throws ServletException, IOException {
+	
 		RequestDispatcher rd = req.getRequestDispatcher(url);
 
 		rd.forward(req, resp);
@@ -42,44 +43,23 @@ public class MainServlet extends HttpServlet {
 		Connection conn = DBConn.getconnection();
 		ItemDAO idao = new ItemDAO(conn);
 
-
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		String url;
 		
-		if(uri.indexOf("list.do")!=-1) {
 
-			String itemType = req.getParameter("itemType");
-			System.out.println(itemType);
-		
-			if(itemType==null) {
-				System.out.println("여긴 데이터 없다는거");
 				List<ItemDTO> mainLists = new ArrayList<ItemDTO>(); 
 				
 				mainLists = idao.getHitCountLists();
+				String itemImagePath = cp + "/pds/itemImageFile";
+				
 				req.setAttribute("mainList", mainLists);
-				url = cp +"/main/main.jsp";
+				req.setAttribute("itemImagePath", itemImagePath);
+				
+				url = "/main.jsp";
 				forward(req, resp, url);
-				return;
-			}
-			
-			System.out.println("여긴 데이터 있다는거");
-			List<ItemDTO> mainLists = new ArrayList<ItemDTO>(); 
-			mainLists = idao.getHitCountLists(itemType);
-			
-			String itemImagePath = cp + "/pds/itemImageFile";
-			List<ItemDTO> mainList = idao.getHitCountLists(itemType);
-
-			req.setAttribute("itemImagePath", itemImagePath);
-			req.setAttribute("mainList", mainList);
-
-			url = cp ;
-			forward(req, resp, url);
-			
-
-			
-		}
 		
+
 
 	}
 
