@@ -383,9 +383,9 @@ public class ItemDAO {
 		
 	}
 	
+
 	
-	
-	/*//전체상품 조회순으로 정렬
+	//전체상품 조회순으로 정렬
 	public List<ItemDTO> getHitCountLists(){
 		
 		List<ItemDTO> mainLists = new ArrayList<ItemDTO>();
@@ -399,7 +399,7 @@ public class ItemDAO {
 			sql+= "select rownum rnum, data.* from (";
 			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
 			sql+= "from item order by itemHitCount desc) data ) ";
-			sql+= "where rnum>=1 and rnum<=4";
+			sql+= "where rnum>=1 and rnum<=8";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -418,8 +418,7 @@ public class ItemDAO {
 				idto.setItemHitCount(rs.getInt("itemHitCount"));
 				
 				mainLists.add(idto);
-				
-				
+								
 			}
 
 			rs.close();
@@ -432,7 +431,7 @@ public class ItemDAO {
 		
 		return mainLists;
 		
-	}*/
+	}
 	
 	
 	

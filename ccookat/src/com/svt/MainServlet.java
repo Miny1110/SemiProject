@@ -2,6 +2,7 @@ package com.svt;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -43,22 +44,42 @@ public class MainServlet extends HttpServlet {
 
 
 		String cp = req.getContextPath();
-		//String uri = req.getRequestURI();
+		String uri = req.getRequestURI();
 		String url;
 		
-		String itemType = req.getParameter("itemType");
+		if(uri.indexOf("list.do")!=-1) {
 
-		String itemImagePath = cp + "/pds/itemImageFile";
-		System.out.println("dkdk");
-		List<ItemDTO> mainList = idao.getHitCountLists(itemType);
-
-		req.setAttribute("itemImagePath", itemImagePath);
-		req.setAttribute("mainList", mainList);
-
-		url = cp ;
-		forward(req, resp, url);
+			String itemType = req.getParameter("itemType");
+			System.out.println(itemType);
 		
+			if(itemType==null) {
+				System.out.println("여긴 데이터 없다는거");
+				List<ItemDTO> mainLists = new ArrayList<ItemDTO>(); 
+				
+				mainLists = idao.getHitCountLists();
+				req.setAttribute("mainList", mainLists);
+				url = cp +"/main/main.jsp";
+				forward(req, resp, url);
+				return;
+			}
+			
+			System.out.println("여긴 데이터 있다는거");
+			List<ItemDTO> mainLists = new ArrayList<ItemDTO>(); 
+			mainLists = idao.getHitCountLists(itemType);
+			
+			String itemImagePath = cp + "/pds/itemImageFile";
+			List<ItemDTO> mainList = idao.getHitCountLists(itemType);
 
+			req.setAttribute("itemImagePath", itemImagePath);
+			req.setAttribute("mainList", mainList);
+
+			url = cp ;
+			forward(req, resp, url);
+			
+
+			
+		}
+		
 
 	}
 
