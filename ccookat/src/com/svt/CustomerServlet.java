@@ -105,7 +105,7 @@ public class CustomerServlet extends HttpServlet{
 			
 			session.setAttribute("customerInfo", customerInfo);
 			
-			url = cp;
+			url = cp+"/main";
 			resp.sendRedirect(url);
 			return;
 			
@@ -116,7 +116,7 @@ public class CustomerServlet extends HttpServlet{
 			session.removeAttribute("customerInfo");
 			session.invalidate();
 			
-			url = cp ;
+			url = cp+"/main" ;
 			resp.sendRedirect(url);
 			return;
 			
@@ -126,14 +126,14 @@ public class CustomerServlet extends HttpServlet{
 		
 		//회원정보 수정
 		
-		else if(uri.indexOf("updated.do")!=-1) {
+		else if(uri.indexOf("/updated.do")!=-1) {
 			
 			String customerId = req.getParameter("customerId");
 			
 			CustomerDTO cdto = cdao.getReadData(customerId);
 			
 			if(cdto==null) {
-				url = cp;
+				url = cp+"/main";
 				resp.sendRedirect(url);
 				return;
 			}
@@ -162,7 +162,7 @@ public class CustomerServlet extends HttpServlet{
 			
 			cdao.updateData(cdto);
 			
-			url = cp;
+			url = cp + "/main";
 			resp.sendRedirect(url);
 			return;
 			
