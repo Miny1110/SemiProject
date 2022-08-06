@@ -107,11 +107,6 @@ public class QnaServlet extends HttpServlet {
 				searchKey="qnaTitle";
 				searchValue = "";
 
-			} else {	
-				if(request.getMethod().equalsIgnoreCase("GET")){
-					searchValue = URLDecoder.decode(searchValue,"UTF-8");			
-				}	
-
 			}	
 
 			int dataCount = qdao.getDataCount(searchKey, searchValue);
@@ -135,7 +130,7 @@ public class QnaServlet extends HttpServlet {
 			String params = "";
 			if(searchValue!=null && !searchValue.equals("")) {
 				params = "searchKey=" + searchKey; 
-				params = "&searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
+				params += "&searchValue=" + searchValue;
 			}
 
 			String listUrl = cp + "/main/qna/list.do";
@@ -159,7 +154,7 @@ public class QnaServlet extends HttpServlet {
 			request.setAttribute("detailUrl", detailUrl);
 			request.setAttribute("dataCount", dataCount);
 
-			url = "/qna/qnaMain.jsp";
+			url = "/qna/qnaMain.jsp"+params;
 			forward(request, response, url);
 
 		}else if(uri.indexOf("detail.do")!=-1) {
@@ -168,6 +163,8 @@ public class QnaServlet extends HttpServlet {
 			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
 			String pageNum = request.getParameter("pageNum");
 
+			qdao.updateHitCount(qnaNum);
+			
 			//인코딩한 값을 넘겨 받음
 			String searchKey = request.getParameter("searchKey");
 			String searchValue = request.getParameter("searchValue");

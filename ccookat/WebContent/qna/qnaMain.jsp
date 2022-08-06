@@ -349,7 +349,7 @@
 							<tr id="lists">
 								
 									<td class="qna_tr">${qdto.qnaNum }</td>
-									<td><a href="${detailUrl }&num=${qdto.qnaNum}">
+									<td><a href="${detailUrl }&qnaNum=${qdto.qnaNum}">
 									${qdto.qnaTitle }</a></td>
 									<td class="qna_tr">${qdto.customerId }</td>
 									<td class="qna_tr">${qdto.qnaCreated }</td>
@@ -370,7 +370,7 @@
 						<div class="qna_table_box">
 							<div>
 							<form action="" method="post" name="searchForm">
-								<select name="searchkey">
+								<select name="searchkey" value="searchkey">
 									<option value="qnaTitle" selected="selected">&nbsp;제목&nbsp;</option>
 									<option value="customerId" >&nbsp;작성자&nbsp;</option>
 									<option value="qnaContent">&nbsp;내용&nbsp;</option>
