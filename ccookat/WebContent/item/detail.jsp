@@ -384,12 +384,14 @@
 															${rdto.reviewContent}</div>
 													</c:if>
 													<div style="text-align: right;">
-														<%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
+														<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/>
 														<%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
 														 <c:if test="${sessionScope.customerInfo.customerId==rdto.customerId}"	>													
 														<div class="blog__sidebar__item__tags">
-															<a href="location='/ccookat/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
+													
+															<a href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
 																수정하기</a>
+														
 															<a href="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
 																삭제하기</a>	
 														</div>
