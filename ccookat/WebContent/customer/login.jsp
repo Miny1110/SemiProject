@@ -187,13 +187,13 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="<%=cp %>"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+						<a href="<%=cp %>/main"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li><a href="<%=cp%>">Home</a></li>
+							<li><a href="<%=cp%>/main">Home</a></li>
 							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
 							<li><a href="#">Pages</a>
 								<ul class="header__menu__dropdown">
@@ -288,13 +288,14 @@
 				name="customerPwd" class="text-field" placeholder="비밀번호를 입력해주세요">
 
 			<div class="links">
-				<a href="<%=cp %>/main/customer/searchId.do">아이디 찾기 |</a> <a href="#">비밀번호 찾기</a>
+				<a href="<%=cp %>/main/customer/searchId.do">아이디 찾기 |</a> 
+				<a href="<%=cp %>/main/customer/searchPwd.do">비밀번호 찾기</a>
 			</div>
 
 			<div>
 				<input type="button" value="로그인" class="btn1" onclick="login();" />
 				<input type="button" value="회원가입" class="btn2"
-					onclick="location='<%=cp %>/customer/created.do';">
+					onclick="location='<%=cp %>/main/customer/created.do';">
 			</div>
 		</form>
 	</div>

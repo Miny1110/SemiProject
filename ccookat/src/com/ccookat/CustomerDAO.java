@@ -172,6 +172,46 @@ public class CustomerDAO {
 		return cdto;
 	}
 	
+	//아이디 찾기 할때 쓰는 메소드
+		public CustomerDTO getReadData(String customerName, String customerTel ) {
+			
+			CustomerDTO cdto = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql;
+			
+			try {
+				
+				sql = "select customerId,";
+				sql+= "customerName,customerTel ";
+				sql+= "from customer where customerName=? and customerTel=?";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, customerName);
+				pstmt.setString(2, customerTel);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					cdto = new CustomerDTO();
+					
+					cdto.setCustomerId(rs.getString("customerId"));
+					cdto.setCustomerName(rs.getString("customerName"));
+					cdto.setCustomerTel(rs.getString("customerTel"));
+					//cdto.setCustomerCreated(rs.getString("created"));
+				}
+				
+				rs.close();
+				pstmt.close();
+				
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+			
+			return cdto;
+		}
 	
 	//회원정보 수정
 	public int updateData(CustomerDTO cdto) {
