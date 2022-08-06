@@ -253,8 +253,12 @@ public class ItemServlet extends HttpServlet {
 			String itemMainUrl = cp + "/main/item/list.do?itemType=" + itemType;
 			//제품별 상세페이지 가짜주소(페이지번호 들고감)
 			String itemDetailUrl = cp + "/main/item/detail.do?itemType=" + itemType + "&pageNum" + currentPage;
+			
+			String pageUrl = cp+"/main/item/detail.do";
 
 			String pageIndexList = myPage.pageIndexList(currentPage, totalPage, itemMainUrl);
+			String reviewPageIndexList = myPage.pageIndexList(currentPage, totalPage, pageUrl);
+			
 
 			//이미지 실제 주소
 			String itemImagePath = cp + "/pds/itemImageFile";
@@ -268,6 +272,7 @@ public class ItemServlet extends HttpServlet {
 			req.setAttribute("currentPage", currentPage);
 			req.setAttribute("itemDeletePath", itemDeletePath);
 			req.setAttribute("itemDetailUrl", itemDetailUrl);
+			req.setAttribute("reviewPageIndexList", reviewPageIndexList);
 			//카테고리별 이미지 게시판 전체 상품 출력 끝
 
 			List<ItemDTO> itemHitCountList = idao.getHitCountLists(itemType);
