@@ -419,6 +419,7 @@ public class ItemDAO {
 				
 				mainLists.add(idto);
 				
+				
 			}
 
 			rs.close();
