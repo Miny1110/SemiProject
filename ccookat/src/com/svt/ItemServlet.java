@@ -98,7 +98,7 @@ public class ItemServlet extends HttpServlet {
 
 			}
 
-			url = cp ;
+			url = cp + "/main" ;
 			resp.sendRedirect(url);
 			return;
 

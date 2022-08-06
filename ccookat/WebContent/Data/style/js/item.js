@@ -52,7 +52,7 @@ function insertItem(){
 	}
 	f.itemContent.value = str;
 	
-	//상품이미지1
+/*	//상품이미지1
 	str = f.itemImage1.value;
 	str = str.trim();
 	if(!str){
@@ -70,7 +70,7 @@ function insertItem(){
 		f.itemImage2.focus();
 		return;
 	}
-	f.itemImage2.value = str;
+	f.itemImage1.value = str;
 	
 	//상품이미지3
 	str = f.itemImage3.value;
@@ -90,7 +90,7 @@ function insertItem(){
 		f.itemImage4.focus();
 		return;
 	}
-	f.itemImage4.value = str;
+	f.itemImage4.value = str;*/
 	
 	f.action = "/ccookat/main/item/created_ok.do";
 	f.submit();
