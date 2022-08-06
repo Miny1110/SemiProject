@@ -10,7 +10,6 @@ public class QnaDTO {
 	private String qnaAnswer;
 	private int qnaHitCount;
 	
-	
 	public int getQnaNum() {
 		return qnaNum;
 	}

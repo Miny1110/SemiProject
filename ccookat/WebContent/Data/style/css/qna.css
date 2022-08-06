@@ -1,0 +1,126 @@
+
+#qna_list {
+	width: 900px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#qna_title {
+	font-size: 1.8em;
+	font-weight: bold;
+	text-align: left;
+}
+
+#num {
+	font-size: 1.1em;
+	color: #646464;
+}
+
+table {
+	margin: 20px auto;
+	border-collapse: collapse;
+}
+
+th {
+	border-top : 2px solid #FF5833;
+	border-bottom : 1px solid black;
+ 	font-size: 1.2em;
+  	padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: none;
+    padding-right: none;
+}
+
+td {
+	color: #646464;
+  	padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: none;
+    padding-right: none;
+    font-size: 1.2em;
+}
+
+.subject {
+	text-align: left;
+	padding: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#qna_list a:hover {
+	text-decoration: none;
+	color: red;
+}
+
+.sub {
+	color: #828282;
+	font-size: 0.6em;
+	padding: 20px;
+}
+
+.w-btn {
+    border: none;
+    padding: 15px 30px;
+    font-weight: 600;
+    background-color: #5f0080;
+    color: white;
+    font-size: 1em;
+    
+}
+
+.qna_tr {
+	text-align: center;
+}
+
+.qna_table_box {
+	text-align: center;
+	align-items: center;
+	align-content: center;
+}
+
+.qna_btn1 {
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    width: 350px;
+    background-color: #FF5833;
+    margin-bottom: 30px;
+    color: white;
+    height: 57px;
+    margin: 10px;
+  }	
+	
+	
+.qna_submit {
+	font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    background-color: #FF5833;
+    margin-bottom: 30px;
+    color: #ffffff;
+    height: 40px;
+    margin: 10px;
+}	
+
+.qna_submit_a {
+	font-size: 14px;
+	border:none;
+    border-radius: 5px;
+    width: 80px;
+    background-color: #FF5833;
+    margin-bottom: 30px;
+    color: #ffffff;
+    height: 40px;
+    margin: 10px;
+}
+
+.qna_submit_a a {
+	color: white;
+}
+
+.qna_submit_a{
+	color: white;
+}
+

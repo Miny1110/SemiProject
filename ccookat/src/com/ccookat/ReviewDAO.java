@@ -80,10 +80,13 @@ public class ReviewDAO {
 		String sql;
 		 
 		 try {
+			 /*System.out.println(rdto.getCustomerId());
+			 System.out.println(rdto.getReviewTitle());
+			 System.out.println(rdto.getReviewContent());*/
 			 
 			 sql = "insert into review (customerId,reviewTitle,reviewContent,";
 			 sql += "reviewNum,reviewImage,itemNum,reviewCreated,reviewLike) ";
-			 sql += "values (,?,?,?,?,1111,sysdate,0)";
+			 sql += "values (?,?,?,?,?,?,sysdate,0)";
 			 
 			 pstmt = conn.prepareStatement(sql);
 			 
@@ -92,6 +95,7 @@ public class ReviewDAO {
 			 pstmt.setString(3, rdto.getReviewContent());
 			 pstmt.setInt(4, rdto.getReviewNum());
 			 pstmt.setString(5, rdto.getReviewImage());
+			 pstmt.setInt(6, rdto.getItemNum());
 			
 			
 			 pstmt.executeUpdate();
@@ -104,9 +108,9 @@ public class ReviewDAO {
 			  }
 	
 	 //전체데이터 가져오기
-	 public List<ReviewDTO> getLists(int start, int end){
+	 public List<ReviewDTO> getLists(int start, int end,int itemNum){
 			
-			List<ReviewDTO> lists = new ArrayList<ReviewDTO>();
+			List<ReviewDTO> reviewlists = new ArrayList<ReviewDTO>();
 			ReviewDTO rdto = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -117,14 +121,16 @@ public class ReviewDAO {
 				sql = "select * from ("; 
 				sql+= "select rownum rnum, data.* from (";
 				sql+= "select customerId,reviewTitle,reviewContent,reviewNum,reviewImage,itemNum,reviewCreated,reviewLike ";
-				sql+= "from review order by reviewNum desc) data)";
+				sql+= "from review where itemNum=? order by reviewNum desc) data)";
 				sql+= "where rnum>=? and rnum<=?";
 				
 				
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setInt(1, start);
-				pstmt.setInt(2, end);
+				pstmt.setInt(1, itemNum);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				
 				
 				rs = pstmt.executeQuery();
 				
@@ -141,7 +147,7 @@ public class ReviewDAO {
 					rdto.setReviewCreated(rs.getString("reviewCreated"));
 					rdto.setReviewLike(rs.getInt("reviewLike"));
 					
-					lists.add(rdto);
+					reviewlists.add(rdto);
 					
 				}
 				
@@ -153,7 +159,7 @@ public class ReviewDAO {
 				
 			}
 			
-			return lists;
+			return reviewlists;
 			
 		}
 	 //하나 읽어오기
@@ -229,18 +235,21 @@ public class ReviewDAO {
 	 //수정
 		public int updateData(ReviewDTO rdto){
 			
+			
 			int result = 0;
 			PreparedStatement pstmt = null;
 			String sql;
 				
 			try {
 				sql = "update review set reviewTitle=?,reviewContent=?,reviewImage=?,reviewCreated=sysdate ";
-				sql += "where customerId=?";
+				sql += "where reviewNum=? ";
 				pstmt = conn.prepareStatement(sql);
+				
 				pstmt.setString(1, rdto.getReviewTitle());
 				pstmt.setString(2, rdto.getReviewContent());
 				pstmt.setString(3, rdto.getReviewImage());
-				pstmt.setString(4, rdto.getCustomerId());
+				pstmt.setInt(4, rdto.getReviewNum());
+				
 				result = pstmt.executeUpdate();
 				pstmt.close();
 					

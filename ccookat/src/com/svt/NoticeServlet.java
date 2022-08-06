@@ -67,7 +67,25 @@ public class NoticeServlet extends HttpServlet {
 				currentPage = Integer.parseInt(pageNum);
 			}
 
-			int dataCount = ndao.getDataCount();
+		
+			String noticeSearchKey = request.getParameter("noticeSearchKey");
+			String searchValue = request.getParameter("searchValue");
+			
+			if(searchValue!=null){
+
+				if(request.getMethod().equalsIgnoreCase("GET")){
+					searchValue = URLDecoder.decode(searchValue,"UTF-8");			
+				}	
+			}else{
+				searchValue = "";	
+			}	
+			
+			if(noticeSearchKey==null){
+				noticeSearchKey = "gongji";			
+				}
+			
+			
+			int dataCount = ndao.getDataCount(searchValue,noticeSearchKey);
 
 			int numPerPage = 4;
 
@@ -75,21 +93,37 @@ public class NoticeServlet extends HttpServlet {
 
 			if(currentPage>totalPage) {
 				currentPage=totalPage;
-				url = "/notice/noticeMain.jsp?pageNum="+currentPage;	
+				//url = "/main/notice/noticeMain.jsp?pageNum="+currentPage;	
 			}
 
 			int start = (currentPage-1)*numPerPage+1;
 			int end = currentPage * numPerPage;
 
-			List<NoticeDTO> lists = ndao.selectAll(start, end);
+			List<NoticeDTO> lists = ndao.selectAll(start, end, noticeSearchKey, searchValue);		
+
+			String params = "";
+			if(searchValue!=null || !searchValue.equals("")) {
+				params = "noticeSearchKey="+noticeSearchKey +"&searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
+			}
 			
-			String listUrl = cp + "/main/notice/list.do";
+			String listUrl = cp + "/main/notice/list.do" + params;
+			
+			if(params.equals("")) {
+				listUrl += "?" + params;			
+			}
 			
 			String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 
 			String deletePath = cp + "main/notice/delete.do";
 			String imagePath = cp + "/pds/noticeFile";
-								
+			
+			String detailUrl = cp + "/main/notice/datail.do?pageNum=" + currentPage;
+
+			if(!params.equals("")) {
+				detailUrl += "&" + params;			
+			}
+			
+			request.setAttribute("detailUrl", detailUrl);
 			request.setAttribute("deletePath", deletePath);
 			request.setAttribute("imagePath", imagePath);
 			request.setAttribute("lists", lists);
@@ -97,6 +131,7 @@ public class NoticeServlet extends HttpServlet {
 			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("dataCount", dataCount);
+			
 			
 			url = "/notice/noticeMain.jsp";
 			forward(request, response, url);
@@ -118,19 +153,20 @@ public class NoticeServlet extends HttpServlet {
 
 			if(mr.getFile("upload")!=null) {
 
-				NoticeDTO dto = new NoticeDTO();
+				NoticeDTO ndto = new NoticeDTO();
 
 				int maxnum = ndao.getMaxNum();
 				
-				dto.setNoticeNum(maxnum+1);
-				dto.setNoticeTitle(mr.getParameter("noticeTitle"));
-				dto.setNoticeImage(mr.getFilesystemName("upload"));
-				dto.setNoticeContent(mr.getParameter("noticeContent"));
-	
-				ndao.insertData(dto);
+				ndto.setNoticeNum(maxnum+1);
+				ndto.setNoticeTitle(mr.getParameter("noticeTitle"));
+				ndto.setNoticeImage(mr.getFilesystemName("upload"));
+				ndto.setNoticeContent(mr.getParameter("noticeContent"));
+				ndto.setnoticeSearchKey(mr.getParameter("noticeSearchKey"));
+				
+				ndao.insertData(ndto);
 			}
 
-			url = cp + "/main/notice/list.do";
+			url = cp + "/main/notice/list.do?noticeSearchKey="+mr.getParameter("noticeSearchKey");
 			response.sendRedirect(url);
 
 		}else if(uri.indexOf("detail.do")!=-1) {
@@ -138,7 +174,9 @@ public class NoticeServlet extends HttpServlet {
 			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 			String pageNum = request.getParameter("pageNum");
 
+			String deletePath = cp + "/main/notice/delete.do";
 			String imagePath = cp + "/pds/noticeFile";
+			
 			ndao.updateHitCount(noticeNum);
 			
 			NoticeDTO ndto = ndao.selectData(noticeNum);
@@ -147,26 +185,24 @@ public class NoticeServlet extends HttpServlet {
 			if(ndto==null) {
 				url = cp + "/main/notice/list.do";
 				response.sendRedirect(url);
-			}
+			}			
 			
-			
-			//int line = ndto.getNoticeContent().split("\n").length;
+			//띄어쓰기
+			ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\r", "<br/>"));
 
-			//ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\n\r", "<br/>"));
-
-
+			request.setAttribute("deletePath", deletePath);
 			request.setAttribute("ndto", ndto);
-			//request.setAttribute("lineSu", line);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("imagePath", imagePath);
+			request.setAttribute("pageNum", pageNum);
 			
 			url = "/notice/noticeDetail.jsp";
 			forward(request, response, url);
 			
 		}else if(uri.indexOf("delete.do")!=-1) {
-			
+						
 			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
-			String pageNum = request.getParameter("pageNum");
+			String pageNum = request.getParameter("pageNum");			
 			
 			NoticeDTO ndto = ndao.selectData(noticeNum);
 			
@@ -180,5 +216,8 @@ public class NoticeServlet extends HttpServlet {
 		}
 
 	}
+	
+	
+	//QnA servlet
 
 }

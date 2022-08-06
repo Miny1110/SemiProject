@@ -1,8 +1,10 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
 %>
 <html lang="zxx">
 <head>
@@ -325,8 +327,9 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p></p>
+                                    <h6>상품 설명</h6>
+                                    <p><img src="${imagePath }/${idto.itemImage1}"></p>
+                                    <p>${idto.itemContent }</p>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -340,28 +343,55 @@
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                <div class="product__details__tab__desc">
                                <p>구매고객 총 리뷰</p>
-                              <form action="/ccookat/main/review/created.do" method="post">
+                              <form action="" method="post">
                               
                                <div>
-                       				  	<input type="button" class="btn2" value=리뷰등록> 
-                       		
+                       				  	<input type="button" class="btn2" value=리뷰등록
+                       				  	onclick="location='/ccookat/main/review/created.do';">
                        				 </div>
-                              <c:forEach var="rdto" items="${lists}">
+                       				 
+                              <c:forEach var="rdto" items="reviewlists">
                                     <div>
-                       				 <div>
+                       				 <div style="border-bottom : 1px solid #d5d5d5;">
                        				 
                        			
-                       			 <div style="border: 3" class="product__details__tab__desc">
-                       				${rdto.customerId}<span></span>${rdto.reviewCreated}
+                       			 <div class="product__details__tab__desc">
+                       			<b>작성자 :&nbsp;</b>${rdto.customerId} <b>작성일 :&nbsp;</b>${rdto.reviewCreated}
                        				  </div>
-                       				   <div class="product__details__tab__desc">
+                       				  <div align="right">
+                       				  
+                       				  </div>
+                       				<%--    <div class="product__details__tab__desc">
                        				  	${rdto.reviewTitle}
-                       				  	</div>
-                       				  	<div class="product__details__tab__desc">
+                       				  	</div> --%>
+                       				  	<c:if test="${rdto.reviewImage!=null}">
+                       				  	 <div >
+                                    <img src="${imagePath }/${rdto.reviewImage }" height="200" width="200"/> ${rdto.reviewContent} 
+                             
+                                   
+                                </div>
+                                </c:if>
+                                
+                                <c:if test="${rdto.reviewImage==null}">
+                       				  	 <div class="product__details__tab__desc">
                        				  	${rdto.reviewContent}
+                       				  	  </div> 
+                                </c:if>	
+                       				  	<div style="text-align: right;">
+                       				 <%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
+                       				  <%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
+                       				  	
+                       				  	<input type="button" value="수정하기" onclick="location='/ccookat/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}';">
+                       				  	
+                       				  	<input type="button" value="삭제하기" onclick="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}';">
+                       				  	
+                       					
                        				  	</div>
                        				  	
+                       				  
+                       				  	
                        				  	</div>
+                       				  
                        				  	</div>
                        				  	
                        				  	
@@ -372,6 +402,9 @@
                              		  
                              		  
                              		  </c:forEach> 
+                             		  		   <div class="product__pagination blog__pagination">
+                                ${pageIndexList }
+                            </div>
                              		  </form>
                             		</div>
                                 </div>
@@ -380,17 +413,17 @@
                     </div>
                 </div>
             </div>
-        
+      
     </section>
     <!-- Product Details Section End -->
 
-    <!-- Related Product Section Begin -->
+   <!-- Related Product Section Begin -->
     <section class="related-product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title related__product__title">
-                        <h2>Related Product</h2>
+                        <h2>관련 상품</h2>
                     </div>
                 </div>
             </div>

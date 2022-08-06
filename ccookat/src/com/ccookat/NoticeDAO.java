@@ -57,8 +57,8 @@ public class NoticeDAO {
 		try {
 
 			sql = "insert into notice(noticeNum,noticeTitle,noticeCreated,";
-			sql+= "noticeContent,noticeHitCount,noticeImage) ";
-			sql+= "values(?,?,sysdate,?,0,?)";
+			sql+= "noticeContent,noticeHitCount,noticeImage,noticeSearchKey) ";
+			sql+= "values(?,?,sysdate,?,0,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -66,7 +66,8 @@ public class NoticeDAO {
 			pstmt.setString(2, dto.getNoticeTitle());
 			pstmt.setString(3, dto.getNoticeContent());
 			pstmt.setString(4, dto.getNoticeImage());
-
+			pstmt.setString(5, dto.getnoticeSearchKey());
+			
 			pstmt.executeUpdate();
 			pstmt.close();
 
@@ -116,6 +117,8 @@ public class NoticeDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, noticeNum);
+			
+			pstmt.executeUpdate();
 
 			pstmt.close();
 
@@ -128,17 +131,16 @@ public class NoticeDAO {
 	//수정시 뿌려줄 데이터
 	public NoticeDTO selectData(int noticeNum) {
 
+		NoticeDTO ndto=null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
-		NoticeDTO dto = null;
 		String sql;
 
 		try {
 
 			sql ="select noticeNum,noticeTitle,noticeCreated,";
 			sql+="noticeContent,noticeHitCount,noticeImage ";
-			sql+="from notice where noticenum=?";
+			sql+="from notice where noticeNum=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -148,14 +150,14 @@ public class NoticeDAO {
 
 			if(rs.next()) {
 
-				dto = new NoticeDTO();
+				ndto = new NoticeDTO();
 
-				dto.setNoticeNum(Integer.parseInt("noticeNum"));
-				dto.setNoticeTitle("noticeTitle");
-				dto.setNoticeCreated("noticeCreated");
-				dto.setNoticeContent("noticeContent");
-				dto.setNoticeHitCount(Integer.parseInt("noticeHitCount"));
-				dto.setNoticeImage("noticeImage");
+				ndto.setNoticeNum(rs.getInt("noticeNum"));
+				ndto.setNoticeTitle(rs.getString("noticeTitle"));
+				ndto.setNoticeCreated(rs.getString("noticeCreated"));
+				ndto.setNoticeContent(rs.getString("noticeContent"));
+				ndto.setNoticeHitCount(rs.getInt("noticeHitCount"));
+				ndto.setNoticeImage(rs.getString("noticeImage"));
 
 			}
 
@@ -166,12 +168,12 @@ public class NoticeDAO {
 			System.out.println(e.toString());
 		}
 
-		return dto;
+		return ndto;
 	}
 
 	//공지사항 목록에 뿌려줄 데이터
 
-	public List<NoticeDTO> selectAll(int start,int end) {
+	public List<NoticeDTO> selectAll(int start,int end,String noticeSearchKey, String searchValue) {
 
 		List<NoticeDTO> lists = new ArrayList<>();
 		NoticeDTO ndto = null;
@@ -181,16 +183,22 @@ public class NoticeDAO {
 
 		try {
 
+			searchValue = "%" + searchValue + "%";
+			
 			sql ="select * from(select rownum rnum,data.* from ";
 			sql+="(select noticeNum,noticeTitle,to_char(noticeCreated,'yyyy.mm.dd') noticeCreated,";
 			sql+="SUBSTR(noticeContent, 1, 30) noticeContent,noticeHitCount,noticeImage ";
-			sql+="from notice order by noticeNum desc) data) ";
+			sql+="from notice where noticeSearchKey = ? and (noticecontent like ? or noticetitle like ?) ";			
+			sql+="order by noticeNum desc) data) ";
 			sql+="where rnum>=? and rnum<=?";
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setString(1, noticeSearchKey);
+			pstmt.setString(2, searchValue);
+			pstmt.setString(3, searchValue);
+			pstmt.setInt(4, start);
+			pstmt.setInt(5, end);
 
 			rs = pstmt.executeQuery();
 
@@ -221,7 +229,7 @@ public class NoticeDAO {
 
 	//페이징 처리를 위한 전체 데이터 갯수 도출
 
-	public int getDataCount() {
+	public int getDataCount(String searchValue,String noticeSearchKey) {
 
 		int dataCount = 0;
 
@@ -231,10 +239,17 @@ public class NoticeDAO {
 
 		try {
 
-			sql = "select nvl(count(*),0) from notice";
-
+			searchValue = "%" + searchValue + "%";
+			
+			sql = "select nvl(count(*),0) from notice ";
+			sql+="where noticeSearchKey = ? and (noticecontent like ? or noticetitle like ?)";
+			
 			pstmt = conn.prepareStatement(sql);
-
+			
+			pstmt.setString(1, noticeSearchKey);
+			pstmt.setString(2, searchValue);
+			pstmt.setString(3, searchValue);
+			
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
@@ -251,29 +266,26 @@ public class NoticeDAO {
 		return dataCount;
 	}
 
-	public int updateHitCount(int noticeNum) {
+	public void updateHitCount(int noticeNum) {
 
-		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
 
 		try {
 
-			sql = "update notice set hitCount = hitCount+1 where num=?";
+			sql = "update notice set noticehitCount=noticehitCount+1 where noticeNum=?";
 
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, noticeNum);
 
-			result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 
 			pstmt.close();
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-
-		return result;
 
 	}
 
