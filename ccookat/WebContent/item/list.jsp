@@ -445,7 +445,7 @@
                                             <h5><a href="#">${idto.itemName }</a></h5>
                                             <div class="product__item__price">
                                             <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
-                                            pattern=""/>원
+                                            pattern="0"/>원
                                            <span>${idto.itemPrice }원</span></div>
                                             
                                         </div>
@@ -468,7 +468,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter__found">
-                                    <h6><span>16</span> Products found</h6>
+                                    <h6><span>${dataCount }</span> Products found</h6>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-3">
@@ -501,7 +501,7 @@
  										<div class="product__discount__item__text">
                                             <div class="product__item__price">
                                             <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
-                                            pattern=""/>원
+                                            pattern="0"/>원
                                            <span>${idto.itemPrice }원</span></div>
                                             
                                         </div>

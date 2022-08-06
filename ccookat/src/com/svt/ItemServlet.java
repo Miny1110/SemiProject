@@ -118,7 +118,7 @@ public class ItemServlet extends HttpServlet {
 
 			//널이면 리스트로 가
 			if(idto==null) {
-				url = cp + "/main/item/list.do";
+				url = cp + "/item/list.do";
 				resp.sendRedirect(url);
 				return;
 			}
@@ -149,17 +149,17 @@ public class ItemServlet extends HttpServlet {
 			start = (currentPage-1) * numPerPage + 1;
 			end = currentPage * numPerPage;
 
-			String listUrl = cp + "/main/item/detail.do";
+			String listUrl = cp + "/item/detail.do";
 			String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 			//리스트 나오게 하기
 			List<ReviewDTO> reviewlists = rdao.getLists(start, end, itemNum);
 
 			/* 이부분 변수명 정리함 */
-			String reviewdDeletePath = cp + "/main/review/delete.do";
+			String reviewdDeletePath = cp + "/review/delete.do";
 			String reviewImagePath = cp + "/pds/imageFile";			
 			//String params = "pageNum=" + currentPage;
 			String itemImagePath = cp + "/pds/itemImageFile";
-			String itemDeletePath = cp + "/main/item/deleted.do";
+			String itemDeletePath = cp + "/item/deleted.do";
 			
 			
 
@@ -203,20 +203,20 @@ public class ItemServlet extends HttpServlet {
 			//DB 테이블에 저장된 데이터 삭제
 			idao.deleteData(itemNum);
 
-			url = cp + "/main/item/list.do?pageNum=" + currentPage;
+			url = cp + "/item/list.do?pageNum=" + currentPage;
 			resp.sendRedirect(url);
 
 			return;
 
 
-		}else if(uri.indexOf("updated.do")!=-1) {
+		}/*else if(uri.indexOf("updated.do")!=-1) {
 
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 
 			ItemDTO idto = idao.getReadData_detail(itemNum);
 
 
-		}else if(uri.indexOf("list.do")!=-1) {
+		}*/else if(uri.indexOf("list.do")!=-1) {
 
 			//여기서부터 페이징 처리
 			String pageNum = req.getParameter("pageNum");
@@ -231,7 +231,7 @@ public class ItemServlet extends HttpServlet {
 				currentPage = Integer.parseInt(pageNum);
 			}
 
-			int numPerPage = 9; 
+			int numPerPage = 6; 
 			int dataCount = idao.getDataCount(itemType);
 			int totalPage = myPage.getPageCount(numPerPage, dataCount);
 
