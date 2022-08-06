@@ -390,9 +390,9 @@
 														<%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
 														 <c:if test="${sessionScope.customerInfo.customerId==rdto.customerId}"	>													
 														<div class="blog__sidebar__item__tags">
-															<a href="location='/ccookat/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
+															<a href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
 																수정하기</a>
-															<a href="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
+															<a href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
 																삭제하기</a>	
 														</div>
 														</c:if>
@@ -411,9 +411,11 @@
 										</c:if>
 									</c:forEach>
 								</form>
-								<div class="product__pagination blog__pagination">
-                                ${pageIndexList }
-                            </div>
+								   
+                    <div class="product__pagination">
+                        ${reviewPageIndexList }
+                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    </div>
                              	
                             		</div>
                                 </div>
