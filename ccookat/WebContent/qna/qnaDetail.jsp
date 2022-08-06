@@ -196,9 +196,22 @@
 									<li><a href="#">English</a></li>
 								</ul>
 							</div>
-							<div class="header__top__right__auth">
-								<a href="#"><i class="fa fa-user"></i> Login</a>
-							</div>
+							<c:if test="${empty sessionScope.customerInfo.customerId}">
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
+									</div>
+									<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
+									</div>
+							</c:if>
+							<c:if test="${!empty sessionScope.customerInfo.customerId}">
+             						<div class="header__top__right__auth">
+               						<a href="<%=cp %>/main/customer/updated.do"><i class="fa fa-user"></i> Mypage</a>
+           						 </div>
+           						 <div class="header__top__right__auth">
+           						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
+           						 </div>
+           					 </c:if>
 						</div>
 					</div>
 				</div>
@@ -208,31 +221,40 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="./index.html"><img
-							src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+						<a href="<%=cp %>/main"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li><a href="./index.html">Home</a></li>
-							<li><a href="./shop-grid.html">Shop</a></li>
+							<li><a href="<%=cp%>/main">Home</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
 							<li><a href="#">Pages</a>
 								<ul class="header__menu__dropdown">
 									<li><a href="./shop-details.html">Shop Details</a></li>
 									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
 									<li><a href="./checkout.html">Check Out</a></li>
 								</ul></li>
-							<li><a href="./contact.html">Contact</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__cart">
-						<ul>
-							<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-							<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-						</ul>
+			<c:if test="${empty sessionScope.customerInfo.customerId}">
+								<ul>
+									<li><a href="<%=cp%>/main/customer/login.do"><i
+											class="fa fa-heart"></i></a></li>
+									<li><a href="<%=cp%>/main/customer/login.do"><i
+											class="fa fa-shopping-bag"></i></a></li>
+								</ul>
+							</c:if>
+							<c:if test="${!empty sessionScope.customerInfo.customerId}">
+								<ul>
+									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i> <span>55</span></a></li>
+									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>장바구니수량</span></a></li>
+								</ul>
+									</c:if>
 						<div class="header__cart__price"></div>
 					</div>
 				</div>
@@ -342,8 +364,10 @@
 					<div id="qna_menu">
 						<button type="button" class="w-btn" id="listBtn"
 							onclick="location='<%=cp %>/main/qna/list.do?pageNum=${pageNum }';">목록</button>
+								 <c:if test="${sessionScope.customerInfo.customerId=='admin'}"	>						
 						<button type="button" class="w-btn">답변</button>
-					</div>
+						</c:if>
+											</div>
 
 
 				</div>
