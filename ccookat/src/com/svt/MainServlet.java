@@ -2,6 +2,7 @@ package com.svt;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -28,6 +29,7 @@ public class MainServlet extends HttpServlet {
 	}
 
 	protected void forward(HttpServletRequest req, HttpServletResponse resp, String url) throws ServletException, IOException {
+	
 		RequestDispatcher rd = req.getRequestDispatcher(url);
 
 		rd.forward(req, resp);
@@ -41,22 +43,21 @@ public class MainServlet extends HttpServlet {
 		Connection conn = DBConn.getconnection();
 		ItemDAO idao = new ItemDAO(conn);
 
-
 		String cp = req.getContextPath();
-		//String uri = req.getRequestURI();
+		String uri = req.getRequestURI();
 		String url;
 		
-		String itemType = req.getParameter("itemType");
 
-		String itemImagePath = cp + "/pds/itemImageFile";
-		System.out.println("dkdk");
-		List<ItemDTO> mainList = idao.getHitCountLists(itemType);
-
-		req.setAttribute("itemImagePath", itemImagePath);
-		req.setAttribute("mainList", mainList);
-
-		url = cp ;
-		forward(req, resp, url);
+				List<ItemDTO> mainLists = new ArrayList<ItemDTO>(); 
+				
+				mainLists = idao.getHitCountLists();
+				String itemImagePath = cp + "/pds/itemImageFile";
+				
+				req.setAttribute("mainList", mainLists);
+				req.setAttribute("itemImagePath", itemImagePath);
+				
+				url = "/main.jsp";
+				forward(req, resp, url);
 		
 
 
