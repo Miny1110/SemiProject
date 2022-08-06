@@ -44,8 +44,6 @@ public class CustomerServlet extends HttpServlet{
 		Connection conn = DBConn.getconnection();
 		CustomerDAO cdao = new CustomerDAO(conn);
 
-		MyPage myPage = new MyPage();
-
 		String url;
 		
 		//회원정보 입력
@@ -69,9 +67,8 @@ public class CustomerServlet extends HttpServlet{
 			url = "/customer/login.jsp";
 			forward(req, resp, url);
 			
-		}
-		//로그인창
-		else if(uri.indexOf("login.do")!=-1) {
+		}else if(uri.indexOf("login.do")!=-1) {
+			//로그인창
 			
 			url = "/customer/login.jsp";
 			forward(req, resp, url);
