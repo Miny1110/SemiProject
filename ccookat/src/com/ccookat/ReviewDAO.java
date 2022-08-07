@@ -10,13 +10,13 @@ import java.util.List;
 
 public class ReviewDAO {
 	
-	//최댓값 구하기
+	
 	private Connection conn = null;
 	
 	public ReviewDAO(Connection conn) {
 		this.conn = conn;
 	}
-	
+	//최댓값 구하기
 	public int getMaxNum() {
 		int maxNum = 0;
 		PreparedStatement pstmt = null;
