@@ -81,10 +81,10 @@ public class CartDAO {
 				ctdto.setCustomerId(rs.getString(2));
 				ctdto.setItemNum(rs.getInt(3));
 				ctdto.setCartItemCount(rs.getInt(4));
-				ctdto.setCartTotPrice(rs.getInt(5));
+				ctdto.setCartTotPrice(rs.getInt(5));//이건 할인후 수량까지 추가한 총금액
 				ctdto.setItemName(rs.getString(6));
 				ctdto.setItemImage1(rs.getString(7));				
-				ctdto.setItemPrice(rs.getInt(8));
+				ctdto.setItemPrice(rs.getInt(8)); //이건 할인전 금액
 				
 				lists.add(ctdto);
 		
@@ -156,10 +156,31 @@ public class CartDAO {
 	}
 	
 	//같은상품을 장바구니에 또 담았을때 기존에 있던 수량에 추가된수량을 더해서 수정해줌
-	public void updateData(int itemNum, String customerId) {
+	public void updateData(CartDTO ctdto) {
 		
+		PreparedStatement pstmt = null;
+		String sql;
 		
-		
+		try {
+			
+			sql = "update set cart(cartItemCount = cartItemCount+?, ";
+			sql+="CartTotPrice=CartTotPrice)+?) ";	
+			sql+="where customerId=? and cartNum = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, ctdto.getCartItemCount());
+			pstmt.setInt(2, ctdto.getCartTotPrice());
+			pstmt.setString(3, ctdto.getCustomerId());
+			pstmt.setInt(4, ctdto.getCartNum());
+			
+			pstmt.executeUpdate();			
+			pstmt.close();
+					
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	
 	}
 	
 	//그아이디에 장바구니에 같은상품이 있는지 알아보기위해 한개의 데이터를 가져와보는 출력문
