@@ -29,7 +29,7 @@ public class MainServlet extends HttpServlet {
 	}
 
 	protected void forward(HttpServletRequest req, HttpServletResponse resp, String url) throws ServletException, IOException {
-	
+
 		RequestDispatcher rd = req.getRequestDispatcher(url);
 
 		rd.forward(req, resp);
@@ -46,19 +46,21 @@ public class MainServlet extends HttpServlet {
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		String url;
-		
 
-				List<ItemDTO> mainLists = new ArrayList<ItemDTO>(); 
-				
-				mainLists = idao.getHitCountLists();
-				String itemImagePath = cp + "/pds/itemImageFile";
-				
-				req.setAttribute("mainList", mainLists);
-				req.setAttribute("itemImagePath", itemImagePath);
-				
-				url = "/main.jsp";
-				forward(req, resp, url);
-		
+
+		List<ItemDTO> mainLists = new ArrayList<ItemDTO>(); 
+
+		mainLists = idao.getHitCountLists();
+		String itemImagePath = cp + "/pds/itemImageFile";
+		String itemDetailUrl = cp + "/main/item/detail.do?itemType=";
+
+		req.setAttribute("itemDetailUrl", itemDetailUrl);
+		req.setAttribute("mainList", mainLists);
+		req.setAttribute("itemImagePath", itemImagePath);
+
+		url = "/main.jsp";
+		forward(req, resp, url);
+
 
 
 	}

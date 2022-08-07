@@ -360,137 +360,123 @@
 								<span> 샛별ㆍ낮 배송</span>
 							</div>
 						</div>
-					</div>
-					<div class="hero__item set-bg" style="padding-left: 0">
-						<img src="/ccookat/Data/style/img/banner/event_main.jpg" alt=""
-							align="middle">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Hero Section End -->
 
-	<!-- Categories Section Begin -->
-	<section class="categories">
-		<div class="container">
-			<div class="row">
-				<div class="categories__slider owl-carousel">
-					<div class="col-lg-3">
-						<div class="categories__item set-bg"
-							data-setbg="/ccookat/Data/style/img/categories/event_1.jpg">
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="categories__item set-bg"
-							data-setbg="/ccookat/Data/style/img/categories/event_2.jpg">
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="categories__item set-bg"
-							data-setbg="/ccookat/Data/style/img/categories/event_3.jpg">
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="categories__item set-bg"
-							data-setbg="/ccookat/Data/style/img/categories/event_4.jpg">
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="categories__item set-bg"
-							data-setbg="/ccookat/Data/style/img/categories/event_5.jpg">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Categories Section End -->
+                    </div>
+                    <div class="hero__item set-bg" style="padding-left: 0">
+                    <img src="/ccookat/Data/style/img/banner/event_main.jpg" alt="" align="middle">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Categories Section Begin -->
+   <section class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="categories__slider owl-carousel">
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_1.jpg">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_2.jpg">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_3.jpg">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_4.jpg">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_5.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
 
 
-	<!-- Featured Section Begin -->
-	<section class="featured spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="section-title">
-						<h2>인기상품</h2>
-					</div>
-					<div class="featured__controls">
-						<ul>
-							<li class="active" data-filter="*">전체상품</li>
-							<li>&nbsp; |</li>
-							<li data-filter=".fruit">채소ㆍ과일</li>
-							<li>&nbsp; |</li>
-							<li data-filter=".bread">밥ㆍ빵ㆍ면</li>
-							<li>&nbsp; |</li>
-							<li data-filter=".meat">정육ㆍ계란</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row featured__filter">
-				<c:forEach var="idto" items="${mainList }">
-					<div class="col-lg-3 col-md-4 col-sm-6 mix ${idto.itemType }">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg"
-								data-setbg="${itemImagePath }/${idto.itemImage1}"
-								style="background-image: url(&quot;${itemImagePath }/${idto.itemImage1}&quot;);">
-							</div>
-							<div class="featured__item__text">
-								<h6>
-									<a href="#">${idto.itemName }</a>
-								</h6>
-								<h5>
-									<fmt:formatNumber
-										value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
-										pattern="0" />
-									원
-								</h5>
-								<span
-									style="font-size: small; color: #707070; text-decoration: line-through;">${idto.itemPrice }원</span>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
-	</section>
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>인기상품</h2>
+                    </div>
+                    <div class="featured__controls">
+                        <ul>
+                            <li class="active" data-filter="*">전체상품</li>
+                            <li>&nbsp; |</li>
+                            <li data-filter=".fruit">채소ㆍ과일</li>
+                            <li>&nbsp; |</li>
+                            <li data-filter=".bread">밥ㆍ빵ㆍ면</li>
+                            <li>&nbsp; |</li>
+                            <li data-filter=".meat">정육ㆍ계란</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>  
+            <div class="row featured__filter">   
+            <c:forEach var="idto" items="${mainList }">          
+                <div class="col-lg-3 col-md-4 col-sm-6 mix ${idto.itemType }">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="${itemImagePath }/${idto.itemImage1}"
+                        style="background-image: url(&quot;${itemImagePath }/${idto.itemImage1}&quot;);"
+                        onclick="location.href='${itemDetailUrl }${idto.itemType }&itemNum=${idto.itemNum }';">
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">${idto.itemName }</a></h6>
+                            <h5><fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" pattern="0"/>원</h5>
+                             <span style="font-size: small; color: #707070; text-decoration: line-through;">${idto.itemPrice }원</span>
+                        </div>
+                    </div>
+                </div>
+             </c:forEach>           
+            </div>
+        </div>
+    </section>
+   
+    
+    <!-- Featured Section End -->
 
+    <!-- Banner Begin -->
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="/ccookat/Data/style/img/banner/event_banner_1.jpg" alt="" >
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="/ccookat/Data/style/img/banner/event_banner_2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
 
-	<!-- Featured Section End -->
+    <!-- Latest Product Section Begin -->
+    
+    <!-- Latest Product Section End -->
 
-	<!-- Banner Begin -->
-	<div class="banner">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-6">
-					<div class="banner__pic">
-						<img src="/ccookat/Data/style/img/banner/event_banner_1.jpg"
-							alt="">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6">
-					<div class="banner__pic">
-						<img src="/ccookat/Data/style/img/banner/event_banner_2.jpg"
-							alt="">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Banner End -->
+    <!-- Blog Section Begin -->
+    
+    <!-- Blog Section End -->
 
-	<!-- Latest Product Section Begin -->
+    <!-- Footer Section Begin -->
+    <section class="contact spad footer-details">
 
-	<!-- Latest Product Section End -->
-
-	<!-- Blog Section Begin -->
-
-	<!-- Blog Section End -->
-
-	<!-- Footer Section Begin -->
-	<section class="contact spad footer-details">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
