@@ -188,9 +188,7 @@ public class ItemServlet extends HttpServlet {
 
 			//num과 pageNum을 받아온다. 리다이렉트 주소를 만들기 위해 필요한 값
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-			System.out.println(itemNum);
 			int currentPage = Integer.parseInt(req.getParameter("pageNum"));
-			System.out.println(currentPage);
 			
 
 			//삭제하려는 데이터의 num을 사용해서 그 하나의 데이터 정보를 읽어온다
@@ -203,6 +201,7 @@ public class ItemServlet extends HttpServlet {
 			FileManager.doFileDelete(idto.getItemImage4(), path);
 
 			//DB 테이블에 저장된 데이터 삭제
+			rdao.deleteDataItem(itemNum);
 			idao.deleteData(itemNum);
 
 			url = cp + "/main/item/list.do?pageNum=" + currentPage;
