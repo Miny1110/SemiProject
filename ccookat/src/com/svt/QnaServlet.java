@@ -18,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import com.ccookat.CustomerInfo;
 import com.ccookat.QnaDAO;
 import com.ccookat.QnaDTO;
+import com.ccookat.ReplyDAO;
+import com.ccookat.ReplyDTO;
 import com.util.DBConn;
 import com.util.MyPage;
 
@@ -46,6 +48,8 @@ public class QnaServlet extends HttpServlet {
 
 		Connection conn = DBConn.getconnection();
 		QnaDAO qdao = new QnaDAO(conn);
+		//답변도 필요해서 추기
+		ReplyDAO redao = new ReplyDAO(conn);
 
 		MyPage myPage = new MyPage(); 
 
@@ -212,7 +216,31 @@ public class QnaServlet extends HttpServlet {
 
 			url = "/qna/qnaDetail.jsp";
 			forward(request, response, url);
-
+		//답변하기 게시판 이동
+		}else if (uri.indexOf("reply.do")!=-1) {
+			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+			String pageNum = request.getParameter("pageNum");
+			
+			url = "/qna/qnaReply.jsp";
+			forward(request, response, url);
+			
+		}else if (uri.indexOf("reply_ok.do")!=-1){
+			//변수 받아서
+			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+			String pageNum = request.getParameter("pageNum");
+			
+			ReplyDTO redto = new ReplyDTO();
+			int remaxNum = redao.getMaxNum();
+			
+			redto.setReplyNum(remaxNum+1);
+			redto.setCustomerId(request.getParameter("customerId"));
+			redto.setReplyContent(request.getParameter("replyContent"));
+			redto.setReplyCreated(request.getParameter("replyCreated"));
+			
+			redao.insertData(redto);
+			
+			url = cp + "/main/qna/list.do";
+			response.sendRedirect(url);
 		}
 	}
 }
