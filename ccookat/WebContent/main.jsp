@@ -13,6 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ccookat</title>
+    
+    <link href="/ccookat/Data/style/img/ccookat/favicon.ico"
+	rel="shortcut icon" type="image/x-icon">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
@@ -246,13 +249,13 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>카테고리</span>
                         </div>
                        
                               <ul>
-                             <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
+                             <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
                              <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>	
                             <li><a href="<%=cp%>/main/item/created.do"> [상품등록]</a></li>
                             </c:if>
@@ -335,14 +338,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Featured Product</h2>
+                        <h2>인기상품</h2>
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li class="active" data-filter="*">All</li>
-                            <li data-filter=".fruit">Vegetables & Fruit</li>
-                            <li data-filter=".bread">Rice & Noodle & Bread</li>
-                            <li data-filter=".meat">Fresh Meat & Egg</li>
+                            <li class="active" data-filter="*">전체상품</li>
+                            <li>&nbsp; |</li>
+                            <li data-filter=".fruit">채소ㆍ과일</li>
+                            <li>&nbsp; |</li>
+                            <li data-filter=".bread">밥ㆍ빵ㆍ면</li>
+                            <li>&nbsp; |</li>
+                            <li data-filter=".meat">정육ㆍ계란</li>
                         </ul>
                     </div>
                 </div>
