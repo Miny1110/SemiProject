@@ -40,6 +40,8 @@
 	type="text/css">
 <link rel="stylesheet" href="/ccookat/Data/style/css/style.css"
 	type="text/css">
+	<link rel="stylesheet" href="/ccookat/Data/style/css/qnaDetail.css"
+	type="text/css">
 
 </head>
 
@@ -107,9 +109,9 @@
 						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
 						<li class="slicknav_collapsed slicknav_parent"><a href="#"
 							role="menuitem" aria-haspopup="true" tabindex="-1"
-							class="slicknav_item slicknav_row" style="outline: none;"><a
-								href="#">Pages</a> <span class="slicknav_arrow">►</span></a>
-						<ul class="header__menu__dropdown slicknav_hidden" role="menu"
+							class="slicknav_item slicknav_row" style="outline: none;">
+							<a href="#">Pages</a> <span class="slicknav_arrow">►</span></a>
+							<ul class="header__menu__dropdown slicknav_hidden" role="menu"
 								aria-hidden="true" style="display: none;">
 								<li><a href="./shop-details.html" role="menuitem"
 									tabindex="-1">Shop Details</a></li>
@@ -142,7 +144,7 @@
 								<li><a href="./shop-details.html" role="menuitem"
 									tabindex="-1">Shop Details</a></li>
 								<li><a href="./shoping-cart.html" role="menuitem"
-									tabindex="-1">Shoping Cart</a></li>
+									tabindex="-1">Shopping Cart</a></li>
 								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
 										Out</a></li>
 								<li><a href="./blog-details.html" role="menuitem"
@@ -154,10 +156,10 @@
 			</div>
 		</div>
 		<div class="header__top__right__social">
-			<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-				class="fa fa-twitter"></i></a> <a href="#"><i
-				class="fa fa-instagram"></i></a> <a href="#"><i
-				class="fa fa-pinterest-p"></i></a>
+			<a href="#"><i class="fa fa-facebook"></i></a> 
+			<a href="#"><i class="fa fa-twitter"></i></a> 
+			<a href="#"><i class="fa fa-instagram"></i></a> 
+			<a href="#"><i class="fa fa-pinterest-p"></i></a>
 		</div>
 		<div class="humberger__menu__contact">
 			<ul>
@@ -197,21 +199,25 @@
 								</ul>
 							</div>
 							<c:if test="${empty sessionScope.customerInfo.customerId}">
-									<div class="header__top__right__auth">
-									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
-									</div>
-									<div class="header__top__right__auth">
-									<a href="<%=cp %>/main/customer/created.do"><i class="fa fa-user"></i> Join</a>
-									</div>
+								<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/login.do"><i
+										class="fa fa-user"></i> Login</a>
+								</div>
+								<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/created.do"><i
+										class="fa fa-user"></i> Join</a>
+								</div>
 							</c:if>
 							<c:if test="${!empty sessionScope.customerInfo.customerId}">
-             						<div class="header__top__right__auth">
-               						<a href="<%=cp %>/main/customer/updated.do"><i class="fa fa-user"></i> Mypage</a>
-           						 </div>
-           						 <div class="header__top__right__auth">
-           						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
-           						 </div>
-           					 </c:if>
+								<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/updated.do"><i
+										class="fa fa-user"></i> Mypage</a>
+								</div>
+								<div class="header__top__right__auth">
+									<a href="<%=cp %>/main/customer/logout.do"><i
+										class="fa fa-user"></i> Logout</a>
+								</div>
+							</c:if>
 						</div>
 					</div>
 				</div>
@@ -221,7 +227,8 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="<%=cp %>/main"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+						<a href="<%=cp %>/main"><img
+							src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -235,26 +242,29 @@
 									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
 									<li><a href="./checkout.html">Check Out</a></li>
 								</ul></li>
-							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
+							<li><a
+								href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__cart">
-			<c:if test="${empty sessionScope.customerInfo.customerId}">
-								<ul>
-									<li><a href="<%=cp%>/main/customer/login.do"><i
-											class="fa fa-heart"></i></a></li>
-									<li><a href="<%=cp%>/main/customer/login.do"><i
-											class="fa fa-shopping-bag"></i></a></li>
-								</ul>
-							</c:if>
-							<c:if test="${!empty sessionScope.customerInfo.customerId}">
-								<ul>
-									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i> <span>55</span></a></li>
-									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>장바구니수량</span></a></li>
-								</ul>
-									</c:if>
+						<c:if test="${empty sessionScope.customerInfo.customerId}">
+							<ul>
+								<li><a href="<%=cp%>/main/customer/login.do"><i
+										class="fa fa-heart"></i></a></li>
+								<li><a href="<%=cp%>/main/customer/login.do"><i
+										class="fa fa-shopping-bag"></i></a></li>
+							</ul>
+						</c:if>
+						<c:if test="${!empty sessionScope.customerInfo.customerId}">
+							<ul>
+								<li><a href="<%=cp%>/main/cart/list.do"><i
+										class="fa fa-heart"></i> <span>55</span></a></li>
+								<li><a href="<%=cp%>/main/cart/list.do"><i
+										class="fa fa-shopping-bag"></i> <span>장바구니수량</span></a></li>
+							</ul>
+						</c:if>
 						<div class="header__cart__price"></div>
 					</div>
 				</div>
@@ -310,6 +320,7 @@
 	<!-- Hero Section End -->
 
 	<!-- Blog Details Hero Begin -->
+	<br><br>
 	<section class="breadcrumb-section"
 		data-setbg="/ccookat/Data/style/img/breadcrumb.jpg"
 		style="background-image: url(&quot;/ccookat/Data/style/img/breadcrumb.jpg&quot;);">
@@ -331,30 +342,27 @@
 		<div class="container">
 			<div class="row">
 				<div id="qna_detail">
+					<br> 
+					<h1><b>질문과 답변</b></h1>
 					<br>
-					<br>
-					<br>
-					<h1>질문과 답변</h1>
-					<br>
-					<br>
-					<table>
-						<tbody>
+					<table >
+						<tbody class="qna_detail_table">
 							<tr>
 								<th>작성자</th>
-								<td style="padding: 10px;">${qdto.customerId }</td>
+								<td style="padding: 15px;">${qdto.customerId }</td>
 							</tr>
 							<tr>
 								<th>작성일</th>
-								<td style="padding: 10px;">${qdto.qnaCreated }</td>
+								<td style="padding: 15px;">${qdto.qnaCreated }</td>
 							</tr>
 							<tr>
 								<th>제목</th>
-								<td style="padding: 10px;" class="subject">${qdto.qnaTitle }
+								<td style="padding: 15px;" class="subject">${qdto.qnaTitle }
 								</td>
 							</tr>
 							<tr>
 								<th>내용</th>
-								<td style="padding: 10px;" class="content">
+								<td style="padding: 15px;" class="content">
 									${qdto.qnaContent }</td>
 							</tr>
 						</tbody>
@@ -362,31 +370,28 @@
 
 
 					<div id="qna_menu">
-						<button type="button" class="w-btn" id="listBtn"
-							onclick="location='<%=cp %>/main/qna/list.do?pageNum=${pageNum }';">목록</button>
-								 <c:if test="${sessionScope.customerInfo.customerId=='admin'}"	>						
-						<button type="button" class="w-btn" 
-						onclick="location='<%=cp%>/main/qna/reply.do?pageNum=${pageNum }&qnaNum=${qdto.qnaNum}';">답변</button>
+						<button type="button" class="qnaDetailBtn"
+							onclick="location='<%=cp %>/main/qna/list.do?pageNum=${pageNum }';">목&nbsp;&nbsp;록</button>
+						<c:if test="${sessionScope.customerInfo.customerId=='admin'}">
+							<button type="button" class="qnaDetailBtn"
+								onclick="location='<%=cp%>/main/qna/reply.do?pageNum=${pageNum }&qnaNum=${qdto.qnaNum}';">답&nbsp;&nbsp;변</button>
 						</c:if>
-											</div>
-
+					</div>
+					<br><br><br><br>
 
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- Blog Details Section End -->
-	
-	 <c:if test="${redto.qnaContent!=null}"	>
-	<div class="container">
+
+	<c:if test="${redto.qnaContent!=null}">
+		<div class="container">
 			<div class="row">
 				<div id="qna_detail">
-					<br>
-					<br>
-					<br>
+					<br> <br> <br>
 					<h1>답변</h1>
-					<br>
-					<br>
+					<br> <br>
 					<table>
 						<tbody>
 							<tr>
@@ -397,7 +402,8 @@
 								<th>작성일</th>
 								<td style="padding: 10px;">${redto.qnaCreated }</td>
 							</tr>
-							<tr>	<th>내용</th>
+							<tr>
+								<th>내용</th>
 								<td style="padding: 10px;" class="content">
 									${redto.qnaContent }</td>
 							</tr>
@@ -405,19 +411,12 @@
 					</table>
 
 
-					
-			</div>
-		</div>
-	</div>
-</c:if>
-<div id="qna_menu">
-						<button type="button" class="w-btn" id="listBtn" onclick="location='/ccookat/main/qna/list.do?pageNum=1';">목록</button>
-								 
-											
-
 
 				</div>
-
+			</div>
+		</div>
+	</c:if>
+	
 	<!-- Footer Section Begin1 -->
 	<section class="contact spad footer-details">
 		<div class="container">

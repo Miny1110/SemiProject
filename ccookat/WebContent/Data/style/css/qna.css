@@ -13,7 +13,6 @@
 
 #num {
 	font-size: 1.1em;
-	color: #646464;
 }
 
 table {
@@ -63,7 +62,7 @@ td {
     border: none;
     padding: 15px 30px;
     font-weight: 600;
-    background-color: #5f0080;
+    background-color: #FF5833;
     color: white;
     font-size: 1em;
     
@@ -124,3 +123,6 @@ td {
 	color: white;
 }
 
+.qna_td {
+	border-bottom: 1px solid #b8b8b8;
+}
