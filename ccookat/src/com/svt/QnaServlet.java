@@ -141,45 +141,53 @@ public class QnaServlet extends HttpServlet {
 			int end = currentPage * numPerPage;
 
 			//실제 rownum가져오기
-			List<QnaDTO> lists = 
-					qdao.selectAll(start, end, searchKey, searchValue,customerId);
+			
+			
+				List<QnaDTO> lists = 
+						qdao.selectAll(start, end, searchKey, searchValue,customerId);
 
-			String params = "";
-			if(searchValue!=null && !searchValue.equals("")) {
-				params = "?searchKey=" + searchKey; 
-				params += "&searchValue=" + searchValue;
-			}
+				String params = "";
+				if(searchValue!=null && !searchValue.equals("")) {
+					params = "?searchKey=" + searchKey; 
+					params += "&searchValue=" + searchValue;
+				}
 
-			String listUrl = cp + "/main/qna/list.do";
+				String listUrl = cp + "/main/qna/list.do";
 
-			if(!params.equals("")) {
-				listUrl += params;			
-			}
+				if(!params.equals("")) {
+					listUrl += params;			
+				}
 
-			String pageIndexList = 
-					myPage.pageIndexList(currentPage, totalPage, listUrl);
+				String pageIndexList = 
+						myPage.pageIndexList(currentPage, totalPage, listUrl);
 
-			//글보기 주소 -> qnaDetail로 넘어가기 위한 주소
-			String detailUrl = cp + "/main/qna/detail.do?pageNum=" + currentPage;
+				//글보기 주소 -> qnaDetail로 넘어가기 위한 주소
+				String detailUrl = cp + "/main/qna/detail.do?pageNum=" + currentPage;
 
-			if(!params.equals("")) {
-				detailUrl += "&" + params;			
-			}
+				if(!params.equals("")) {
+					detailUrl += "&" + params;			
+				}
 
-			request.setAttribute("lists", lists);
-			request.setAttribute("pageIndexList", pageIndexList);
-			request.setAttribute("detailUrl", detailUrl);
-			request.setAttribute("dataCount", dataCount);
+				request.setAttribute("lists", lists);
+				request.setAttribute("pageIndexList", pageIndexList);
+				request.setAttribute("detailUrl", detailUrl);
+				request.setAttribute("dataCount", dataCount);
 
-			url = "/qna/qnaMain.jsp"+params;
-			forward(request, response, url);
-
+				url = "/qna/qnaMain.jsp"+params;
+				forward(request, response, url);
+			
+				//관리자 로그인시 뿌려주는거
+				
+				//관리자 답변 같이 보이게 하기
 		}else if(uri.indexOf("detail.do")!=-1) {
 
 			//변수 받을 준비해
+			//int replyNum = Integer.parseInt(request.getParameter("replyNum"));
 			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
 			String pageNum = request.getParameter("pageNum");
-
+			
+			
+			//qna번호 매개로 조회수 업데이트 
 			qdao.updateHitCount(qnaNum);
 			
 			//인코딩한 값을 넘겨 받음
@@ -191,13 +199,16 @@ public class QnaServlet extends HttpServlet {
 				searchValue = URLDecoder.decode(searchValue,"UTF-8");
 
 			}
-
+			
+			//qna번호 매개로 객체 불러오는고
 			QnaDTO qdto = qdao.getReadData(qnaNum);
 			
 			if(qdto==null) {
 				url = cp + "/qna/qnaMain.do";
 				response.sendRedirect(url);
 			}
+			
+			List<ReplyDTO> replylists =redao.getLists();
 
 			qdto.setQnaContent(qdto.getQnaContent().replaceAll("\r", "<br/>"));
 
@@ -213,10 +224,14 @@ public class QnaServlet extends HttpServlet {
 			request.setAttribute("qdto", qdto);
 			request.setAttribute("params", params);
 			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("replylists", replylists);
+			
 
 			url = "/qna/qnaDetail.jsp";
 			forward(request, response, url);
-		//답변하기 게시판 이동
+			
+		
+			//답변하기 게시판 이동
 		}else if (uri.indexOf("reply.do")!=-1) {
 			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
 			String pageNum = request.getParameter("pageNum");
@@ -226,8 +241,8 @@ public class QnaServlet extends HttpServlet {
 			
 		}else if (uri.indexOf("reply_ok.do")!=-1){
 			//변수 받아서
-			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
-			String pageNum = request.getParameter("pageNum");
+//		int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+		String pageNum = request.getParameter("pageNum");
 			
 			ReplyDTO redto = new ReplyDTO();
 			int remaxNum = redao.getMaxNum();

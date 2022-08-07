@@ -61,7 +61,6 @@ public class ReplyDAO {
 			pstmt.setInt(1, redto.getReplyNum());
 			pstmt.setString(2, redto.getCustomerId());
 			pstmt.setString(3, redto.getReplyContent());
-			pstmt.setString(4, redto.getReplyCreated());
 
 			pstmt.executeUpdate();
 			pstmt.close();
@@ -84,7 +83,7 @@ public class ReplyDAO {
 		try {
 
 			sql = "select replyNum,customerId,replyContent,replyCreated ";
-			sql += "from reply reply order by replyNum desc";
+			sql += "from reply order by replyNum desc";
 
 			pstmt = conn.prepareStatement(sql);
 
