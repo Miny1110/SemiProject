@@ -232,6 +232,35 @@ public class ReviewDAO {
 
 		}
 	 
+	 //회원탈퇴에 필요한 삭제 메소드
+	 public int deleteData(String customerId) {
+
+			int result = 0;
+
+			PreparedStatement pstmt = null;
+			String sql;
+
+			try {
+
+				sql = "delete review where customerId=?";
+
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setString(1, customerId);
+
+				result = pstmt.executeUpdate();
+
+				pstmt.close();
+
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+
+			return result;
+
+		}
+	 
+	 
 	 //수정
 		public int updateData(ReviewDTO rdto){
 			
