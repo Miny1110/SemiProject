@@ -111,8 +111,31 @@ public class CartServlet extends HttpServlet {
 			url = cp +"/main/customer/login.do";
 			response.sendRedirect(url);
 
-		}
+		}else if(uri.indexOf("cartout.do")!=-1) {
 		
+			int itemNum = Integer.parseInt(request.getParameter("itemNum"));
+			
+			HttpSession session = request.getSession();
+
+			CustomerInfo customerInfo = new CustomerInfo();
+
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+				String customerId = customerInfo.getCustomerId();
+				
+				ctdao.deleteData(itemNum,customerId);
+				
+				url = cp +"/main/cart/list.do";
+				response.sendRedirect(url);
+				return;
+			}
+
+			System.out.println("이거뜨면 오류난거임 ^^");
+			url = cp +"/main/customer/login.do";
+			response.sendRedirect(url);
+			}
+			
 		
 	}
 }

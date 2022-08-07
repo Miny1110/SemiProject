@@ -294,8 +294,8 @@
                                     <td class="shoping__cart__total">
                                         $110.00
                                     </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
+                                    <td class="shoping__cart__item__close" >
+                                        <span class="icon_close"><a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"></a></span>
                                     </td>
                                 </tr>
                                 </c:forEach>                               
@@ -307,9 +307,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                        <a href="#" class="primary-btn cart-btn">쇼핑 계속하기</a>
                         <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Upadate Cart</a>
+                            장바구니 업데이트</a>
                     </div>
                 </div>
                 <div class="col-lg-6">

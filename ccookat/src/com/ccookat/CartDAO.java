@@ -133,5 +133,29 @@ public class CartDAO {
 			
 	}
 	
+	public void deleteData(int itemNum,String customerId) {
+		
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+		
+			sql = "delete from cart where customerId = ? and itemNum =?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, itemNum);
+			pstmt.setString(2, customerId);
+			
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}	
+	}
+	
+	
 	
 }
