@@ -161,13 +161,17 @@ function customerPwdChk(){
 	f.action = "/ccookat/main/customer/customerPwdChk_ok.do";
 	f.submit();
 	
-	
-	
-	
-	
-	
 }
 
+
+function updated(){
+	
+	var f = document.myForm;
+	
+	f.action = "/ccookat/main/customer/updated_ok.do";
+	f.submit();
+	
+}
 
 
 
