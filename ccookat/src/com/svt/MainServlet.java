@@ -10,7 +10,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ccookat.CartDAO;
+import com.ccookat.CartDTO;
+import com.ccookat.CustomerInfo;
 import com.ccookat.ItemDAO;
 import com.ccookat.ItemDTO;
 import com.ccookat.ReviewDTO;
@@ -42,11 +46,24 @@ public class MainServlet extends HttpServlet {
 
 		Connection conn = DBConn.getconnection();
 		ItemDAO idao = new ItemDAO(conn);
+		CartDAO ctdao = new CartDAO(conn);
 
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		String url;
 
+		HttpSession session = req.getSession();
+
+		CustomerInfo customerInfo = new CustomerInfo();
+
+		customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+		if(customerInfo!=null) {
+		String customerId = customerInfo.getCustomerId();
+
+		int cartCount = ctdao.cartCount(customerId);
+		req.setAttribute("cartCount", cartCount);
+		}
 
 		List<ItemDTO> mainLists = new ArrayList<ItemDTO>(); 
 
@@ -58,6 +75,7 @@ public class MainServlet extends HttpServlet {
 		req.setAttribute("mainList", mainLists);
 		req.setAttribute("itemImagePath", itemImagePath);
 
+		
 		url = "/main.jsp";
 		forward(req, resp, url);
 
