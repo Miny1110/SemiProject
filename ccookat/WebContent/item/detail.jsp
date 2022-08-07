@@ -34,6 +34,19 @@
     <link rel="stylesheet" href="<%=cp %>/Data/style/css/style.css" type="text/css">
     
     <script type="text/javascript" src="<%=cp%>/Data/style/js/item.js"></script>
+    <script type="text/javascript">
+    
+    function cartin() {
+    	
+    	var f = document.myForm;
+    	
+    	f.action="<%=cp %>/main/cart/cartin.do";
+    	f.submit();
+	
+	}
+    
+    </script>
+    
 </head>
 
 <body>
@@ -290,15 +303,19 @@
                         </div>                        
                         
                         <p>${idto.itemContent }</p>
+                        <form action="<%=cp %>/main/cart/cartin.do" name="myForm" method="post">
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1" name="itemCount">
+                                    <input type="text" value="1" name="cartItemCount">
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">ADD TO CART</a>
+                        <input type="hidden" value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" name="itemPrice">
+                        <input type="hidden" name="itemNum" value="${idto.itemNum }">
+                        <a class="primary-btn" onclick="cartin();" style="cursor: hand; color: white; ">장바구니 넣기</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+						</form>
                         <ul>
                             <li><b>Availability</b> <span>${idto.itemStock }개</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
