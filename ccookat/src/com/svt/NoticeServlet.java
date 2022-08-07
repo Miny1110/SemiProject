@@ -13,7 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ccookat.CartDAO;
+import com.ccookat.CustomerInfo;
 import com.ccookat.NoticeDAO;
 import com.ccookat.NoticeDTO;
 import com.oreilly.servlet.MultipartRequest;
@@ -41,7 +44,8 @@ public class NoticeServlet extends HttpServlet {
 
 		Connection conn = DBConn.getconnection();
 		NoticeDAO ndao = new NoticeDAO(conn);
-
+		CartDAO ctdao = new CartDAO(conn);
+		
 		MyPage myPage = new MyPage(); 
 
 		String cp = request.getContextPath();
@@ -123,6 +127,19 @@ public class NoticeServlet extends HttpServlet {
 				detailUrl += "&" + params;			
 			}
 			
+			HttpSession session = request.getSession();
+
+			CustomerInfo customerInfo = new CustomerInfo();
+
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+			String customerId = customerInfo.getCustomerId();
+
+			int cartCount = ctdao.cartCount(customerId);
+			request.setAttribute("cartCount", cartCount);
+			}
+			
 			request.setAttribute("detailUrl", detailUrl);
 			request.setAttribute("deletePath", deletePath);
 			request.setAttribute("imagePath", imagePath);
@@ -137,6 +154,7 @@ public class NoticeServlet extends HttpServlet {
 			forward(request, response, url);
 
 		}else if(uri.indexOf("upload.do")!=-1) {
+
 
 			url = "/notice/noticeUpload.jsp";
 			forward(request, response, url);
@@ -189,7 +207,20 @@ public class NoticeServlet extends HttpServlet {
 			
 			//띄어쓰기
 			ndto.setNoticeContent(ndto.getNoticeContent().replaceAll("\r", "<br/>"));
+			
+			HttpSession session = request.getSession();
 
+			CustomerInfo customerInfo = new CustomerInfo();
+
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+			String customerId = customerInfo.getCustomerId();
+
+			int cartCount = ctdao.cartCount(customerId);
+			request.setAttribute("cartCount", cartCount);
+			}
+			
 			request.setAttribute("deletePath", deletePath);
 			request.setAttribute("ndto", ndto);
 			request.setAttribute("pageNum", pageNum);
