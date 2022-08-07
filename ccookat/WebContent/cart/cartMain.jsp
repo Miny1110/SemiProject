@@ -276,8 +276,13 @@
                             </thead>
 
                             <tbody>
-                            <c:forEach var="ctdto" items="${lists}">
-
+ 							
+ 							<c:choose>       
+ 							<c:when test="${empty lists }">
+ 							<tr><td colspan="6">${message }</td></tr>
+ 							</c:when>
+ 							<c:otherwise>                
+                            <c:forEach var="ctdto" items="${lists }">
                                 <tr>
                                     <td class="shoping__cart__item">
                                         <img src="${itemImagePath }/${ctdto.itemName}" alt="">
@@ -303,8 +308,10 @@
                                         <a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"><span class="icon_close"></span></a>
                                     </td>
                                 </tr>
-                                </c:forEach>                               
-                            </tbody>
+                                </c:forEach> 
+                                </c:otherwise>   
+                                </c:choose>                               
+                            </tbody>                         
                         </table>
                     </div>
                 </div>
