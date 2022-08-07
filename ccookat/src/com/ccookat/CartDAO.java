@@ -163,8 +163,8 @@ public class CartDAO {
 		
 		try {
 			
-			sql = "update set cart(cartItemCount = cartItemCount+?, ";
-			sql+="CartTotPrice=CartTotPrice)+?) ";	
+			sql = "update cart set cartItemCount = cartItemCount+?, ";
+			sql+="CartTotPrice=CartTotPrice+? ";	
 			sql+="where customerId=? and cartNum = ? ";
 			
 			pstmt = conn.prepareStatement(sql);
