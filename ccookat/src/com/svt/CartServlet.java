@@ -87,25 +87,40 @@ public class CartServlet extends HttpServlet {
 			//로그인 한 상태이면 장바구니 넣기가능
 			if(customerInfo!=null) {
 			String customerId = customerInfo.getCustomerId();
-	
-			CartDTO ctdto = new CartDTO();
 
 			int itemNum = Integer.parseInt(request.getParameter("itemNum"));
 			
-			int cartNum = ctdao.getReadData(itemNum, customerId);
+			int cartNum = ctdao.getReadData(itemNum, customerId);		
+			
+			CartDTO ctdto = new CartDTO();
 			
 			//이미 장바구니에 같은 상품이 있으면 update
-			//수정되어야할 리스트 : cartTotPrice/ cartItemCount
+			//수정되어야할 리스트 : cartItemCount / CartTotPrice / customerId / cartNum
 			if(cartNum!=0) {
+	
+				//가격 문자열에서 .뒤에 제외하고 숫자로 형변환 
+				//총금액 산정하기 위해 필요한 코드 직접 테이블에 데이터를 넣지는 않음
+				String str = request.getParameter("itemPrice"); 
+				int indexNum = str.indexOf(".");
+				int itemPrice =  Integer.parseInt(str.substring(0 , indexNum));
+							
+				//sql문에서 더해주면됨
+				int cartItemCount = Integer.parseInt(request.getParameter("cartItemCount"));
+				ctdto.setCartItemCount(cartItemCount);
+				//sql문에서 더해주면됨
+				ctdto.setCartTotPrice(itemPrice*cartItemCount);
 				
+				ctdto.setCustomerId(customerId);			
+				ctdto.setCartNum(cartNum);
 				
+				ctdao.updateData(ctdto);				
 				
 			} else { //같은 상품이 없으면 insert
-			
-			ctdto.setItemNum(itemNum);
+						
 			int maxnum = ctdao.getMaxNum();
-			ctdto.setCartNum(maxnum+1);
+			ctdto.setCartNum(maxnum+1);		
 			ctdto.setCustomerId(customerId);
+			ctdto.setItemNum(itemNum);
 			String str = request.getParameter("itemPrice"); //얘는 정가임 
 			int indexNum = str.indexOf(".");
 			int itemPrice =  Integer.parseInt(str.substring(0 , indexNum));
