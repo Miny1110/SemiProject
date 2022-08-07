@@ -285,9 +285,9 @@
 						<c:if test="${!empty sessionScope.customerInfo.customerId}">
 							<ul>
 								<li><a href="<%=cp%>/main/cart/list.do"><i
-										class="fa fa-heart"></i> <span>55</span></a></li>
+										class="fa fa-heart"></i></a></li>
 								<li><a href="<%=cp%>/main/cart/list.do"><i
-										class="fa fa-shopping-bag"></i> <span>장바구니수량</span></a></li>
+										class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
 							</ul>
 						</c:if>
 						<div class="header__cart__price"></div>
