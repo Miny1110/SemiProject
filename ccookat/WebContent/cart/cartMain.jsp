@@ -312,7 +312,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">쇼핑 계속하기</a>
+                        <a href="<%=cp %>/main/item/list.do" class="primary-btn cart-btn">쇼핑 계속하기</a>
                         <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                             장바구니 업데이트</a>
                     </div>
@@ -332,10 +332,10 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>   ${ctdto.cartTotPrice+=ctdto.cartTotPrice }</span></li>
+                            <li>할인금액 <span> ${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice} </span></li>
+                            <li>총 결제금액 <span> ${ctdto.cartTotPrice}</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="#" class="primary-btn"> 결&nbsp;제&nbsp;하&nbsp;기</a>
                     </div>
                 </div>
             </div>
