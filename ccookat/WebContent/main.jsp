@@ -358,7 +358,8 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix ${idto.itemType }">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="${itemImagePath }/${idto.itemImage1}"
-                        style="background-image: url(&quot;${itemImagePath }/${idto.itemImage1}&quot;);">
+                        style="background-image: url(&quot;${itemImagePath }/${idto.itemImage1}&quot;);"
+                        onclick="location.href='${itemDetailUrl }${idto.itemType }&itemNum=${idto.itemNum }';">
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="#">${idto.itemName }</a></h6>
