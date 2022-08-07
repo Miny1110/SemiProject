@@ -105,7 +105,7 @@ public class CustomerServlet extends HttpServlet{
 			HttpSession session = req.getSession();
 
 			session.setAttribute("customerInfo", customerInfo);
-			session.setMaxInactiveInterval(10*60); //10분동안 세션 유지
+			session.setMaxInactiveInterval(60*60); //60분동안 세션 유지
 
 			url = cp+"/main";
 			resp.sendRedirect(url);
@@ -258,6 +258,8 @@ public class CustomerServlet extends HttpServlet{
 			//rdao.deleteData(reviewNum)
 			rdao.deleteData(customerId);
 			cdao.deleteData(customerId);
+			session.removeAttribute("customerId"); //데이터만 삭제
+			session.invalidate(); //customerId 변수도 삭제
 			
 			url = cp + "/main";
 			resp.sendRedirect(url);
