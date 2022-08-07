@@ -110,14 +110,11 @@
 								<li><a href="./shop-details.html" role="menuitem"
 									tabindex="-1">Shop Details</a></li>
 								<li><a href="./shoping-cart.html" role="menuitem"
-									tabindex="-1">Shoping Cart</a></li>
+									tabindex="-1">Cart</a></li>
 								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
 										Out</a></li>
-								<li><a href="./blog-details.html" role="menuitem"
-									tabindex="-1">Blog Details</a></li>
 							</ul></li>
-						<li><a href="./blog.html" role="menuitem">Blog</a></li>
-						<li><a href="./contact.html" role="menuitem">Contact</a></li>
+						<li><a href="./contact.html" role="menuitem">NOTICE</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -144,11 +141,8 @@
 									tabindex="-1">Shoping Cart</a></li>
 								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
 										Out</a></li>
-								<li><a href="./blog-details.html" role="menuitem"
-									tabindex="-1">Blog Details</a></li>
 							</ul></li>
-						<li><a href="./blog.html" role="menuitem">Blog</a></li>
-						<li><a href="./contact.html" role="menuitem">Contact</a></li>
+						<li><a href="./contact.html" role="menuitem">NOTICE</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -175,8 +169,6 @@
 									tabindex="-1">Shoping Cart</a></li>
 								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
 										Out</a></li>
-								<li><a href="./blog-details.html" role="menuitem"
-									tabindex="-1">Blog Details</a></li>
 							</ul></li>
 						<li><a href="/contact.html" role="menuitem">Contact</a></li>
 					</ul>
@@ -267,8 +259,8 @@
 						<ul>
 							<li><a href="<%=cp%>/main">Home</a></li>
 							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
-							<li><a href="<%=cp%>/main/cart/detail.do">Cart</a></li>
-							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
+							<li><a href="<%=cp%>/main/cart/list.do">Cart</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">NOTICE</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -343,14 +335,15 @@
 						<div class="hero__search__form ">
 							<form action="">
 								<div class="hero__search__categories">
-									항목선택 <span class="arrow_carrot-down"></span>
+									제품명 
+									<!-- <span class="arrow_carrot-down"></span> -->
 								</div>
 								<ul>
 
 
 								</ul>
 
-								<input type="text" placeholder="검색어를 입력하세요">
+								<input type="text" placeholder="제품명 입력하세요">
 								<button type="submit" class="site-btn">검색하기</button>
 							</form>
 						</div>
@@ -452,7 +445,7 @@
 
     <!-- Banner Begin -->
     <div class="banner">
-        <div class="container">
+        <div class="container container_banner">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
