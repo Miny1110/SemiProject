@@ -267,6 +267,7 @@
                                 <tr>
                                     <th class="shoping__product">상품</th>
                                     <th>가격</th>
+                                    <th>할인가</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
                                     <th></th>
@@ -282,7 +283,10 @@
                                         <h5>${ctdto.itemName}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        ${ctdto.cartTotPrice }
+                                    ${ctdto.itemPrice*ctdto.cartItemCount }                               
+                                    </td>
+                                        <td class="shoping__cart__price">
+                                    ${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice}                               
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -292,10 +296,10 @@
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        $110.00
+                                            ${ctdto.cartTotPrice }
                                     </td>
                                     <td class="shoping__cart__item__close" >
-                                        <span class="icon_close"><a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"></a></span>
+                                        <a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"><span class="icon_close"></span></a>
                                     </td>
                                 </tr>
                                 </c:forEach>                               
