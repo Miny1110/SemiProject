@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.INTERNAL;
+
 import com.ccookat.CartDAO;
 import com.ccookat.CartDTO;
 import com.ccookat.CustomerInfo;
@@ -77,6 +79,7 @@ public class CartServlet extends HttpServlet {
 
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 
+			if(customerInfo!=null) {
 			String customerId = customerInfo.getCustomerId();
 
 			CartDTO ctdto = new CartDTO();
@@ -87,7 +90,11 @@ public class CartServlet extends HttpServlet {
 			ctdto.setCustomerId(customerId);
 			int itemNum = Integer.parseInt(request.getParameter("itemNum"));
 			ctdto.setItemNum(itemNum);
-			int itemPrice = Integer.parseInt(request.getParameter("itemPrice"));
+			String str = request.getParameter("itemPrice");
+			int indexNum = str.indexOf(".");
+			int itemPrice =  Integer.parseInt(str.substring(0 , indexNum));
+			 (request.getParameter("itemPrice")).split(".");
+
 			int cartItemCount = Integer.parseInt(request.getParameter("cartItemCount"));
 			ctdto.setCartItemCount(cartItemCount);
 			ctdto.setCartTotPrice(itemPrice*cartItemCount);
@@ -95,9 +102,17 @@ public class CartServlet extends HttpServlet {
 			ctdao.insertData(ctdto);
 
 
-			url = cp +"/main/item/detail.do?itemNum="+itemNum; //여기에 원래 있던 주소로 돌려주는 코딩해야함 
+			//장바구니에 넣고 원래있던 상세페이지 출력
+			url = cp +"/main/item/detail.do?itemNum="+itemNum;
+			response.sendRedirect(url);
+			return;
+			}
+			
+			url = cp +"/main/customer/login.do";
 			response.sendRedirect(url);
 
 		}
+		
+		
 	}
 }

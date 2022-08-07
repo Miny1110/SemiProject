@@ -262,6 +262,7 @@ public class CustomerServlet extends HttpServlet{
 			url = cp + "/main";
 			resp.sendRedirect(url);
 			return;
+			
 		}
 	}
 }
