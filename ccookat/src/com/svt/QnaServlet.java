@@ -203,6 +203,9 @@ public class QnaServlet extends HttpServlet {
 			//qna번호 매개로 객체 불러오는고
 			QnaDTO qdto = qdao.getReadData(qnaNum);
 			
+			//리플번호 매체로 한놈만 불러오는고
+			ReplyDTO redto = redao.getReadData(qnaNum);
+			
 			if(qdto==null) {
 				url = cp + "/qna/qnaMain.do";
 				response.sendRedirect(url);
@@ -225,7 +228,7 @@ public class QnaServlet extends HttpServlet {
 			request.setAttribute("params", params);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("replylists", replylists);
-			
+			request.setAttribute("redto", redto);
 
 			url = "/qna/qnaDetail.jsp";
 			forward(request, response, url);

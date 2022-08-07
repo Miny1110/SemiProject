@@ -116,6 +116,43 @@ public class ReplyDAO {
 		return lists;
 	}
 	
+	//리플넘 기반 한놈만 불러오는거...
+	public ReplyDTO getReadData(int qnaNum) {
+	
+		ReplyDTO redto =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		
+		try {
+			sql = "select replyNum,customerId,replyContent,replyCreated ";
+			sql+= "from reply where replyNum=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, qnaNum);
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				
+				redto = new ReplyDTO();
+
+				redto.setReplyNum(rs.getInt("replyNum"));
+				redto.setCustomerId(rs.getString("customerId"));
+				redto.setReplyContent(rs.getString("replyContent"));
+				redto.setReplyCreated(rs.getString("replyCreated"));
+
+			}
+
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return redto;
+	}
 }
 	
 

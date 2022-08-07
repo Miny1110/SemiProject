@@ -405,6 +405,7 @@
 						</tbody>
 						</table>	 
 					</c:if>
+					
 					 <c:if test="${redto.replyContent!=null}">
 					<table>
 						<tbody>
