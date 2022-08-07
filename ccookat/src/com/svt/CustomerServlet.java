@@ -256,11 +256,13 @@ public class CustomerServlet extends HttpServlet{
 			
 			//회원 탈퇴 하려면 자식클래스에 있는 데이터 먼저 삭제해야 된다고 함. 안그러면 에러 뜸. 보니까 리뷰테이블 데이터 삭제하고 하면 될거같은데 이따 같이 봐야지
 			//rdao.deleteData(reviewNum)
+			rdao.deleteData(customerId);
 			cdao.deleteData(customerId);
 			
 			url = cp + "/main";
 			resp.sendRedirect(url);
 			return;
+			
 		}
 	}
 }
