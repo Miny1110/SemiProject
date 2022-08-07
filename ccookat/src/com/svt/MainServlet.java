@@ -79,8 +79,6 @@ public class MainServlet extends HttpServlet {
 		url = "/main.jsp";
 		forward(req, resp, url);
 
-
-
 	}
 
 
