@@ -324,7 +324,7 @@
 									Text<span>*</span>
 								</p>
 								
-								<textarea rows="15" cols="20" name="qnaContent"></textarea>
+								<textarea rows="15" cols="20" name="replyContent"></textarea>
 							</div>
 
 							<div class="blog__sidebar__item__tags">

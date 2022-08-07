@@ -134,6 +134,7 @@ public class QnaDAO {
 		return lists;
 	}
 
+	
 	//페이징 처리를 위한 전체 데이터 갯수 도출
 	public int getDataCount(String searchkey, String searchValue,String customerId) {
 

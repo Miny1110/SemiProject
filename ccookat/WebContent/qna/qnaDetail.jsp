@@ -338,6 +338,7 @@
 	<!-- Blog Details Hero End -->
 
 	<!-- Blog Details Section Begin -->
+	<!-- 관리자 -->
 	<section class="blog-details spad">
 		<div class="container">
 			<div class="row">
@@ -383,15 +384,28 @@
 			</div>
 		</div>
 	</section>
-	<!-- Blog Details Section End -->
 
-	<c:if test="${redto.qnaContent!=null}">
+
+	
+	<!-- Blog Details Section End -->
+		
+	
 		<div class="container">
 			<div class="row">
 				<div id="qna_detail">
 					<br> <br> <br>
 					<h1>답변</h1>
 					<br> <br>
+							 <c:if test="${redto.replyContent==null}">
+						<table>
+						<tbody>
+							<tr>
+								<td height="150" style="padding: 10px; text-align: center; font-size: 25px;" >답변전입니다.</td>
+							</tr>
+						</tbody>
+						</table>	 
+					</c:if>
+					 <c:if test="${redto.replyContent!=null}">
 					<table>
 						<tbody>
 							<tr>
@@ -400,22 +414,22 @@
 							</tr>
 							<tr>
 								<th>작성일</th>
-								<td style="padding: 10px;">${redto.qnaCreated }</td>
+								<td style="padding: 10px;">${redto.replyCreated }</td>
 							</tr>
 							<tr>
 								<th>내용</th>
 								<td style="padding: 10px;" class="content">
-									${redto.qnaContent }</td>
+									${redto.replyContent }</td>
 							</tr>
 						</tbody>
 					</table>
-
+				 </c:if> 
 
 
 				</div>
 			</div>
 		</div>
-	</c:if>
+	
 	
 	<!-- Footer Section Begin1 -->
 	<section class="contact spad footer-details">
