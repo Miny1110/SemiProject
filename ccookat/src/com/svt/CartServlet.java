@@ -84,28 +84,38 @@ public class CartServlet extends HttpServlet {
 
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 
+			//로그인 한 상태이면 장바구니 넣기가능
 			if(customerInfo!=null) {
 			String customerId = customerInfo.getCustomerId();
-
+	
 			CartDTO ctdto = new CartDTO();
 
+			int itemNum = Integer.parseInt(request.getParameter("itemNum"));
+			
+			int cartNum = ctdao.getReadData(itemNum, customerId);
+			
+			//이미 장바구니에 같은 상품이 있으면 update
+			//수정되어야할 리스트 : cartTotPrice/ cartItemCount
+			if(cartNum!=0) {
+				
+				
+				
+			} else { //같은 상품이 없으면 insert
+			
+			ctdto.setItemNum(itemNum);
 			int maxnum = ctdao.getMaxNum();
-
 			ctdto.setCartNum(maxnum+1);
 			ctdto.setCustomerId(customerId);
-			int itemNum = Integer.parseInt(request.getParameter("itemNum"));
-			ctdto.setItemNum(itemNum);
-			String str = request.getParameter("itemPrice");
+			String str = request.getParameter("itemPrice"); //얘는 정가임 
 			int indexNum = str.indexOf(".");
 			int itemPrice =  Integer.parseInt(str.substring(0 , indexNum));
-			 (request.getParameter("itemPrice")).split(".");
-
 			int cartItemCount = Integer.parseInt(request.getParameter("cartItemCount"));
 			ctdto.setCartItemCount(cartItemCount);
 			ctdto.setCartTotPrice(itemPrice*cartItemCount);
 
 			ctdao.insertData(ctdto);
-
+			
+			}
 
 			//장바구니에 넣고 원래있던 상세페이지 출력
 			url = cp +"/main/item/detail.do?itemNum="+itemNum;
@@ -113,6 +123,7 @@ public class CartServlet extends HttpServlet {
 			return;
 			}
 			
+			//로그인 하지 않은 상태이면 로그인창 보여주기
 			url = cp +"/main/customer/login.do";
 			response.sendRedirect(url);
 
