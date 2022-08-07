@@ -10,7 +10,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ccookat.CartDAO;
+import com.ccookat.CustomerInfo;
 import com.ccookat.ItemDAO;
 import com.ccookat.ItemDTO;
 import com.ccookat.ReviewDAO;
@@ -45,7 +48,8 @@ public class ItemServlet extends HttpServlet {
 		ItemDAO idao = new ItemDAO(conn);
 		ReviewDAO rdao = new ReviewDAO(conn);
 		MyPage myPage = new MyPage();
-
+		CartDAO ctdao = new CartDAO(conn);
+		
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		String url;
@@ -264,6 +268,19 @@ public class ItemServlet extends HttpServlet {
 			//삭제 주소
 			String itemDeletePath = cp + "/item/deleted.do";
 
+			HttpSession session = req.getSession();
+
+			CustomerInfo customerInfo = new CustomerInfo();
+
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+			String customerId = customerInfo.getCustomerId();
+
+			int cartCount = ctdao.cartCount(customerId);
+			req.setAttribute("cartCount", cartCount);
+			}
+			
 			req.setAttribute("itemImagePath", itemImagePath);
 			req.setAttribute("itemMainList", itemMainList);
 			req.setAttribute("pageIndexList", pageIndexList);
