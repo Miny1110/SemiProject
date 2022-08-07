@@ -315,9 +315,24 @@
 							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
 							<li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
 							<li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
-							<c:if test="${ sessionScope.customerInfo.customerId=='admin'}">
-								<li><a href="<%=cp%>/main/item/created.do"> [상품등록]</a></li>
-							</c:if>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>		
+							<c:choose>
+							<c:when test="${ sessionScope.customerInfo.customerId=='admin'}">
+								<li><a href="<%=cp%>/main/item/created.do"> [ 상품등록 ]</a></li>
+							</c:when>
+							<c:otherwise><li>&nbsp;</li></c:otherwise>
+							</c:choose>						
 						</ul>
 
 					</div>
