@@ -3050,3 +3050,8 @@
     overflow: visible;
     clip: auto
 }
+
+/* 아이콘 사이즈 정렬*/
+.fa-heart_size {
+	font-size: 30px;
+}
