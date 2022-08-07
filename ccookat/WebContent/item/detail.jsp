@@ -273,9 +273,9 @@
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
 
-                            <img src="${itemImagePath }/${idto.itemImage1}">
-                            <img src="${itemImagePath }/${idto.itemImage2}">
-                            <img src="${itemImagePath }/${idto.itemImage3}">
+                            <img src="${itemImagePath }/${idto.itemImage1}" style="height: 120px; width: 120px;">
+                            <img src="${itemImagePath }/${idto.itemImage2}" style="height: 120px; width: 120px;">
+                            <img src="${itemImagePath }/${idto.itemImage3}" style="height: 120px; width: 120px;">
 
                         </div>
                     </div>
@@ -356,7 +356,7 @@
                                 <div class="product__details__tab__desc">
                                     <h6>상품 설명</h6>
                                     <p>${idto.itemContent }</p>
-                                    <p align="center"><img src="${itemImagePath }/${idto.itemImage4}" ></p>
+                                    <p align="center"><img src="${itemImagePath }/${idto.itemImage4}" style="width: 600px;"></p>
                                 </div>
                             </div>
 <!-- 상품설명창 끝 -->                       
