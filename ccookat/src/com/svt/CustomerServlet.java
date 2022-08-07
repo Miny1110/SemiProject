@@ -37,7 +37,7 @@ public class CustomerServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.setCharacterEncoding("UTF-8");
-		
+
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 
@@ -45,7 +45,7 @@ public class CustomerServlet extends HttpServlet{
 		CustomerDAO cdao = new CustomerDAO(conn);
 
 		String url;
-		
+
 		//회원정보 입력
 		if(uri.indexOf("created.do")!=-1){
 
@@ -53,9 +53,9 @@ public class CustomerServlet extends HttpServlet{
 			forward(req, resp, url);
 
 		} else if(uri.indexOf("created_ok.do")!=-1) {
-					
+
 			CustomerDTO cdto = new CustomerDTO();
-			
+
 			cdto.setCustomerId(req.getParameter("customerId"));
 			cdto.setCustomerPwd(req.getParameter("customerPwd"));
 			cdto.setCustomerName(req.getParameter("customerName"));
@@ -63,89 +63,89 @@ public class CustomerServlet extends HttpServlet{
 			cdto.setCustomerTel(req.getParameter("customerTel"));
 
 			cdao.insertData(cdto);
-			
+
 			url = "/customer/login.jsp";
 			forward(req, resp, url);
-			
+
 		}else if(uri.indexOf("login.do")!=-1) {
 			//로그인창
-			
+
 			url = "/customer/login.jsp";
 			forward(req, resp, url);
 
 		}else if(uri.indexOf("login_ok.do")!=-1) {
-			
+
 			String customerId = req.getParameter("customerId");
 			String customerPwd = req.getParameter("customerPwd");
-			
-			
+
+
 			CustomerDTO cdto = cdao.getReadData(customerId);
-			
+
 			if(cdto==null||!cdto.getCustomerPwd().equals(customerPwd)) {
-				
+
 				req.setAttribute("message", "아이디 또는 비밀번호를 정확히 입력하세요.");
-				
+
 				url = "/customer/login.jsp";
 				forward(req, resp, url);
 				return;
 			}
-			
-			
+
+
 			//로그인 성공
-			
+
 			//세션에 올릴 데이터 객체
 			CustomerInfo customerInfo = new CustomerInfo();
-			
+
 			customerInfo.setCustomerId(cdto.getCustomerId());
 			customerInfo.setCustomerName(cdto.getCustomerName());
-			
-			
+
+
 			//세션 생성
 			HttpSession session = req.getSession();
-			
+
 			session.setAttribute("customerInfo", customerInfo);
 			session.setMaxInactiveInterval(10*60); //10분동안 세션 유지
-			
+
 			url = cp+"/main";
 			resp.sendRedirect(url);
 			return;
-			
+
 		}
-		
+
 		//로그아웃
 		else if(uri.indexOf("logout.do")!=-1) {
-			
+
 			HttpSession session = req.getSession();
 
 			session.removeAttribute("customerInfo");
 			session.invalidate();
-			
+
 			url = cp+"/main" ;
 			resp.sendRedirect(url);
 			return;
-			
+
 		}
-		
+
 		//회원정보수정 페이지 들어가기 전 비밀번호 확인
 		else if(uri.indexOf("customerPwdChk.do")!=-1) {
-			
+
 			url = "/customer/mypageEnter.jsp";
 			forward(req, resp, url);
-			
+
 		}else if(uri.indexOf("customerPwdChk_ok.do")!=-1) {
-			
+
 			HttpSession session = req.getSession();
 			CustomerInfo customerInfo = new CustomerInfo();
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 			String customerId = customerInfo.getCustomerId();
-			
+
 			String customerPwd = req.getParameter("customerPwd");
-			
+
 			CustomerDTO cdto = cdao.getReadData(customerId);
-			
+
 			if(cdto==null || !cdto.getCustomerPwd().equals(customerPwd)) {
 				req.setAttribute("message", "비밀번호가 틀렸습니다.");
-				
+
 				url = "/customer/mypageEnter.jsp";
 				forward(req, resp, url);
 			}else {
@@ -153,100 +153,114 @@ public class CustomerServlet extends HttpServlet{
 				resp.sendRedirect(url);
 				return;
 			}
-			
+
 		}
-		
-		
+
+
 		//회원정보 수정
 		else if(uri.indexOf("updated.do")!=-1) {
-			
+
 			HttpSession session = req.getSession();
 			CustomerInfo customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
-			
+
 			CustomerDTO cdto = cdao.getReadData(customerInfo.getCustomerId());
-			
+
 			req.setAttribute("cdto", cdto);
-			
+
 			url = "/customer/updated.jsp";
 			forward(req, resp, url);
-			
+
 		}else if(uri.indexOf("updated_ok.do")!=-1) {
-			
+
 			CustomerDTO cdto = new CustomerDTO();
-			
+
 			cdto.setCustomerId(req.getParameter("customerId"));
 			cdto.setCustomerPwd(req.getParameter("customerPwd"));
 			cdto.setCustomerName(req.getParameter("customerName"));
 			cdto.setCustomerEmail(req.getParameter("customerEmail"));
 			cdto.setCustomerTel(req.getParameter("customerTel"));
-			
+
 			cdao.updateData(cdto);
-			
-			url = cp + "/customer/updated.do";
+
+			url = cp + "/main";
 			resp.sendRedirect(url);
 			return;
-			
+
 		}
 		//아이디 찾기
-				else if(uri.indexOf("searchId.do")!=-1) {
-					
-					url = "/customer/searchId.jsp";
-					forward(req, resp, url);
-				
-				}else if(uri.indexOf("searchId_ok.do")!=-1) {
-					
-					String customerName = req.getParameter("customerName");
-					String customerTel = req.getParameter("customerTel");
-					
-					CustomerDTO cdto =cdao.getReadData(customerName, customerTel);
-					
-					if(cdto==null||!cdto.getCustomerTel().equals(customerTel)) {
-						req.setAttribute("message", "회원정보가 존재하지 않습니다.");
-						
-						url = "/customer/searchId.jsp";
-						forward(req, resp, url);
-						
-					} else {
-						String customerId = cdto.getCustomerId();
-						req.setAttribute("message", "아이디는["+ customerId + "]입니다");
-					
-					
-					url = "/customer/searchId.jsp";
-					forward(req, resp, url);
-		
-		
-					}
-					//비밀번호 찾기
-				}else if(uri.indexOf("searchPwd.do")!=-1) {
-					
-					url = "/customer/searchPwd.jsp";
-					forward(req, resp, url);
-					
-					
-					
-				}else if(uri.indexOf("searchPwd_ok.do")!=-1) {
-					String customerId = req.getParameter("customerId");
-					String customerTel = req.getParameter("customerTel");
-					
-					CustomerDTO cdto =cdao.getReadData(customerId);
+		else if(uri.indexOf("searchId.do")!=-1) {
 
-					if(cdto==null||!cdto.getCustomerTel().equals(customerTel)) {
-						req.setAttribute("message", "회원정보가 존재하지 않습니다.");
-						
-						url = "/customer/searchPwd.jsp";
-						forward(req, resp, url);
-					} else {
-						String coustomerPwd = cdto.getCustomerPwd();
-						req.setAttribute("message", "비밀번호는["+ coustomerPwd + "]입니다");
-					
-					url = "/customer/searchPwd.jsp";
-					forward(req, resp, url);
-					
+			url = "/customer/searchId.jsp";
+			forward(req, resp, url);
+
+		}else if(uri.indexOf("searchId_ok.do")!=-1) {
+
+			String customerName = req.getParameter("customerName");
+			String customerTel = req.getParameter("customerTel");
+
+			CustomerDTO cdto =cdao.getReadData(customerName, customerTel);
+
+			if(cdto==null||!cdto.getCustomerTel().equals(customerTel)) {
+				req.setAttribute("message", "회원정보가 존재하지 않습니다.");
+
+				url = "/customer/searchId.jsp";
+				forward(req, resp, url);
+
+			} else {
+				String customerId = cdto.getCustomerId();
+				req.setAttribute("message", "아이디는["+ customerId + "]입니다");
+
+
+				url = "/customer/searchId.jsp";
+				forward(req, resp, url);
+
+
 			}
+			//비밀번호 찾기
+		}else if(uri.indexOf("searchPwd.do")!=-1) {
+
+			url = "/customer/searchPwd.jsp";
+			forward(req, resp, url);
+
+
+
+		}else if(uri.indexOf("searchPwd_ok.do")!=-1) {
+			String customerId = req.getParameter("customerId");
+			String customerTel = req.getParameter("customerTel");
+
+			CustomerDTO cdto =cdao.getReadData(customerId);
+
+			if(cdto==null||!cdto.getCustomerTel().equals(customerTel)) {
+				req.setAttribute("message", "회원정보가 존재하지 않습니다.");
+
+				url = "/customer/searchPwd.jsp";
+				forward(req, resp, url);
+			} else {
+				String coustomerPwd = cdto.getCustomerPwd();
+				req.setAttribute("message", "비밀번호는["+ coustomerPwd + "]입니다");
+
+				url = "/customer/searchPwd.jsp";
+				forward(req, resp, url);
+
+			}
+		}
+		
+		//회원탈퇴
+		else if(uri.indexOf("deleted_ok.do")!=-1) {
+			
+			HttpSession session = req.getSession();
+			CustomerInfo customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+			String customerId = customerInfo.getCustomerId();
+			
+			cdao.deleteData(customerId);
+			
+			url = cp + "/main";
+			resp.sendRedirect(url);
+			return;
 		}
 	}
 }
 
-	
+
 
 
