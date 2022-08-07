@@ -327,7 +327,7 @@
 								<textarea rows="15" cols="20" name="qnaContent"></textarea>
 							</div>
 
-							<div class="blog__sidebar__itㄴem__tags">
+							<div class="blog__sidebar__item__tags">
 								<input type="hidden" name="qnaNum" value="${qnaNum} ">
 								<input type="hidden" name="pageNum" value="${pageNum} ">
 								<input type="hidden" name="customerId" value="${sessionScope.customerInfo.customerId}">
