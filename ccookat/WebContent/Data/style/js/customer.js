@@ -25,7 +25,7 @@ function sendIt() {
 			return;
 		}
 		
-		if(f.customerPwd.value != customerPwd2.value){
+		if(f.customerPwd.value != f.customerPwd2.value){
 			alert("비밀번호가 다릅니다.");
 			f.customerPwd2.focus();
 			return;
@@ -116,14 +116,14 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
-
+/*
 function sendIt() {
 	
 	var f= document.myForm;
 	
 	f.action = "/ccookat/main/customer/updated_ok.do";
 	f.submit();
-}	
+}	*/
 
 
 function login() {
@@ -168,11 +168,34 @@ function updated(){
 	
 	var f = document.myForm;
 	
+	if(f.customerPwd.value != f.customerPwd2.value){
+		alert("비밀번호가 다릅니다.");
+		f.customerPwd2.focus();
+		return;
+	}
+	
+	alert("수정이 완료되었습니다.");
 	f.action = "/ccookat/main/customer/updated_ok.do";
 	f.submit();
 	
 }
 
+
+function deleted(){
+	
+	var f = document.myForm;
+	var msg = "정말 탈퇴하시겠습니까?";
+	
+	if(!confirm(msg)){
+		alert("취소되었습니다.");
+	}else {
+		alert("탈퇴되었습니다.");
+		f.action = "/ccookat/main/customer/deleted_ok.do";
+		f.submit();
+	}
+
+
+}
 
 
 

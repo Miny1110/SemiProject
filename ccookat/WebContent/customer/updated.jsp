@@ -13,6 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>회원가입</title>
+
+<script type="text/javascript" src="<%=cp%>/Data/style/js/customer.js"></script>
+
 <link href="<%=cp%>/Data/style/img/ccookat/favicon.ico"
 	rel="shortcut icon" type="image/x-icon">
 <link
@@ -41,9 +44,7 @@
 <link rel="stylesheet" href="<%=cp%>/Data/style/css/style.css"
 	type="text/css">
 
-<script type="text/javascript" src="<%=cp%>/Data/style/js/customer.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
 
 </head>
 <body>
@@ -149,7 +150,7 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="./index.html"><img
+						<a href="<%=cp %>/main"><img
 							src="<%=cp%>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
@@ -299,8 +300,10 @@
 					<div id="formSubmit" class="form_footer">
 						<input type="hidden" name="customerId" value="${sessionScope.customerInfo.customerId }">
 						<input type="hidden" name="customerName" value="${sessionScope.customerInfo.customerName }">
-						<input type="button" value="수정하기" class="btn_sign" onclick="location='<%=cp %>/main/customer/updated_ok.do';" />
-						<input type="button" value="탈퇴하기" class="btn_sign" onclick="sendIt();" />
+						<input type="button" value="수정하기" class="btn_sign" onclick="updated();" />
+						<input type="button" value="탈퇴하기" class="btn_sign" onclick="deleted();" />
+						<input type="button" value="돌아가기" class="btn_sign" onclick="location.href='<%=cp%>/main';" />
+						
 					</div>
 
 
