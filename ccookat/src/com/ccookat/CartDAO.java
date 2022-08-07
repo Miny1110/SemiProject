@@ -152,8 +152,46 @@ public class CartDAO {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}	
+	
+	}
+	
+	//같은상품을 장바구니에 또 담았을때 기존에 있던 수량에 추가된수량을 더해서 수정해줌
+	public void updateData(int itemNum, String customerId) {
 		
 		
+		
+	}
+	
+	//그아이디에 장바구니에 같은상품이 있는지 알아보기위해 한개의 데이터를 가져와보는 출력문
+	
+	public int getReadData(int itemNum, String customerId) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		
+		try {
+				sql = "select cartNum from cart where itemNum=? and customerId=? ";
+			
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, itemNum);
+				pstmt.setString(2, customerId);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {				
+					result =rs.getInt(1);					
+				}
+			
+				rs.close();
+				pstmt.close();
+							
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
 	}
 	
 	
