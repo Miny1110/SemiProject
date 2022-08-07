@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ccookat.CartDAO;
 import com.ccookat.CustomerInfo;
 import com.ccookat.QnaDAO;
 import com.ccookat.QnaDTO;
@@ -50,6 +51,8 @@ public class QnaServlet extends HttpServlet {
 		QnaDAO qdao = new QnaDAO(conn);
 		//답변도 필요해서 추기
 		ReplyDAO redao = new ReplyDAO(conn);
+		//장바구니아이콘갯수 표시해야해서
+		CartDAO ctdao = new CartDAO(conn);
 
 		MyPage myPage = new MyPage(); 
 
@@ -58,19 +61,19 @@ public class QnaServlet extends HttpServlet {
 
 		//주소에 upload라는 이름이 있으면
 		if(uri.indexOf("upload.do")!=-1) {
-			//session이 없기 때문에 직접 만들어줌.
+			
 			HttpSession session = request.getSession();
 
-			CustomerInfo info = 
-					(CustomerInfo)session.getAttribute("CustomerInfo");
+			CustomerInfo customerInfo = new CustomerInfo();
 
-			/*if(customerInfo.customerId==null) {
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 
-				url = "/customer/login.jsp";
-				forward(request, response, url);
-				return;
+			if(customerInfo!=null) {
+			String customerId = customerInfo.getCustomerId();
 
-			}*/
+			int cartCount = ctdao.cartCount(customerId);
+			request.setAttribute("cartCount", cartCount);
+			}
 
 			url = "/qna/qnaUpload.jsp";
 			forward(request, response, url);
@@ -107,6 +110,8 @@ public class QnaServlet extends HttpServlet {
 			
 			String customerId = customerInfo.getCustomerId();
 			
+			int cartCount = ctdao.cartCount(customerId);
+			request.setAttribute("cartCount", cartCount);
 			String pageNum = request.getParameter("pageNum");
 
 			int currentPage = 1;

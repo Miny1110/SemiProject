@@ -108,6 +108,19 @@ public class ItemServlet extends HttpServlet {
 
 		}else if(uri.indexOf("detail.do")!=-1) { //상세페이지 화면 보여주기
 
+			HttpSession session = req.getSession();
+
+			CustomerInfo customerInfo = new CustomerInfo();
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+			String customerId = customerInfo.getCustomerId();
+
+			int cartCount = ctdao.cartCount(customerId);
+			req.setAttribute("cartCount", cartCount);
+			}
+			
+			
 			//제품번호 가져와
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 
@@ -222,7 +235,7 @@ public class ItemServlet extends HttpServlet {
 
 
 		}*/else if(uri.indexOf("list.do")!=-1) {
-
+	
 			//여기서부터 페이징 처리
 			String pageNum = req.getParameter("pageNum");
 			String itemType = req.getParameter("itemType");

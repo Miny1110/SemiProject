@@ -11,9 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.UploadContext;
 
+import com.ccookat.CartDAO;
+import com.ccookat.CustomerInfo;
 import com.ccookat.ItemDTO;
 import com.ccookat.ReviewDAO;
 import com.ccookat.ReviewDTO;
@@ -46,7 +49,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		Connection conn = DBConn.getconnection();
 		ReviewDAO rdao = new ReviewDAO(conn);
-		
+		CartDAO ctdao = new CartDAO(conn);
 		MyPage myPage = new MyPage();
 		
 		String cp = req.getContextPath();
@@ -106,6 +109,18 @@ public class ReviewServlet extends HttpServlet {
 		
 		int reviewtotalArticle = rdao.getDataCount();
 		
+		HttpSession session = req.getSession();
+
+		CustomerInfo customerInfo = new CustomerInfo();
+
+		customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+		if(customerInfo!=null) {
+		String customerId = customerInfo.getCustomerId();
+
+		int cartCount = ctdao.cartCount(customerId);
+		req.setAttribute("cartCount", cartCount);
+		}
 		req.setAttribute("itemNum", itemNum);
 		req.setAttribute("imagePath", imagePath);
 		req.setAttribute("pageNum", pageNum);
@@ -132,6 +147,20 @@ public class ReviewServlet extends HttpServlet {
 				return;
 
 					*/
+		
+		HttpSession session = req.getSession();
+
+		CustomerInfo customerInfo = new CustomerInfo();
+
+		customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+		if(customerInfo!=null) {
+		String customerId = customerInfo.getCustomerId();
+
+		int cartCount = ctdao.cartCount(customerId);
+		req.setAttribute("cartCount", cartCount);
+		}
+		
 		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 
@@ -195,6 +224,18 @@ public class ReviewServlet extends HttpServlet {
 				url = cp + "main/item/detail.do?pageNum="+pageNum+"&itemNum="+rdto.getItemNum();
 				resp.sendRedirect(url);}
 			
+			HttpSession session = req.getSession();
+
+			CustomerInfo customerInfo = new CustomerInfo();
+
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+			String customerId = customerInfo.getCustomerId();
+
+			int cartCount = ctdao.cartCount(customerId);
+			req.setAttribute("cartCount", cartCount);
+			}
 			
 			req.setAttribute("rdto", rdto);
 			req.setAttribute("pageNum", pageNum);
