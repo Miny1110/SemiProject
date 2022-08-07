@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/ccookat/Data/style/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/ccookat/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/ccookat/Data/style/css/style.css" type="text/css">
+    
 </head>
 
 <body>
@@ -290,9 +291,9 @@
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                            <div class="pro-qty"><span class="dec qtybtn"></span>
-                                                <input type="text" value="1">
-                                            <span class="inc qtybtn"></span></div>
+                                            <div class="pro-qty"><span class="dec qtybtn" onclick="pluscount();"></span>
+                                                <input type="text" value="${ctdto.cartItemCount}"/>
+                                            <span class="inc qtybtn" onclick="minuscount();"></span></div>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
@@ -332,7 +333,7 @@
                         <h5>Cart Total</h5>
                         <ul>
                             <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>Total <span>   ${ctdto.cartTotPrice+=ctdto.cartTotPrice }</span></li>
                         </ul>
                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
