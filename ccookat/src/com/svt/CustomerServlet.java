@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.ccookat.CustomerDAO;
 import com.ccookat.CustomerDTO;
 import com.ccookat.CustomerInfo;
-
+import com.ccookat.ReviewDAO;
 import com.util.DBConn;
 import com.util.MyPage;
 
@@ -43,6 +43,7 @@ public class CustomerServlet extends HttpServlet{
 
 		Connection conn = DBConn.getconnection();
 		CustomerDAO cdao = new CustomerDAO(conn);
+		ReviewDAO rdao = new ReviewDAO(conn);
 
 		String url;
 
@@ -251,7 +252,10 @@ public class CustomerServlet extends HttpServlet{
 			HttpSession session = req.getSession();
 			CustomerInfo customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 			String customerId = customerInfo.getCustomerId();
+			System.out.println(customerId);
 			
+			//회원 탈퇴 하려면 자식클래스에 있는 데이터 먼저 삭제해야 된다고 함. 안그러면 에러 뜸. 보니까 리뷰테이블 데이터 삭제하고 하면 될거같은데 이따 같이 봐야지
+			//rdao.deleteData(reviewNum)
 			cdao.deleteData(customerId);
 			
 			url = cp + "/main";
