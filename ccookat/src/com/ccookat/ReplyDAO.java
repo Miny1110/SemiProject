@@ -53,14 +53,15 @@ public class ReplyDAO {
 			 * System.out.println(rdto.getReviewContent());
 			 */
 
-			sql = "insert into reply (replyNum,customerId,replyContent,replyCreated) ";
-			sql += "values (?,?,?,sysdate)";
+			sql = "insert into reply (replyNum,customerId,replyContent,qnaNum,replyCreated) ";
+			sql += "values (?,?,?,?,sysdate)";
 
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, redto.getReplyNum());
 			pstmt.setString(2, redto.getCustomerId());
 			pstmt.setString(3, redto.getReplyContent());
+			pstmt.setInt(4, redto.getQnaNum());
 
 			pstmt.executeUpdate();
 			pstmt.close();
@@ -126,7 +127,7 @@ public class ReplyDAO {
 		
 		try {
 			sql = "select replyNum,customerId,replyContent,replyCreated ";
-			sql+= "from reply where replyNum=?";
+			sql+= "from reply where qnaNum=?";
 
 			pstmt = conn.prepareStatement(sql);
 

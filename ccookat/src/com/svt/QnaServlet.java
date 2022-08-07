@@ -187,7 +187,7 @@ public class QnaServlet extends HttpServlet {
 		}else if(uri.indexOf("detail.do")!=-1) {
 
 			//변수 받을 준비해
-			//int replyNum = Integer.parseInt(request.getParameter("replyNum"));
+			//int replyNum = Integer.parseInt(request.getParameter("customerId"));
 			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
 			String pageNum = request.getParameter("pageNum");
 			
@@ -244,20 +244,24 @@ public class QnaServlet extends HttpServlet {
 			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
 			String pageNum = request.getParameter("pageNum");
 			
+			request.setAttribute("qnaNum", qnaNum);
+			
 			url = "/qna/qnaReply.jsp";
 			forward(request, response, url);
 			
 		}else if (uri.indexOf("reply_ok.do")!=-1){
 			//변수 받아서
-//		int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
-		String pageNum = request.getParameter("pageNum");
+	int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+//		String pageNum = request.getParameter("pageNum");
 			
 			ReplyDTO redto = new ReplyDTO();
+			
 			int remaxNum = redao.getMaxNum();
 			
 			redto.setReplyNum(remaxNum+1);
 			redto.setCustomerId(request.getParameter("customerId"));
 			redto.setReplyContent(request.getParameter("replyContent"));
+			redto.setQnaNum(Integer.parseInt(request.getParameter("qnaNum")));
 			redto.setReplyCreated(request.getParameter("replyCreated"));
 			
 			redao.insertData(redto);

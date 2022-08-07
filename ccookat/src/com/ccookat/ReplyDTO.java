@@ -5,8 +5,15 @@ public class ReplyDTO {
 	private String customerId;
 	private String replyContent;
 	private String replyCreated;
+	private int qnaNum;
 	
 	
+	public int getQnaNum() {
+		return qnaNum;
+	}
+	public void setQnaNum(int qnaNum) {
+		this.qnaNum = qnaNum;
+	}
 	public int getReplyNum() {
 		return replyNum;
 	}
