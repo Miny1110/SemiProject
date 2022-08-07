@@ -56,7 +56,9 @@ public class CartServlet extends HttpServlet {
 			String customerId = customerInfo.getCustomerId();
 
 			List<CartDTO> lists = ctdao.selectAll(customerId);
+			
 			int cartCount = ctdao.cartCount(customerId);
+			request.setAttribute("cartCount", cartCount);
 			
 			if(lists==null) {				
 				request.setAttribute("message",	"장바구니에 담긴 상품이 없습니다.");				
@@ -64,12 +66,9 @@ public class CartServlet extends HttpServlet {
 				forward(request, response, url);	
 				return;
 			}
-			
-			request.setAttribute("cartCount", cartCount);
 			request.setAttribute("itemImagePath", itemImagePath);
 			request.setAttribute("lists", lists);
-			
-			
+					
 			url = "/cart/cartMain.jsp";
 			forward(request, response, url);	
 			return;

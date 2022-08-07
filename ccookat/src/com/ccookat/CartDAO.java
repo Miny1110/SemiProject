@@ -15,36 +15,7 @@ public class CartDAO {
 	}
 
 
-	//로그인한 사람이 가지고 있는 장바구니 수량 갯수를 장바구니 이모티콘에 출력해줄 데이터
-	public int cartCount(String customerId) {
-		int cartCount = 0;
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql; 
-
-		try {
-
-			sql = "select nvl(count(*),0) from cart where customerid = ?";
-
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, customerId);
-
-			rs = pstmt.executeQuery();
-
-			if(rs.next()) {
-
-				cartCount = rs.getInt(1); 	
-
-			}
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-
-		return cartCount;
-	}
+	
 
 	public int getMaxNum() {
 
@@ -131,6 +102,37 @@ public class CartDAO {
 
 		return lists;	
 	}
+	
+	//로그인한 사람이 가지고 있는 장바구니 수량 갯수를 장바구니 이모티콘에 출력해줄 데이터
+		public int cartCount(String customerId) {
+			int cartCount = 0;
+
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql; 
+
+			try {
+
+				sql = "select nvl(count(*),0) from cart where customerid = ?";
+
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setString(1, customerId);
+
+				rs = pstmt.executeQuery();
+
+				if(rs.next()) {
+
+					cartCount = rs.getInt(1); 	
+
+				}
+
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+
+			return cartCount;
+		}
 
 	//장바구니에 담기
 	//고객이 장바구니에 담으면 아이템넘버랑 수량 고객정보 가져와서 넣어야함
