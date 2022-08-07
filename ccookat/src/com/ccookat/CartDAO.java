@@ -47,8 +47,11 @@ public class CartDAO {
 
 	
 	//장바구니에 넣어져있는 데이터를 가져오기
+	//나중에 주문하기 버튼활성화 시킬때를 고려해서 
 	//아이템 가격을 item 테이블에서 가져오고
-	//totprice는 연산을 통해서 값을 저장하는 걸로 코드 바꿔야할거같음
+	//totprice는 서블릿에서 장바구니에 인서트할때 연산을 통해서 가격을 넣을 예정 인데
+	//이거는 상세페이지에서 장바구니에 넣는 작업을 하면서 그때그때 수정해야 할 것 같음
+	//몰르겠음 이부분 걍 일단 다 가져와놓고 필요없으면 삭제
 	public List<CartDTO> selectAll(String customerId) {
 		
 		PreparedStatement pstmt = null;
@@ -61,7 +64,7 @@ public class CartDAO {
 		try {	
 			
 			sql = "select a.cartnum,a.customerid,a.itemnum,a.cartitemcount,";
-			sql+= "a.carttotprice, b.itemname,b.itemImage1 from cart a join item b ";
+			sql+= "a.carttotprice, b.itemname,b.itemImage1,b.itemPrice from cart a join item b ";
 			sql+= "on a.itemnum = b.itemnum where customerid=? order by a.cartnum desc";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -81,6 +84,7 @@ public class CartDAO {
 				ctdto.setCartTotPrice(rs.getInt(5));
 				ctdto.setItemName(rs.getString(6));
 				ctdto.setItemImage1(rs.getString(7));				
+				ctdto.setItemPrice(rs.getInt(8));
 				
 				lists.add(ctdto);
 		

@@ -158,7 +158,7 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="/ccookat"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+						<a href="/ccookat/main"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-lg-6">

@@ -4,13 +4,21 @@ public class CartDTO {
 
 	private int cartNum;
 	private String customerId;
-	private int itemNum;
 	private int cartItemCount;
 	private int cartTotPrice;
+	private int itemNum;
+	private int itemPrice;
 	private String itemName;
 	private String itemImage1;
+
 	
 	
+	public int getItemPrice() {
+		return itemPrice;
+	}
+	public void setItemPrice(int itemPrice) {
+		this.itemPrice = itemPrice;
+	}
 	public String getItemName() {
 		return itemName;
 	}
