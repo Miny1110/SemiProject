@@ -85,13 +85,8 @@
 			<ul>
 				<li class="active"><a href="./index.html">Home</a></li>
 				<li><a href="./shop-grid.html">Shop</a></li>
-				<li><a href="#">Pages</a>
-					<ul class="header__menu__dropdown">
-						<li><a href="./shop-details.html">Shop Details</a></li>
-						<li><a href="./shoping-cart.html">Shopping Cart</a></li>
-						<li><a href="./checkout.html">Check Out</a></li>
-					</ul></li>
-				<li><a href="./contact.html">Contact</a></li>
+				<li><a href="./shoping-cart.html">Shopping Cart</a></li>
+				<li><a href="./contact.html">Notice</a></li>
 			</ul>
 		</nav>
 		<div id="mobile-menu-wrap">
@@ -197,8 +192,7 @@
 		</div>
 		<div class="humberger__menu__contact">
 			<ul>
-				<li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-				<li>Free Shipping for all Order of $99</li>
+				<li><i class="fa fa-envelope"></i></li>
 			</ul>
 		</div>
 	</div>
@@ -273,14 +267,8 @@
 						<ul>
 							<li><a href="<%=cp%>/main">Home</a></li>
 							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
-							<li><a href="#">Pages</a>
-								<ul class="header__menu__dropdown">
-									<li><a href="./shop-details.html">Shop Details</a></li>
-									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
-									<li><a href="./checkout.html">Check Out</a></li>
-								</ul></li>
-							<li><a
-								href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
+							<li><a href="<%=cp%>/main/cart/detail.do">Cart</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
