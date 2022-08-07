@@ -132,15 +132,13 @@ public class CartDAO {
 		}
 			
 	}
-	
-	public void deleteData(int itemNum,String customerId) {
-		
+	public void deleteData(int itemNum, String customerId) {
 		PreparedStatement pstmt = null;
 		String sql;
 		
 		try {
 		
-			sql = "delete from cart where customerId = ? and itemNum =?";
+			sql = "delete from cart where itemNum =? and customerId = ? ";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -154,6 +152,8 @@ public class CartDAO {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}	
+		
+		
 	}
 	
 	

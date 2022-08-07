@@ -52,6 +52,7 @@ public class CartServlet extends HttpServlet {
 
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 
+			if(customerInfo!=null) {
 			String customerId = customerInfo.getCustomerId();
 
 			List<CartDTO> lists = ctdao.selectAll(customerId);
@@ -68,6 +69,10 @@ public class CartServlet extends HttpServlet {
 
 			url = "/cart/cartMain.jsp";
 			forward(request, response, url);	
+			return;
+			}
+			url = cp +"/main/customer/login.do";
+			response.sendRedirect(url);
 
 		}else if(uri.indexOf("cartin.do")!=-1) {
 
