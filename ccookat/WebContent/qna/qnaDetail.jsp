@@ -365,7 +365,8 @@
 						<button type="button" class="w-btn" id="listBtn"
 							onclick="location='<%=cp %>/main/qna/list.do?pageNum=${pageNum }';">목록</button>
 								 <c:if test="${sessionScope.customerInfo.customerId=='admin'}"	>						
-						<button type="button" class="w-btn">답변</button>
+						<button type="button" class="w-btn" 
+						onclick="location='<%=cp%>/main/qna/reply.do?pageNum=${pageNum }&qnaNum=${qdto.qnaNum}';">답변</button>
 						</c:if>
 											</div>
 
