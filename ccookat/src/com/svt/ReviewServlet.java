@@ -81,7 +81,7 @@ public class ReviewServlet extends HttpServlet {
 			currentPage = Integer.parseInt(pageNum);
 		
 		//처음 전체 데이터 갯수 구하기
-		int dataCount = rdao.getDataCount();
+		int dataCount = rdao.getDataCount(itemNum);
 		//하나의 페이지에 보일 페이지 갯수
 		int numPerPage = 5;
 		int totalPage = myPage.getPageCount(numPerPage, dataCount);
@@ -107,7 +107,7 @@ public class ReviewServlet extends HttpServlet {
 		String deletePath = cp + "/main/review/delete.do";
 		String imagePath = cp + "/pds/imageFile";
 		
-		int reviewtotalArticle = rdao.getDataCount();
+		int reviewtotalArticle = rdao.getDataCount(itemNum);
 		
 		HttpSession session = req.getSession();
 
