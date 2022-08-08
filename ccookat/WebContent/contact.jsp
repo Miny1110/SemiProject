@@ -397,7 +397,7 @@ function sendIt(){
                     </div>
                     <div class="col-lg-12 text-center">
                         <textarea placeholder="의견을 입력해주세요." name="userText"></textarea>
-                        <input style="background-color: #FF5833; color: #ffffff" type="button" value="메세지 전송" onclick="sendIt();"/>
+                        <input style="background-color: #FF5833; color: #ffffff; height: 60px;" type="button" value="메세지 전송" onclick="sendIt();"/>
                     </div>
                 </div>
             </form>
@@ -414,7 +414,7 @@ function sendIt(){
 					<div class="contact__widget">
 						<span class="icon_phone"></span>
 						<h4>Call Center</h4>
-						<p>+02-1234-6868</p>
+						<p>+02-6204-9090</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -422,7 +422,7 @@ function sendIt(){
 						<span class="icon_pin_alt"></span>
 						<h4>Address</h4>
 						<p>
-							서울시 강남구 테헤란로 <br>124 삼원타워 4층 아이티윌
+							서울 강남구 영동대로112길 36<br> OTC빌딩 -1층, 3층 꾸캣
 						</p>
 					</div>
 				</div>
@@ -430,7 +430,7 @@ function sendIt(){
 					<div class="contact__widget">
 						<span class="icon_clock_alt"></span>
 						<h4>Open time</h4>
-						<p>24 hour Open Service</p>
+						<p>매일 10:30 - 21:30</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
