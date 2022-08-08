@@ -517,9 +517,10 @@
                     </div>
                     
 <!--  여기부터 상품 이미지 게시판 사진, 페이징 시작   -->                 
-                    <div class="row">
+                    
                     
                     <c:if test="${empty itemType }">
+                    <div class="row">
                     <c:forEach var="idto" items="${itemAllMainList }">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -555,6 +556,7 @@
                     
                     
                     <c:if test="${!empty itemType }">
+                    <div class="row">
                     <c:forEach var="idto" items="${itemMainList }">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
