@@ -2969,6 +2969,8 @@ ol {
 .map {
 	height: 500px;
 	position: relative;
+	margin: auto;
+	width: 1150;
 }
 
 .map iframe {
