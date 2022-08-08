@@ -103,7 +103,6 @@ public class CartServlet extends HttpServlet {
 					String str = request.getParameter("itemPrice"); 
 					int indexNum = str.indexOf(".");
 					int itemPrice =  Integer.parseInt(str.substring(0 , indexNum));
-
 					//sql문에서 더해주면됨
 					int cartItemCount = Integer.parseInt(request.getParameter("cartItemCount"));
 					ctdto.setCartItemCount(cartItemCount);
@@ -124,6 +123,7 @@ public class CartServlet extends HttpServlet {
 					String str = request.getParameter("itemPrice"); //얘는 정가임 
 					int indexNum = str.indexOf(".");
 					int itemPrice =  Integer.parseInt(str.substring(0 , indexNum));
+					ctdto.setItemPrice(itemPrice);
 					int cartItemCount = Integer.parseInt(request.getParameter("cartItemCount"));
 					ctdto.setCartItemCount(cartItemCount);
 					ctdto.setCartTotPrice(itemPrice*cartItemCount);
@@ -142,6 +142,78 @@ public class CartServlet extends HttpServlet {
 			url = cp +"/main/customer/login.do";
 			response.sendRedirect(url);
 
+		}else if(uri.indexOf("minus.do")!=-1) {
+			
+			HttpSession session = request.getSession();
+
+			CustomerInfo customerInfo = new CustomerInfo();
+
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+
+				String customerId = customerInfo.getCustomerId();
+			
+			
+			int itemPrice = Integer.parseInt(request.getParameter("itemPrice"));
+			int cartNum = Integer.parseInt(request.getParameter("cartNum"));
+			double itemDiscount = Integer.parseInt(request.getParameter("itemDiscount"));
+			int cartTotPrice = (int) (itemPrice - (itemPrice*(itemDiscount/100)));
+			
+			
+			CartDTO ctdto = new CartDTO();
+			
+			ctdto.setCartItemCount(-1);
+			ctdto.setCartTotPrice(cartTotPrice*-1);
+			ctdto.setCustomerId(customerId);
+			ctdto.setCartNum(cartNum);
+			
+			ctdao.updateData(ctdto);
+			
+			
+			url = cp +"/main/cart/list.do";
+			response.sendRedirect(url);
+			return;
+			}
+			//로그인 안되어있을때 로그인창보내기
+			url = cp +"/main/customer/login.do";
+			response.sendRedirect(url);
+						
+		}else if(uri.indexOf("plus.do")!=-1) {
+
+			HttpSession session = request.getSession();
+
+			CustomerInfo customerInfo = new CustomerInfo();
+
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+
+				String customerId = customerInfo.getCustomerId();
+			
+		
+			int itemPrice = Integer.parseInt(request.getParameter("itemPrice"));
+			int cartNum = Integer.parseInt(request.getParameter("cartNum"));
+			double itemDiscount = Integer.parseInt(request.getParameter("itemDiscount"));
+			int cartTotPrice = (int) (itemPrice - (itemPrice*(itemDiscount/100)));
+			
+			CartDTO ctdto = new CartDTO();
+			
+			ctdto.setCartItemCount(1);
+			ctdto.setCartTotPrice(cartTotPrice);
+			ctdto.setCustomerId(customerId);
+			ctdto.setCartNum(cartNum);
+			
+			ctdao.updateData(ctdto);
+						
+			url = cp +"/main/cart/list.do";
+			response.sendRedirect(url);
+			return;
+			}
+			//로그인 안되어있을때 로그인창보내기
+			url = cp +"/main/customer/login.do";
+			response.sendRedirect(url);		
+			
 		}else if(uri.indexOf("cartout.do")!=-1) {
 
 			int itemNum = Integer.parseInt(request.getParameter("itemNum"));
@@ -165,6 +237,7 @@ public class CartServlet extends HttpServlet {
 			System.out.println("이거뜨면 오류난거임 ^^");
 			url = cp +"/main/customer/login.do";
 			response.sendRedirect(url);
+			
 		}
 
 

@@ -10,9 +10,16 @@ public class CartDTO {
 	private int itemPrice;
 	private String itemName;
 	private String itemImage1;
-
+	private int itemDiscount;
 	
 	
+	
+	public int getItemDiscount() {
+		return itemDiscount;
+	}
+	public void setItemDiscount(int itemDiscount) {
+		this.itemDiscount = itemDiscount;
+	}
 	public int getItemPrice() {
 		return itemPrice;
 	}

@@ -126,3 +126,11 @@ td {
 .qna_td {
 	border-bottom: 1px solid #b8b8b8;
 }
+
+.qna_input {
+	padding-bottom: 4px;
+	width: 250px;
+	height: 40px;
+}
+
+

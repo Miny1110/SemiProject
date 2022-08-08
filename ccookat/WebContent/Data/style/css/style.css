@@ -126,13 +126,14 @@ ol {
 	position: relative;
 }
 
+
 .section-title h2:after {
 	position: absolute;
 	left: 0;
 	bottom: -15px;
 	right: 0;
 	height: 4px;
-	width: 80px;
+	width: 140px;
 	background: #FF5833;
 	content: "";
 	margin: 0 auto;
@@ -1442,6 +1443,15 @@ ol {
 	margin-bottom: 15px;
 }
 
+.notice_select {
+	border: 1px solid #ebebeb;
+	padding: 10px;
+	border-radius: 4px;
+	width: 300px;
+	padding-left: 40px;
+}
+
+
 .filter__sort span {
 	font-size: 16px;
 	color: #6f6f6f;
@@ -2487,6 +2497,17 @@ ol {
 	margin-bottom: 10px;
 }
 
+.blog__sidebar__item__tags_notice {
+	font-size: 16px;
+	color: #ffffff;
+	background: #FF5833;
+	display: inline-block;
+	padding: 7px 26px 5px;
+	margin-right: 6px;
+	margin-bottom: 10px;
+	border-radius: 3px;
+}
+
 .blog__sidebar__item__tags input {
 	border: 0;
     font-size: 16px;
@@ -2507,6 +2528,7 @@ ol {
     padding: 7px 26px 5px;
     margin-right: 6px;
     margin-bottom: 10px;
+    border-radius: 3px;
 }
 /*---------------------
   Blog Details Hero
@@ -2615,6 +2637,7 @@ ol {
 .blog__details__author__text span {
 	font-size: 16px;
 	color: #6f6f6f;
+	
 }
 
 .blog__details__widget ul {

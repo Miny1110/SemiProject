@@ -2,6 +2,8 @@ package com.svt;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.util.List;
 
@@ -107,7 +109,6 @@ public class ItemServlet extends HttpServlet {
 			return;
 
 		}else if(uri.indexOf("detail.do")!=-1) { //상세페이지 화면 보여주기
-
 			
 			//제품번호 가져와
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
@@ -115,11 +116,23 @@ public class ItemServlet extends HttpServlet {
 			//페이지번호 가져와
 			String pageNum = req.getParameter("pageNum");
 
+			//아이템타입 가져와
+			String itemType = req.getParameter("itemType");
+			
 			//제품번호 매개로 조회수  업데이트
 			idao.updateHitCount(itemNum);
 
 			//제품번호 매개로 객체 불러와
 			ItemDTO idto = idao.getReadData_detail(itemNum);
+			
+			List<ItemDTO> itemHitCountList;
+
+			if(itemType==null) {
+				itemHitCountList = idao.getHitCountLists();
+			}else {
+				itemHitCountList = idao.getHitCountLists(itemType);
+			}
+
 
 			//널이면 리스트로 가
 			if(idto==null) {
@@ -136,8 +149,8 @@ public class ItemServlet extends HttpServlet {
 
 
 			//하나의 페이지에 보일 페이지 갯수
-			int reviewtotalArticle = rdao.getDataCount();				
-			int numPerPage = 3;
+			int reviewtotalArticle = rdao.getDataCount(itemNum);
+			int numPerPage = 30;
 			int totalPage = myPage.getPageCount(numPerPage, reviewtotalArticle);
 			
 			
@@ -154,7 +167,7 @@ public class ItemServlet extends HttpServlet {
 			end = currentPage * numPerPage;
 
 			String listUrl = cp + "/item/detail.do";
-			String reviewpageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
+			String reviewPageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 			//리스트 나오게 하기
 			List<ReviewDTO> reviewlists = rdao.getLists(start, end, itemNum);
 
@@ -183,19 +196,22 @@ public class ItemServlet extends HttpServlet {
 			}
 						
 			req.setAttribute("currentPage", currentPage);
-			req.setAttribute("itemNum", itemNum);
 			req.setAttribute("itemImagePath", itemImagePath);
 			req.setAttribute("itemDeletePath", itemDeletePath);
 			req.setAttribute("reviewImagePath", reviewImagePath);
 			req.setAttribute("reviewdDeletePath", reviewdDeletePath);
 			req.setAttribute("reviewlists", reviewlists);
 			req.setAttribute("idto", idto);
-			req.setAttribute("reviewPageIndexList", reviewpageIndexList);
+			req.setAttribute("reviewPageIndexList", reviewPageIndexList);
+			req.setAttribute("reviewtotalArticle", reviewtotalArticle);
+
+			req.setAttribute("itemHitCountList", itemHitCountList);
 
 			//req.setAttribute("params", params);
 
 
 			url = "/item/detail.jsp";
+			
 
 			forward(req, resp, url);
 
@@ -225,142 +241,140 @@ public class ItemServlet extends HttpServlet {
 			return;
 
 
-		}/*else if(uri.indexOf("updated.do")!=-1) {
-
-			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-
-			ItemDTO idto = idao.getReadData_detail(itemNum);
-
-
-		}*/else if(uri.indexOf("list.do")!=-1) {
-	
-			//여기서부터 페이징 처리
-			String pageNum = req.getParameter("pageNum");
+		}else if(uri.indexOf("list.do")!=-1) {
+			
 			String itemType = req.getParameter("itemType");
 			int dataCount;
-			String pageIndexList;
+	
+			//페이지넘 받아온다.
+			String pageNum = req.getParameter("pageNum");
 			
-			if(itemType==null) {
-				dataCount = idao.getDataCount();
-			}else {
-				dataCount = idao.getDataCount(itemType);
-			}
-
+			
+			//현재페이지 디폴트값 1. 페이지넘이 널이면 1을 넣는다.
 			int currentPage = 1;
-
 			if (pageNum != null){
 				currentPage = Integer.parseInt(pageNum);
 			}
-
+			
+			//검색값 받아온다.
+			//검색값 있으면 utr-8로, 없으면 그냥 널
+			String itemSearchValue = req.getParameter("itemSearchValue");
+			
+			if(itemSearchValue!=null) {
+				if(req.getMethod().equalsIgnoreCase("GET")) {
+					itemSearchValue = URLDecoder.decode(itemSearchValue,"UTF-8");
+				}
+			}else {
+				itemSearchValue = "";
+			}
+			
+			
+			
+			//데이터 개수 가져온다.
+			//검색값이 있으면 itemName에 검색값이 포함된 데이터를
+			//검색값이 없으면 모든 데이터를
+			if(itemType==null) {
+				dataCount = idao.getDataCount(itemSearchValue) ;
+			}else {
+				dataCount = idao.getDataCount(itemType, itemSearchValue);
+			}
+			
+			//한 페이지에 나올 데이터는 6개
 			int numPerPage = 6; 
 			int totalPage = myPage.getPageCount(numPerPage, dataCount);
-
 			if(currentPage>totalPage) {
 				currentPage = totalPage;
 			}
-
+			
 			int start = (currentPage-1) * numPerPage +1;
 			int end = currentPage * numPerPage;
-			//여기까지 페이징 처리
-
-			//이미지 게시판 전체 상품 출력 시작		
-			List<ItemDTO> itemAllMainList = idao.getLists(start, end);
-			//카테고리별 이미지 게시판 전체 상품 출력 시작		
-			List<ItemDTO> itemMainList = idao.getLists(itemType, start, end);
-
-			//전체상품 이미지 게시판 가짜주소(페이징 처리에 필요)
-			String itemAllMainUrl = cp + "/main/item/list.do?";
-			//제품메인 이미지 게시판 가짜주소(페이징 처리에 필요)
-			String itemMainUrl = cp + "/main/item/list.do?itemType=" + itemType;
-			//제품별 상세페이지 가짜주소(페이지번호 들고감)
-			String itemAllDetailUrl = cp + "/main/item/detail.do";
-			String itemDetailUrl = cp + "/main/item/detail.do?itemType=" + itemType;
 			
-			String pageUrl = cp+"/main/item/detail.do";
-
+			//전체 데이터 (검색값이 있으면 검색어가 포함된 전체 데이터) 불러온다.
+			List<ItemDTO> lists;
+			
 			if(itemType==null) {
-				pageIndexList = myPage.pageIndexList(currentPage, totalPage, itemAllMainUrl);
+				lists = idao.getLists(start, end, itemSearchValue);
 			}else {
-				pageIndexList = myPage.pageIndexList(currentPage, totalPage, itemMainUrl);
+				lists = idao.getLists(start, end, itemSearchValue, itemType);
 			}
-			String reviewPageIndexList = myPage.pageIndexList(currentPage, totalPage, pageUrl);
 			
-
+			
+			String params = "";
+	
+			if(itemType==null || itemType.equals("")) {
+				if(itemSearchValue!=null || !itemSearchValue.equals("")) {
+					params = "?itemSearchValue=" + URLEncoder.encode(itemSearchValue, "UTF-8");
+				}
+			}else {
+				if(itemSearchValue!=null || !itemSearchValue.equals("")) {
+					params = "?itemType=" + itemType + "&itemSearchValue=" + URLEncoder.encode(itemSearchValue, "UTF-8");
+				}
+			}
+			
+			String listUrl = cp + "/main/item/list.do" + params;
+			
+			if(params.equals("")) {
+				listUrl += "?" + params;
+			}
+			
+			String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
+			
 			//이미지 실제 주소
 			String itemImagePath = cp + "/pds/itemImageFile";
 			//삭제 주소
 			String itemDeletePath = cp + "/item/deleted.do";
-
+			String itemDetailUrl;
+			
+			if(itemType==null) {
+				itemDetailUrl = cp + "/main/item/detail.do?pageNum=" + currentPage;
+			}else {
+				itemDetailUrl = cp + "/main/item/detail.do?pageNum=" + currentPage + "&itemType=" + itemType;
+			}
+			
+			
+			//카트 받아올때 필요한듯?
 			HttpSession session = req.getSession();
-
+			
 			CustomerInfo customerInfo = new CustomerInfo();
 
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 
 			if(customerInfo!=null) {
-			String customerId = customerInfo.getCustomerId();
-
-			int cartCount = ctdao.cartCount(customerId);
-			req.setAttribute("cartCount", cartCount);
+				String customerId = customerInfo.getCustomerId();
+	
+				int cartCount = ctdao.cartCount(customerId);
+				req.setAttribute("cartCount", cartCount);
 			}
+	
 			
 			req.setAttribute("itemType", itemType);
-			req.setAttribute("itemImagePath", itemImagePath);
-			req.setAttribute("itemAllMainList", itemAllMainList);
-			req.setAttribute("itemMainList", itemMainList);
-			req.setAttribute("pageIndexList", pageIndexList);
-			req.setAttribute("dataCount", dataCount);
-			req.setAttribute("currentPage", currentPage);
-			req.setAttribute("itemDeletePath", itemDeletePath);
-			req.setAttribute("itemAllDetailUrl", itemAllDetailUrl);
 			req.setAttribute("itemDetailUrl", itemDetailUrl);
-			//req.setAttribute("reviewPageIndexList", reviewPageIndexList);
-			//카테고리별 이미지 게시판 전체 상품 출력 끝
+			req.setAttribute("itemDeletePath", itemDeletePath);
+			req.setAttribute("itemImagePath", itemImagePath);
+			req.setAttribute("lists", lists);
+			req.setAttribute("pageIndexList", pageIndexList);
+			req.setAttribute("totalPage", totalPage);
+			req.setAttribute("currentPage", currentPage);
+			req.setAttribute("dataCount", dataCount);
 
-			List<ItemDTO> itemAllHitCountList = idao.getHitCountLists();
-			List<ItemDTO> itemHitCountList = idao.getHitCountLists(itemType);
 
-			req.setAttribute("itemAllHitCountList", itemAllHitCountList);
+			
+			List<ItemDTO> itemHitCountList;
+			
+			if(itemType==null) {
+				itemHitCountList = idao.getHitCountLists();
+			}else {
+				itemHitCountList = idao.getHitCountLists(itemType);
+			}
+
 			req.setAttribute("itemHitCountList", itemHitCountList);
 
 			url = "/item/list.jsp";
 			forward(req, resp, url);
 
 		}	
-		
-		/*else if(uri.indexOf("cart/list.do")!=-1){
-			
-			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-			
-			ItemDTO idto = idao.getReadData_Customer(itemNum);
-			
-			req.setAttribute("idto", idto);
-			
-			url = "/cart/cartMain.jsp";
-			forward(req, resp, url);
-			
-		}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	}
-
-
-
 
 
 }

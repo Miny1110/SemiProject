@@ -305,9 +305,9 @@
 
 						<ul>
 							<li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
-							<li><a href="<%=cp %>/main/item/list.do">채소ㆍ과일</a></li>
-							<li><a href="<%=cp %>/main/item/list.do">밥ㆍ빵ㆍ면</a></li>
-							<li><a href="<%=cp %>/main/item/list.do">정육ㆍ계란</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
 							<li>&nbsp;</li>
 							<li>&nbsp;</li>
 							<li>&nbsp;</li>
@@ -335,12 +335,12 @@
 					<div class="hero__search">
 					
 					<div class="hero__search__form">
-                            <form action="#">
+                            <form action="<%=cp%>/main/item/list.do">
                                 <div class="hero__search__categories">
                                     제품명
-                                    <span class="arrow_carrot-down"></span>
+                                    
                                 </div>
-                                <input type="text" placeholder="제품명 입력하세요">
+                                <input type="text" placeholder="제품명 입력하세요" name="itemSearchValue">
                                 <button type="submit" class="site-btn">검색하기</button>
                             </form>
                         </div>
