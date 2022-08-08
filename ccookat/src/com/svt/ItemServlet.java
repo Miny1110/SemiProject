@@ -116,11 +116,23 @@ public class ItemServlet extends HttpServlet {
 			//페이지번호 가져와
 			String pageNum = req.getParameter("pageNum");
 
+			//아이템타입 가져와
+			String itemType = req.getParameter("itemType");
+			
 			//제품번호 매개로 조회수  업데이트
 			idao.updateHitCount(itemNum);
 
 			//제품번호 매개로 객체 불러와
 			ItemDTO idto = idao.getReadData_detail(itemNum);
+			
+			List<ItemDTO> itemHitCountList;
+
+			if(itemType==null) {
+				itemHitCountList = idao.getHitCountLists();
+			}else {
+				itemHitCountList = idao.getHitCountLists(itemType);
+			}
+
 
 			//널이면 리스트로 가
 			if(idto==null) {
@@ -184,7 +196,6 @@ public class ItemServlet extends HttpServlet {
 			}
 						
 			req.setAttribute("currentPage", currentPage);
-			req.setAttribute("itemNum", itemNum);
 			req.setAttribute("itemImagePath", itemImagePath);
 			req.setAttribute("itemDeletePath", itemDeletePath);
 			req.setAttribute("reviewImagePath", reviewImagePath);
@@ -192,6 +203,8 @@ public class ItemServlet extends HttpServlet {
 			req.setAttribute("reviewlists", reviewlists);
 			req.setAttribute("idto", idto);
 			req.setAttribute("reviewPageIndexList", reviewpageIndexList);
+
+			req.setAttribute("itemHitCountList", itemHitCountList);
 
 			//req.setAttribute("params", params);
 
@@ -227,14 +240,7 @@ public class ItemServlet extends HttpServlet {
 			return;
 
 
-		}/*else if(uri.indexOf("updated.do")!=-1) {
-
-			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-
-			ItemDTO idto = idao.getReadData_detail(itemNum);
-
-
-		}*/else if(uri.indexOf("list.do")!=-1) {
+		}else if(uri.indexOf("list.do")!=-1) {
 			
 			String itemType = req.getParameter("itemType");
 			int dataCount;
@@ -324,10 +330,6 @@ public class ItemServlet extends HttpServlet {
 				itemDetailUrl = cp + "/main/item/detail.do?pageNum=" + currentPage + "&itemType=" + itemType;
 			}
 			
-			/*if(params!=null || !params.equals("")) {
-				itemDetailUrl += "&" + params;			
-			}*/
-			
 			
 			//카트 받아올때 필요한듯?
 			HttpSession session = req.getSession();
@@ -370,40 +372,8 @@ public class ItemServlet extends HttpServlet {
 			forward(req, resp, url);
 
 		}	
-		
-		/*else if(uri.indexOf("cart/list.do")!=-1){
-			
-			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-			
-			ItemDTO idto = idao.getReadData_Customer(itemNum);
-			
-			req.setAttribute("idto", idto);
-			
-			url = "/cart/cartMain.jsp";
-			forward(req, resp, url);
-			
-		}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	}
-
-
-
 
 
 }

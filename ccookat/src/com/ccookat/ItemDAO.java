@@ -327,54 +327,6 @@ public class ItemDAO {
 	}
 	
 	
-	
-
-	
-	
-
-	
-	
-	
-	
-/*	//카테고리별 전체데이터 개수 세기
-	public int getDataCount(String itemType,String itemSearchValue) {
-		
-		int dataCount = 0;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
-		
-		try {
-			
-			sql = "select nvl(count(*),0) from item where itemType=? and itemName like ?";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, itemType);
-			pstmt.setString(2, itemSearchValue);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				dataCount = rs.getInt(1);
-			}
-			
-			rs.close();
-			pstmt.close();
-			
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		
-		return dataCount;
-		
-	}
-	*/
-	
-
-	
-	
 	//페이징 처리를 위한 전체상품 데이터 개수 세기
 	public int getDataCount(String itemSearchValue) {
 		
@@ -581,12 +533,6 @@ public class ItemDAO {
 		return mainLists;
 		
 	}
-	
-
-	
-	
-	
-	
 	
 	
 }
