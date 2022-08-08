@@ -340,7 +340,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
-                        <h5>Cart Total</h5>
+                        <h5>장바구니 금액</h5>
                         <ul>
                         	<li>총 상품금액 <span> ${beforedc} </span></li>
                             <li>총 할인금액 <span> ${(beforedc-totalprice)*-1} </span></li>
