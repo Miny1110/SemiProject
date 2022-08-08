@@ -109,7 +109,6 @@ public class ItemServlet extends HttpServlet {
 		}else if(uri.indexOf("detail.do")!=-1) { //상세페이지 화면 보여주기
 
 			
-			
 			//제품번호 가져와
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 			
@@ -135,11 +134,10 @@ public class ItemServlet extends HttpServlet {
 				currentPage = Integer.parseInt(pageNum);
 			}
 
-			//처음 전체 데이터 갯수 구하기
-			//int dataCount = idao.getDataCount(itemType);
+
 			//하나의 페이지에 보일 페이지 갯수
 			int reviewtotalArticle = rdao.getDataCount();				
-			int numPerPage = 5;
+			int numPerPage = 3;
 			int totalPage = myPage.getPageCount(numPerPage, reviewtotalArticle);
 			
 			
@@ -156,7 +154,7 @@ public class ItemServlet extends HttpServlet {
 			end = currentPage * numPerPage;
 
 			String listUrl = cp + "/item/detail.do";
-			String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
+			String reviewpageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 			//리스트 나오게 하기
 			List<ReviewDTO> reviewlists = rdao.getLists(start, end, itemNum);
 
@@ -190,9 +188,9 @@ public class ItemServlet extends HttpServlet {
 			req.setAttribute("itemDeletePath", itemDeletePath);
 			req.setAttribute("reviewImagePath", reviewImagePath);
 			req.setAttribute("reviewdDeletePath", reviewdDeletePath);
-			req.setAttribute("pageIndexList", pageIndexList);
-			req.setAttribute("idto", idto);
 			req.setAttribute("reviewlists", reviewlists);
+			req.setAttribute("idto", idto);
+			req.setAttribute("reviewPageIndexList", reviewpageIndexList);
 
 			//req.setAttribute("params", params);
 
@@ -316,7 +314,7 @@ public class ItemServlet extends HttpServlet {
 			req.setAttribute("itemDeletePath", itemDeletePath);
 			req.setAttribute("itemAllDetailUrl", itemAllDetailUrl);
 			req.setAttribute("itemDetailUrl", itemDetailUrl);
-			req.setAttribute("reviewPageIndexList", reviewPageIndexList);
+			//req.setAttribute("reviewPageIndexList", reviewPageIndexList);
 			//카테고리별 이미지 게시판 전체 상품 출력 끝
 
 			List<ItemDTO> itemAllHitCountList = idao.getHitCountLists();
