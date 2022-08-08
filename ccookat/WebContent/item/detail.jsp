@@ -293,7 +293,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
+                            <span>(${reviewtotalArticle } reviews)</span>
                         </div>
                         
                         <div class="product__details__price">
@@ -377,12 +377,12 @@
 										</c:if>
 
 
-										<c:forEach var="rdto" items="${reviewlists}">6
-											<c:if test="${itemNum==rdto.itemNum }">
+										<c:forEach var="rdto" items="${reviewlists}">
 												<div>
 													<div style="border-bottom: 1px solid #d5d5d5;">
 														<div class="product__details__tab__desc">
-															<b>작성자 :&nbsp;</b>${rdto.customerId} <b>작성일 :&nbsp;</b>${rdto.reviewCreated}
+															<b>작성자 :&nbsp;</b>${rdto.customerId}
+															<b>작성일 :&nbsp;</b>${rdto.reviewCreated}
 														</div>
 														<div align="right"></div>
 														<div class="product__details__tab__desc">
@@ -425,13 +425,12 @@
 													</div>
 												</div>
 
-											</c:if>
 										</c:forEach>
 									</form>
 
-									<div class="product__pagination">${reviewpageIndexList} 
+									<%-- <div class="product__pagination">${reviewPageIndexList} 
 									<a href="#"><i class="fa fa-long-arrow-right"></i></a>
-									</div>
+									</div> --%>
 								</div>
 							</div>
 

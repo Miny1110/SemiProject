@@ -149,8 +149,8 @@ public class ItemServlet extends HttpServlet {
 
 
 			//하나의 페이지에 보일 페이지 갯수
-			int reviewtotalArticle = rdao.getDataCount(itemNum);				
-			int numPerPage = 1;
+			int reviewtotalArticle = rdao.getDataCount(itemNum);
+			int numPerPage = 30;
 			int totalPage = myPage.getPageCount(numPerPage, reviewtotalArticle);
 			
 			
@@ -167,7 +167,7 @@ public class ItemServlet extends HttpServlet {
 			end = currentPage * numPerPage;
 
 			String listUrl = cp + "/item/detail.do";
-			String reviewpageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
+			String reviewPageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 			//리스트 나오게 하기
 			List<ReviewDTO> reviewlists = rdao.getLists(start, end, itemNum);
 
@@ -202,7 +202,8 @@ public class ItemServlet extends HttpServlet {
 			req.setAttribute("reviewdDeletePath", reviewdDeletePath);
 			req.setAttribute("reviewlists", reviewlists);
 			req.setAttribute("idto", idto);
-			req.setAttribute("reviewPageIndexList", reviewpageIndexList);
+			req.setAttribute("reviewPageIndexList", reviewPageIndexList);
+			req.setAttribute("reviewtotalArticle", reviewtotalArticle);
 
 			req.setAttribute("itemHitCountList", itemHitCountList);
 
