@@ -135,6 +135,44 @@ public class QnaDAO {
 			}
 */
 	//Q&A 목록에 뿌려줄 전체 데이터
+	
+	
+	//페이징 처리를 위한 전체 데이터 갯수 도출
+	public int getDataCount(String searchkey, String searchValue,String customerId) {
+
+		int dataCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+
+			searchValue = "%" + searchValue + "%";
+
+			sql = "select nvl(count(*),0) from qna ";
+			sql+= "where customerId =? and " + searchkey + " like ? ";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, customerId);
+			pstmt.setString(2, searchValue);
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				dataCount = rs.getInt(1);							
+			}
+
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}		
+		return dataCount;
+	}
+	
 	public List<QnaDTO> selectAll(int start,int end,
 			String searchKey, String searchValue) {
 
@@ -192,44 +230,6 @@ public class QnaDAO {
 		return lists;
 	}
 
-	
-	
-	//페이징 처리를 위한 전체 데이터 갯수 도출
-	public int getDataCount(String searchkey, String searchValue,String customerId) {
-
-		int dataCount = 0;
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
-
-		try {
-
-			searchValue = "%" + searchValue + "%";
-
-			sql = "select nvl(count(*),0) from qna ";
-			sql+= "where customerId =? and " + searchkey + " like ? ";
-
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, customerId);
-			pstmt.setString(2, searchValue);
-
-			rs = pstmt.executeQuery();
-
-			if(rs.next()) {
-				dataCount = rs.getInt(1);							
-			}
-
-			rs.close();
-			pstmt.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}		
-		return dataCount;
-	}
-	
 	//num으로 한개의 데이터 가져오기
 	public QnaDTO getReadData(int qnaNum) {
 		
