@@ -44,6 +44,108 @@
 <script type="text/javascript" src="<%=cp%>/Data/style/js/customer.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+<script type="text/javascript">
+
+	function sendIt() {
+		
+		var f = document.myForm;
+		
+		if(!f.customerId.value) {
+			alert("아이디를 입력하세요.");
+			f.customerId.focus();
+			return;
+		}
+		
+		if(!f.jungbokId.value) {
+			alert("아이디 중복체크를 해주세요.");
+			return;
+		}
+		
+		if(!f.customerPwd.value){
+			alert("비밀번호를 입력하세요.");
+			f.customerPwd.focus();
+			return;
+		}
+		
+		
+		if(!f.customerPwd2.value){
+			alert("비밀번호를 다시 한번 입력하세요.");
+			f.customerPwd2.focus();
+			return;
+		}
+		
+		if(f.customerPwd.value != customerPwd2.value){
+			alert("비밀번호가 다릅니다.");
+			f.customerPwd.focus();
+			f.customerPwd2.focus();
+			return;
+		}
+		
+		if(!f.customerName.value){
+			alert("이름을 입력하세요.");
+			f.customerName.focus();
+			return;
+		}
+		
+		if(!f.customerEmail.value){
+			alert("이메일을 입력하세요.");
+			f.customerEmail.focus();
+			return;
+		}
+		
+		if(!f.customerTel.value){
+			alert("전화번호를 입력하세요.");
+			f.customerTel.focus();
+			return;
+		}
+		
+		f.action = "<%=cp%>/main/customer/created_ok.do";
+		f.submit();
+
+	}
+
+	
+	
+	//id 중복체크
+	function checkId() {
+		
+		var f = document.myForm;
+		
+		if(f.customerId.value != customerId.value){
+			alert("사용 가능한 아이디 입니다.");
+			f.customerId.focus();
+			return;
+		}
+		else
+		alert("이미 사용중인 아이디 입니다.");
+		f.customerId.focus();
+		
+	}
+/* 	
+	//email 중복/형식 체크
+	function checkEmail(){
+		
+		var f = document.myForm;
+		
+		if(f.customerEmail.value = customerEmail.value){
+			alert("이미 사용중인 이메일 입니다.");
+			f.customerId.focus();
+			return;
+		}
+		
+		
+		if(f.email.value){
+			
+			if(!isValidEmail(f.email.value)){
+				alert("\n올바른 E-MAIL이 아닙니다.");
+				f.email.focus();
+				return;
+			}
+			
+			f.submit();
+	}   
+	 */
+</script>
 
 </head>
 <body>
@@ -229,7 +331,7 @@
 	</section>
 	<!-- Hero Section End -->
 
-
+<%-- 
 	<%
 		String customerId = request.getParameter("id");
 		if (customerId == null) {
@@ -253,7 +355,7 @@
 
 		}
 	%>
-
+ --%>
 	<!-- Checkout Section Begin -->
 	<div class="signUp-form">
 		<div class="tit_page">
@@ -271,7 +373,7 @@
 							<td><input class="box-size" type="text" name="customerId"
 								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합">
 								<input type="button" value="중복확인" class="signUp_btn"
-								onclick="jungbokId();" /> <%=result%></td>
+								onclick="checkId();" /></td>
 						</tr>
 						<tr>
 							<th>비밀번호<span class="ico">*</span></th>
@@ -295,7 +397,8 @@
 							<td><input class="box-size" type="text" name="customerEmail"
 								class="email" id="customerEmail"
 								placeholder="예: marketkurly@kurly.com">
-								<input type="button" value="중복확인" class="signUp_btn"></td>
+								<input type="button" value="중복확인" class="signUp_btn"
+								onclick="checkEmail();" /></td>
 						</tr>
 						<tr class="field_phone">
 							<th>휴대폰<span class="ico">*</span></th>

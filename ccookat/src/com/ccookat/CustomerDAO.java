@@ -78,6 +78,7 @@ public class CustomerDAO {
 			System.out.println(e.toString());
 		}
 
+		return result;
 	}
 	
 /*	//전체 데이터 가져오기
