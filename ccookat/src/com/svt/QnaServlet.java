@@ -161,8 +161,8 @@ public class QnaServlet extends HttpServlet {
 
 				String listUrl = cp + "/main/qna/list.do";
 
-				if(!params.equals("")) {
-					listUrl += params;			
+				if(params.equals("")) {
+					listUrl += "?"+ params;			
 				}
 
 				String pageIndexList = 
