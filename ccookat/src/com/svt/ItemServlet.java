@@ -123,8 +123,7 @@ public class ItemServlet extends HttpServlet {
 			
 			//제품번호 가져와
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-			System.out.println(itemNum);
-
+			
 			//페이지번호 가져와
 			String pageNum = req.getParameter("pageNum");
 
