@@ -57,3 +57,18 @@ td {
 	margin-top: 10px;
 	border-radius: 5px;
  }  
+ 
+ .answer_table {
+	 height: 200px;
+	 padding: 10px;
+	 text-align: center; 
+	 font-size: 25px;
+	 
+}
+
+.answer_div {
+	padding-left: 180px;
+	padding-right: auto;
+	align-content:center;
+	padding-bottom: 100px;
+}

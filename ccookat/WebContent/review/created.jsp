@@ -4,9 +4,8 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-
-
-<html lang="zxx"><head>
+<html lang="zxx">
+<head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -68,10 +67,10 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-							<li><a href="<%=cp%>/main">Home</a></li>
-							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
-							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
-							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+			<li><a href="<%=cp%>/main">Home</a></li>
+			<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+		 	<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
+			<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
 			</ul>
         </nav>
         <div id="mobile-menu-wrap">
@@ -255,6 +254,7 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
+    
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
@@ -302,8 +302,8 @@
     </section>
     <!-- Checkout Section End -->
 
-<section class="contact spad footer-details">
-
+	<!-- Footer Section Begin -->
+	<section class="contact spad footer-details">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -379,7 +379,6 @@
 						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a
 							class="link">help@ccookatcorp.com</a> <br> 대량주문 문의 : <a
 							class="link">ccookatgift@ccookatcorp.com</a> <br>
-
 					</div>
 				</div>
 			</div>
