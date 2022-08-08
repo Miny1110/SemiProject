@@ -306,6 +306,7 @@ public class ItemServlet extends HttpServlet {
 			req.setAttribute("cartCount", cartCount);
 			}
 			
+			req.setAttribute("itemType", itemType);
 			req.setAttribute("itemImagePath", itemImagePath);
 			req.setAttribute("itemAllMainList", itemAllMainList);
 			req.setAttribute("itemMainList", itemMainList);
