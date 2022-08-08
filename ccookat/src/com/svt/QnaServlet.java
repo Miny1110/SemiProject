@@ -149,7 +149,7 @@ public class QnaServlet extends HttpServlet {
 			
 			
 				List<QnaDTO> lists = 
-						qdao.selectAll(start, end, searchKey, searchValue,customerId);
+						qdao.selectAll(start, end, searchKey, searchValue);
 
 				String params = "";
 				if(searchValue!=null && !searchValue.equals("")) {
@@ -159,8 +159,8 @@ public class QnaServlet extends HttpServlet {
 
 				String listUrl = cp + "/main/qna/list.do";
 
-				if(!params.equals("")) {
-					listUrl += params;			
+				if(params.equals("")) {
+					listUrl += "?" +params;			
 				}
 
 				String pageIndexList = 
@@ -244,18 +244,21 @@ public class QnaServlet extends HttpServlet {
 			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
 			String pageNum = request.getParameter("pageNum");
 			
+			request.setAttribute("qnaNum", qnaNum);
+			
 			url = "/qna/qnaReply.jsp";
 			forward(request, response, url);
 			
 		}else if (uri.indexOf("reply_ok.do")!=-1){
 			//변수 받아서
-//		int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
-		String pageNum = request.getParameter("pageNum");
+	int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+		//String pageNum = request.getParameter("pageNum");
 			
 			ReplyDTO redto = new ReplyDTO();
 			int remaxNum = redao.getMaxNum();
 			
 			redto.setReplyNum(remaxNum+1);
+			redto.setQnaNum(Integer.parseInt(request.getParameter("qnaNum")));
 			redto.setCustomerId(request.getParameter("customerId"));
 			redto.setReplyContent(request.getParameter("replyContent"));
 			redto.setReplyCreated(request.getParameter("replyCreated"));

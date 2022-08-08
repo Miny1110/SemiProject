@@ -107,7 +107,7 @@ public class NoticeServlet extends HttpServlet {
 
 			String params = "";
 			if(searchValue!=null || !searchValue.equals("")) {
-				params = "noticeSearchKey="+noticeSearchKey +"&searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
+				params = "?noticeSearchKey="+noticeSearchKey +"&searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
 			}
 			
 			String listUrl = cp + "/main/notice/list.do" + params;

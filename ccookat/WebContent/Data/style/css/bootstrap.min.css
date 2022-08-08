@@ -1550,12 +1550,19 @@
          max-width: 16.666667%
      }
 
-     .col-lg-3 {
+	.col-lg-3 {
          -ms-flex: 0 0 25%;
          flex: 0 0 25%;
          max-width: 25%
      }
+	
 
+     .col-lg-30 {
+         -ms-flex: 0 0 25%;
+         flex: 0 0 25%;
+         max-width: 25%
+     }
+     
      .col-lg-4 {
          -ms-flex: 0 0 33.333333%;
          flex: 0 0 33.333333%;
@@ -1568,11 +1575,21 @@
          max-width: 41.666667%
      }
 
-     .col-lg-6 {
+	.col-lg-6 {
          -ms-flex: 0 0 50%;
          flex: 0 0 50%;
          max-width: 50%
      }
+	
+	
+     .col-lg-60 {
+         -ms-flex: 0 0 50%;
+         flex: 0 0 50%;
+         max-width: 60%
+     }
+     
+     
+     
 
      .col-lg-7 {
          -ms-flex: 0 0 58.333333%;

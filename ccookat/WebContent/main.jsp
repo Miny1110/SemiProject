@@ -257,10 +257,10 @@
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li><a href="<%=cp%>/main">HOME</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">SHOP</a></li>
-							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">NOTICE</a></li>
-							<li><a href="<%=cp%>/main/cart/list.do">INFO</a></li>
+							<li><a href="<%=cp%>/main">Home</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
+							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -305,9 +305,9 @@
 
 						<ul>
 							<li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">채소ㆍ과일</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">밥ㆍ빵ㆍ면</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">정육ㆍ계란</a></li>
 							<li>&nbsp;</li>
 							<li>&nbsp;</li>
 							<li>&nbsp;</li>
@@ -476,7 +476,7 @@
 					<div class="contact__widget">
 						<span class="icon_phone"></span>
 						<h4>Call Center</h4>
-						<p>+02-1234-6868</p>
+						<p>+02-6204-9090</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -484,7 +484,7 @@
 						<span class="icon_pin_alt"></span>
 						<h4>Address</h4>
 						<p>
-							서울시 강남구 테헤란로 <br>124 삼원타워 4층 아이티윌
+							서울 강남구 영동대로112길 36<br> OTC빌딩 -1층, 3층 꾸캣
 						</p>
 					</div>
 				</div>
@@ -492,7 +492,7 @@
 					<div class="contact__widget">
 						<span class="icon_clock_alt"></span>
 						<h4>Open time</h4>
-						<p>24 hour Open Service</p>
+						<p>매일 10:30 - 21:30</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">

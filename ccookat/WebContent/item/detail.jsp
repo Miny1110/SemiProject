@@ -430,7 +430,7 @@
 								</form>
 								   
                     <div class="product__pagination">
-                        ${reviewPageIndexList }
+                        ${reviewpageIndexList}
                         <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                     </div>
                              	

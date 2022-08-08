@@ -77,63 +77,65 @@ public class QnaDAO {
 		return qnaResult;
 	}
 
-	//Q&A 목록에 뿌려줄 전체 데이터
-	public List<QnaDTO> selectAll(int start,int end,
-			String searchKey, String searchValue, String customerId) {
+	/*//admin일때 다보이게 하는 메소드
+			public List<QnaDTO> selectALladmin(int start,int end,String searchValue) {
 
-		List<QnaDTO> lists = new ArrayList<QnaDTO>();
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
+				List<QnaDTO> lists = new ArrayList<QnaDTO>();
+				
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql;
 
-		try {
+				try {
+					
+					
+					searchValue = "%" + searchValue + "%";
 
-			searchValue = "%" + searchValue + "%";
+					//rownum의 시작값(start)과 끝값(end)을 받을것임
+					//rownum은 무조건 별칭을 만들어주어야함
+					sql ="select * from(select rownum rnum,data.* from ";
+					sql+="(select qnaNum,qnaTitle,qnaContent,";
+					sql+="customerId,to_char(qnaCreated,'yyyy.mm.dd') qnaCreated,qnaHitCount ";
+					sql+="from qna where qnatitle like ? ";			
+					sql+="order by qnaNum desc) data) ";
+					sql+="where rnum>=? and rnum<=?";
 
-			//rownum의 시작값(start)과 끝값(end)을 받을것임
-			//rownum은 무조건 별칭을 만들어주어야함
-			sql ="select * from(select rownum rnum,data.* from ";
-			sql+="(select qnaNum,qnaTitle,qnaContent,";
-			sql+="customerId,to_char(qnaCreated,'yyyy.mm.dd') qnaCreated,qnaHitCount ";
-			sql+="from qna where customerId = ? and " + searchKey + " like ? ";			
-			sql+="order by qnaNum desc) data) ";
-			sql+="where rnum>=? and rnum<=?";
+					pstmt = conn.prepareStatement(sql);
 
-			pstmt = conn.prepareStatement(sql);
+			
+					pstmt.setString(1, searchValue);
+					pstmt.setInt(2, start);
+					pstmt.setInt(2, end);
 
-			pstmt.setString(1, customerId);
-			pstmt.setString(2, searchValue);
-			pstmt.setInt(3, start);
-			pstmt.setInt(4, end);
+					rs = pstmt.executeQuery();
 
-			rs = pstmt.executeQuery();
+					while(rs.next()) {
 
-			while(rs.next()) {
+						QnaDTO qdto = new QnaDTO();
 
-				QnaDTO qdto = new QnaDTO();
+						qdto.setQnaNum(rs.getInt("qnaNum"));
+						qdto.setQnaTitle(rs.getString("qnaTitle"));
+						qdto.setQnaContent(rs.getString("qnaContent"));
+						qdto.setCustomerId(rs.getString("customerId"));
+						qdto.setQnaCreated(rs.getString("qnaCreated"));
+						qdto.setQnaHitCount(rs.getInt("qnaHitCount"));
 
-				qdto.setQnaNum(rs.getInt("qnaNum"));
-				qdto.setQnaTitle(rs.getString("qnaTitle"));
-				qdto.setQnaContent(rs.getString("qnaContent"));
-				qdto.setCustomerId(rs.getString("customerId"));
-				qdto.setQnaCreated(rs.getString("qnaCreated"));
-				qdto.setQnaHitCount(rs.getInt("qnaHitCount"));
+						lists.add(qdto);
 
-				lists.add(qdto);
+					}
 
+					pstmt.close();
+					rs.close();
+
+				} catch (Exception e) {
+					System.out.println(e.toString());
+				}
+
+				return lists;
 			}
-
-			pstmt.close();
-			rs.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-
-		return lists;
-	}
-
+*/
+	//Q&A 목록에 뿌려줄 전체 데이터
+	
 	
 	//페이징 처리를 위한 전체 데이터 갯수 도출
 	public int getDataCount(String searchkey, String searchValue,String customerId) {
@@ -171,6 +173,63 @@ public class QnaDAO {
 		return dataCount;
 	}
 	
+	public List<QnaDTO> selectAll(int start,int end,
+			String searchKey, String searchValue) {
+
+		List<QnaDTO> lists = new ArrayList<QnaDTO>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+			
+			
+			searchValue = "%" + searchValue + "%";
+
+			//rownum의 시작값(start)과 끝값(end)을 받을것임
+			//rownum은 무조건 별칭을 만들어주어야함
+			sql ="select * from(select rownum rnum,data.* from ";
+			sql+="(select qnaNum,qnaTitle,qnaContent,";
+			sql+="customerId,to_char(qnaCreated,'yyyy.mm.dd') qnaCreated,qnaHitCount ";
+			sql+="from qna where " + searchKey + " like ? ";			
+			sql+="order by qnaNum desc) data) ";
+			sql+="where rnum>=? and rnum<=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			/*pstmt.setString(1, customerId);*/
+			pstmt.setString(1, searchValue);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				QnaDTO qdto = new QnaDTO();
+
+				qdto.setQnaNum(rs.getInt("qnaNum"));
+				qdto.setQnaTitle(rs.getString("qnaTitle"));
+				qdto.setQnaContent(rs.getString("qnaContent"));
+				qdto.setCustomerId(rs.getString("customerId"));
+				qdto.setQnaCreated(rs.getString("qnaCreated"));
+				qdto.setQnaHitCount(rs.getInt("qnaHitCount"));
+
+				lists.add(qdto);
+
+			}
+
+			pstmt.close();
+			rs.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		return lists;
+	}
+
 	//num으로 한개의 데이터 가져오기
 	public QnaDTO getReadData(int qnaNum) {
 		

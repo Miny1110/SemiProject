@@ -68,17 +68,11 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shopping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                    </ul>
-                </li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
+							<li><a href="<%=cp%>/main">Home</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
+							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+			</ul>
         </nav>
         <div id="mobile-menu-wrap">
         <div class="slicknav_menu">
@@ -179,14 +173,9 @@
 						<ul>
 							<li><a href="<%=cp%>/main">Home</a></li>
 							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
-							<li><a href="#">Pages</a>
-								<ul class="header__menu__dropdown">
-									<li><a href="./shop-details.html">Shop Details</a></li>
-									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
-									<li><a href="./checkout.html">Check Out</a></li>
-								</ul></li>
-							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
-						</ul>
+							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
+							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+						</ul>						
 					</nav>
 				</div>
                 <div class="col-lg-3">
@@ -213,14 +202,14 @@
                 <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
+							<i class="fa fa-bars"></i> 
+							<span>카테고리</span>
+						</div>
                         <ul>
-                           <li><a href="#">Vegetables & Fruit</a></li>
-                            <li><a href="#">Rice & Noodle & Bread</a></li>
-                            <li><a href="#">Fresh Meat & Egg</a></li>
-
+                          <li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
+						  <li><a href="<%=cp %>/main/item/list.do">채소ㆍ과일</a></li>
+						  <li><a href="<%=cp %>/main/item/list.do">밥ㆍ빵ㆍ면</a></li>
+						  <li><a href="<%=cp %>/main/item/list.do">정육ㆍ계란</a></li>
                         </ul>
                     </div>
                 </div>
@@ -229,11 +218,11 @@
                         <div class="hero__search__form">
                             <form action="#">
                                 <div class="hero__search__categories">
-                                    All Categories
+                                    제품명
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="제품명 입력하세요">
+                                <button type="submit" class="site-btn">검색하기</button>
                             </form>
                         </div>
                        <div class="hero__search__phone">
@@ -270,7 +259,7 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <h4>리뷰 작성</h4>
+                <h3>리뷰 작성</h3>
                 <form action="/ccookat/main/review/created_ok.do" method="post" enctype="multipart/form-data">
                     <div>
                         <div>
@@ -297,12 +286,12 @@
                                 <textarea rows="15" cols="20" name="reviewContent"></textarea>
                             </div>
 							
-							<div class="blog__sidebar__item__tags">
+							<div>
 								<input type="hidden" value="${pageNum}" name="pageNum">
 								<input type="hidden" value="${itemNum}" name="itemNum">
-								<input type="submit" value=" 등록하기 ">
-								<input type="reset" value="다시입력" onclick="document.myForm.reviewTitle.focus();">
-								<input type="button" value="작성취소" onclick="location='/ccookat/main/item/detail.do?pageNum=${pageNum}&itemNum=${itemNum}';">			
+								<input class="blog__sidebar__item__tags_review" type="submit" value=" 등록하기 ">
+								<input class="blog__sidebar__item__tags_review" type="reset" value="다시입력" onclick="document.myForm.reviewTitle.focus();">
+								<input class="blog__sidebar__item__tags_review" type="button" value="작성취소" onclick="location='/ccookat/main/item/detail.do?pageNum=${pageNum}&itemNum=${itemNum}';">			
 
 							</div>
 						</div>
