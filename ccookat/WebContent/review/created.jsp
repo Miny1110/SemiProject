@@ -302,15 +302,15 @@
     </section>
     <!-- Checkout Section End -->
 
- <!-- Footer Section Begin -->
-    <section class="contact spad footer-details">
+<section class="contact spad footer-details">
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_phone"></span>
 						<h4>Call Center</h4>
-						<p>+02-1234-6868</p>
+						<p>+02-6204-9090</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -318,7 +318,7 @@
 						<span class="icon_pin_alt"></span>
 						<h4>Address</h4>
 						<p>
-							서울시 강남구 테헤란로 <br>124 삼원타워 4층 아이티윌
+							서울 강남구 영동대로112길 36<br> OTC빌딩 -1층, 3층 꾸캣
 						</p>
 					</div>
 				</div>
@@ -326,7 +326,7 @@
 					<div class="contact__widget">
 						<span class="icon_clock_alt"></span>
 						<h4>Open time</h4>
-						<p>24 hour Open Service</p>
+						<p>매일 10:30 - 21:30</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -339,58 +339,58 @@
 			</div>
 		</div>
 	</section>
-    <div id="footer">
-	<div class="footer-top">
-		<div class="inner_footer">
-			<div class="footer_cc">
-			<div>
-				<h2 class="tit_cc">고객행복센터</h2>
-				<div class="cc_view cc_call">
-					<h3>
-						<span class="tit">1234-5678</span>
-					</h3>
-					<dl class="list">
-						<dt>고객센터</dt>
-						<dd>AM 10:00 ~ PM 17:00</dd>
-					</dl>
-				</div>
-				<div class="cc_view cc_qna">
-					<h3>
-						<a href="index.jsp?folder=qna&amp;category=qna_list" class="tit">질문 답변</a>
-					</h3>
-					<dl class="list">
-						<dt>24시간 접수 가능</dt>
-						<dd>고객센터 운영시간에 순차적으로 답변해드리겠습니다.</dd>
-					</dl>
-				</div>
-				</div>
-				<div class="company">
-					법인명 (상호) : 주식회사 ccookat <span class="bar">I</span> 사업자등록번호 : 123-45-6789 
-					<a class="link">사업자정보 확인</a> 
-					<br> 통신판매업 : 제 2018-서울강남-01646 호 
-						<span class="bar">I</span>
-						개인정보보호책임자:정민정
-					<br>
-						주소 : 서울시 강남구 테헤란로 124 삼원타워 4층 아이티윌 
-						<span class="bar">I</span>정민정 안시연 이은지 전은지 윤서혜
-					<br> 마케팅제휴 : <a class="link">itwill@ccookatcorp.com</a>
-					<br> 채용문의 : <a class="link">recruit@ccookatcorp.com</a>
-					<br> 팩스: 000 - 0000 - 0000 
-						<span class="bar">I</span> 
-						이메일 : <a class="link">help@ccookatcorp.com</a>
-					<br> 대량주문 문의 : <a class="link">ccookatgift@ccookatcorp.com</a> 
-					<br>
-						
+	<div id="footer">
+		<div class="footer-top">
+			<div class="inner_footer">
+				<div class="footer_cc">
+					<div>
+						<h2 class="tit_cc">고객행복센터</h2>
+						<div class="cc_view cc_call">
+							<h3>
+								<span class="tit">1234-5678</span>
+							</h3>
+							<dl class="list">
+								<dt>고객센터</dt>
+								<dd>AM 10:00 ~ PM 17:00</dd>
+							</dl>
+						</div>
+						<div class="cc_view cc_qna">
+							<h3>
+								<c:if test="${empty sessionScope.customerInfo.customerId}">
+									<a href="<%=cp %>/main/customer/login.do" class="tit">질문 답변</a>
+								</c:if>
+								<c:if test="${!empty sessionScope.customerInfo.customerId}">
+									<a href="<%=cp %>/main/qna/list.do" class="tit">질문 답변</a>
+								</c:if>
+							</h3>
+							<dl class="list">
+								<dt>24시간 접수 가능</dt>
+								<dd>고객센터 운영시간에 순차적으로 답변해드리겠습니다.</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="company">
+						법인명 (상호) : 주식회사 ccookat <span class="bar">I</span> 사업자등록번호 :
+						123-45-6789 <a class="link">사업자정보 확인</a> <br> 통신판매업 : 제
+						2018-서울강남-01646 호 <span class="bar">I</span> 개인정보보호책임자:정민정 <br>
+						주소 : 서울시 강남구 테헤란로 124 삼원타워 4층 아이티윌 <span class="bar">I</span>정민정
+						안시연 이은지 전은지 윤서혜 <br> 마케팅제휴 : <a class="link">itwill@ccookatcorp.com</a>
+						<br> 채용문의 : <a class="link">recruit@ccookatcorp.com</a> <br>
+						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a
+							class="link">help@ccookatcorp.com</a> <br> 대량주문 문의 : <a
+							class="link">ccookatgift@ccookatcorp.com</a> <br>
+
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="footer_indemnification_clause">
-		
-			<em class="copy"><p>Copyright © itwill ccookat Corp. All rights reserved.</p></em>
+			<div class="footer_indemnification_clause">
+
+				<em class="copy"><p>Copyright © itwill ccookat Corp. All
+						rights reserved.</p></em>
+			</div>
 		</div>
 	</div>
-</div>
-    <!-- Footer Section End -->
+	<!-- Footer Section End -->
 
     <!-- Js Plugins -->
     <script src="<%=cp %>/Data/style/js/jquery-3.3.1.min.js"></script>
