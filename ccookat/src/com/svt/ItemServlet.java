@@ -108,17 +108,6 @@ public class ItemServlet extends HttpServlet {
 
 		}else if(uri.indexOf("detail.do")!=-1) { //상세페이지 화면 보여주기
 
-			HttpSession session = req.getSession();
-
-			CustomerInfo customerInfo = new CustomerInfo();
-			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
-
-			if(customerInfo!=null) {
-			String customerId = customerInfo.getCustomerId();
-
-			int cartCount = ctdao.cartCount(customerId);
-			req.setAttribute("cartCount", cartCount);
-			}
 			
 			
 			//제품번호 가져와
@@ -183,8 +172,19 @@ public class ItemServlet extends HttpServlet {
 			//제품설명 텍스트 엔터는 엔터로 변경
 			idto.setItemContent(idto.getItemContent().replaceAll("\n", "<br/>"));
 
-			req.setAttribute("currentPage", currentPage);
+			HttpSession session = req.getSession();
 
+			CustomerInfo customerInfo = new CustomerInfo();
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+			String customerId = customerInfo.getCustomerId();
+
+			int cartCount = ctdao.cartCount(customerId);
+			req.setAttribute("cartCount", cartCount);
+			}
+						
+			req.setAttribute("currentPage", currentPage);
 			req.setAttribute("itemNum", itemNum);
 			req.setAttribute("itemImagePath", itemImagePath);
 			req.setAttribute("itemDeletePath", itemDeletePath);

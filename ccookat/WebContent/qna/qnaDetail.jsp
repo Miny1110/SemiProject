@@ -369,7 +369,6 @@
 						</tbody>
 					</table>
 
-
 					<div id="qna_menu">
 						<button type="button" class="qnaDetailBtn"
 							onclick="location='<%=cp %>/main/qna/list.do?pageNum=${pageNum }';">목&nbsp;&nbsp;록</button>

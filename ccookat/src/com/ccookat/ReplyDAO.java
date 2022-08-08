@@ -71,6 +71,7 @@ public class ReplyDAO {
 
 	}
 	
+	
 	//답변보이게 하기<데이터 뿌리기>
 	public List<ReplyDTO> getLists() {
 		PreparedStatement pstmt = null;
