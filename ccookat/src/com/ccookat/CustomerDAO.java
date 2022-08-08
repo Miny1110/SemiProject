@@ -132,24 +132,38 @@ public class CustomerDAO {
 		return lists;
 		
 	}*/
-	/*
-	 * //아이디 중복 public boolean checkId(String customerId) {
-	 * 
-	 * PreparedStatement pstmt = null; ResultSet rs = null;
-	 * 
-	 * String sql = "select customerId from customer where customerId = ?";
-	 * 
-	 * try { pstmt = conn.prepareStatement(sql); pstmt.setString (1, customerId);
-	 * 
-	 * rs = pstmt.executeQuery();
-	 * 
-	 * if(rs.next()) {
-	 * 
-	 * return true; } } catch (Exception e) { System.out.println(e.toString()); }
-	 * 
-	 * try { rs.close(); pstmt.close(); } catch (Exception e) {
-	 * System.out.println(e.toString()); } return false; }
-	 */
+	
+	//아이디 중복
+	public boolean checkId(String customerId) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select customerId from customer where customerId = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString (1, customerId);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		try {
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return false;
+	}
+	
 	
 	//customerId로 한개의 데이터 가져오기
 	public CustomerDTO getReadData(String customerId) {
