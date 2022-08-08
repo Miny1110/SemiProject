@@ -2,11 +2,19 @@ package com.ccookat;
 
 public class ReplyDTO {
 	private int replyNum;
+	private int qnaNum;
 	private String customerId;
 	private String replyContent;
 	private String replyCreated;
 	
 	
+	
+	public int getQnaNum() {
+		return qnaNum;
+	}
+	public void setQnaNum(int qnaNum) {
+		this.qnaNum = qnaNum;
+	}
 	public int getReplyNum() {
 		return replyNum;
 	}

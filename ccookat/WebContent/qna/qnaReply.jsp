@@ -329,9 +329,10 @@
 
 
 							<div class="blog__sidebar__item__tags">
-								<input type="hidden" name="qnaNum" value="${qnaNum} ">
-								<input type="hidden" name="pageNum" value="${pageNum} ">
+								<input type="hidden" name="qnaNum" value="${qnaNum}">
+								<input type="hidden" name="pageNum" value="${pageNum}">
 								<input type="hidden" name="customerId" value="${sessionScope.customerInfo.customerId}">
+								
 								<input type="submit" value=" 등록하기"> 
 								<input type="reset"
 									value="다시입력" onclick="document.myForm.subject.focus();" />
