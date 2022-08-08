@@ -5,6 +5,7 @@ public class CustomerOrderDTO {
 	private int customerOrderNum;
 	private String customerId;
 	private int itemNum;
+	private int cartNum;
 	private String customerOrderName;
 	private String customerOrderZipCode;
 	private String customerOrderAddr;
@@ -12,6 +13,13 @@ public class CustomerOrderDTO {
 	private String customerOrderPay;
 	
 	
+	
+	public int getCartNum() {
+		return cartNum;
+	}
+	public void setCartNum(int cartNum) {
+		this.cartNum = cartNum;
+	}
 	public int getCustomerOrderNum() {
 		return customerOrderNum;
 	}
