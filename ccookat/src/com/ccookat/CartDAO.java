@@ -67,7 +67,7 @@ public class CartDAO {
 		try {	
 
 			sql = "select a.cartnum,a.customerid,a.itemnum,a.cartitemcount,";
-			sql+= "a.carttotprice, b.itemname,b.itemImage1,b.itemPrice from cart a join item b ";
+			sql+= "a.carttotprice, b.itemname,b.itemImage1,b.itemPrice,b.itemDiscount from cart a join item b ";
 			sql+= "on a.itemnum = b.itemnum where customerid=? order by a.cartnum desc";
 
 			pstmt = conn.prepareStatement(sql);
@@ -88,7 +88,8 @@ public class CartDAO {
 				ctdto.setItemName(rs.getString(6));
 				ctdto.setItemImage1(rs.getString(7));				
 				ctdto.setItemPrice(rs.getInt(8)); //이건 할인전 금액
-
+				ctdto.setItemDiscount(rs.getInt(9));
+					
 				lists.add(ctdto);
 
 			}
@@ -116,8 +117,8 @@ public class CartDAO {
 		try {
 
 			sql = "insert into cart(cartnum,customerid,itemnum,";
-			sql+= "cartitemcount,carttotprice) ";
-			sql+= "values(?,?,?,?,?)";
+			sql+= "cartitemcount,carttotprice,itemprice) ";
+			sql+= "values(?,?,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -126,7 +127,8 @@ public class CartDAO {
 			pstmt.setInt(3, ctdto.getItemNum());
 			pstmt.setInt(4, ctdto.getCartItemCount());
 			pstmt.setInt(5, ctdto.getCartTotPrice());
-
+			pstmt.setInt(6, ctdto.getItemPrice());
+			
 			pstmt.executeUpdate();
 
 			pstmt.close();

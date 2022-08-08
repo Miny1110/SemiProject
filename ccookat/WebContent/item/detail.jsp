@@ -313,7 +313,7 @@
                         </div>
                         <input type="hidden" value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" name="itemPrice">
                         <input type="hidden" name="itemNum" value="${idto.itemNum }">
-                        <a class="primary-btn" onclick="cartin();" style="cursor: hand; color: white; ">장바구니 넣기</a>
+                        <a class="primary-btn" onclick="cartin();" style="cursor: pointer; color: white; ">장바구니 넣기</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 						</form>
                         <ul>

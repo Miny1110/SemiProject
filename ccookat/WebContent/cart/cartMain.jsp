@@ -1,10 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<html lang="zxx"><head>
+<html lang="zxx">
+<head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -24,9 +26,27 @@
     <link rel="stylesheet" href="/ccookat/Data/style/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/ccookat/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/ccookat/Data/style/css/style.css" type="text/css">
-    
+       
+ <script type="text/javascript">
+ 	
+	function minuscart() {
+		
+ 		var f = document.cartForm;		
+ 		f.action = cp +"/main/cart/minuscart.do";
+ 		f.submit();
+	}
+ 
+ 	function pluscart() {
+		
+ 		var f = document.cartForm;		
+ 		f.action = cp +"/main/cart/pluscart.do";
+ 		f.submit();
+	}
+ 	
+ 
+ </script>
+   
 </head>
-
 <body>
     <!-- Page Preloder -->
     <div id="preloder" style="display: none;">
@@ -276,45 +296,44 @@
                             </thead>
 
                             <tbody>
- 							
- 							<c:choose>       
- 							<c:when test="${empty lists }">
- 							<tr><td colspan="6">${message }</td></tr>
- 							</c:when>
- 							<c:otherwise>                
-                            <c:forEach var="ctdto" items="${lists }">
-                            <c:set var="totalprice" value="${totalprice + ctdto.cartTotPrice}"/>
-                            <c:set var="beforedc" value="${beforedc + ctdto.itemPrice*ctdto.cartItemCount}"/>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="${itemImagePath }/${ctdto.itemName}" alt="">
-                                        <h5>${ctdto.itemName}</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                    ${ctdto.itemPrice*ctdto.cartItemCount }                               
-                                    </td>
-                                        <td class="shoping__cart__price">
-                                    ${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice}                               
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty"><span class="dec qtybtn" onclick="pluscount();"></span>
-                                                <input type="text" value="${ctdto.cartItemCount}"/>
-                                            <span class="inc qtybtn" onclick="minuscount();"></span></div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                            ${ctdto.cartTotPrice }
-                                    </td>
-                                    <td class="shoping__cart__item__close" >
-                                        <a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"><span class="icon_close"></span></a>
-                                    </td>
-                                </tr>
-                                
-                                </c:forEach> 
-                                </c:otherwise>   
-                                </c:choose>                               
-                            </tbody>                         
+
+								<c:choose>
+									<c:when test="${empty lists }">
+										<tr>
+											<td colspan="6">${message }</td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<c:forEach var="ctdto" items="${lists }">										
+											<c:set var="totalprice"
+												value="${totalprice + ctdto.cartTotPrice}" />
+											<c:set var="beforedc"
+												value="${beforedc + ctdto.itemPrice*ctdto.cartItemCount}" />
+											<tr>
+												<td class="shoping__cart__item"><img
+													src="${itemImagePath }/${ctdto.itemName}" alt="">
+													<h5>${ctdto.itemName}</h5></td>
+												<td class="shoping__cart__price">
+													${ctdto.itemPrice*ctdto.cartItemCount }</td>
+												<td class="shoping__cart__price">
+													${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice }
+												</td>
+												<td class="shoping__cart__quantity">													
+														<div class="quantity">
+														<a href="<%=cp %>/main/cart/minus.do?cartNum=${ctdto.cartNum }&itemPrice=${ctdto.itemPrice}&itemDiscount=${ctdto.itemDiscount}">-</a>
+														<input type="text" value="${ctdto.cartItemCount}" name="cartItemCount" readonly="readonly" style="border: 0; width: 50px; text-align: center;"/>													 
+														<a href="<%=cp %>/main/cart/plus.do?cartNum=${ctdto.cartNum }&itemPrice=${ctdto.itemPrice}&itemDiscount=${ctdto.itemDiscount}">+</a>
+														</div>						
+												</td>
+												<td class="shoping__cart__total">${ctdto.cartTotPrice }
+												</td>
+												<td class="shoping__cart__item__close"><a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"><span
+														class="icon_close"></span></a></td>
+											</tr>											
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+							</tbody>                         
                         </table>
                     </div>
                 </div>
@@ -322,7 +341,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="<%=cp %>/main/item/list.do" class="primary-btn cart-btn">쇼핑 계속하기</a>
+                        <a href="<%=cp%>/main/item/list.do" class="primary-btn cart-btn">쇼핑 계속하기</a>
                         <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                             장바구니 업데이트</a>
                     </div>
