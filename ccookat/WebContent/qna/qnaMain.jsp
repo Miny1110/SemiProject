@@ -429,7 +429,8 @@
 	<!-- Blog Section End -->
 
 	<!-- Footer Section Begin -->
-	<section class="contact spad footer-details">
+    <section class="contact spad footer-details">
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -473,7 +474,7 @@
 						<h2 class="tit_cc">고객행복센터</h2>
 						<div class="cc_view cc_call">
 							<h3>
-								<span class="tit">1234-5678</span>
+								<span class="tit">6204-9090</span>
 							</h3>
 							<dl class="list">
 								<dt>고객센터</dt>
@@ -496,15 +497,18 @@
 						</div>
 					</div>
 					<div class="company">
-						법인명 (상호) : 주식회사 ccookat <span class="bar">I</span> 사업자등록번호 :
-						123-45-6789 <a class="link">사업자정보 확인</a> <br> 통신판매업 : 제
-						2018-서울강남-01646 호 <span class="bar">I</span> 개인정보보호책임자:정민정 <br>
-						주소 : 서울시 강남구 테헤란로 124 삼원타워 4층 아이티윌 <span class="bar">I</span>정민정
-						안시연 이은지 전은지 윤서혜 <br> 마케팅제휴 : <a class="link">itwill@ccookatcorp.com</a>
-						<br> 채용문의 : <a class="link">recruit@ccookatcorp.com</a> <br>
-						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a
-							class="link">help@ccookatcorp.com</a> <br> 대량주문 문의 : <a
-							class="link">ccookatgift@ccookatcorp.com</a> <br>
+						법인명 (상호) : 주식회사 ccookat 
+						<span class="bar">I</span> 
+						사업자등록번호 : 123-45-6789 <a class="link">사업자정보 확인</a> <br> 
+						통신판매업 : 제 2018-서울강남-01646 호 <span class="bar">I</span> 개인정보보호책임자:정민정 <br>
+						주소 : 서울 강남구 영동대로112길 36 OTC빌딩 -1층, 3층 꾸캣 
+						<span class="bar">I</span>정민정 안시연 전은지 윤서혜 이은지<br> 
+						마케팅제휴 : <a class="link">itwill@ccookatcorp.com</a><br> 
+						채용문의 : <a class="link">recruit@ccookatcorp.com</a> <br>
+						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 
+						이메일 : <a class="link">help@ccookatcorp.com</a> <br> 
+						대량주문 문의 : <a class="link">ccookatgift@ccookatcorp.com</a> <br>
+
 					</div>
 				</div>
 			</div>

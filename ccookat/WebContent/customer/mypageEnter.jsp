@@ -263,6 +263,9 @@
 			<div>
 				<input type="button" value=" 확인 " class="btn1" onclick="customerPwdChk();" />
 			</div>
+			<div>
+				<input type="button" value=" 배송조회 " class="btn2" onclick="" />
+			</div>
 		</form>
 	</div>
 
