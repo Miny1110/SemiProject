@@ -166,15 +166,10 @@
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li><a href="<%=cp%>/main">Home</a></li>
-							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
-							<li><a href="#">Pages</a>
-								<ul class="header__menu__dropdown">
-									<li><a href="./shop-details.html">Shop Details</a></li>
-									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
-									<li><a href="./checkout.html">Check Out</a></li>
-								</ul></li>
-							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
+							<li><a href="<%=cp%>/main">HOME</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">SHOP</a></li>
+							<li><a href="#">NOTICE</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">INFO</a></li>
 						</ul>
 					</nav>
 				</div>
