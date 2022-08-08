@@ -349,15 +349,14 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>이름<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" value="${sessionScope.customerInfo.customerName }" name="customerName"/>
                                     </div>
                                 </div>
                            
                             </div>
                             <div class="checkout__input">
                                 <p>주소<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                                <input type="text"  <%-- value="${cdto.customerAddr }"  --%>class="checkout__input__add">
                             </div>
                             <div class="checkout__input">
                                 <p>상세주소<span>*</span></p>
@@ -365,7 +364,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>배송메모<span>*</span></p>
-                                <input type="text">
+                                <input type="text" >
                             </div>
                             <div class="checkout__input">
                                 <p> 우편번호<span>*</span></p>
@@ -375,7 +374,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>전화번호<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" value="${cdto.customerTel}">
                                     </div>
                                 </div>
                               
