@@ -144,17 +144,19 @@ public class QnaServlet extends HttpServlet {
 
 			int start = (currentPage-1)*numPerPage+1;
 			int end = currentPage * numPerPage;
-
+			
 			//실제 rownum가져오기
-			
-			
-				List<QnaDTO> lists = 
-						qdao.selectAll(start, end, searchKey, searchValue,customerId);
+			/*if(customerId.equals("admin")||customerId=="admin") {
+				lists = qdao.selectALladmin(start, end, searchValue);
+			}else {
+*/
+			List<QnaDTO>lists = qdao.selectAll(start, end, searchKey, searchValue);
+				
 
-				String params = "";
-				if(searchValue!=null && !searchValue.equals("")) {
-					params = "?searchKey=" + searchKey; 
-					params += "&searchValue=" + searchValue;
+			String params = "";
+			if(searchValue!=null && !searchValue.equals("")) {
+				params = "?searchKey=" + searchKey; 
+				params += "&searchValue=" + searchValue;
 				}
 
 				String listUrl = cp + "/main/qna/list.do";
@@ -172,7 +174,7 @@ public class QnaServlet extends HttpServlet {
 				if(!params.equals("")) {
 					detailUrl += "&" + params;			
 				}
-
+				
 				request.setAttribute("lists", lists);
 				request.setAttribute("pageIndexList", pageIndexList);
 				request.setAttribute("detailUrl", detailUrl);
