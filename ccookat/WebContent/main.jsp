@@ -335,12 +335,12 @@
 					<div class="hero__search">
 					
 					<div class="hero__search__form">
-                            <form action="#">
+                            <form action="<%=cp%>/main/item/list.do">
                                 <div class="hero__search__categories">
                                     제품명
-                                    <span class="arrow_carrot-down"></span>
+                                    
                                 </div>
-                                <input type="text" placeholder="제품명 입력하세요">
+                                <input type="text" placeholder="제품명 입력하세요" name="itemSearchValue">
                                 <button type="submit" class="site-btn">검색하기</button>
                             </form>
                         </div>
