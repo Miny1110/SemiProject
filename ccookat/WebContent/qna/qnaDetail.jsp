@@ -396,7 +396,7 @@
 					<br> <br> <br>
 					<h1>답변</h1>
 					<br> <br>
-							 <c:if test="${redto.qnaNum==null}">
+							 <c:if test="${redto.replyContent==null}">
 						<table>
 						<tbody>
 							<tr>
@@ -406,7 +406,7 @@
 						</table>	 
 					</c:if>
 					
-					 <c:if test="${redto.qnaNum!=null}">
+					 <c:if test="${redto.replyContent!=null}">
 					<table>
 						<tbody>
 							<tr>
