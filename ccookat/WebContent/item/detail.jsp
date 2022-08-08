@@ -293,7 +293,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
-                            <span>(${reviewtotalArticle } reviews)</span>
+                            <span>(18 reviews)</span>
                         </div>
                         
                         <div class="product__details__price">
@@ -341,14 +341,14 @@
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                    aria-selected="false">상품 리뷰</a>
+                                    aria-selected="false">Information</a>
                             </li>
-                            <%-- <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
 
                                     aria-selected="false">상품 리뷰<span>${reviewtotalArticle}</span></a>
 
-                            </li> --%>
+                            </li>
                         </ul>
                         <div class="tab-content">
 <!-- 상품설명창 시작 -->                       
@@ -363,83 +363,84 @@
                             
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>상품 리뷰</h6>
-                                    <p></p>
+                                    <h6>Products Infomation</h6>
+                                    <p>우리의 작고 귀여운 정보게시판</p>
+                                </div>
+                            </div>
+                            </div>
+                             <div class="tab-pane" id="tabs-3" role="tabpanel">
+                               <div class="product__details__tab__desc">
+                               <p>구매고객 총 리뷰</p>
+								<form action="" method="post">
+								
+									<c:if test="${!empty sessionScope.customerInfo.customerId}">
+									<div>
+										<input type="button" class="btn2" value=리뷰등록
+											onclick="location='/ccookat/main/review/created.do?pageNum=${currentPage }&itemNum=${idto.itemNum}';">
+									</div>
+									</c:if>
+									
 
-
-									<form action="" method="post">
-
-										<c:if test="${!empty sessionScope.customerInfo.customerId}">
+									<c:forEach var="rdto" items="${reviewlists}">
+										<c:if test="${itemNum==rdto.itemNum }">
 											<div>
-												<input type="button" class="btn2" value=리뷰등록
-													onclick="location='/ccookat/main/review/created.do?pageNum=${currentPage }&itemNum=${idto.itemNum}';">
-											</div>
-										</c:if>
-
-
-										<c:forEach var="rdto" items="${reviewlists}">
-												<div>
-													<div style="border-bottom: 1px solid #d5d5d5;">
-														<div class="product__details__tab__desc">
-															<b>작성자 :&nbsp;</b>${rdto.customerId}
-															<b>작성일 :&nbsp;</b>${rdto.reviewCreated}
+												<div style="border-bottom: 1px solid #d5d5d5;">
+													<div class="product__details__tab__desc">
+														<b>작성자 :&nbsp;</b>${rdto.customerId} <b>작성일 :&nbsp;</b>${rdto.reviewCreated}
+													</div>
+													<div align="right"></div>
+													<%--    <div class="product__details__tab__desc">
+                       				  	${rdto.reviewTitle}
+                       				  	</div> --%>
+													<c:if test="${rdto.reviewImage!=null}">
+														<div>
+															<img src="${reviewImagePath }/${rdto.reviewImage }"
+																height="200" width="200" /> ${rdto.reviewContent}
 														</div>
-														<div align="right"></div>
+													</c:if>
+													<c:if test="${rdto.reviewImage==null}">
 														<div class="product__details__tab__desc">
-															${rdto.reviewTitle}</div>
-														<c:if test="${rdto.reviewImage!=null}">
-															<div>
-																<img src="${reviewImagePath }/${rdto.reviewImage }"
-																	height="200" width="200" /> ${rdto.reviewContent}
-															</div>
-														</c:if>
-														<c:if test="${rdto.reviewImage==null}">
-															<div class="product__details__tab__desc">
-																${rdto.reviewContent}</div>
-														</c:if>
-														<div style="text-align: right;">
-															<input type="hidden" name="reviewNum"
-																value="${rdto.reviewNum}" /> <input type="hidden"
-																name="pageNum" value="${pageNum}" />
-															<c:if
-																test="${sessionScope.customerInfo.customerId==rdto.customerId}">
-																<div class="blog__sidebar__item__tags">
-																	<a
-																		href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
-																		수정하기</a> <a
-																		href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
-																		삭제하기</a>
-																</div>
-															</c:if>
-
-															<c:if
-																test="${sessionScope.customerInfo.customerId=='admin'}">
-																<div class="blog__sidebar__item__tags">
-																	<a
-																		href="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
-																		삭제하기</a>
-																</div>
-															</c:if>
-
+															${rdto.reviewContent}</div>
+													</c:if>
+													<div style="text-align: right;">
+														<%--  	<input type="hidden" name="reviewNum" value="${rdto.reviewNum}"/> --%>
+														<%-- 	<input type="hidden" name="pageNum" value="${pageNum}"/> --%>
+														 <c:if test="${sessionScope.customerInfo.customerId==rdto.customerId}"	>													
+														<div class="blog__sidebar__item__tags">
+															<a href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
+																수정하기</a>
+															<a href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
+																삭제하기</a>	
 														</div>
+														</c:if>
+														
+														 <c:if test="${sessionScope.customerInfo.customerId=='admin'}"	>													
+														<div class="blog__sidebar__item__tags">
+															<a href="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
+																삭제하기</a>	
+														</div>
+														</c:if>
+														
 													</div>
 												</div>
+											</div>
 
-										</c:forEach>
-									</form>
-
-									<%-- <div class="product__pagination">${reviewPageIndexList} 
-									<a href="#"><i class="fa fa-long-arrow-right"></i></a>
-									</div> --%>
-								</div>
-							</div>
-
+										</c:if>
+									</c:forEach>
+								</form>
+								   
+                    <div class="product__pagination">
+                        ${reviewPageIndexList }
+                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    </div>
                              	
-						</div> 
-					</div>
-				</div>
-			</div>
-		</div>
+                            		</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
       
     </section>
     <!-- Product Details Section End -->
@@ -455,30 +456,66 @@
                 </div>
             </div>
             <div class="row">
-            
-            	<c:forEach var="idto" items="${itemHitCountList }" begin="0" end="3">
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="${itemImagePath }/${idto.itemImage1}"
-                        onclick="location.href='<%=cp %>/main/item/detail.do?itemType=${idto.itemType }&itemNum=${idto.itemNum }';">
+                        <div class="product__item__pic set-bg" data-setbg="<%=cp%>/Data/style/img/product/product-1.jpg">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">${idto.itemName }</a></h6>
-                            <h5><fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" pattern="0"/>원</h5>
-                             <span style="font-size: small; color: #707070; text-decoration: line-through;">${idto.itemPrice }원</span>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
                         </div>
                     </div>
                 </div>
-                </c:forEach>
-                
-
- 
- 
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="<%=cp %>/Data/style/img/product/product-2.jpg">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="<%=cp %>/Data/style/img/product/product-3.jpg">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="<%=cp %>/Data/style/img/product/product-7.jpg">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
