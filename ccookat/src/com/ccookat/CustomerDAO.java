@@ -1,10 +1,13 @@
 package com.ccookat;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 public class CustomerDAO {
 	
@@ -78,8 +81,8 @@ public class CustomerDAO {
 			System.out.println(e.toString());
 		}
 
-	
 	}
+	
 	
 /*	//전체 데이터 가져오기
 	public List<CustomerDTO> getLists(int start,int end) {
@@ -129,6 +132,37 @@ public class CustomerDAO {
 		return lists;
 		
 	}*/
+	
+	//아이디 중복
+	public boolean checkId(String customerId) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select customerId from customer where customerId = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString (1, customerId);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		try {
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return false;
+	}
 	
 	
 	//customerId로 한개의 데이터 가져오기
@@ -215,9 +249,6 @@ public class CustomerDAO {
 		}
 	
 	
-	
-		
-		
 		
 		
 	//회원정보 수정

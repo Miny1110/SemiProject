@@ -1,8 +1,10 @@
 package com.svt;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -68,7 +70,7 @@ public class CustomerServlet extends HttpServlet{
 			url = "/customer/login.jsp";
 			forward(req, resp, url);
 
-		}else if(uri.indexOf("login.do")!=-1) {
+		} else if(uri.indexOf("login.do")!=-1) {
 			//로그인창
 
 			url = "/customer/login.jsp";
@@ -90,7 +92,6 @@ public class CustomerServlet extends HttpServlet{
 				forward(req, resp, url);
 				return;
 			}
-
 
 			//로그인 성공
 
@@ -245,26 +246,26 @@ public class CustomerServlet extends HttpServlet{
 
 			}
 		}
-		
+
 		//회원탈퇴
 		else if(uri.indexOf("deleted_ok.do")!=-1) {
-			
+
 			HttpSession session = req.getSession();
 			CustomerInfo customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 			String customerId = customerInfo.getCustomerId();
 			System.out.println(customerId);
-			
+
 			//회원 탈퇴 하려면 자식클래스에 있는 데이터 먼저 삭제해야 된다고 함. 안그러면 에러 뜸. 보니까 리뷰테이블 데이터 삭제하고 하면 될거같은데 이따 같이 봐야지
 			//rdao.deleteData(reviewNum)
 			rdao.deleteData(customerId);
 			cdao.deleteData(customerId);
 			session.removeAttribute("customerId"); //데이터만 삭제
 			session.invalidate(); //customerId 변수도 삭제
-			
+
 			url = cp + "/main";
 			resp.sendRedirect(url);
 			return;
-			
+
 		}
 	}
 }
