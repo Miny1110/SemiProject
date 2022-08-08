@@ -257,10 +257,10 @@
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li><a href="<%=cp%>/main">Home</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
-							<li><a href="<%=cp%>/main/cart/list.do">Cart</a></li>
+							<li><a href="<%=cp%>/main">HOME</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">SHOP</a></li>
 							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">NOTICE</a></li>
+							<li><a href="<%=cp%>/main/cart/list.do">INFO</a></li>
 						</ul>
 					</nav>
 				</div>
