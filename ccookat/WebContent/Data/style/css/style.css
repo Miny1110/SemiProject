@@ -126,6 +126,7 @@ ol {
 	position: relative;
 }
 
+
 .section-title h2:after {
 	position: absolute;
 	left: 0;
@@ -2507,6 +2508,7 @@ ol {
     padding: 7px 26px 5px;
     margin-right: 6px;
     margin-bottom: 10px;
+    border-radius: 3px;
 }
 /*---------------------
   Blog Details Hero

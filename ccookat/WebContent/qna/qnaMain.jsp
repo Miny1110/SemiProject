@@ -339,7 +339,7 @@
 	<!-- Blog Section Begin -->
 	<section class="blog spad">
 		<div class="container">
-			<div class="row">
+			<div>
 
 				<div id="qna_list">
 					<br> <br>

@@ -16,30 +16,18 @@
 <link href="/ccookat/Data/style/img/ccookat/favicon.ico"
 	rel="shortcut icon" type="image/x-icon">
 <!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
 <!-- Css Styles -->
-<link rel="stylesheet" href="/ccookat/Data/style/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/ccookat/Data/style/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="/ccookat/Data/style/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="/ccookat/Data/style/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/ccookat/Data/style/css/login.css"
-	type="text/css">
-<link rel="stylesheet" href="/ccookat/Data/style/css/nice-select.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="/ccookat/Data/style/css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="/ccookat/Data/style/css/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/ccookat/Data/style/css/style.css"
-	type="text/css">
-	<link rel="stylesheet" href="/ccookat/Data/style/css/qnaDetail.css"
-	type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/login.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/style.css" type="text/css">
+<link rel="stylesheet" href="/ccookat/Data/style/css/qnaDetail.css" type="text/css">
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -58,9 +46,7 @@
 				<li><a href="#"><i class="fa fa-heart"></i></a></li>
 				<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
 			</ul>
-			<div class="header__cart__price">
-				item: <span>$150.00</span>
-			</div>
+			<div class="header__cart__price"></div>
 		</div>
 		<div class="humberger__menu__widget">
 			<div class="header__top__right__language">
@@ -78,18 +64,13 @@
 			</div>
 		</div>
 		<nav class="humberger__menu__nav mobile-menu">
-			<ul>
-				<li><a href="./index.html">Home</a></li>
-				<li><a href="./shop-grid.html">Shop</a></li>
-				<li><a href="#">Pages</a>
-					<ul class="header__menu__dropdown">
-						<li><a href="./shop-details.html">Shop Details</a></li>
-						<li><a href="./shoping-cart.html">Shopping Cart</a></li>
-						<li><a href="./checkout.html">Check Out</a></li>
-					</ul></li>
-				<li><a href="./contact.html">Contact</a></li>
+            <ul>
+			<li><a href="<%=cp%>/main">Home</a></li>
+			<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+		 	<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
+			<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
 			</ul>
-		</nav>
+        </nav>
 		<div id="mobile-menu-wrap">
 			<div class="slicknav_menu">
 				<a href="#" aria-haspopup="true" role="button" tabindex="0"
@@ -142,8 +123,6 @@
 									tabindex="-1">Shopping Cart</a></li>
 								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
 										Out</a></li>
-								<li><a href="./blog-details.html" role="menuitem"
-									tabindex="-1">Blog Details</a></li>
 							</ul></li>
 						<li><a href="./contact.html" role="menuitem">Contact</a></li>
 					</ul>
@@ -151,14 +130,15 @@
 			</div>
 		</div>
 		<div class="header__top__right__social">
-			<a href="#"><i class="fa fa-facebook"></i></a> 
-			<a href="#"><i class="fa fa-twitter"></i></a> 
-			<a href="#"><i class="fa fa-instagram"></i></a> 
-			<a href="#"><i class="fa fa-pinterest-p"></i></a>
-		</div>
+            <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+			<a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a> 
+			<a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
+			<a href="https://www.pinterest.co.kr" target="_blank"><i class="fa fa-pinterest-p"></i></a>
+        </div>
 		<div class="humberger__menu__contact">
 			<ul>
-				<li><i class="fa fa-envelope"></i> ccokat@gmail.com&lt;</li>
+			<a href="https://mail.google.com/mail" target="_blank">
+			<li><i class="fa fa-envelope"></i> ccookat@gmail.com</li></a>
 			</ul>
 		</div>
 	</div>
@@ -171,18 +151,20 @@
 					<div class="col-lg-6">
 						<div class="header__top__left">
 							<ul>
+								<a href="https://mail.google.com/mail" target="_blank">
 								<li><i class="fa fa-envelope"></i> ccookat@gmail.com</li>
+								</a>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="header__top__right">
 							<div class="header__top__right__social">
-								<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-									class="fa fa-twitter"></i></a> <a href="#"><i
-									class="fa fa-linkedin"></i></a> <a href="#"><i
-									class="fa fa-pinterest-p"></i></a>
-							</div>
+         					   <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+							   <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a> 
+							   <a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
+							   <a href="https://www.pinterest.co.kr" target="_blank"><i class="fa fa-pinterest-p"></i></a>
+        				</div>
 							<div class="header__top__right__language">
 								<img src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
 								<div>한국어</div>
@@ -221,82 +203,66 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="<%=cp %>/main"><img
-							src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+						<a href="<%=cp %>/main"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
 							<li><a href="<%=cp%>/main">Home</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
-							<li><a href="#">Pages</a>
-								<ul class="header__menu__dropdown">
-									<li><a href="./shop-details.html">Shop Details</a></li>
-									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
-									<li><a href="./checkout.html">Check Out</a></li>
-								</ul></li>
-							<li><a
-								href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
-						</ul>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
+							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+						</ul>						
 					</nav>
 				</div>
-				<div class="col-lg-3">
-					<div class="header__cart">
-						<c:if test="${empty sessionScope.customerInfo.customerId}">
-							<ul>
-								<li><a href="<%=cp%>/main/customer/login.do"><i
-										class="fa fa-heart"></i></a></li>
-								<li><a href="<%=cp%>/main/customer/login.do"><i
-										class="fa fa-shopping-bag"></i></a></li>
-							</ul>
-						</c:if>
-						<c:if test="${!empty sessionScope.customerInfo.customerId}">
-							<ul>
-								<li><a href="<%=cp%>/main/cart/list.do"><i
-										class="fa fa-heart"></i></a></li>
-								<li><a href="<%=cp%>/main/cart/list.do"><i
-										class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
-							</ul>
-						</c:if>
-						<div class="header__cart__price"></div>
-					</div>
-				</div>
-			</div>
-			<div class="humberger__open">
-				<i class="fa fa-bars"></i>
-			</div>
-		</div>
-	</header>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-heart"></i> </a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>${itemCount }</span></a></li>
+                        </ul>
+                        <div class="header__cart__price"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+     </header> 
 	<!-- Header Section End -->
 	<!-- Hero Section Begin -->
-	<section class="hero hero-normal">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="hero__categories">
-						<div class="hero__categories__all">
-							<i class="fa fa-bars"></i> <span>Cateories</span>
+	  <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+							<i class="fa fa-bars"></i> 
+							<span>카테고리</span>
 						</div>
-						<ul>
-							<li><a href="#">Vegetables &amp; Fruit</a></li>
-							<li><a href="#">Rice &amp; Noodle &amp; Bread</a></li>
-							<li><a href="#">Fresh Meat &amp; Egg</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-9">
-					<div class="hero__search">
-						<div class="hero__search__form">
-							<form action="#">
-								<div class="hero__search__categories">
-									All Categories <span class="arrow_carrot-down"></span>
-								</div>
-								<input type="text" placeholder="검색어를 입력해주세요">
-								<button type="submit" class="site-btn">SEARCH</button>
-							</form>
-						</div>
-						<div class="hero__search__phone">
+                        <ul>
+                          <li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
+						  <li><a href="<%=cp %>/main/item/list.do">채소ㆍ과일</a></li>
+						  <li><a href="<%=cp %>/main/item/list.do">밥ㆍ빵ㆍ면</a></li>
+						  <li><a href="<%=cp %>/main/item/list.do">정육ㆍ계란</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    제품명
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="제품명 입력하세요">
+                                <button type="submit" class="site-btn">검색하기</button>
+                            </form>
+                        </div>
+                       <div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
 								<i class="fa fa-truck"></i>
 							</div>
@@ -305,14 +271,15 @@
 								<span> 샛별ㆍ낮 배송</span>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 	<!-- Hero Section End -->
+	
 	<!-- Blog Details Hero Begin -->
-	<br><br>
 	<section class="breadcrumb-section"
 		data-setbg="/ccookat/Data/style/img/breadcrumb.jpg"
 		style="background-image: url(&quot;/ccookat/Data/style/img/breadcrumb.jpg&quot;);">
@@ -415,15 +382,16 @@
 		</div>
 	
 	
-	<!-- Footer Section Begin1 -->
-	<section class="contact spad footer-details">
+	<!-- Footer Section Begin -->
+    <section class="contact spad footer-details">
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
 					<div class="contact__widget">
 						<span class="icon_phone"></span>
 						<h4>Call Center</h4>
-						<p>+02-1234-6868</p>
+						<p>+02-6204-9090</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -431,7 +399,7 @@
 						<span class="icon_pin_alt"></span>
 						<h4>Address</h4>
 						<p>
-							서울시 강남구 테헤란로 <br>124 삼원타워 4층 아이티윌
+							서울 강남구 영동대로112길 36<br> OTC빌딩 -1층, 3층 꾸캣
 						</p>
 					</div>
 				</div>
@@ -439,7 +407,7 @@
 					<div class="contact__widget">
 						<span class="icon_clock_alt"></span>
 						<h4>Open time</h4>
-						<p>24 hour Open Service</p>
+						<p>매일 10:30 - 21:30</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -452,8 +420,6 @@
 			</div>
 		</div>
 	</section>
-	<!-- Footer Section End1 -->
-	<!-- Footer Section Begin2 -->
 	<div id="footer">
 		<div class="footer-top">
 			<div class="inner_footer">
@@ -471,8 +437,12 @@
 						</div>
 						<div class="cc_view cc_qna">
 							<h3>
-								<a href="index.jsp?folder=qna&category=qna_list" class="tit">질문
-									답변</a>
+								<c:if test="${empty sessionScope.customerInfo.customerId}">
+									<a href="<%=cp %>/main/customer/login.do" class="tit">질문 답변</a>
+								</c:if>
+								<c:if test="${!empty sessionScope.customerInfo.customerId}">
+									<a href="<%=cp %>/main/qna/list.do" class="tit">질문 답변</a>
+								</c:if>
 							</h3>
 							<dl class="list">
 								<dt>24시간 접수 가능</dt>
@@ -490,17 +460,18 @@
 						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a
 							class="link">help@ccookatcorp.com</a> <br> 대량주문 문의 : <a
 							class="link">ccookatgift@ccookatcorp.com</a> <br>
+
 					</div>
 				</div>
 			</div>
 			<div class="footer_indemnification_clause">
-				<em class="copy">
-					<p>Copyright © itwill ccookat Corp. All rights reserved.</p>
-				</em>
+
+				<em class="copy"><p>Copyright © itwill ccookat Corp. All
+						rights reserved.</p></em>
 			</div>
 		</div>
 	</div>
-	<!-- Footer Section End2 -->
+	<!-- Footer Section End -->
 	<!-- Js Plugins -->
 	<script src="/ccookat/Data/style/js/jquery-3.3.1.min.js"></script>
 	<script src="/ccookat/Data/style/js/bootstrap.min.js"></script>
