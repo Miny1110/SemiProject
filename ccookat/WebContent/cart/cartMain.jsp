@@ -346,7 +346,7 @@
                             <li>총 할인금액 <span> ${(beforedc-totalprice)*-1} </span></li>
                             <li>총 결제금액 <span> ${totalprice}</span></li>
                         </ul>
-                        <a href="#" class="primary-btn"> 결&nbsp;제&nbsp;하&nbsp;기</a>
+                        <a href="<%=cp%>/main/order/order.do" class="primary-btn"> 결&nbsp;제&nbsp;하&nbsp;기</a>
                     </div>
                 </div>
             </div>

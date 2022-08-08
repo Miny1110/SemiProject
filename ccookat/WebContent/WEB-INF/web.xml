@@ -77,5 +77,14 @@
     <servlet-name>ccookatCartServlet</servlet-name>
     <url-pattern>/main/cart/*</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ccookatOrderServlet</servlet-name>
+    <servlet-class>com.svt.CustomerOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ccookatOrderServlet</servlet-name>
+    <url-pattern>/main/order/*</url-pattern>
+  </servlet-mapping>
 
 </web-app>
