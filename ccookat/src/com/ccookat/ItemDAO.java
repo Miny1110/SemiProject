@@ -137,6 +137,119 @@ public class ItemDAO {
 	}
 	
 	
+	//전체상품 이미지 게시판에 데이터 불러오기
+	public List<ItemDTO> getLists(int start, int end, String itemSearchValue){
+		
+		List<ItemDTO> lists = new ArrayList<ItemDTO>();
+		ItemDTO idto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;	
+		
+		try {
+			
+			itemSearchValue = "%" + itemSearchValue + "%";
+			
+			sql = "select * from (";
+			sql+= "select rownum rnum, data.* from (";
+			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
+			sql+= "from item where itemName like ? order by itemNum desc) data ) ";
+			sql+= "where rnum>=? and rnum<=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, itemSearchValue);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				idto = new ItemDTO();
+				
+				idto.setItemNum(rs.getInt("itemNum"));
+				idto.setItemName(rs.getString("itemName"));
+				idto.setItemPrice(rs.getInt("itemPrice"));
+				idto.setItemDiscount(rs.getInt("itemDiscount"));
+				idto.setItemType(rs.getString("itemType"));
+				idto.setItemImage1(rs.getString("itemImage1"));
+				idto.setItemHitCount(rs.getInt("itemHitCount"));
+				
+				lists.add(idto);
+				
+			}
+
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println("전체상품에러");
+			System.out.println(e.toString());
+		}
+		
+		return lists;
+		
+	}
+	
+	
+	//카테고리별 이미지 게시판에 데이터 불러오기
+	public List<ItemDTO> getLists(int start, int end, String itemSearchValue, String itemType){
+		
+		List<ItemDTO> lists = new ArrayList<ItemDTO>();
+		ItemDTO idto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;	
+		
+		try {
+			
+			itemSearchValue = "%" + itemSearchValue + "%";
+			
+			sql = "select * from (";
+			sql+= "select rownum rnum, data.* from (";
+			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
+			sql+= "from item where itemType=? and itemName like ? order by itemNum desc) data ) ";
+			sql+= "where rnum>=? and rnum<=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, itemType);
+			pstmt.setString(2, itemSearchValue);
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				idto = new ItemDTO();
+				
+				idto.setItemNum(rs.getInt("itemNum"));
+				idto.setItemName(rs.getString("itemName"));
+				idto.setItemPrice(rs.getInt("itemPrice"));
+				idto.setItemDiscount(rs.getInt("itemDiscount"));
+				idto.setItemType(rs.getString("itemType"));
+				idto.setItemImage1(rs.getString("itemImage1"));
+				idto.setItemHitCount(rs.getInt("itemHitCount"));
+				
+				lists.add(idto);
+				
+			}
+
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println("카테고리에러");
+			System.out.println(e.toString());
+		}
+		
+		return lists;
+		
+	}
+	
+	
 	//itemNum으로 제품별 상세페이지에 띄울 하나의 데이터 가져오기
 	//필요한 데이터: 제품번호, 이름, 가격, 할인, 카테고리, 내용, 이미지 4개, 재고
 	public ItemDTO getReadData_detail(int itemNum) {
@@ -215,117 +328,16 @@ public class ItemDAO {
 	
 	
 	
-	//카테고리별 이미지 게시판에 데이터 불러오기
-	public List<ItemDTO> getLists(String itemType, int start, int end){
-		
-		List<ItemDTO> lists = new ArrayList<ItemDTO>();
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;	
-		
-		try {
-			
-			sql = "select * from (";
-			sql+= "select rownum rnum, data.* from (";
-			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
-			sql+= "from item where itemType=? order by itemNum desc) data ) ";
-			sql+= "where rnum>=? and rnum<=?";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, itemType);
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				ItemDTO idto = new ItemDTO();
-				
-				idto.setItemNum(rs.getInt("itemNum"));
-				idto.setItemName(rs.getString("itemName"));
-				idto.setItemPrice(rs.getInt("itemPrice"));
-				idto.setItemDiscount(rs.getInt("itemDiscount"));
-				idto.setItemType(rs.getString("itemType"));
-				idto.setItemImage1(rs.getString("itemImage1"));
-				idto.setItemHitCount(rs.getInt("itemHitCount"));
-				
-				lists.add(idto);
-				
-			}
 
-			rs.close();
-			pstmt.close();
-			
-		} catch (Exception e) {
-			System.out.println("에러");
-			System.out.println(e.toString());
-		}
-		
-		return lists;
-		
-	}
 	
 	
-	//이미지 게시판에 데이터 불러오기
-	public List<ItemDTO> getLists(int start, int end){
-		
-		List<ItemDTO> lists = new ArrayList<ItemDTO>();
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;	
-		
-		try {
-			
-			sql = "select * from (";
-			sql+= "select rownum rnum, data.* from (";
-			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
-			sql+= "from item order by itemNum desc) data ) ";
-			sql+= "where rnum>=? and rnum<=?";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				ItemDTO idto = new ItemDTO();
-				
-				idto.setItemNum(rs.getInt("itemNum"));
-				idto.setItemName(rs.getString("itemName"));
-				idto.setItemPrice(rs.getInt("itemPrice"));
-				idto.setItemDiscount(rs.getInt("itemDiscount"));
-				idto.setItemType(rs.getString("itemType"));
-				idto.setItemImage1(rs.getString("itemImage1"));
-				idto.setItemHitCount(rs.getInt("itemHitCount"));
-				
-				lists.add(idto);
-				
-			}
 
-			rs.close();
-			pstmt.close();
-			
-		} catch (Exception e) {
-			System.out.println("에러");
-			System.out.println(e.toString());
-		}
-		
-		return lists;
-		
-	}
 	
 	
 	
 	
-	//카테고리별 전체데이터 개수 세기
-	public int getDataCount(String itemType) {
+/*	//카테고리별 전체데이터 개수 세기
+	public int getDataCount(String itemType,String itemSearchValue) {
 		
 		int dataCount = 0;
 		
@@ -335,11 +347,12 @@ public class ItemDAO {
 		
 		try {
 			
-			sql = "select nvl(count(*),0) from item where itemType=?";
+			sql = "select nvl(count(*),0) from item where itemType=? and itemName like ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, itemType);
+			pstmt.setString(2, itemSearchValue);
 			
 			rs = pstmt.executeQuery();
 			
@@ -357,10 +370,13 @@ public class ItemDAO {
 		return dataCount;
 		
 	}
+	*/
+	
 
 	
-	//카테고리별 전체데이터 개수 세기
-	public int getDataCount() {
+	
+	//페이징 처리를 위한 전체상품 데이터 개수 세기
+	public int getDataCount(String itemSearchValue) {
 		
 		int dataCount = 0;
 		
@@ -370,9 +386,13 @@ public class ItemDAO {
 		
 		try {
 			
-			sql = "select nvl(count(*),0) from item";
+			itemSearchValue = "%" + itemSearchValue + "%";
+			
+			sql = "select nvl(count(*),0) from item where itemName like ?";
 			
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, itemSearchValue);
 			
 			rs = pstmt.executeQuery();
 			
@@ -391,6 +411,44 @@ public class ItemDAO {
 		
 	}
 	
+
+	//카테고리별 데이터 개수 세기
+	public int getDataCount(String itemType, String itemSearchValue) {
+		
+		int dataCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		
+		try {
+			
+			itemSearchValue = "%" + itemSearchValue + "%";
+			
+			sql = "select nvl(count(*),0) from item ";
+			sql+= "where itemType=? and itemName like ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, itemType);
+			pstmt.setString(2, itemSearchValue);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dataCount = rs.getInt(1);
+			}
+			
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return dataCount;
+		
+	}
 	
 	
 	//조회수 증가
@@ -432,6 +490,7 @@ public class ItemDAO {
 
 		try {
 
+			
 			sql = "select * from (";
 			sql+= "select rownum rnum, data.* from (";
 			sql+= "select itemNum,itemName,itemPrice,itemDiscount,itemType,itemImage1,itemHitCount ";
@@ -440,6 +499,7 @@ public class ItemDAO {
 
 			pstmt = conn.prepareStatement(sql);
 
+			
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
@@ -514,7 +574,7 @@ public class ItemDAO {
 			pstmt.close();
 			
 		} catch (Exception e) {
-			System.out.println("에러");
+			System.out.println("카테고리 인기상품 에러");
 			System.out.println(e.toString());
 		}
 		
