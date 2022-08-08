@@ -279,13 +279,13 @@ function sendIt(){
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-30">
+				<div class="col-lg-3">
 					<div class="header__logo">
 						<a href="<%=cp %>/main"><img
 							src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
-				<div class="col-lg-60">
+				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
 							<li><a href="<%=cp%>/main">Home</a></li>
@@ -295,7 +295,7 @@ function sendIt(){
 						</ul>
 					</nav>
 				</div>
-				<div class="col-lg-30">
+				<div class="col-lg-3">
 					<div class="header__cart">
 						<c:if test="${empty sessionScope.customerInfo.customerId}">
 							<ul>

@@ -271,7 +271,7 @@
 	<!-- Header Section End -->
 
 	<!-- Hero Section Begin -->
- <section class="hero hero-normal">
+	 <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -338,10 +338,9 @@
                 <form action="/ccookat/main/review/created_ok.do" method="post" enctype="multipart/form-data">
                     <div>
                         <div>
-                   	
-                               <div class="checkout__input">
+                           <div class="checkout__input">
                                 <p>ID<span>*</span></p>
-                            <input type="taxt" name="customerId" value="${sessionScope.customerInfo.customerId }"/>
+                            	<input type="taxt" name="customerId" value="${sessionScope.customerInfo.customerId }"/>
                                 <br/>
                             </div>
                          
