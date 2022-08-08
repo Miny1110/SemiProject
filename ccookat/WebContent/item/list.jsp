@@ -457,66 +457,6 @@
                                 </div>
                             </c:forEach>
                             
-                            
-                            
-                           <%--  <c:if test="${empty itemType }">
-                            <c:forEach var="idto" items="${itemAllHitCountList }">
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg">
-                                            <a href="${itemDetailUrl }&pageNum=${currentPage }&itemNum=${idto.itemNum}">
-                                            <img src="${itemImagePath }/${idto.itemImage1}"></a>
-                                            <div class="product__discount__percent">BEST</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>조회수: ${idto.itemHitCount }</span>
-                                            <h5><a href="#">${idto.itemName }</a></h5>
-                                            <div class="product__item__price">
-                                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
-                                            pattern="0"/>원
-                                           <span>${idto.itemPrice }원</span></div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                            </c:if>
-                            
-                            
-                            <c:if test="${!empty itemType }">
-                            <c:forEach var="idto" items="${itemHitCountList }">
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg">
-                                            <a href="${itemDetailUrl }&pageNum=${currentPage }&itemNum=${idto.itemNum}">
-                                            <img src="${itemImagePath }/${idto.itemImage1}"></a>
-                                            <div class="product__discount__percent">BEST</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>조회수: ${idto.itemHitCount }</span>
-                                            <h5><a href="#">${idto.itemName }</a></h5>
-                                            <div class="product__item__price">
-                                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
-                                            pattern="0"/>원
-                                           <span>${idto.itemPrice }원</span></div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                            </c:if>
-                             --%>
-                            
                             </div>
                         </div>
                     </div>
@@ -582,40 +522,6 @@
                     </div>
                     
                     
-                    <%-- <c:if test="${!empty itemType }">
-                    <div class="row">
-                    <c:forEach var="idto" items="${itemMainList }">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg">
-                                	<a href="${itemDetailUrl }&pageNum=${currentPage }&itemNum=${idto.itemNum}">
-                                	<img src="${itemImagePath }/${idto.itemImage1}"></a>
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">${idto.itemName }</a></h6>
-                                    
- 										<div class="product__discount__item__text">
-                                            <div class="product__item__price">
-                                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
-                                            pattern="0"/>원
-                                           <span>${idto.itemPrice }원</span></div>
-                                            
-                                        </div>
-                                </div>
-                            </div>
-                        </div>                       
-                     </c:forEach>
-                    </div>
-                    <div class="product__pagination">
-                        ${pageIndexList }
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                    </div>
-                    </c:if> --%>
 <!--  여기까지 상품 이미지 게시판 사진, 페이징 끝   -->          
        
                 </div>
