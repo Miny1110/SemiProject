@@ -144,25 +144,23 @@ public class QnaServlet extends HttpServlet {
 
 			int start = (currentPage-1)*numPerPage+1;
 			int end = currentPage * numPerPage;
-			
-			//실제 rownum가져오기
-			/*if(customerId.equals("admin")||customerId=="admin") {
-				lists = qdao.selectALladmin(start, end, searchValue);
-			}else {
-*/
-			List<QnaDTO>lists = qdao.selectAll(start, end, searchKey, searchValue);
-				
 
-			String params = "";
-			if(searchValue!=null && !searchValue.equals("")) {
-				params = "?searchKey=" + searchKey; 
-				params += "&searchValue=" + searchValue;
+			//실제 rownum가져오기
+			
+			
+				List<QnaDTO> lists = 
+						qdao.selectAll(start, end, searchKey, searchValue);
+
+				String params = "";
+				if(searchValue!=null && !searchValue.equals("")) {
+					params = "?searchKey=" + searchKey; 
+					params += "&searchValue=" + searchValue;
 				}
 
 				String listUrl = cp + "/main/qna/list.do";
 
 				if(params.equals("")) {
-					listUrl += "?"+ params;			
+					listUrl += "?" +params;			
 				}
 
 				String pageIndexList = 
@@ -174,7 +172,7 @@ public class QnaServlet extends HttpServlet {
 				if(!params.equals("")) {
 					detailUrl += "&" + params;			
 				}
-				
+
 				request.setAttribute("lists", lists);
 				request.setAttribute("pageIndexList", pageIndexList);
 				request.setAttribute("detailUrl", detailUrl);
@@ -246,18 +244,21 @@ public class QnaServlet extends HttpServlet {
 			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
 			String pageNum = request.getParameter("pageNum");
 			
+			request.setAttribute("qnaNum", qnaNum);
+			
 			url = "/qna/qnaReply.jsp";
 			forward(request, response, url);
 			
 		}else if (uri.indexOf("reply_ok.do")!=-1){
 			//변수 받아서
-//		int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
-		String pageNum = request.getParameter("pageNum");
+	int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+		//String pageNum = request.getParameter("pageNum");
 			
 			ReplyDTO redto = new ReplyDTO();
 			int remaxNum = redao.getMaxNum();
 			
 			redto.setReplyNum(remaxNum+1);
+			redto.setQnaNum(Integer.parseInt(request.getParameter("qnaNum")));
 			redto.setCustomerId(request.getParameter("customerId"));
 			redto.setReplyContent(request.getParameter("replyContent"));
 			redto.setReplyCreated(request.getParameter("replyCreated"));

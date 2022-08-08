@@ -13,14 +13,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>qnaDetail</title>
-
 <link href="/ccookat/Data/style/img/ccookat/favicon.ico"
 	rel="shortcut icon" type="image/x-icon">
 <!-- Google Font -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap"
 	rel="stylesheet">
-
 <!-- Css Styles -->
 <link rel="stylesheet" href="/ccookat/Data/style/css/bootstrap.min.css"
 	type="text/css">
@@ -42,15 +40,12 @@
 	type="text/css">
 	<link rel="stylesheet" href="/ccookat/Data/style/css/qnaDetail.css"
 	type="text/css">
-
 </head>
-
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder" style="display: none;">
 		<div class="loader" style="display: none;"></div>
 	</div>
-
 	<!-- Humberger Begin -->
 	<div class="humberger__menu__overlay"></div>
 	<div class="humberger__menu__wrapper">
@@ -168,7 +163,6 @@
 		</div>
 	</div>
 	<!-- Humberger End -->
-
 	<!-- Header Section Begin -->
 	<header class="header">
 		<div class="header__top">
@@ -275,7 +269,6 @@
 		</div>
 	</header>
 	<!-- Header Section End -->
-
 	<!-- Hero Section Begin -->
 	<section class="hero hero-normal">
 		<div class="container">
@@ -318,7 +311,6 @@
 		</div>
 	</section>
 	<!-- Hero Section End -->
-
 	<!-- Blog Details Hero Begin -->
 	<br><br>
 	<section class="breadcrumb-section"
@@ -329,14 +321,12 @@
 				<div class="col-lg-12">
 					<div class="blog__details__hero__text">
 						<h2>Q&nbsp;&&nbsp;A</h2>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- Blog Details Hero End -->
-
 	<!-- Blog Details Section Begin -->
 	<!-- 관리자 -->
 	<section class="blog-details spad">
@@ -368,7 +358,6 @@
 							</tr>
 						</tbody>
 					</table>
-
 					<div id="qna_menu">
 						<button type="button" class="qnaDetailBtn"
 							onclick="location='<%=cp %>/main/qna/list.do?pageNum=${pageNum }';">목&nbsp;&nbsp;록</button>
@@ -378,13 +367,10 @@
 						</c:if>
 					</div>
 					<br><br><br><br>
-
 				</div>
 			</div>
 		</div>
 	</section>
-
-
 	
 	<!-- Blog Details Section End -->
 		
@@ -395,7 +381,7 @@
 					<br> <br> <br>
 					<h1>답변</h1>
 					<br> <br>
-							 <c:if test="${redto.replyContent==null}">
+							 <c:if test="${redto.qnaNum==null}">
 						<table>
 						<tbody>
 							<tr>
@@ -404,8 +390,8 @@
 						</tbody>
 						</table>	 
 					</c:if>
-					
-					 <c:if test="${redto.replyContent!=null}">
+
+					 <c:if test="${redto.qnaNum!=null}">
 					<table>
 						<tbody>
 							<tr>
@@ -424,8 +410,6 @@
 						</tbody>
 					</table>
 				 </c:if> 
-
-
 				</div>
 			</div>
 		</div>
@@ -469,7 +453,6 @@
 		</div>
 	</section>
 	<!-- Footer Section End1 -->
-
 	<!-- Footer Section Begin2 -->
 	<div id="footer">
 		<div class="footer-top">
@@ -507,7 +490,6 @@
 						팩스: 000 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a
 							class="link">help@ccookatcorp.com</a> <br> 대량주문 문의 : <a
 							class="link">ccookatgift@ccookatcorp.com</a> <br>
-
 					</div>
 				</div>
 			</div>
@@ -519,7 +501,6 @@
 		</div>
 	</div>
 	<!-- Footer Section End2 -->
-
 	<!-- Js Plugins -->
 	<script src="/ccookat/Data/style/js/jquery-3.3.1.min.js"></script>
 	<script src="/ccookat/Data/style/js/bootstrap.min.js"></script>
@@ -529,10 +510,5 @@
 	<script src="/ccookat/Data/style/js/mixitup.min.js"></script>
 	<script src="/ccookat/Data/style/js/owl.carousel.min.js"></script>
 	<script src="/ccookat/Data/style/js/main.js"></script>
-
-
-
-
-
 </body>
 </html>
