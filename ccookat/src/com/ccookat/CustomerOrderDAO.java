@@ -45,7 +45,7 @@ public class CustomerOrderDAO {
 
 	
 	//이미 주문하고 목록 불러와야하니 인서트하기
-	public int insertData(CustomerOrderDTO cusdto ) {
+	public int insertData(CustomerOrderDTO cudto) {
 		
 		int result = 0;
 		PreparedStatement pstmt= null;
@@ -53,13 +53,33 @@ public class CustomerOrderDAO {
 		
 		try {
 			
-			sql= "insert into order (""
+			sql = "insert into order(orderNum,customerId,itemNum,cartNum,";
+			sql+= "customerOrderName,customerOrderZipCode,customerOrderAddr1,customerAddr2,customerOrderTel,customerOrderPay,customerMemo) ";
+			sql+= "values (?,?,?,?,?,?,?,?,?,?,?)";
 			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cudto.getOrderNum());
+			pstmt.setString(2, cudto.getCustomerId());
+			pstmt.setInt(3, cudto.getItemNum());
+			pstmt.setInt(4, cudto.getCartNum());
+			pstmt.setString(5, cudto.getCustomerOrderName());
+			pstmt.setString(6, cudto.getCustomerOrderZipCode());
+			pstmt.setString(7, cudto.getCustomerOrderTel());
+			pstmt.setString(8, cudto.getCustomerOrderAddr1());
+			pstmt.setString(9, cudto.getCustomerOrderAddr2());
+			pstmt.setString(10, cudto.getCustomerOrderPay());
+			pstmt.setString(11, cudto.getCustomerMemo());
+			
+		
+			pstmt.executeUpdate();
+			
+			pstmt.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.toString());
 		}
-		
+		return result;
 	}
 	
 	
