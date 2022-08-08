@@ -108,22 +108,11 @@ public class ItemServlet extends HttpServlet {
 
 		}else if(uri.indexOf("detail.do")!=-1) { //상세페이지 화면 보여주기
 
-			HttpSession session = req.getSession();
-
-			CustomerInfo customerInfo = new CustomerInfo();
-			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
-
-			if(customerInfo!=null) {
-			String customerId = customerInfo.getCustomerId();
-
-			int cartCount = ctdao.cartCount(customerId);
-			req.setAttribute("cartCount", cartCount);
-			}
 			
 			
 			//제품번호 가져와
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-
+			
 			//페이지번호 가져와
 			String pageNum = req.getParameter("pageNum");
 
@@ -183,8 +172,19 @@ public class ItemServlet extends HttpServlet {
 			//제품설명 텍스트 엔터는 엔터로 변경
 			idto.setItemContent(idto.getItemContent().replaceAll("\n", "<br/>"));
 
-			req.setAttribute("currentPage", currentPage);
+			HttpSession session = req.getSession();
 
+			CustomerInfo customerInfo = new CustomerInfo();
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+			String customerId = customerInfo.getCustomerId();
+
+			int cartCount = ctdao.cartCount(customerId);
+			req.setAttribute("cartCount", cartCount);
+			}
+						
+			req.setAttribute("currentPage", currentPage);
 			req.setAttribute("itemNum", itemNum);
 			req.setAttribute("itemImagePath", itemImagePath);
 			req.setAttribute("itemDeletePath", itemDeletePath);
@@ -239,8 +239,13 @@ public class ItemServlet extends HttpServlet {
 			//여기서부터 페이징 처리
 			String pageNum = req.getParameter("pageNum");
 			String itemType = req.getParameter("itemType");
+			int dataCount;
+			String pageIndexList;
+			
 			if(itemType==null) {
-				itemType = "fruit";
+				dataCount = idao.getDataCount();
+			}else {
+				dataCount = idao.getDataCount(itemType);
 			}
 
 			int currentPage = 1;
@@ -250,7 +255,6 @@ public class ItemServlet extends HttpServlet {
 			}
 
 			int numPerPage = 6; 
-			int dataCount = idao.getDataCount(itemType);
 			int totalPage = myPage.getPageCount(numPerPage, dataCount);
 
 			if(currentPage>totalPage) {
@@ -261,18 +265,26 @@ public class ItemServlet extends HttpServlet {
 			int end = currentPage * numPerPage;
 			//여기까지 페이징 처리
 
-
+			//이미지 게시판 전체 상품 출력 시작		
+			List<ItemDTO> itemAllMainList = idao.getLists(start, end);
 			//카테고리별 이미지 게시판 전체 상품 출력 시작		
 			List<ItemDTO> itemMainList = idao.getLists(itemType, start, end);
 
+			//전체상품 이미지 게시판 가짜주소(페이징 처리에 필요)
+			String itemAllMainUrl = cp + "/main/item/list.do?";
 			//제품메인 이미지 게시판 가짜주소(페이징 처리에 필요)
 			String itemMainUrl = cp + "/main/item/list.do?itemType=" + itemType;
 			//제품별 상세페이지 가짜주소(페이지번호 들고감)
+			String itemAllDetailUrl = cp + "/main/item/detail.do";
 			String itemDetailUrl = cp + "/main/item/detail.do?itemType=" + itemType;
 			
 			String pageUrl = cp+"/main/item/detail.do";
 
-			String pageIndexList = myPage.pageIndexList(currentPage, totalPage, itemMainUrl);
+			if(itemType==null) {
+				pageIndexList = myPage.pageIndexList(currentPage, totalPage, itemAllMainUrl);
+			}else {
+				pageIndexList = myPage.pageIndexList(currentPage, totalPage, itemMainUrl);
+			}
 			String reviewPageIndexList = myPage.pageIndexList(currentPage, totalPage, pageUrl);
 			
 
@@ -294,18 +306,23 @@ public class ItemServlet extends HttpServlet {
 			req.setAttribute("cartCount", cartCount);
 			}
 			
+			req.setAttribute("itemType", itemType);
 			req.setAttribute("itemImagePath", itemImagePath);
+			req.setAttribute("itemAllMainList", itemAllMainList);
 			req.setAttribute("itemMainList", itemMainList);
 			req.setAttribute("pageIndexList", pageIndexList);
 			req.setAttribute("dataCount", dataCount);
 			req.setAttribute("currentPage", currentPage);
 			req.setAttribute("itemDeletePath", itemDeletePath);
+			req.setAttribute("itemAllDetailUrl", itemAllDetailUrl);
 			req.setAttribute("itemDetailUrl", itemDetailUrl);
 			req.setAttribute("reviewPageIndexList", reviewPageIndexList);
 			//카테고리별 이미지 게시판 전체 상품 출력 끝
 
+			List<ItemDTO> itemAllHitCountList = idao.getHitCountLists();
 			List<ItemDTO> itemHitCountList = idao.getHitCountLists(itemType);
 
+			req.setAttribute("itemAllHitCountList", itemAllHitCountList);
 			req.setAttribute("itemHitCountList", itemHitCountList);
 
 			url = "/item/list.jsp";

@@ -193,12 +193,13 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>카테고리</span>
                         </div>
                         <ul>
-                             <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
+                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
                             <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>	
                             <li><a href="<%=cp%>/main/item/created.do"> [상품등록]</a></li>
                             </c:if>
@@ -260,14 +261,15 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>Department</h4>
+                            <h4>카테고리</h4>
                             <ul>
-                             <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
-                            <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>	
-                            <li><a href="<%=cp%>/main/item/created.do"> [상품등록]</a></li>
-                            </c:if>
+	                            <li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
+	                            <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
+	                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
+	                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
+	                            <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>	
+	                            <li><a href="<%=cp%>/main/item/created.do"> [상품등록]</a></li>
+	                            </c:if>
                             </ul>
                         </div>
                         <div class="sidebar__item">
@@ -427,6 +429,37 @@
                         </div>
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
+                            
+                            <c:if test="${empty itemType }">
+                            <c:forEach var="idto" items="${itemAllHitCountList }">
+                                <div class="col-lg-4">
+                                    <div class="product__discount__item">
+                                        <div class="product__discount__item__pic set-bg">
+                                            <a href="${itemDetailUrl }&pageNum=${currentPage }&itemNum=${idto.itemNum}">
+                                            <img src="${itemImagePath }/${idto.itemImage1}"></a>
+                                            <div class="product__discount__percent">BEST</div>
+                                            <ul class="product__item__pic__hover">
+                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="product__discount__item__text">
+                                            <span>조회수: ${idto.itemHitCount }</span>
+                                            <h5><a href="#">${idto.itemName }</a></h5>
+                                            <div class="product__item__price">
+                                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
+                                            pattern="0"/>원
+                                           <span>${idto.itemPrice }원</span></div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                            </c:if>
+                            
+                            
+                            <c:if test="${!empty itemType }">
                             <c:forEach var="idto" items="${itemHitCountList }">
                                 <div class="col-lg-4">
                                     <div class="product__discount__item">
@@ -452,6 +485,9 @@
                                     </div>
                                 </div>
                             </c:forEach>
+                            </c:if>
+                            
+                            
                             </div>
                         </div>
                     </div>
@@ -481,8 +517,46 @@
                     </div>
                     
 <!--  여기부터 상품 이미지 게시판 사진, 페이징 시작   -->                 
-                    <div class="row">
                     
+                    
+                    <c:if test="${empty itemType }">
+                    <div class="row">
+                    <c:forEach var="idto" items="${itemAllMainList }">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg">
+                                	<a href="${itemAllDetailUrl }?pageNum=${currentPage }&itemNum=${idto.itemNum}">
+                                	<img src="${itemImagePath }/${idto.itemImage1}"></a>
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">${idto.itemName }</a></h6>
+                                    
+ 										<div class="product__discount__item__text">
+                                            <div class="product__item__price">
+                                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
+                                            pattern="0"/>원
+                                           <span>${idto.itemPrice }원</span></div>
+                                            
+                                        </div>
+                                </div>
+                            </div>
+                        </div>                       
+                     </c:forEach>
+                    </div>
+                    <div class="product__pagination">
+                        ${pageIndexList }
+                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    </div>
+                    </c:if>
+                    
+                    
+                    <c:if test="${!empty itemType }">
+                    <div class="row">
                     <c:forEach var="idto" items="${itemMainList }">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -505,22 +579,16 @@
                                            <span>${idto.itemPrice }원</span></div>
                                             
                                         </div>
-
-
-
-
                                 </div>
                             </div>
                         </div>                       
                      </c:forEach>
-                      
                     </div>
-                    
-                    
                     <div class="product__pagination">
                         ${pageIndexList }
                         <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                     </div>
+                    </c:if>
 <!--  여기까지 상품 이미지 게시판 사진, 페이징 끝   -->          
        
                 </div>

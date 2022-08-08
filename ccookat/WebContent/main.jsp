@@ -259,8 +259,8 @@
 						<ul>
 							<li><a href="<%=cp%>/main">Home</a></li>
 							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
-							<li><a href="<%=cp%>/main/cart/list.do">Cart</a></li>
 							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">NOTICE</a></li>
+							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -304,6 +304,7 @@
 						</div>
 
 						<ul>
+							<li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
 							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
 							<li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
 							<li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
@@ -332,21 +333,17 @@
 
 				<div class="col-lg-9">
 					<div class="hero__search">
-						<div class="hero__search__form ">
-							<form action="">
-								<div class="hero__search__categories">
-									제품명 
-									<!-- <span class="arrow_carrot-down"></span> -->
-								</div>
-								<ul>
-
-
-								</ul>
-
-								<input type="text" placeholder="제품명 입력하세요">
-								<button type="submit" class="site-btn">검색하기</button>
-							</form>
-						</div>
+					
+					<div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    제품명
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="제품명 입력하세요">
+                                <button type="submit" class="site-btn">검색하기</button>
+                            </form>
+                        </div>
 						<div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
 								<i class="fa fa-truck"></i>
@@ -479,7 +476,7 @@
 					<div class="contact__widget">
 						<span class="icon_phone"></span>
 						<h4>Call Center</h4>
-						<p>+02-1234-6868</p>
+						<p>+02-6204-9090</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -487,7 +484,7 @@
 						<span class="icon_pin_alt"></span>
 						<h4>Address</h4>
 						<p>
-							서울시 강남구 테헤란로 <br>124 삼원타워 4층 아이티윌
+							서울 강남구 영동대로112길 36<br> OTC빌딩 -1층, 3층 꾸캣
 						</p>
 					</div>
 				</div>
@@ -495,7 +492,7 @@
 					<div class="contact__widget">
 						<span class="icon_clock_alt"></span>
 						<h4>Open time</h4>
-						<p>24 hour Open Service</p>
+						<p>매일 10:30 - 21:30</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
