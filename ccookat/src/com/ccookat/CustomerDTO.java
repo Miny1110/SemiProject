@@ -9,8 +9,23 @@ public class CustomerDTO {
 	private String customerEmail;
 	private String customerTel;
 	private String customerCreated;
+	//addr 1/2 로 바꿀거면 나중에 담당하는사람이 하기
+	private String customerAddr;
+	private String customerZipcode;
 	
 	
+	public String getCustomerAddr() {
+		return customerAddr;
+	}
+	public void setCustomerAddr(String customerAddr) {
+		this.customerAddr = customerAddr;
+	}
+	public String getCustomerZipcode() {
+		return customerZipcode;
+	}
+	public void setCustomerZipcode(String customerZipcode) {
+		this.customerZipcode = customerZipcode;
+	}
 	public String getCustomerId() {
 		return customerId;
 	}

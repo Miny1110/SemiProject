@@ -44,7 +44,23 @@ public class CustomerOrderDAO {
 	}
 
 	
-	//장바구니에서 넘어온거 보여주기
+	//이미 주문하고 목록 불러와야하니 인서트하기
+	public int insertData(CustomerOrderDTO cusdto ) {
+		
+		int result = 0;
+		PreparedStatement pstmt= null;
+		String sql;
+		
+		try {
+			
+			sql= "insert into order (""
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
 	
 	
 	//결제한 아티엠 타입의 수량 만큼 재고에서 빼주는 코딩 필요함
