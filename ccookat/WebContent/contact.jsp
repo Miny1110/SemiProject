@@ -1,8 +1,8 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page  contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%
+<% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
@@ -13,7 +13,7 @@
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>ccookat</title>
+<title>CONTACT</title>
 
 <link href="/ccookat/Data/style/img/ccookat/favicon.ico"
 	rel="shortcut icon" type="image/x-icon">
@@ -22,7 +22,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap"
 	rel="stylesheet">
-
+	
 <!-- Css Styles -->
 <link rel="stylesheet" href="/ccookat/Data/style/css/bootstrap.min.css"
 	type="text/css">
@@ -40,15 +40,46 @@
 	type="text/css">
 <link rel="stylesheet" href="/ccookat/Data/style/css/style.css"
 	type="text/css">
-</head>
+
+<script type="text/javascript">
+
+function sendIt(){
+	
+	var f= document.myForm;
+	if(!f.userId.value){
+		alert("성함을 입력해주세요.")
+		f.userId.focus();
+		return;
+	}
+	
+	if(!f.userMail.value){
+		alert("이메일을 입력해주세요.")
+		f.userPwd.focus();
+		return;
+	}
+	if(!f.userText.value){
+		alert("내용을 입력해주세요.")
+		f.userText.focus();
+		return;
+	}
+	
+	alert("소중한 의견 감사드립니다.")
+	f.submit();
+}
+
+
+</script>
+
+</head>	
+
 
 <body>
-	<!-- Page Preloder -->
-	<div id="preloder" style="display: none;">
+<!-- Page Preloder -->
+    <div id="preloder" style="display: none;">
 		<div class="loader" style="display: none;"></div>
 	</div>
 
-	<!-- Humberger Begin -->
+    <!-- Humberger Begin -->
 	<div class="humberger__menu__overlay"></div>
 	<div class="humberger__menu__wrapper">
 		<div class="humberger__menu__logo">
@@ -190,7 +221,7 @@
 	</div>
 	<!-- Humberger End -->
 
-	<!-- Header Section Begin -->
+    <!-- Header Section Begin -->
 	<header class="header">
 		<div class="header__top">
 			<div class="container">
@@ -293,7 +324,7 @@
 	</header>
 	<!-- Header Section End -->
 
-	<!-- Hero Section Begin -->
+   <!-- Hero Section Begin -->
 	<section class="hero">
 		<div class="container">
 			<div class="row">
@@ -303,47 +334,26 @@
 							<i class="fa fa-bars"></i> <span>카테고리</span>
 						</div>
 
-						<ul>
-							<li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>		
-							<c:choose>
-							<c:when test="${ sessionScope.customerInfo.customerId=='admin'}">
-								<li><a href="<%=cp%>/main/item/created.do"> [ 상품등록 ]</a></li>
-							</c:when>
-							<c:otherwise><li>&nbsp;</li></c:otherwise>
-							</c:choose>						
-						</ul>
-
 					</div>
 				</div>
 
 				<div class="col-lg-9">
 					<div class="hero__search">
-					
-					<div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    제품명
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="제품명 입력하세요">
-                                <button type="submit" class="site-btn">검색하기</button>
-                            </form>
-                        </div>
+						<div class="hero__search__form ">
+							<form action="">
+								<div class="hero__search__categories">
+									제품명 
+									<!-- <span class="arrow_carrot-down"></span> -->
+								</div>
+								<ul>
+
+
+								</ul>
+
+								<input type="text" placeholder="제품명 입력하세요">
+								<button type="submit" class="site-btn">검색하기</button>
+							</form>
+						</div>
 						<div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
 								<i class="fa fa-truck"></i>
@@ -353,119 +363,47 @@
 								<span> 샛별ㆍ낮 배송</span>
 							</div>
 						</div>
-
-                    </div>
-                    <div class="hero__item set-bg" style="padding-left: 0">
-                    <img src="/ccookat/Data/style/img/banner/event_main.jpg" alt="" align="middle">
-                    </div>
-                </div>
-            </div>
+               		 </div>
+            	</div>
+            </div>	
         </div>
     </section>
     <!-- Hero Section End -->
 
-    <!-- Categories Section Begin -->
-   <section class="categories">
-        <div class="container">
-            <div class="row">
-                <div class="categories__slider owl-carousel">
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_1.jpg">
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_2.jpg">
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_3.jpg">
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_4.jpg">
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/ccookat/Data/style/img/categories/event_5.jpg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
+    <!-- Map Begin -->
+    <div class="map">
+    	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12658.736749990943!2d127.0631337!3d37.5153661!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa9598cbbdbd0ac2a!2sCOOKAT!5e0!3m2!1sko!2skr!4v1659921467162!5m2!1sko!2skr" 
+    	width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <!-- Map End -->
 
-
-    <!-- Featured Section Begin -->
-    <section class="featured spad">
+    <!-- Contact Form Begin -->
+    <div class="contact-form spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>인기상품</h2>
-                    </div>
-                    <div class="featured__controls">
-                        <ul>
-                            <li class="active" data-filter="*">전체상품</li>
-                            <li>&nbsp; |</li>
-                            <li data-filter=".fruit">채소ㆍ과일</li>
-                            <li>&nbsp; |</li>
-                            <li data-filter=".bread">밥ㆍ빵ㆍ면</li>
-                            <li>&nbsp; |</li>
-                            <li data-filter=".meat">정육ㆍ계란</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>  
-            <div class="row featured__filter">   
-            <c:forEach var="idto" items="${mainList }">          
-                <div class="col-lg-3 col-md-4 col-sm-6 mix ${idto.itemType }">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="${itemImagePath }/${idto.itemImage1}"
-                        style="background-image: url(&quot;${itemImagePath }/${idto.itemImage1}&quot;);"
-                        onclick="location.href='${itemDetailUrl }${idto.itemType }&itemNum=${idto.itemNum }';">
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">${idto.itemName }</a></h6>
-                            <h5><fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" pattern="0"/>원</h5>
-                             <span style="font-size: small; color: #707070; text-decoration: line-through;">${idto.itemPrice }원</span>
-                        </div>
-                    </div>
-                </div>
-             </c:forEach>           
-            </div>
-        </div>
-    </section>
-   
-    
-    <!-- Featured Section End -->
-
-    <!-- Banner Begin -->
-    <div class="banner">
-        <div class="container container_banner">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="/ccookat/Data/style/img/banner/event_banner_1.jpg" alt="" >
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="/ccookat/Data/style/img/banner/event_banner_2.jpg" alt="">
+                    <div class="contact__form__title">
+                        <h2>고객의 소리</h2>
                     </div>
                 </div>
             </div>
+            <form action="#" method="post" name="myForm">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" name="userId" placeholder=" 성 함" >
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" name="userMail" placeholder=" 이 메 일 ">
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <textarea placeholder="의견을 입력해주세요." name="userText"></textarea>
+                        <input style="background-color: #FF5833; color: #ffffff; height: 60px;" type="button" value="메세지 전송" onclick="sendIt();"/>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <!-- Banner End -->
-
-    <!-- Latest Product Section Begin -->
-    
-    <!-- Latest Product Section End -->
-
-    <!-- Blog Section Begin -->
-    
-    <!-- Blog Section End -->
+    <!-- Contact Form End -->
 
     <!-- Footer Section Begin -->
     <section class="contact spad footer-details">
@@ -505,8 +443,8 @@
 			</div>
 		</div>
 	</section>
-	<div id="footer">
-		<div class="footer-top">
+    <div id="footer">
+		<div class="footer-top ">
 			<div class="inner_footer">
 				<div class="footer_cc">
 					<div>
@@ -556,9 +494,9 @@
 			</div>
 		</div>
 	</div>
-	<!-- Footer Section End -->
+    <!-- Footer Section End -->
 
-	<!-- Js Plugins -->
+    <!-- Js Plugins -->
 	<script src="/ccookat/Data/style/js/jquery-3.3.1.min.js"></script>
 	<script src="/ccookat/Data/style/js/bootstrap.min.js"></script>
 	<script src="/ccookat/Data/style/js/jquery.nice-select.min.js"></script>
@@ -567,7 +505,6 @@
 	<script src="/ccookat/Data/style/js/mixitup.min.js"></script>
 	<script src="/ccookat/Data/style/js/owl.carousel.min.js"></script>
 	<script src="/ccookat/Data/style/js/main.js"></script>
-
 
 </body>
 </html>
