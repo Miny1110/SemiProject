@@ -1995,9 +1995,10 @@ ol {
 }
 
 .primary-btn.cart-btn {
-	color: #6f6f6f;
+	color: #ffffff;
 	padding: 14px 30px 12px;
-	background: #f5f5f5;
+	background: #FF5833;
+	border-radius: 4px;
 }
 
 .primary-btn.cart-btn span {
@@ -2038,7 +2039,7 @@ ol {
 	padding: 15px 30px 11px;
 	font-size: 12px;
 	letter-spacing: 4px;
-	background: #6f6f6f;
+	background: #FF5833;
 }
 
 .shoping__checkout {
