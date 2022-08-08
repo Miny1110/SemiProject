@@ -329,11 +329,11 @@
 	<!-- Blog Details Hero End -->
 	<!-- Blog Details Section Begin -->
 	<!-- 관리자 -->
-	<section class="blog-details spad">
+	<section>
 		<div class="container">
 			<div class="row">
 				<div id="qna_detail">
-					<br> 
+					<br> <br> <br> <br>
 					<h1><b>질문과 답변</b></h1>
 					<br>
 					<table >
@@ -375,7 +375,7 @@
 	<!-- Blog Details Section End -->
 		
 	
-		<div class="container">
+		<div class="container answer_div">
 			<div class="row">
 				<div id="qna_detail">
 					<br> <br> <br>
