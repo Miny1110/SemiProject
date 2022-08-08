@@ -283,6 +283,8 @@
  							</c:when>
  							<c:otherwise>                
                             <c:forEach var="ctdto" items="${lists }">
+                            <c:set var="totalprice" value="${totalprice + ctdto.cartTotPrice}"/>
+                            <c:set var="beforedc" value="${beforedc + ctdto.itemPrice*ctdto.cartItemCount}"/>
                                 <tr>
                                     <td class="shoping__cart__item">
                                         <img src="${itemImagePath }/${ctdto.itemName}" alt="">
@@ -308,6 +310,7 @@
                                         <a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"><span class="icon_close"></span></a>
                                     </td>
                                 </tr>
+                                
                                 </c:forEach> 
                                 </c:otherwise>   
                                 </c:choose>                               
@@ -339,8 +342,9 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>할인금액 <span> ${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice} </span></li>
-                            <li>총 결제금액 <span> ${ctdto.cartTotPrice}</span></li>
+                        	<li>총 상품금액 <span> ${beforedc} </span></li>
+                            <li>총 할인금액 <span> ${(beforedc-totalprice)*-1} </span></li>
+                            <li>총 결제금액 <span> ${totalprice}</span></li>
                         </ul>
                         <a href="#" class="primary-btn"> 결&nbsp;제&nbsp;하&nbsp;기</a>
                     </div>
