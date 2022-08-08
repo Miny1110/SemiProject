@@ -347,16 +347,38 @@
 							</tr>
 							<c:forEach var="qdto" items="${lists }">
 							<tr id="lists">
-								
 									<td class="qna_tr">${qdto.qnaNum }</td>
+									<c:choose>
+							<c:when test="${sessionScope.customerInfo.customerId==qdto.customerId||
+									 sessionScope.customerInfo.customerId=='admin'}">	
 									<td><a href="${detailUrl }&qnaNum=${qdto.qnaNum}">
 									${qdto.qnaTitle }</a></td>
+									</c:when>
+									<c:otherwise>
+								<td>${qdto.qnaTitle }</a></td>	
+									</c:otherwise>
+									</c:choose>
+						
 									<td class="qna_tr">${qdto.customerId }</td>
 									<td class="qna_tr">${qdto.qnaCreated }</td>
 									<td class="qna_tr">${qdto.qnaHitCount }</td>
-								
+									
+									
+									
 							</tr>	
 							</c:forEach>
+							
+							
+						<%-- 	<c:if test="${sessionScope.customerInfo.customerId!=qdto.customerId}">	
+									<td class="qna_tr">${qdto.qnaNum }</td>
+								<td class="qna_tr">${detailUrl }&qnaNum=${qdto.qnaNum}">
+									${qdto.qnaTitle }</td>
+									<td class="qna_tr">${qdto.customerId }</td>
+									<td class="qna_tr">${qdto.qnaCreated }</td>
+									<td class="qna_tr">${qdto.qnaHitCount }</td>
+									</c:if> --%>
+									
+						
 						</tbody>
 					</table>
 
