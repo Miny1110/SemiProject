@@ -15,6 +15,8 @@ import org.omg.CORBA.INTERNAL;
 
 import com.ccookat.CartDAO;
 import com.ccookat.CartDTO;
+import com.ccookat.CustomerDAO;
+import com.ccookat.CustomerDTO;
 import com.ccookat.CustomerInfo;
 import com.util.DBConn;
 
@@ -35,8 +37,11 @@ public class CustomerOrderServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Connection conn = DBConn.getconnection();
+		CustomerDAO cdao = new CustomerDAO(conn);
 		CartDAO ctdao = new CartDAO(conn);
 		CartDTO ctdto = new CartDTO();
+		CustomerDTO cdto = new CustomerDTO();
+		
 
 		String cp = request.getContextPath();
 		String uri = request.getRequestURI();
@@ -58,6 +63,7 @@ public class CustomerOrderServlet extends HttpServlet {
 				int cartCount = ctdao.cartCount(customerId);
 
 					request.setAttribute("ctdto", ctdto);
+					request.setAttribute("cdto", cdto);
 					request.setAttribute("itemImagePath", itemImagePath);
 					request.setAttribute("lists", lists);
 					request.setAttribute("cartCount", cartCount);
