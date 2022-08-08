@@ -270,8 +270,8 @@
                                     <th class="shoping__product">상품</th>
                                     <th>가격</th>
                                     <th>할인가</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
+                                    <th>수량</th>
+                                    <th>총금액</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -307,7 +307,7 @@
                                     <td class="shoping__cart__total">
                                             ${ctdto.cartTotPrice }
                                     </td>
-                                    <td class="shoping__cart__item__close" >
+                                    <td class="shoping__cart__item__close" > 
                                         <a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"><span class="icon_close"></span></a>
                                     </td>
                                 </tr>
@@ -401,16 +401,16 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
-                                <h4>주문내역</h4>
-                                <div class="checkout__order__products">상품목록 <span>가격</span></div>
+                                <h4>주문하기</h4>
+                               <%--  <div class="checkout__order__products">상품목록 <span>가격</span></div>
                                 <ul>
-                 <%--                <c:forEach var="ctdto" items="lists"> --%>
-                                    <li>${ctdto.itemNum} - ${ctdto.itemNadddddme}<span>${ctdto.itemPrice}</span> </li>
+                              <c:forEach var="ctdto" items="lists"> 
+                                    <li>${ctdto.itemNum}/${ctdto.itemName}<span>${ctdto.itemPrice}</span> </li>
                                 </ul>
-                            <%--     </c:forEach> --%>
-                                <div class="checkout__order__total">총가격 <span>$750.99</span></div>
+                            </c:forEach>  --%>
+                                <div class="checkout__order__total">총가격 <span> ${totalprice} </span></div>
                             
-                               d
+                               
                                 <div class="checkout__input__checkbox">
                                     <label for="payment">
                                         Check Payment
