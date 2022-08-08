@@ -43,7 +43,7 @@ public class ReviewDAO {
 	}
 
 	// 전체 데이터 갯수 구하기
-	public int getDataCount() {
+	public int getDataCount(int itemNum) {
 
 		int totalCount = 0;
 
@@ -53,10 +53,12 @@ public class ReviewDAO {
 
 		try {
 
-			sql = "select nvl(count(*),0) from review ";
+			sql = "select nvl(count(*),0) from review where itemNum=?";
 
 			pstmt = conn.prepareStatement(sql);
 
+			pstmt.setInt(1, itemNum);
+			
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {

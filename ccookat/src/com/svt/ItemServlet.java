@@ -149,8 +149,8 @@ public class ItemServlet extends HttpServlet {
 
 
 			//하나의 페이지에 보일 페이지 갯수
-			int reviewtotalArticle = rdao.getDataCount();				
-			int numPerPage = 3;
+			int reviewtotalArticle = rdao.getDataCount(itemNum);				
+			int numPerPage = 1;
 			int totalPage = myPage.getPageCount(numPerPage, reviewtotalArticle);
 			
 			
