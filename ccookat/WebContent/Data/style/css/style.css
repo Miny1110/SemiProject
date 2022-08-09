@@ -1297,6 +1297,7 @@ ol {
 	height: 270px;
 	position: relative;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .product__discount__item__pic .product__discount__percent {
