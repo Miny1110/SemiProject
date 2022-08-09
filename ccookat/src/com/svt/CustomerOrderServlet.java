@@ -130,8 +130,7 @@ public class CustomerOrderServlet extends HttpServlet {
 				//장바구니에 있는 정보를 받아서
 				List<CartDTO> lists = ctdao.selectAll(customerId);
 				
-				//반복문 돌려서 detailinsert에 데이터 추가하고 
-				
+				//반복문 돌려서 detailinsert에 데이터 추가하고 				
 				Iterator<CartDTO> it = lists.iterator();
 								
 				while(it.hasNext()) {
@@ -155,7 +154,8 @@ public class CustomerOrderServlet extends HttpServlet {
 				ctdao.orderdelete(customerId);
 				
 				//item db연결해서 주문한 수량만큼 item재고 빼기
-				
+				//주문정보에 insert 되면 item 테이블이 수정되게끔 트리거를 실행하고 싶었으나. .. .할수없었따
+				idao.afterOrder();
 				
 				
 				

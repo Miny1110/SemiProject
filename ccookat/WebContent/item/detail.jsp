@@ -354,10 +354,15 @@
                         <input type="hidden" value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" name="itemPrice">
                         <input type="hidden" name="itemNum" value="${idto.itemNum}">
                         <input type="hidden" name="itemType" value="${itemType}"/> 
-                        
+                        <c:choose>
+                        <c:when test="${idto.itemStock>0 }">
                         <a class="primary-btn" onclick="cartin();" style="cursor: pointer; color: white; ">장바구니 넣기</a>
-                        
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        </c:when>
+                        <c:otherwise>
+                         <a class="primary-btn"  style="color: white; background-color: gray">품&nbsp;&nbsp;절</a>
+                        </c:otherwise>
+                        </c:choose>
+                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>                    
 						</form>
                         <ul>
                             <li><b>Availability</b> <span>${idto.itemStock }개</span></li>
