@@ -105,7 +105,7 @@ public class ItemServlet extends HttpServlet {
 
 			}
 
-			url = cp + "main/item/list.do" ;
+			url = cp + "/main/item/list.do" ;
 			resp.sendRedirect(url);
 			return;
 
