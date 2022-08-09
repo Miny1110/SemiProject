@@ -247,6 +247,28 @@ public class CartDAO {
 
 		return cartCount;
 	}
+	
+	public void orderdelete(String customerId) {		
+		PreparedStatement pstmt = null;
+		String sql;
+
+		try {
+
+			sql = "delete from cart where customerId = ? ";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, customerId);
+
+			pstmt.executeUpdate();
+
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}	
+		
+	}
 
 
 

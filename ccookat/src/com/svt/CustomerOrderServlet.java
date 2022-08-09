@@ -2,6 +2,7 @@ package com.svt;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -65,22 +66,18 @@ public class CustomerOrderServlet extends HttpServlet {
 
 				String customerId = customerInfo.getCustomerId();
 
-				List<CartDTO> lists = ctdao.selectAll(customerId);
+				//회원이 장바구니에 가지고있던 모든 리스트 뽑아옴 
+				List<CartDTO> lists = ctdao.selectAll(customerId); 
 
 				int cartCount = ctdao.cartCount(customerId);
 
 				//뿌려줄 회원정보 담아와야함 
-				cdto = cdao.getReadData(customerId);
-				
-				
-				//
-				
+				cdto = cdao.getReadData(customerId);				
 				
 				request.setAttribute("cartCount", cartCount);//장바구니 수량 표시해줄 데이터
 				request.setAttribute("cdto", cdto);//회원정보 깔아줄 데이터
 				request.setAttribute("itemImagePath", itemImagePath);//장바구니에서 이미지 끌어올 데이터
 				request.setAttribute("lists", lists); //장바구니에 넣은 상품 뿌려줄 리스트
-
 
 				url = "/order/orderlist.jsp";
 				forward(request, response, url);	
@@ -112,17 +109,26 @@ public class CustomerOrderServlet extends HttpServlet {
 
 				//장바구니에 있는 정보를 받아서
 				List<CartDTO> lists = ctdao.selectAll(customerId);
-				//반복문 돌려서 detailinsert에 데이터 추가하고 
-				//cartdelete 해야함
-
 				
+				//반복문 돌려서 detailinsert에 데이터 추가하고 
+				
+				Iterator<CartDTO> it = lists.iterator();
+				
+				while(it.hasNext()) {
+					
+					
+					
+					
+					
+				}
+				//cartdelete 해야함 어차피 장바구니 전체상품 다 지워야하니까
+				//id조회해서 그 id가 가지고있는거 다지우는걸로 하면될듯				
+				ctdao.orderdelete(customerId);
 				
 				//주문정보 받아와야함
+				//detail테이블에 정보추가
 				CustomerOrderDTO ordto = new CustomerOrderDTO();
-				
-
-				
-				
+								
 				//일단 메인으로감....결제완료페이지만들예정
 				url = "/main";
 				forward(request, response, url);	
