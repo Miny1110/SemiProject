@@ -17,6 +17,7 @@ import org.apache.tomcat.util.http.fileupload.UploadContext;
 
 import com.ccookat.CartDAO;
 import com.ccookat.CustomerInfo;
+import com.ccookat.ItemDAO;
 import com.ccookat.ItemDTO;
 import com.ccookat.ReviewDAO;
 import com.ccookat.ReviewDTO;
@@ -50,6 +51,7 @@ public class ReviewServlet extends HttpServlet {
 		Connection conn = DBConn.getconnection();
 		ReviewDAO rdao = new ReviewDAO(conn);
 		CartDAO ctdao = new CartDAO(conn);
+		ItemDAO idao = new ItemDAO(conn);
 		MyPage myPage = new MyPage();
 		
 		String cp = req.getContextPath();
@@ -75,6 +77,7 @@ public class ReviewServlet extends HttpServlet {
 		//페이징 작업
 		String pageNum = req.getParameter("pageNum");
 		int itemNum =Integer.parseInt(req.getParameter("itemNum"));
+		String itemType = req.getParameter("itemType");
 			
 		int currentPage = 1;
 		if(pageNum!=null) 
@@ -117,10 +120,10 @@ public class ReviewServlet extends HttpServlet {
 
 		if(customerInfo!=null) {
 		String customerId = customerInfo.getCustomerId();
-
+		
+		
 		int cartCount = ctdao.cartCount(customerId);
-		req.setAttribute("cartCount", cartCount);
-		}
+		req.setAttribute("cartCount", cartCount);		}
 		req.setAttribute("itemNum", itemNum);
 		req.setAttribute("imagePath", imagePath);
 		req.setAttribute("pageNum", pageNum);
@@ -131,6 +134,7 @@ public class ReviewServlet extends HttpServlet {
 		req.setAttribute("reviewtotalArticle", reviewtotalArticle);
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("reviewtotalArticle", reviewtotalArticle);
+		req.setAttribute("itemType", itemType);
 		
 		url = "/item/detail.jsp?pageNum="+pageNum;
 		forward(req, resp, url);
@@ -163,6 +167,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
 
 		
 		req.setAttribute("itemNum", itemNum);
@@ -185,9 +190,10 @@ public class ReviewServlet extends HttpServlet {
 		
 		int pageNum = Integer.parseInt(mr.getParameter("pageNum"));
 		int itemNum = Integer.parseInt(mr.getParameter("itemNum"));
-	
+		
 		ReviewDTO rdto = new ReviewDTO();
 		ItemDTO idto = new ItemDTO();
+		
 		int maxNum = rdao.getMaxNum();
 	
 		/*Enumeration enums = req.getParameterNames();
@@ -259,9 +265,12 @@ public class ReviewServlet extends HttpServlet {
 		
 		int reviewNum =Integer.parseInt(mr.getParameter("reviewNum"));
 		int pageNum = Integer.parseInt(mr.getParameter("pageNum"));
+		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+		String itemType = req.getParameter("itemType");
 		
 	
 		ReviewDTO rdto = new ReviewDTO();
+		ItemDTO idto = idao.getReadData_detail(itemNum);
 		
 		rdto.setReviewNum(Integer.parseInt(mr.getParameter("reviewNum")));
 		rdto.setReviewTitle(mr.getParameter("reviewTitle"));
@@ -274,13 +283,14 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.updateData(rdto);
 		
-		url = cp + "/main/item/list.do?pageNum="+pageNum ;
+		url = cp + "/main/item/list.do?pageNum="+pageNum+"&itemNum"+itemNum+"&itemType"+itemType;
 		resp.sendRedirect(url);
-	} else if (uri.indexOf("deleted.do") != -1) {
+} else if (uri.indexOf("deleted.do") != -1) {
 		
 		int reviewNum = Integer.parseInt(req.getParameter("reviewNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+		String itemType = req.getParameter("itemType");
 		
 		ReviewDTO rdto = rdao.getReadData(reviewNum);
 		
@@ -288,7 +298,7 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.deleteData(reviewNum);
 		
-		url = cp + "/main/item/list.do?pageNum="+pageNum+"&itemNum"+itemNum;
+		url = cp + "/main/item/list.do?pageNum="+pageNum+"&itemNum"+itemNum+"&itemType"+itemType;
 		resp.sendRedirect(url);
 	}
 		
