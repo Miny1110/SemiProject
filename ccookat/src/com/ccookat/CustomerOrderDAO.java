@@ -91,7 +91,7 @@ public class CustomerOrderDAO {
 
 		try {
 		
-			sql ="select ordernum,customerid,TO_CHAR(ordate,'HH24:MI:SS') ordate,";
+			sql ="select ordernum,customerid,TO_CHAR(ordate,'yyyy/mm/dd HH24:MI:SS') ordate,";
 			sql+="customerOrderName,customerOrderZipCode,customerOrderAddr1,customerOrderAddr2,";
 			sql+="customerOrderTel,customerOrderPay,customerMemo,customerOrderPrice ";
 			sql+="from customerorder where customerId = ?";
