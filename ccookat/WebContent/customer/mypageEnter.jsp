@@ -329,6 +329,7 @@
 				<div class="tab-pane active" id="tabs-2" role="tabpanel" align="center">
 					<div class="product__details__tab__desc">
 						<div id="login-name">주문조회</div>
+						<c:forEach var="ordto" items="orderlists">
 						<table class="qna_table">
 							<tbody>
 								<tr height="60px">
@@ -338,6 +339,7 @@
 									<th class="qna_tr_test" width="200">결제일시</th>
 									<th class="qna_tr_test" width="120">배송상태</th>
 								</tr>
+								<c:forEach var="oddto" items="detaillists">
 								<tr height="60px">
 									<td class="qna_tr_test">1</td>
 									<td class="qna_tr_test_center">말린망고</td>
@@ -345,8 +347,10 @@
 									<td class="qna_tr_test">2022.08.07</td>
 									<td class="qna_tr_test">배송중</td>
 								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
+						</c:forEach>
 					</div>
 				</div>
 				<!-- 배송조회창 끝 -->
