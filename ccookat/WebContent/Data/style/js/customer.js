@@ -8,11 +8,11 @@ function sendIt() {
 			return;
 		}
 		
-		/*if(f.idDuplication.value != "idCheck") {
-			alert("아이디 중복체크를 해주세요.");
+		if(f.idDuplication.value != "idcheck"){
+			alert("아이디 중복체크를 해주세요.")
 			return;
 		}
-		*/
+		
 		if(!f.customerPwd.value){
 			alert("비밀번호를 입력하세요.");
 			f.customerPwd.focus();
@@ -39,6 +39,12 @@ function sendIt() {
 		
 		if(!f.customerEmail.value){
 			alert("이메일을 입력하세요.");
+			f.customerEmail.focus();
+			return;
+		}
+		
+		if(f.emailDuplication.value != "emailcheck"){
+			alert("올바른 이메일 형식이 아닙니다.")
 			f.customerEmail.focus();
 			return;
 		}
@@ -90,15 +96,33 @@ function isValidEmail(customerEmail) {
 function checkFmEmail(){
 	
 	var f= document.myForm;
+	var customerEmail = f.customerEmail.value;
 	
-	if(!isValidEmail(f.customerEmail.value)){
-		alert("\n올바른 이메일 형식이 아닙니다.");
+	if(!isValidEmail(customerEmail)){
+		alert("올바른 이메일 형식이 아닙니다.");
+		f.emailDuplication.value = "emailUncheck";
 		setTimeout(function(){f.customerEmail.focus();}, 10);
 		return;
+	}else{
+		f.emailDuplication.value = "emailcheck";
 	}
 	
 }
+
+
+function idChk(){
 	
+	var f = document.myForm;
+	
+	if(!f.customerId.value){
+		alert("아이디를 입력하세요");
+		f.customerId.focus();
+		return;
+	}else{
+		f.action = "/ccookat/main/customer/idcheck.do";
+		f.submit();
+	}
+}
 
 
 function customerPwdChk(){
