@@ -14,9 +14,6 @@ public class CartDAO {
 		this.conn = conn;	
 	}
 
-
-
-
 	public int getMaxNum() {
 
 		int maxNum =0;

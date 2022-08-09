@@ -15,36 +15,6 @@ public class CustomerOrderDTO {
 	private int customerPrice;
 	
 	
-	public int getCustomerPrice() {
-		return customerPrice;
-	}
-	public void setCustomerPrice(int customerPrice) {
-		this.customerPrice = customerPrice;
-	}
-	public String getOrdate() {
-		return ordate;
-	}
-	public void setOrdate(String ordate) {
-		this.ordate = ordate;
-	}
-	public String getCustomerOrderAddr1() {
-		return customerOrderAddr1;
-	}
-	public void setCustomerOrderAddr1(String customerOrderAddr1) {
-		this.customerOrderAddr1 = customerOrderAddr1;
-	}
-	public String getCustomerOrderAddr2() {
-		return customerOrderAddr2;
-	}
-	public void setCustomerOrderAddr2(String customerOrderAddr2) {
-		this.customerOrderAddr2 = customerOrderAddr2;
-	}
-	public String getCustomerMemo() {
-		return customerMemo;
-	}
-	public void setCustomerMemo(String customerMemo) {
-		this.customerMemo = customerMemo;
-	}
 	public int getOrderNum() {
 		return orderNum;
 	}
@@ -56,6 +26,12 @@ public class CustomerOrderDTO {
 	}
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
+	}
+	public String getOrdate() {
+		return ordate;
+	}
+	public void setOrdate(String ordate) {
+		this.ordate = ordate;
 	}
 	public String getCustomerOrderName() {
 		return customerOrderName;
@@ -69,7 +45,18 @@ public class CustomerOrderDTO {
 	public void setCustomerOrderZipCode(String customerOrderZipCode) {
 		this.customerOrderZipCode = customerOrderZipCode;
 	}
-	
+	public String getCustomerOrderAddr1() {
+		return customerOrderAddr1;
+	}
+	public void setCustomerOrderAddr1(String customerOrderAddr1) {
+		this.customerOrderAddr1 = customerOrderAddr1;
+	}
+	public String getCustomerOrderAddr2() {
+		return customerOrderAddr2;
+	}
+	public void setCustomerOrderAddr2(String customerOrderAddr2) {
+		this.customerOrderAddr2 = customerOrderAddr2;
+	}
 	public String getCustomerOrderTel() {
 		return customerOrderTel;
 	}
@@ -82,6 +69,19 @@ public class CustomerOrderDTO {
 	public void setCustomerOrderPay(String customerOrderPay) {
 		this.customerOrderPay = customerOrderPay;
 	}
+	public String getCustomerMemo() {
+		return customerMemo;
+	}
+	public void setCustomerMemo(String customerMemo) {
+		this.customerMemo = customerMemo;
+	}
+	public int getCustomerPrice() {
+		return customerPrice;
+	}
+	public void setCustomerPrice(int customerPrice) {
+		this.customerPrice = customerPrice;
+	}
+	
 	
 	
 	

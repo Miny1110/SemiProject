@@ -53,7 +53,7 @@ public class CustomerOrderDAO {
 		
 		try {
 			
-			sql = "insert into order(orderNum,customerId,ordate,";
+			sql = "insert into order(orderNum,customerId,to_char(ordate,'HH24:MI:SS'),";
 			sql+= "customerOrderName,customerOrderZipCode,customerOrderAddr1,customerAddr2,customerOrderTel,customerOrderPay,customerMemo) ";
 			sql+= "values (?,?,?,?,?,?,?,?,?,?)";
 			
