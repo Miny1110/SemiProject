@@ -3,6 +3,8 @@ package com.svt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
@@ -16,7 +18,9 @@ import com.ccookat.CustomerDAO;
 import com.ccookat.CustomerDTO;
 import com.ccookat.CustomerInfo;
 import com.ccookat.CustomerOrderDAO;
+import com.ccookat.CustomerOrderDTO;
 import com.ccookat.OrderDetailDAO;
+import com.ccookat.OrderDetailDTO;
 import com.ccookat.ReviewDAO;
 import com.util.DBConn;
 import com.util.MyPage;
@@ -166,14 +170,17 @@ public class CustomerServlet extends HttpServlet{
 			String customerId = customerInfo.getCustomerId();
 
 			//여기에 주문정보랑 주문디테일 뽑아야함
+			OrderDetailDTO oddto = new OrderDetailDTO();
+			CustomerOrderDTO ordto = new CustomerOrderDTO();
 			
-			
-			
-			
-			
-			
-			
-			
+			List<CustomerOrderDTO> orderlists = new ArrayList<CustomerOrderDTO>();
+			List<OrderDetailDTO> dtlists = new ArrayList<OrderDetailDTO>();
+						
+			orderlists = ordao.selectAll(customerId);
+			dtlists = oddao.selectAll(customerId);
+						
+			req.setAttribute("orderlists", orderlists);
+			req.setAttribute("dtlists", dtlists);
 			
 			url = "/customer/mypageEnter.jsp";
 			forward(req, resp, url);
