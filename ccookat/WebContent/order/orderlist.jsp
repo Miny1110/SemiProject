@@ -423,23 +423,23 @@
                         <div class="col-lg-8 col-md-6">
                             <div class="checkout__input order_box_size">
                                <p>이름<span>*</span></p>
-                            <input type="text" value="${sessionScope.customerInfo.customerName }" name="customerName"/>
+                            <input type="text" value="${sessionScope.customerInfo.customerName }" name="customerOrderName"/>
                             </div>
                             <div class="checkout__input order_box_size">
                                  <p>전화번호<span>*</span></p>
-                                 <input type="text" value="${cdto.customerTel }" name="customerTel"/>
+                                 <input type="text" value="${cdto.customerTel }" name="customerOrderTel"/>
                             </div>
                             <div class="checkout__input order_box_size">
                                 <p> 우편번호<span>*</span></p>
-                                <input type="text" value="${cdto.customerZipcode }" name="customerZipcode"/>
+                                <input type="text" value="${cdto.customerZipcode }" name="customerOrderZipCode"/>
                             </div>
                             <div class="checkout__input order_box_size">
                                 <p>주소<span>*</span></p>
-                                <input type="text" value="${cdto.customerAddr1}" name="customerAddr1"/>
+                                <input type="text" value="${cdto.customerAddr1}" name="customerOrderAddr1"/>
                             </div>
                             <div class="checkout__input order_box_size">
                                 <p>상세주소<span>*</span></p>
-                                <input type="text" value="${cdto.customerAddr2}" name="customerAddr2">
+                                <input type="text" value="${cdto.customerAddr2}" name="customerOrderAddr2">
                             </div>
                             <div class="checkout__input order_box_size">
                                 <p>배송메모<span>*</span></p>
