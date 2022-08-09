@@ -53,7 +53,7 @@ public class CustomerOrderServlet extends HttpServlet {
 			CustomerInfo customerInfo = new CustomerInfo();
 			
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
-			//카트 창 참조
+			
 			if(customerInfo!=null) {
 
 				String customerId = customerInfo.getCustomerId();
@@ -61,16 +61,29 @@ public class CustomerOrderServlet extends HttpServlet {
 				List<CartDTO> lists = ctdao.selectAll(customerId);
 
 				int cartCount = ctdao.cartCount(customerId);
+				//주문하기 갈때 가지고 갈것들
+				int itemNum = Integer.parseInt(request.getParameter("itemNum"));
+				int cartNum = Integer.parseInt(request.getParameter("cartNum"));
 
 					request.setAttribute("ctdto", ctdto);
 					request.setAttribute("cdto", cdto);
 					request.setAttribute("itemImagePath", itemImagePath);
 					request.setAttribute("lists", lists);
 					request.setAttribute("cartCount", cartCount);
-					request.setAttribute("message",	"장바구니에 담긴 상품이 없습니다.");		
+					request.setAttribute("itemnum", itemNum);
+					request.setAttribute("cartNum", cartNum);
+						
+					
 
 				url = "/order/orderlist.jsp";
 				forward(request, response, url);	
+				
+				
+			}else if(uri.indexOf("order_ok.do")!=-1) {
+				
+			//오더에 인서트 시킬때는 아이템넘/카트넘/세션아이디 받아서 아이디로 조인..? 
+				
+
 				
 			}
 		}

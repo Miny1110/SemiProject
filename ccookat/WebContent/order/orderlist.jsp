@@ -356,7 +356,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>주소<span>*</span></p>
-                                <input type="text" value="${cdto.customerAddr }" class="checkout__input__add">
+                                <input type="text" value="${cdto.customerAddr}" name="customerAddr"/>
                             </div>
                             <div class="checkout__input">
                                 <p>상세주소<span>*</span></p>
@@ -368,13 +368,13 @@
                             </div>
                             <div class="checkout__input">
                                 <p> 우편번호<span>*</span></p>
-                                <input type="text" value="${cdto.customerZipcode}" class="checkout__input__add">
+                                <input type="text" value="${cdto.customerZipcode }" name="customerZipcode"/>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>전화번호<span>*</span></p>
-                                        <input type="text" value="${cdto.customerTel}">
+                                        <input type="text" value="${cdto.customerTel }" name="customerTel"/>
                                     </div>
                                 </div>
                               
