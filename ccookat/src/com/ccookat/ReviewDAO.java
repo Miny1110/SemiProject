@@ -109,7 +109,7 @@ public class ReviewDAO {
 
 	}
 
-	//전체데이터 가져오기
+/*	//전체데이터 가져오기
 	public List<ReviewDTO> getLists(int start, int end,int itemNum){
 
 		List<ReviewDTO> reviewlists = new ArrayList<ReviewDTO>();
@@ -163,7 +163,60 @@ public class ReviewDAO {
 
 		return reviewlists;
 
+	}*/
+	
+	//전체데이터 가져오기(페이징처리x)
+	public List<ReviewDTO> getLists(int itemNum){
+
+		List<ReviewDTO> reviewlists = new ArrayList<ReviewDTO>();
+		ReviewDTO rdto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+
+			sql = "select * from ("; 
+			sql+= "select rownum rnum, data.* from (";
+			sql+= "select customerId,reviewTitle,reviewContent,reviewNum,reviewImage,itemNum,reviewCreated,reviewLike ";
+			sql+= "from review where itemNum=? order by reviewNum desc) data)";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, itemNum);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				rdto = new ReviewDTO();
+
+				rdto.setCustomerId(rs.getString("customerId"));
+				rdto.setReviewTitle(rs.getString("reviewTitle"));
+				rdto.setReviewContent(rs.getString("reviewContent"));
+				rdto.setReviewNum(rs.getInt("reviewNum"));
+				rdto.setReviewImage(rs.getString("reviewImage"));
+				rdto.setItemNum(rs.getInt("itemNum"));
+				rdto.setReviewCreated(rs.getString("reviewCreated"));
+				rdto.setReviewLike(rs.getInt("reviewLike"));
+
+				reviewlists.add(rdto);
+
+			}
+
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+
+		}
+
+		return reviewlists;
+
 	}
+	
+	
 	//하나 읽어오기
 	public ReviewDTO getReadData(int reviewNum) {
 

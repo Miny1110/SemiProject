@@ -369,7 +369,7 @@
 													${qdto.qnaTitle }</a></td>
 										</c:when>
 										<c:otherwise>
-											<td>${qdto.qnaTitle }</a></td>
+											<td>${qdto.qnaTitle }</td>
 										</c:otherwise>
 									</c:choose>
 

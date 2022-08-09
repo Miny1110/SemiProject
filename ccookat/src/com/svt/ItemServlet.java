@@ -114,7 +114,7 @@ public class ItemServlet extends HttpServlet {
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 			
 			//페이지번호 가져와
-			String pageNum = req.getParameter("pageNum");
+			String currentPage = req.getParameter("pageNum");
 
 			//아이템타입 가져와
 			String itemType = req.getParameter("itemType");
@@ -142,15 +142,15 @@ public class ItemServlet extends HttpServlet {
 			}
 
 
-			int currentPage = 1;
+			/*int currentPage = 1;
 			if(pageNum!=null) {
 				currentPage = Integer.parseInt(pageNum);
-			}
+			}*/
 
 
 			//하나의 페이지에 보일 페이지 갯수
 			int reviewtotalArticle = rdao.getDataCount(itemNum);
-			int numPerPage = 30;
+			/*int numPerPage = 30;
 			int totalPage = myPage.getPageCount(numPerPage, reviewtotalArticle);
 			
 			
@@ -167,9 +167,10 @@ public class ItemServlet extends HttpServlet {
 			end = currentPage * numPerPage;
 
 			String listUrl = cp + "/item/detail.do";
-			String reviewPageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
+			String reviewPageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);*/
+			
 			//리스트 나오게 하기
-			List<ReviewDTO> reviewlists = rdao.getLists(start, end, itemNum);
+			List<ReviewDTO> reviewlists = rdao.getLists(itemNum);
 
 			/* 이부분 변수명 정리함 */
 			String reviewdDeletePath = cp + "/main/review/delete.do";
@@ -177,7 +178,6 @@ public class ItemServlet extends HttpServlet {
 			//String params = "pageNum=" + currentPage;
 			String itemImagePath = cp + "/pds/itemImageFile";
 			String itemDeletePath = cp + "/main/item/deleted.do";
-			
 			
 
 			//제품설명 텍스트 엔터는 엔터로 변경
@@ -202,7 +202,7 @@ public class ItemServlet extends HttpServlet {
 			req.setAttribute("reviewdDeletePath", reviewdDeletePath);
 			req.setAttribute("reviewlists", reviewlists);
 			req.setAttribute("idto", idto);
-			req.setAttribute("reviewPageIndexList", reviewPageIndexList);
+			//req.setAttribute("reviewPageIndexList", reviewPageIndexList);
 			req.setAttribute("reviewtotalArticle", reviewtotalArticle);
 
 			req.setAttribute("itemHitCountList", itemHitCountList);
@@ -220,7 +220,7 @@ public class ItemServlet extends HttpServlet {
 			//num과 pageNum을 받아온다. 리다이렉트 주소를 만들기 위해 필요한 값
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 			int currentPage = Integer.parseInt(req.getParameter("pageNum"));
-			
+			String itemType = req.getParameter("itemType");
 
 			//삭제하려는 데이터의 num을 사용해서 그 하나의 데이터 정보를 읽어온다
 			ItemDTO idto = idao.getReadData_detail(itemNum);
@@ -234,8 +234,15 @@ public class ItemServlet extends HttpServlet {
 			//DB 테이블에 저장된 데이터 삭제
 			rdao.deleteDataItem(itemNum);
 			idao.deleteData(itemNum);
+			
+			
+			if(itemType!=null) {
+				url = cp + "/main/item/list.do?itemType=" + itemType + "&pageNum=" + currentPage;
+			}else {
+				url = cp + "/main/item/list.do?pageNum=" + currentPage;
+			}
+			
 
-			url = cp + "/main/item/list.do?pageNum=" + currentPage;
 			resp.sendRedirect(url);
 
 			return;
