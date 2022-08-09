@@ -72,6 +72,7 @@ public class CustomerOrderServlet extends HttpServlet {
 				//뿌려줄 회원정보 담아와야함 
 				cdto = cdao.getReadData(customerId);
 				
+				
 				//
 				
 				
