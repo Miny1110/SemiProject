@@ -86,12 +86,25 @@ public class CustomerDAO {
 		return false;
 	}*/
 	
-	public void checkId(String customerId) {
+	public int idChk(String customerId) {
 		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
 		
-		
-		
-		
+		try {
+			
+			sql = "select customerId from customer where customerId=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, customerId);
+			result = pstmt.executeUpdate();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
 	}
 	
 	
