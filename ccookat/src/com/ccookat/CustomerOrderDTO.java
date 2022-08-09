@@ -12,15 +12,8 @@ public class CustomerOrderDTO {
 	private String customerOrderTel;
 	private String customerOrderPay;
 	private String customerMemo;
-	private int customerPrice;
+	private int customerOrderPrice;
 	private String itemImage1;
-	
-	public String getItemImage1() {
-		return itemImage1;
-	}
-	public void setItemImage1(String itemImage1) {
-		this.itemImage1 = itemImage1;
-	}
 	public int getOrderNum() {
 		return orderNum;
 	}
@@ -81,14 +74,18 @@ public class CustomerOrderDTO {
 	public void setCustomerMemo(String customerMemo) {
 		this.customerMemo = customerMemo;
 	}
-	public int getCustomerPrice() {
-		return customerPrice;
+	public String getItemImage1() {
+		return itemImage1;
 	}
-	public void setCustomerPrice(int customerPrice) {
-		this.customerPrice = customerPrice;
+	public void setItemImage1(String itemImage1) {
+		this.itemImage1 = itemImage1;
 	}
-	
-	
+	public int getCustomerOrderPrice() {
+		return customerOrderPrice;
+	}
+	public void setCustomerOrderPrice(int customerOrderPrice) {
+		this.customerOrderPrice = customerOrderPrice;
+	}
 	
 	
 	
