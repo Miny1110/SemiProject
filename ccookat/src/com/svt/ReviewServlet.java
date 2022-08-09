@@ -101,7 +101,7 @@ public class ReviewServlet extends HttpServlet {
 		String listUrl = cp + "/main/item/detail.do";
 		String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 		//리스트 나오게 하기
-		List<ReviewDTO> reviewlists = rdao.getLists(start, end, itemNum);
+		List<ReviewDTO> reviewlists = rdao.getLists(itemNum);
 	
 		
 		String deletePath = cp + "/main/review/delete.do";
