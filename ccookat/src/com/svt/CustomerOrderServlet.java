@@ -119,6 +119,8 @@ public class CustomerOrderServlet extends HttpServlet {
 				ordto.setCustomerOrderPay(request.getParameter("customerOrderPay"));
 				ordto.setCustomerOrderPrice(Integer.parseInt(request.getParameter("customerOrderPrice")));
 				
+				System.out.println((request.getParameter("customerOrderPrice")));
+				
 				ordao.insertOrderData(ordto);
 				
 				//detail페이지에 주문된상품 리스트 저장하고 
@@ -156,7 +158,6 @@ public class CustomerOrderServlet extends HttpServlet {
 				//item db연결해서 주문한 수량만큼 item재고 빼기
 				//주문정보에 insert 되면 item 테이블이 수정되게끔 트리거를 실행하고 싶었으나. .. .할수없었따
 				idao.afterOrder();
-				
 				
 				
 

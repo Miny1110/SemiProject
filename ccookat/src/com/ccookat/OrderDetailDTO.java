@@ -8,8 +8,15 @@ public class OrderDetailDTO {
 	private String itemName;
 	private int itemCount;
 	private int cartTotPrice;
+	private String itemImage1;
 	
 	
+	public String getItemImage1() {
+		return itemImage1;
+	}
+	public void setItemImage1(String itemImage1) {
+		this.itemImage1 = itemImage1;
+	}
 	public String getItemName() {
 		return itemName;
 	}

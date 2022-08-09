@@ -13,7 +13,6 @@ public class CustomerOrderDTO {
 	private String customerOrderPay;
 	private String customerMemo;
 	private int customerOrderPrice;
-	private String itemImage1;
 	
 	public int getOrderNum() {
 		return orderNum;
@@ -75,12 +74,7 @@ public class CustomerOrderDTO {
 	public void setCustomerMemo(String customerMemo) {
 		this.customerMemo = customerMemo;
 	}
-	public String getItemImage1() {
-		return itemImage1;
-	}
-	public void setItemImage1(String itemImage1) {
-		this.itemImage1 = itemImage1;
-	}
+
 	public int getCustomerOrderPrice() {
 		return customerOrderPrice;
 	}

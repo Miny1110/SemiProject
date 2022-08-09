@@ -56,7 +56,7 @@ public class OrderDetailDAO {
 
 		try {
 			
-			sql ="select a.ordernum,a.customerid,a.cartitemcount,a.carttotprice,b.itemname ";
+			sql ="select a.ordernum,a.customerid,a.cartitemcount,a.carttotprice,b.itemname,b.ItemImage1 ";
 			sql+="from CUSTOMERORDERDETAIL a join item b on a.itemnum = b.itemnum ";
 			sql+="where customerid = ?";
 			
@@ -75,7 +75,8 @@ public class OrderDetailDAO {
 				ordto.setItemCount(rs.getInt(3));
 				ordto.setCartTotPrice(rs.getInt(4));
 				ordto.setItemName(rs.getString(5));
-
+				ordto.setItemImage1(rs.getString(6));
+				
 				dtlists.add(ordto);
 			}
 

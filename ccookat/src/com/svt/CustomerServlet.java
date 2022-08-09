@@ -172,6 +172,9 @@ public class CustomerServlet extends HttpServlet{
 			String customerId = customerInfo.getCustomerId();
 			int cartCount = ctdao.cartCount(customerId);
 			
+			String itemImagePath = cp + "/pds/itemImageFile";
+			req.setAttribute("itemImagePath", itemImagePath);
+			
 			//여기에 주문정보랑 주문디테일 뽑아야함
 			OrderDetailDTO oddto = new OrderDetailDTO();
 			CustomerOrderDTO ordto = new CustomerOrderDTO();
