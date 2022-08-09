@@ -87,7 +87,7 @@ function isValidEmail(customerEmail) {
 	
 
 
-/*function checkFmEmail(){
+function checkFmEmail(){
 	
 	var f= document.myForm;
 	
@@ -97,8 +97,7 @@ function isValidEmail(customerEmail) {
 		return;
 	}
 	
-	
-}*/
+}
 	
 
 

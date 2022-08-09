@@ -18,38 +18,6 @@ public class CustomerDAO {
 	}
 	
 	
-	/*public int getMaxNum() {
-		
-		int maxNum = 0;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
-		
-		try {
-			
-			sql = "select nvl(max(customernum),0) from customer";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				maxNum = rs.getInt(1);
-			}
-			
-			rs.close();
-			pstmt.close();
-			
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		
-		return maxNum;
-		
-	}*/
-	
-	
 	//입력
 	public void insertData(CustomerDTO cdto) {
 		
@@ -87,85 +55,45 @@ public class CustomerDAO {
 	}
 	
 	
-/*	//전체 데이터 가져오기
-	public List<CustomerDTO> getLists(int start,int end) {
-		
-		List<CustomerDTO> lists = new ArrayList<CustomerDTO>();
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
-		
-		try {
-			
-			sql = "select * from (";
-			sql+= "select rownum rnum,data.* from (";
-			sql+= "select customerId,customerPwd,";
-			sql+= "customerName,customerEmail,customerTel ";
-			//sql+= "to_char(created,'YYYY-MM-DD') created ";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				CustomerDTO cdto = new CustomerDTO();
-				
-				cdto.setCustomerId(rs.getString("customerId"));
-				cdto.setCustomerPwd(rs.getString("customerpwd"));
-				cdto.setCustomerName(rs.getString("customerName"));
-				cdto.setCustomerEmail(rs.getString("customerEmail"));
-				cdto.setCustomerTel(rs.getString("customerTel"));
-				//dto.setCustomerCreated(rs.getString("created"));
-				
-				lists.add(cdto);
-			}
-			
-			rs.close();
-			pstmt.close();
-			
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		
-		return lists;
-		
-	}*/
 	
 	//아이디 중복
-	public boolean checkId(String customerId) {
+/*	public boolean checkId(String customerId) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select customerId from customer where customerId = ?";
-		
 		try {
+			
+			String sql; sql = "select customerId from customer where customerId = ?";
+			
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setString (1, customerId);
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
+				if(rs.getString("customerId").equals(customerId)) {
+					return true;
+				}
 				
-				return true;
+				
 			}
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		
-		try {
-			rs.close();
-			pstmt.close();
+			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 		return false;
+	}*/
+	
+	public void checkId(String customerId) {
+		
+		
+		
+		
+		
 	}
+	
 	
 	
 	//customerId로 한개의 데이터 가져오기
@@ -211,6 +139,7 @@ public class CustomerDAO {
 		
 		return cdto;
 	}
+	
 	
 	//아이디 찾기 할때 쓰는 메소드
 		public CustomerDTO getReadData(String customerName, String customerTel ) {

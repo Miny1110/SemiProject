@@ -277,31 +277,7 @@ function sample6_execDaumPostcode() {
 	</section>
 	<!-- Hero Section End -->
 
-<%-- 
-	<%
-		String customerId = request.getParameter("id");
-		if (customerId == null) {
-			customerId = "";
-		}
-		String jungbokId = (String) request.getAttribute("jungbokId");
 
-		String result;
-
-		if (jungbokId == "") {
-
-			result = customerId + "는 사용 가능합니다.";
-
-		} else if (jungbokId == null && customerId == "") {
-
-			result = "";
-
-		} else {
-
-			result = customerId + "는 이미 사용 중입니다.";
-
-		}
-	%>
- --%>
 	<!-- Checkout Section Begin -->
 	<div class="signUp-form">
 		<div class="tit_page">
@@ -318,8 +294,8 @@ function sample6_execDaumPostcode() {
 							<th>아이디<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerId"
 								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" >
-								<input type="button" value="중복확인" class="signUp_btn" />
-								<input type="hidden" name="idDuplication" value="idUncheck">
+								<!-- <input type="button" value="중복확인" class="signUp_btn" /> -->
+								<!-- <input type="hidden" name="idDuplication" value="idUncheck"> -->
 							</td>
 						</tr>
 						<tr>
@@ -343,7 +319,7 @@ function sample6_execDaumPostcode() {
 							<th>이메일<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerEmail"
 								class="email" id="customerEmail"
-								placeholder="예: marketkurly@kurly.com" onblur="checkFmEmail();">
+								placeholder="예: marketkurly@kurly.com" onchange="isValidEmail(this)">
 								</td>
 						</tr>
 						<tr class="field_phone">
