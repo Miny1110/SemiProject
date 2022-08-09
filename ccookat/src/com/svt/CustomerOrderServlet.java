@@ -159,15 +159,14 @@ public class CustomerOrderServlet extends HttpServlet {
 			
 						
 				//일단 메인으로감....결제완료페이지만들예정
-				url = "/main/customer/searchPwd_ok.do";
-				//forward(request, response, url);	
-				forward(request, response, url);
+				url = cp + "/main/customer/searchPwd.do";
+				//forward(request, response, url);
+				response.sendRedirect(url);
 				return;
 			}			
 			//로그인 안되어있을때 로그인창보내기
 			url = cp +"/main/customer/login.do";
 			response.sendRedirect(url);
-
 		}
 	}
 
