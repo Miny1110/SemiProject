@@ -533,6 +533,24 @@ public class ItemDAO {
 		return mainLists;
 		
 	}
+	//주문하기되면 상품 수량에서 주문한 수량만큼 빼줘야함
+	public void afterOrder() {
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+				sql = "update item set  ";
+				sql+="where ";
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}	
+	}
+	
 	
 	
 }

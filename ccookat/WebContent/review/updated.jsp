@@ -348,7 +348,7 @@
                         <div>
                            <div class="checkout__input">
                                 <p>ID<span>*</span></p>
-                            	<input type="taxt" name="customerId" value="${sessionScope.customerInfo.customerId }"/>
+                            	<input type="taxt" name="customerId" value="${sessionScope.customerInfo.customerId}" readonly="readonly"/>
                                 <br/>
                             </div>
                          
@@ -365,7 +365,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>Text<span>*</span></p>
-                                <textarea rows="15" cols="20" name="reviewContent" value="${rdto.reviewContent}"></textarea>
+                                <textarea rows="15" cols="20" name="reviewContent" >${rdto.reviewContent}</textarea>
                             </div>
 							
 							<div>

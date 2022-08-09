@@ -51,7 +51,7 @@
 		<div class="humberger__menu__cart">
 			<ul>
 				<li><a href="#"><i class="fa fa-heart"></i></a></li>
-				<li><a href="#"><i class="fa fa-shopping-bag"></i><span>${cartCount }</span></a></li>
+				<li><a href="#"><i class="fa fa-shopping-bag"></i> <span> ${cartCount }</span></a></li>
 			</ul>
 			<div class="header__cart__price"></div>
 		</div>
