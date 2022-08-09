@@ -164,18 +164,10 @@ function sample6_execDaumPostcode() {
 			<a href="https://www.pinterest.co.kr" target="_blank"><i class="fa fa-pinterest-p"></i></a>
         </div>
         <div class="humberger__menu__contact">
-           <c:choose>
-						<c:when test="${!empty sessionScope.customerInfo.customerName }">
-							<ul>
-								<li><i class="fa fa-user"></i>${sessionScope.customerInfo.customerName }님 맛있는 쇼핑 하세요.</li>
-							</ul>
-							</c:when>
-							<c:otherwise>
-							<ul>
-								<li><i class="fa fa-user"></i>회원가입을 하시면 더 다양한 이용이 가능합니다.</li>
-							</ul>
-							</c:otherwise>
-							</c:choose>
+            <ul>
+			<a href="https://mail.google.com/mail" target="_blank">
+			<li><i class="fa fa-envelope"></i> ccookat@gmail.com</li></a>
+			</ul>
         </div>
     </div>
     <!-- Humberger End -->
@@ -187,11 +179,18 @@ function sample6_execDaumPostcode() {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="header__top__left">
-                           <ul>
-								<a href="https://mail.google.com/mail" target="_blank">
-								<li><i class="fa fa-envelope"></i> ccookat@gmail.com</li>
-								</a>
+                         <c:choose>
+						<c:when test="${!empty sessionScope.customerInfo.customerName }">
+							<ul>
+								<li><i class="fa fa-user"></i>${sessionScope.customerInfo.customerName }님 맛있는 쇼핑 하세요.</li>
 							</ul>
+							</c:when>
+							<c:otherwise>
+							<ul>
+								<li><i class="fa fa-user"></i>회원가입을 하시면 더 다양한 이용이 가능합니다.</li>
+							</ul>
+							</c:otherwise>
+							</c:choose>
                         </div>
                     </div>
                     <div class="col-lg-6">
