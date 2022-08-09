@@ -8,6 +8,12 @@ function sendIt() {
 			return;
 		}
 		
+		/*if(f.idFormat.value != "idFmcheck"){
+			alert("올바른 아이디 형식이 아닙니다.")
+			f.customerId.focus();
+			return;
+		}*/
+		
 		if(f.idDuplication.value != "idcheck"){
 			alert("아이디 중복체크를 해주세요.")
 			return;
@@ -37,6 +43,13 @@ function sendIt() {
 			return;
 		}
 		
+		
+		if(f.nameDuplication.value != "namecheck"){
+			alert("올바른 이름 형식이 아닙니다.")
+			f.customerName.focus();
+			return;
+		}
+		
 		if(!f.customerEmail.value){
 			alert("이메일을 입력하세요.");
 			f.customerEmail.focus();
@@ -51,6 +64,12 @@ function sendIt() {
 		
 		if(!f.customerTel.value){
 			alert("전화번호를 입력하세요.");
+			f.customerTel.focus();
+			return;
+		}
+		
+		if(f.telDuplication.value != "telcheck"){
+			alert("올바른 전화번호 형식이 아닙니다.");
 			f.customerTel.focus();
 			return;
 		}
@@ -91,8 +110,6 @@ function isValidEmail(customerEmail) {
     }
 }
 	
-
-
 function checkFmEmail(){
 	
 	var f= document.myForm;
@@ -110,6 +127,62 @@ function checkFmEmail(){
 }
 
 
+
+//한글 필터링
+function isValidKorean(customerName){
+     // UTF-8 코드 중 AC00부터 D7A3 값이지 검사
+	var format = /^[가-힣]{2,4}$/;
+    if (customerName.search(format) != -1)
+        return true; //올바른 포맷 형식
+    return false;
+}
+
+function checkFmName(){
+	
+	var f = document.myForm;
+	var customerName = f.customerName.value;
+	
+	if(!isValidKorean(customerName)){
+		alert("올바른 이름 형식이 아닙니다.");
+		f.nameDuplication.value = "nameUncheck";
+		setTimeout(function(){f.customerName.focus();}, 10);
+		return false;
+	}else{
+		f.nameDuplication.value = "namecheck";
+		return true;
+	}
+	
+}
+
+
+
+//전화번호
+function isValidTel(customerTel) {
+    
+	var format = /^[0-9]{8,13}$/;
+	if(customerTel.search(format) != -1)
+		return true;
+	return false;
+}
+
+function checkFmTel(){
+	
+	var f = document.myForm;
+	var customerTel = f.customerTel.value;
+	
+	if(!isValidTel(customerTel)){
+		alert("올바른 전화번호 형식이 아닙니다.");
+		f.telDuplication.value = "telUncheck";
+		setTimeout(function(){f.customerTel.focus();}, 10);
+		return;
+	}else{
+		f.telDuplication.value = "telcheck";
+	}
+	
+}
+
+
+
 function idChk(){
 	
 	var f = document.myForm;
@@ -123,6 +196,32 @@ function idChk(){
 		f.submit();
 	}
 }
+
+
+/*//아이디 형식 검사
+function isValidId(customerId){
+	
+	var format = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
+	if(customerId.search(format) != -1)
+		return true;
+	return false;
+}
+
+function checkFmId(){
+	
+	var f = document.myForm;
+	var customerId = f.customerId.value;
+	
+	if(!isValidId(customerId)){
+		alert("올바른 아이디 형식이 아닙니다.");
+		f.idFormat.value = "idFmUncheck";
+		setTimeout(function(){f.customerId.focus();}, 10);
+		return;
+	}else{
+		f.idFormat.value = "idFmcheck";
+	}
+	
+}*/
 
 
 function customerPwdChk(){
