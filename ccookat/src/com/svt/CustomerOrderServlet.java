@@ -133,8 +133,7 @@ public class CustomerOrderServlet extends HttpServlet {
 				//반복문 돌려서 detailinsert에 데이터 추가하고 
 				
 				Iterator<CartDTO> it = lists.iterator();
-				
-				
+								
 				while(it.hasNext()) {
 						
 					CartDTO cartdao = it.next();
@@ -150,23 +149,20 @@ public class CustomerOrderServlet extends HttpServlet {
 					oddao.insertDetailData(oddto);
 					
 				}
-				
-				while(!it.hasNext()) {
-					//cartdelete 해야함 어차피 장바구니 전체상품 다 지워야하니까
-					//id조회해서 그 id가 가지고있는거 다지우는걸로 하면될듯					
-					ctdao.orderdelete(customerId);
-				}
-			
-						
+					
+				//cartdelete 해야함 어차피 장바구니 전체상품 다 지워야하니까
+				//id조회해서 그 id가 가지고있는거 다지우는걸로 하면될듯					
+				ctdao.orderdelete(customerId);
+
 				//일단 메인으로감....결제완료페이지만들예정
-				url = cp + "/main/customer/searchPwd.do";
+				url = cp + "/main/customer/customerPwdChk.do";
 				//forward(request, response, url);
 				response.sendRedirect(url);
 				return;
 			}			
-			//로그인 안되어있을때 로그인창보내기
+/*			//로그인 안되어있을때 로그인창보내기
 			url = cp +"/main/customer/login.do";
-			response.sendRedirect(url);
+			response.sendRedirect(url);*/
 		}
 	}
 
