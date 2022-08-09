@@ -1831,20 +1831,20 @@ ol {
 
 .product__details__tab .nav-tabs:before {
 	position: absolute;
-	left: 0;
+	left: 400;
 	top: 12px;
 	height: 1px;
-	width: 370px;
+	width: 330px;
 	background: #ebebeb;
 	content: "";
 }
 
 .product__details__tab .nav-tabs:after {
 	position: absolute;
-	right: 0;
+	right: 400px;
 	top: 12px;
 	height: 1px;
-	width: 370px;
+	width: 330px;
 	background: #ebebeb;
 	content: "";
 }
@@ -3693,4 +3693,13 @@ ol {
 		font-size: 24px;
 	}
 
+}
+
+/* test.jsp css */
+.qna_tr_test {
+	text-align: center;
+}
+
+.qna_tr_test_center {
+	padding-left: 20px;
 }
