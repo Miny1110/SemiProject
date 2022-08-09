@@ -249,7 +249,7 @@
                             </form>
                         </div>
                        <div class="hero__search__phone">
-							<div class="hero__search__phone__icon">
+							<div class="hero__search__phone__icon_list">
 								<i class="fa fa-truck"></i>
 							</div>
 							<div class="hero__search__phone__text">
