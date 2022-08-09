@@ -110,7 +110,7 @@ public class CustomerServlet extends HttpServlet{
 			forward(req, resp, url);
 
 		}else if(uri.indexOf("login_ok.do")!=-1) {
-
+			
 			String customerId = req.getParameter("customerId");
 			String customerPwd = req.getParameter("customerPwd");
 

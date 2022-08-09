@@ -296,8 +296,9 @@ function sample6_execDaumPostcode() {
 							<th>아이디<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerId"
 								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" 
-								value="${customerIdChk }">
-								
+								value="${customerIdChk }" onchange="checkFmId();">
+								<input type="hidden" name="idFormat" value="${idFormat }">
+
 								<input type="button" value="중복확인" class="signUp_btn" onclick="idChk();"/>
 								<input type="hidden" name="idDuplication" value="${idDuplication }">
 							</td>
@@ -318,7 +319,9 @@ function sample6_execDaumPostcode() {
 						<tr>
 							<th>이름<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerName"
-								id="customerName" placeholder="이름을 입력해주세요"></td>
+								id="customerName" placeholder="이름을 입력해주세요" onchange="checkFmName();">
+								<input type="hidden" name="nameDuplication" value="${nameDuplication }">
+							</td>
 						</tr>
 						<tr>
 							<th>이메일<span class="ico">*</span></th>
@@ -329,9 +332,11 @@ function sample6_execDaumPostcode() {
 							</td>
 						</tr>
 						<tr class="field_phone">
-							<th>휴대폰<span class="ico">*</span></th>
+							<th>전화번호<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerTel"
-								id="customerTel" maxlength="11" placeholder="숫자만 입력해주세요.">
+								id="customerTel" maxlength="11" placeholder="숫자만 입력해주세요." onchange="checkFmTel();">
+								<input type="hidden" name="telDuplication" value="${telDuplication }">
+							</td>
 						</tr>
 						<tr>
 							<th>우편번호<span class="ico">*</span></th>
