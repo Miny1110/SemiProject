@@ -21,7 +21,9 @@
     font-size: 12px;
     color: #666;
     line-height: 17px;
-    text-align: right
+    text-align: right;
+    margin-left: 60px;
+    
 }
 
 .member_join .page_sub .ico {
@@ -64,7 +66,7 @@
   }
 
 .box-size {
-    width: 300px;
+    width: 400px;
     height: 50px;
     border: rgb(166, 154, 154) solid 0.5px;
     border-radius: 5px;
@@ -74,7 +76,7 @@
 }
 
 .box-size2 {
-    width: 190px;
+    width: 284px;
     height: 50px;
     border: rgb(166, 154, 154) solid 0.5px;
     border-radius: 5px;
@@ -128,3 +130,19 @@ tr {
 
 }
 
+.btn_sign_update {
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    width: 180px;
+	background-color: #FF5833;
+    margin-bottom: 30px;
+    color: white;
+    height: 57px;
+    margin: 10px;
+
+}
+
+.ud_th_size {
+	padding-right: 30px;
+}
