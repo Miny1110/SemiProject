@@ -433,7 +433,7 @@
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="#">${idto.itemName }</a></h6>
-                            <h5><fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" pattern="0"/>원</h5>
+                            <h5><fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" pattern=""/>원</h5>
                              <span style="font-size: small; color: #707070; text-decoration: line-through;">${idto.itemPrice }원</span>
                         </div>
                     </div>
