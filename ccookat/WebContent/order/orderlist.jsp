@@ -33,164 +33,99 @@
 
 <body>
     <!-- Page Preloder -->
-	<div id="preloder" style="display: none;">
-		<div class="loader" style="display: none;"></div>
-	</div>
+    <div id="preloder" style="display: none;">
+        <div class="loader" style="display: none;"></div>
+    </div>
 
-	<!-- Humberger Begin -->
-	<div class="humberger__menu__overlay"></div>
-	<div class="humberger__menu__wrapper">
-		<div class="humberger__menu__logo">
-			<a href="#"><img src="/ccookat/Data/style/img/logo.png" alt=""></a>
-		</div>
-		<div class="humberger__menu__cart">
-			<ul>
-				<li><a href="#"><i class="fa fa-heart"></i></a></li>
-				<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> </a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
+            </ul>
+            <div class="header__cart__price"></div>
+        </div>
+        <div class="humberger__menu__widget">
+             <div class="header__top__right__language">
+                <img class="korean" src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
+                <div>한국어</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">한국어</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Login</a>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+			<li><a href="<%=cp%>/main">Home</a></li>
+			<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+		 	<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
+			<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
 			</ul>
-			<div class="header__cart__price">
-				item: <span>$150.00</span>
-			</div>
-		</div>
-		<div class="humberger__menu__widget">
-			<div class="header__top__right__language">
-				<img src="/ccookat/Data/style/img/language.png" alt="">
-				<div>English</div>
-				<span class="arrow_carrot-down"></span>
-				<ul>
-					<li><a href="#">Spanis</a></li>
-					<li><a href="#">English</a></li>
-				</ul>
-			</div>
-
-			<div class="header__top__right__auth">
-				<a href="#"><i class="fa fa-user"></i> Login</a> <a href="#"><i
-					class="fa fa-user"></i> Join</a>
-			</div>
-
-
-		</div>
-		<nav class="humberger__menu__nav mobile-menu">
-			<ul>
-				<li class="active"><a href="./index.html">Home</a></li>
-				<li><a href="./shop-grid.html">Shop</a></li>
-				<li><a href="./shoping-cart.html">Shopping Cart</a></li>
-				<li><a href="./contact.html">Notice</a></li>
+        </nav>
+        <div id="mobile-menu-wrap">
+        <div class="slicknav_menu">
+        <a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;">
+        <span class="slicknav_menutxt">MENU</span>
+        <span class="slicknav_icon"><span class="slicknav_icon-bar"></span></span>
+        <span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></a>
+        <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+            <ul>
+                <li><a href="./index.html" role="menuitem">Home</a></li>
+                <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
+                <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
+                    <span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+                        <li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shopping Cart</a></li>
+                        <li><a href="./checkout.html" role="menuitem" tabindex="-1">Check Out</a></li>
+                    </ul>
+                </li>
+                <li><a href="./contact.html" role="menuitem">Contact</a></li>
+            </ul>
+        </nav></div></div>
+        <div class="header__top__right__social">
+            <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+			<a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a> 
+			<a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
+			<a href="https://www.pinterest.co.kr" target="_blank"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+			<a href="https://mail.google.com/mail" target="_blank">
+			<li><i class="fa fa-envelope"></i> ccookat@gmail.com</li></a>
 			</ul>
-		</nav>
-		<div id="mobile-menu-wrap">
-			<div class="slicknav_menu">
-				<a href="#" aria-haspopup="true" role="button" tabindex="0"
-					class="slicknav_btn slicknav_collapsed" style="outline: none;"><span
-					class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span
-						class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span
-						class="slicknav_icon-bar"></span></span></a>
-				<nav class="slicknav_nav slicknav_hidden" aria-hidden="true"
-					role="menu" style="display: none;">
-					<ul>
-						<li class="active"><a href="./index.html" role="menuitem">Home</a></li>
-						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
-						<li class="slicknav_collapsed slicknav_parent"><a href="#"
-							role="menuitem" aria-haspopup="true" tabindex="-1"
-							class="slicknav_item slicknav_row" style="outline: none;"><a
-								href="#">Pages</a> <span class="slicknav_arrow">►</span></a>
-						<ul class="header__menu__dropdown slicknav_hidden" role="menu"
-								aria-hidden="true" style="display: none;">
-								<li><a href="./shop-details.html" role="menuitem"
-									tabindex="-1">Shop Details</a></li>
-								<li><a href="./shoping-cart.html" role="menuitem"
-									tabindex="-1">Cart</a></li>
-								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
-										Out</a></li>
-							</ul></li>
-						<li><a href="./contact.html" role="menuitem">NOTICE</a></li>
-					</ul>
-				</nav>
-			</div>
-			<div class="slicknav_menu">
-				<a href="#" aria-haspopup="true" role="button" tabindex="0"
-					class="slicknav_btn slicknav_collapsed" style="outline: none;"><span
-					class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span
-						class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span
-						class="slicknav_icon-bar"></span></span></a>
-				<nav class="slicknav_nav slicknav_hidden" aria-hidden="true"
-					role="menu" style="display: none;">
-					<ul>
-						<li class="active"><a href="./index.html" role="menuitem">Home</a></li>
-						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
-						<li class="slicknav_collapsed slicknav_parent"><a href="#"
-							role="menuitem" aria-haspopup="true" tabindex="-1"
-							class="slicknav_item slicknav_row" style="outline: none;"></a><a
-							href="#">Pages</a> <span class="slicknav_arrow">►</span>
-						<ul class="header__menu__dropdown slicknav_hidden" role="menu"
-								aria-hidden="true" style="display: none;">
-								<li><a href="./shop-details.html" role="menuitem"
-									tabindex="-1">Shop Details</a></li>
-								<li><a href="./shoping-cart.html" role="menuitem"
-									tabindex="-1">Shoping Cart</a></li>
-								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
-										Out</a></li>
-							</ul></li>
-						<li><a href="./contact.html" role="menuitem">NOTICE</a></li>
-					</ul>
-				</nav>
-			</div>
-			<div class="slicknav_menu">
-				<a href="#" aria-haspopup="true" role="button" tabindex="0"
-					class="slicknav_btn slicknav_collapsed" style="outline: none;"><span
-					class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span
-						class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span
-						class="slicknav_icon-bar"></span></span></a>
-				<nav class="slicknav_nav slicknav_hidden" aria-hidden="true"
-					role="menu" style="display: none;">
-					<ul>
-						<li class="active"><a href="./index.html" role="menuitem">Home</a></li>
-						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
-						<li class="slicknav_collapsed slicknav_parent"><a href="#"
-							role="menuitem" aria-haspopup="true" tabindex="-1"
-							class="slicknav_item slicknav_row" style="outline: none;"></a><a
-							href="#">Pages</a> <span class="slicknav_arrow">►</span>
-						<ul class="header__menu__dropdown slicknav_hidden" role="menu"
-								aria-hidden="true" style="display: none;">
-								<li><a href="./shop-details.html" role="menuitem"
-									tabindex="-1">Shop Details</a></li>
-								<li><a href="./shoping-cart.html" role="menuitem"
-									tabindex="-1">Shoping Cart</a></li>
-								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
-										Out</a></li>
-							</ul></li>
-						<li><a href="/contact.html" role="menuitem">Contact</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-		<div class="header__top__right__social">
-			<a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a>
-			<a href="https://twitter.com"><i class="fa fa-twitter"></i></a> <a
-				href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
-			<a href="https://www.pinterest.co.kr"><i
-				class="fa fa-pinterest-p"></i></a>
-		</div>
-		<div class="humberger__menu__contact">
-			<ul>
-				<li><i class="fa fa-envelope"></i></li>
-			</ul>
-		</div>
-	</div>
-	<!-- Humberger End -->
+        </div>
+    </div>
+    <!-- Humberger End -->
 
-  <!-- Header Section Begin -->
+ 	<!-- Header Section Begin -->
 	<header class="header">
 		<div class="header__top">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="header__top__left">
+								<c:choose>
+						<c:when test="${!empty sessionScope.customerInfo.customerName }">
 							<ul>
-								<a href="https://mail.google.com/mail" target="_blank">
-								<li><i class="fa fa-envelope"></i> ccookat@gmail.com</li>
-								</a>
+								<li><i class="fa fa-user"></i>${sessionScope.customerInfo.customerName }님 맛있는 쇼핑 하세요.</li>
 							</ul>
+							</c:when>
+							<c:otherwise>
+							<ul>
+								<li><i class="fa fa-user"></i>회원가입을 하시면 더 다양한 이용이 가능합니다.</li>
+							</ul>
+							</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 					<div class="col-lg-6">
@@ -259,8 +194,7 @@
 							<ul>
 								<li><a href="<%=cp%>/main/customer/login.do"><i
 										class="fa fa-heart"></i></a></li>
-								<li><a href="<%=cp%>/main/customer/login.do"><i
-										class="fa fa-shopping-bag"></i></a></li>
+								<li><a href="#"><i class="fa fa-shopping-bag"></i><span>${cartCount }</span></a></li>
 							</ul>
 						</c:if>
 						<c:if test="${!empty sessionScope.customerInfo.customerId}">
@@ -282,8 +216,8 @@
 	</header>
 	<!-- Header Section End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
+ 	<!-- Hero Section Begin -->
+	 <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -303,12 +237,14 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
+                            <form action="#">
                                 <div class="hero__search__categories">
                                     제품명
                                     <span class="arrow_carrot-down"></span>
                                 </div>
                                 <input type="text" placeholder="제품명 입력하세요">
                                 <button type="submit" class="site-btn">검색하기</button>
+                            </form>
                         </div>
                        <div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
@@ -325,7 +261,7 @@
             </div>
         </div>
     </section>
-    <!-- Hero Section End -->
+	<!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section" data-setbg="/ccookat/Data/style/img/breadcrumb.jpg" style="background-image: url(&quot;/ccookat/Data/style/img/breadcrumb.jpg&quot;);">
@@ -333,7 +269,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>NOTICE</h2>
+                        <h2>ORDER</h2>
                         <div class="breadcrumb__option">
                             
                             
@@ -352,7 +288,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="shoping__product">상품</th>
+                                    <th>상품</th>
                                     <th>가격</th>
                                     <th>할인가</th>
                                     <th>수량</th>
