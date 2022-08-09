@@ -346,7 +346,7 @@
                          
                             <div class="checkout__input">
                                 <p>Title<span>*</span></p>
-                                <input type="text" name="reviewTitle">
+                                <input type="text" name="reviewTitle" value="${rdto.reviewTitle}">
                             </div>                            
               
                             <div class="checkout__input">
@@ -357,7 +357,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>Text<span>*</span></p>
-                                <textarea rows="15" cols="20" name="reviewContent"></textarea>
+                                <textarea rows="15" cols="20" name="reviewContent" value="${rdto.reviewContent}"></textarea>
                             </div>
 							
 							<div>
