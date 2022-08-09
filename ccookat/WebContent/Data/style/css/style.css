@@ -102,7 +102,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	color: #FF5833;
 }
 
 ul,
@@ -906,7 +906,7 @@ ol {
 }
 
 .featured__item__pic__hover li:hover a i {
-	color: #ffffff;
+	color: #FF5833;
 	transform: rotate(360deg);
 }
 
@@ -1342,7 +1342,7 @@ ol {
 }
 
 .product__item__pic__hover li:hover a i {
-	color: #ffffff;
+	color: #FF5833;
 	transform: rotate(360deg);
 }
 
@@ -1591,7 +1591,7 @@ ol {
 }
 
 .product__item__pic__hover li:hover a i {
-	color: #ffffff;
+	color: #FF5833;
 	transform: rotate(360deg);
 }
 

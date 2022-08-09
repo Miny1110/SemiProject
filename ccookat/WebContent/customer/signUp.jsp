@@ -330,7 +330,7 @@ function sample6_execDaumPostcode() {
 					<table class="tbl_comm">
 						<tr>
 							<th>아이디<span class="ico">*</span></th>
-							<td><input class="box-size" type="text" name="customerId"
+							<td><input class="box-size2" type="text" name="customerId"
 								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" 
 								value="${customerIdChk }" onchange="checkFmId();">
 								<input type="hidden" name="idFormat" value="${idFormat }">
@@ -347,7 +347,7 @@ function sample6_execDaumPostcode() {
 							</td>
 						</tr>
 						<tr class="member_pwd">
-							<th>비밀번호확인<span class="ico">*</span></th>
+							<th class="ud_th_size">비밀번호확인<span class="ico">*</span></th>
 							<td><input class="box-size" type="password"
 								name="customerPwd2" id="customerPwd2"
 								placeholder="비밀번호를 한번 더 입력해주세요"></td>
@@ -385,22 +385,26 @@ function sample6_execDaumPostcode() {
 
 						<tr>
 							<th>주소<span class="ico">*</span></th>
-							<td><input class="box-size" type="text" placeholder="주소"
+							<td><input class="box-size" type="text" placeholder="주소를 입력해주세요"
 								id="sample6_address" readonly="readonly" name="customerAddr1">
-								<input class="box-size2" type="text" placeholder="상세주소"
-								id="sample6_detailAddress" name="customerAddr2"></td>
 						</tr>
+						<tr>
+							<th>상제주소<span class="ico">*</span></th>
+							<td>
+							<input class="box-size" type="text" placeholder="상세주소를 입력해주세요"
+								id="sample6_detailAddress" name="customerAddr2"></td>
+
 					</table>
 
 					<div id="formSubmit" class="form_footer">
-						<input type="button" value="가입하기" class="btn_sign"
+						<input type="button" value="가입하기" class="btn_sign_login"
 							onclick="sendIt();"/>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-
+	<br><br><br><br><br><br>
 	<!-- Checkout Section End -->
 
 	<!-- Footer Section Begin -->

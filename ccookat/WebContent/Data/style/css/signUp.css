@@ -130,6 +130,20 @@ tr {
 
 }
 
+.btn_sign_login {
+	font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+	background-color: #FF5833;
+    margin-bottom: 100px;
+    color: white;
+    height: 57px;
+    margin: 10px -130px 10px 10px;
+    
+    
+}
+
 .btn_sign_update {
     font-size: 14px;
     border: none;
