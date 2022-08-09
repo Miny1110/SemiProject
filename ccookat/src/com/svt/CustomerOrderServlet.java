@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.omg.CORBA.INTERNAL;
-
 import com.ccookat.CartDAO;
 import com.ccookat.CartDTO;
 import com.ccookat.CustomerDAO;

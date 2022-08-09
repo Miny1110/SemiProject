@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ccookat.CartDAO;
 import com.ccookat.CustomerDAO;
 import com.ccookat.CustomerDTO;
 import com.ccookat.CustomerInfo;
@@ -54,6 +55,7 @@ public class CustomerServlet extends HttpServlet{
 		ReviewDAO rdao = new ReviewDAO(conn);
 		CustomerOrderDAO ordao= new CustomerOrderDAO(conn);
 		OrderDetailDAO oddao= new OrderDetailDAO(conn);
+		CartDAO ctdao = new CartDAO(conn);
 		
 		
 		String url;
@@ -168,7 +170,8 @@ public class CustomerServlet extends HttpServlet{
 			CustomerInfo customerInfo = new CustomerInfo();
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 			String customerId = customerInfo.getCustomerId();
-
+			int cartCount = ctdao.cartCount(customerId);
+			
 			//여기에 주문정보랑 주문디테일 뽑아야함
 			OrderDetailDTO oddto = new OrderDetailDTO();
 			CustomerOrderDTO ordto = new CustomerOrderDTO();
@@ -178,7 +181,8 @@ public class CustomerServlet extends HttpServlet{
 						
 			orderlists = ordao.selectAll(customerId);
 			dtlists = oddao.selectAll(customerId);
-						
+			
+			req.setAttribute("cartCount", cartCount);//장바구니 수량 표시해줄 데이터		
 			req.setAttribute("orderlists", orderlists);
 			req.setAttribute("dtlists", dtlists);
 			
