@@ -449,7 +449,7 @@
                         <a href="<%=cp%>/main/order/order.do" class="primary-btn"> 결&nbsp;제&nbsp;하&nbsp;기</a>
                         </c:when>
                         <c:otherwise>
-                        <a class="primary-btn" style="color: white; cursor: pointer;"  onclick="check();"> 결&nbsp;제&nbsp;하&nbsp;기</a>                        
+                        <a class="primary-btn" style="color: white; cursor: pointer; hover: black;"  onclick="check();"> 결&nbsp;제&nbsp;하&nbsp;기</a>                        
                         </c:otherwise>
                         </c:choose>
                     </div>
