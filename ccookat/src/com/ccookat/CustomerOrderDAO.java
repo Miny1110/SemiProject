@@ -79,6 +79,7 @@ public class CustomerOrderDAO {
 		}
 		return result;
 	}
+	
 	//주문조회에 뿌려줄 데이터
 	public List<CustomerOrderDTO> selectAll(String customerId) {
 		
@@ -103,12 +104,21 @@ public class CustomerOrderDAO {
 
 			while(rs.next()) {
 
-				
+				ordto = new CustomerOrderDTO();
 
 				ordto.setOrderNum(rs.getInt("ordernum"));
+				ordto.setCustomerId(rs.getString("customerId"));
+				ordto.setOrdate(rs.getString("ordate"));
+				ordto.setCustomerOrderName(rs.getString("customerOrderName"));
+				ordto.setCustomerOrderZipCode(rs.getString("customerOrderZipCode"));
+				ordto.setCustomerOrderAddr1(rs.getString("customerOrderAddr1"));
+				ordto.setCustomerOrderAddr2(rs.getString("customerOrderAddr2"));
+				ordto.setCustomerMemo(rs.getString("customerMemo"));
+				ordto.setCustomerOrderTel(rs.getString("customerOrderTel"));
+				ordto.setCustomerOrderPay(rs.getString("customerOrderPay"));
+				ordto.setCustomerOrderPrice(rs.getInt("customerOrderPrice"));
 				
-				orderlists.add(ordto);
-
+				orderlists.add(ordto);		
 			}
 
 			pstmt.close();
@@ -121,11 +131,7 @@ public class CustomerOrderDAO {
 		return orderlists;
 	}
 	
-	
-	
-	
-	
-	
+
 	//결제한 아티엠 타입의 수량 만큼 재고에서 빼주는 코딩 필요함
 	
 	

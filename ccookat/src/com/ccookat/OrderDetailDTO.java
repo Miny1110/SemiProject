@@ -5,10 +5,17 @@ public class OrderDetailDTO {
 	private int orderNum;
 	private String customerId;
 	private int itemNum;
+	private String itemName;
 	private int itemCount;
 	private int cartTotPrice;
 	
 	
+	public String getItemName() {
+		return itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
 	public int getOrderNum() {
 		return orderNum;
 	}

@@ -329,27 +329,44 @@
 				<div class="tab-pane active" id="tabs-2" role="tabpanel" align="center">
 					<div class="product__details__tab__desc">
 						<div id="login-name">주문조회</div>
-						<c:forEach var="ordto" items="orderlists">
+						<c:forEach var="ordto" items="${orderlists}">
 						<table class="qna_table">
-							<tbody>
+							<tbody>				
 								<tr height="60px">
 									<th class="qna_tr_test" width="150">주문번호</th>
-									<th class="qna_tr_test_center" width="380">대표상품</th>
-									<th class="qna_tr_test" width="150">결제금액</th>
-									<th class="qna_tr_test" width="200">결제일시</th>
-									<th class="qna_tr_test" width="120">배송상태</th>
+									<th class="qna_tr_test_center" width="380">주문일시</th>
+									<th class="qna_tr_test" width="150">주문금액</th>
+									<th class="qna_tr_test" width="200">배송지</th>
+									<th class="qna_tr_test" width="120"></th>
 								</tr>
-								<c:forEach var="oddto" items="detaillists">
 								<tr height="60px">
-									<td class="qna_tr_test">1</td>
-									<td class="qna_tr_test_center">말린망고</td>
-									<td class="qna_tr_test">240,000</td>
-									<td class="qna_tr_test">2022.08.07</td>
-									<td class="qna_tr_test">배송중</td>
+									<td class="qna_tr_test">${ordto.orderNum }</td>
+									<td class="qna_tr_test_center">${oddto.itemName }</td>
+									<td class="qna_tr_test">${oddto.itemCount }</td>
+									<td class="qna_tr_test">${oddto.cartTotPrice }</td>
+									<td class="qna_tr_test">배송중입니다.</td>
 								</tr>
-								</c:forEach>
+								<tr height="60px">
+									<th class="qna_tr_test" width="150">상품이미지</th>
+									<th class="qna_tr_test_center" width="380">상품명</th>
+									<th class="qna_tr_test" width="150">결제수량</th>
+									<th class="qna_tr_test" width="200">결제금액</th>
+									<th class="qna_tr_test" width="120">배송상태</th>
+								</tr>														
+								<c:forEach var="oddto" items="${dtlists}">
+								<c:if test="${ordto.orderNum==oddto.orderNum }">								
+								<tr height="60px">
+									<td class="qna_tr_test">${oddto.itemName }</td>
+									<td class="qna_tr_test_center">${oddto.itemName }</td>
+									<td class="qna_tr_test">${oddto.itemCount }</td>
+									<td class="qna_tr_test">${oddto.cartTotPrice }</td>
+									<td class="qna_tr_test">배송중입니다.</td>
+								</tr>
+								</c:if>
+								</c:forEach>																
 							</tbody>
 						</table>
+						<br/><br/>
 						</c:forEach>
 					</div>
 				</div>
