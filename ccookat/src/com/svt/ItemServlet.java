@@ -85,6 +85,7 @@ public class ItemServlet extends HttpServlet {
 					&& mr.getFile("itemImage3")!=null && mr.getFile("itemImage4")!=null ) {
 
 				ItemDTO idto = new ItemDTO();
+				
 
 				int maxNum = idao.getMaxNum();
 
@@ -104,7 +105,7 @@ public class ItemServlet extends HttpServlet {
 
 			}
 
-			url = cp + "/main" ;
+			url = cp + "main/item/list.do" ;
 			resp.sendRedirect(url);
 			return;
 
@@ -136,7 +137,7 @@ public class ItemServlet extends HttpServlet {
 
 			//널이면 리스트로 가
 			if(idto==null) {
-				url = cp + "/item/list.do";
+				url = cp + "/main/item/list.do";
 				resp.sendRedirect(url);
 				return;
 			}
@@ -219,8 +220,9 @@ public class ItemServlet extends HttpServlet {
 
 			//num과 pageNum을 받아온다. 리다이렉트 주소를 만들기 위해 필요한 값
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+			int currentPage = 0;
 			System.out.println(itemNum);
-			int currentPage = Integer.parseInt(req.getParameter("pageNum"));
+			
 			String itemType = req.getParameter("itemType");
 
 			//삭제하려는 데이터의 num을 사용해서 그 하나의 데이터 정보를 읽어온다
@@ -236,10 +238,11 @@ public class ItemServlet extends HttpServlet {
 			rdao.deleteDataItem(itemNum);
 			idao.deleteData(itemNum);
 			
-			if(itemType==null) {
-				url = cp + "/main/item/list.do?pageNum="+currentPage;
+			if(currentPage==0) {
+				url = cp + "/main/item/list.do";
 				resp.sendRedirect(url);}
 			else {
+				currentPage = Integer.parseInt(req.getParameter("pageNum"));
 				url = cp + "/main/item/list.do?itemType="+itemType +"&pageNum="+currentPage;
 				resp.sendRedirect(url);
 			}

@@ -286,8 +286,8 @@
                   		  조회수:${idto.itemHitCount }
                   		   <c:if test="${ sessionScope.customerInfo.customerId=='admin'}">
                   		  <c:choose>
-						<c:when test="${itemType==null}">
-                        <a href="${itemDeletePath }?itemNum=${idto.itemNum}&pageNum=${currentPage}">[삭제]</a>
+						<c:when test="${pageNum==null}">
+                        <a href="${itemDeletePath }?itemNum=${idto.itemNum}">[삭제]</a>
                         </c:when>
                         <c:otherwise>
                         <a href="${itemDeletePath }?itemNum=${idto.itemNum}&pageNum=${currentPage}&itemType=${itemType}">[삭제]</a>
