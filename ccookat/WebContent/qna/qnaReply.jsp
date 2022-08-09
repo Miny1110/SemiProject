@@ -274,7 +274,8 @@
 							<ul>
 								<li><a href="<%=cp%>/main/customer/login.do"><i
 										class="fa fa-heart"></i></a></li>
-								<li><a href="#"><i class="fa fa-shopping-bag"></i><span>${cartCount }</span></a></li>
+								<li><a href="<%=cp%>/main/customer/login.do"><i
+										class="fa fa-shopping-bag"></i></a></li>
 							</ul>
 						</c:if>
 						<c:if test="${!empty sessionScope.customerInfo.customerId}">

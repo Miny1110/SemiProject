@@ -216,14 +216,26 @@
 					</nav>
 				</div>
                 <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> </a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>${itemCount }</span></a></li>
-                        </ul>
-                        <div class="header__cart__price"></div>
-                    </div>
-                </div>
+					<div class="header__cart">
+						<c:if test="${empty sessionScope.customerInfo.customerId}">
+							<ul>
+								<li><a href="<%=cp%>/main/customer/login.do"><i
+										class="fa fa-heart"></i></a></li>
+								<li><a href="<%=cp%>/main/customer/login.do"><i
+										class="fa fa-shopping-bag"></i></a></li>
+							</ul>
+						</c:if>
+						<c:if test="${!empty sessionScope.customerInfo.customerId}">
+							<ul>
+								<li><a href="<%=cp%>/main/cart/list.do"><i
+										class="fa fa-heart"></i></a></li>
+								<li><a href="<%=cp%>/main/cart/list.do"><i
+										class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
+							</ul>
+						</c:if>
+						<div class="header__cart__price"></div>
+					</div>
+				</div>
             </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>
