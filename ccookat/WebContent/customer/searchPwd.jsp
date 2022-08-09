@@ -46,97 +46,112 @@
 </head>
 <body>
 	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
+    <div id="preloder" style="display: none;">
+        <div class="loader" style="display: none;"></div>
+    </div>
 
-	<!-- Humberger Begin -->
-	<div class="humberger__menu__overlay"></div>
-	<div class="humberger__menu__wrapper">
-		<div class="humberger__menu__logo">
-			<a href="#"><img
-				src="<%=cp %>/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
-		</div>
-		<div class="humberger__menu__cart">
-			<ul>
-				<li><a href="#"><i class="fa fa-heart"></i></a></li>
-				<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> </a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
+            </ul>
+            <div class="header__cart__price"></div>
+        </div>
+        <div class="humberger__menu__widget">
+             <div class="header__top__right__language">
+                <img class="korean" src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
+                <div>한국어</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">한국어</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Login</a>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+			<li><a href="<%=cp%>/main">Home</a></li>
+			<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+		 	<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
+			<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
 			</ul>
-			<div class="header__cart__price"></div>
-		</div>
-		<div class="humberger__menu__widget">
-			<div class="header__top__right__language">
-				<img class="korean" src="<%=cp %>/Data/style/img/ccookat/korean.jpg"
-					alt="">
-				<div>한국어</div>
-				<span class="arrow_carrot-down"></span>
-				<ul>
-					<li><a href="#">한국어</a></li>
-					<li><a href="#">English</a></li>
-				</ul>
-			</div>
-			<div class="header__top__right__auth">
-				<a href="#"><i class="fa fa-user"></i> Login</a>
-			</div>
-		</div>
-		<nav class="humberger__menu__nav mobile-menu">
-			<ul>
-				<li class="active"><a href="./index.html">Home</a></li>
-				<li><a href="./shop-grid.html">Shop</a></li>
-				<li><a href="#">Pages</a>
-					<ul class="header__menu__dropdown">
-						<li><a href="./shop-details.html">Shop Details</a></li>
-						<li><a href="./shoping-cart.html">Shopping Cart</a></li>
-						<li><a href="./checkout.html">Check Out</a></li>
-					</ul></li>
-				<li><a href="./contact.html">Contact</a></li>
+        </nav>
+        <div id="mobile-menu-wrap">
+        <div class="slicknav_menu">
+        <a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;">
+        <span class="slicknav_menutxt">MENU</span>
+        <span class="slicknav_icon"><span class="slicknav_icon-bar"></span></span>
+        <span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></a>
+        <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+            <ul>
+                <li><a href="./index.html" role="menuitem">Home</a></li>
+                <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
+                <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
+                    <span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+                        <li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shopping Cart</a></li>
+                        <li><a href="./checkout.html" role="menuitem" tabindex="-1">Check Out</a></li>
+                    </ul>
+                </li>
+                <li><a href="./contact.html" role="menuitem">Contact</a></li>
+            </ul>
+        </nav></div></div>
+        <div class="header__top__right__social">
+            <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+			<a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a> 
+			<a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
+			<a href="https://www.pinterest.co.kr" target="_blank"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+			<a href="https://mail.google.com/mail" target="_blank">
+			<li><i class="fa fa-envelope"></i> ccookat@gmail.com</li></a>
 			</ul>
-		</nav>
-		<div id="mobile-menu-wrap"></div>
-		<div class="header__top__right__social">
-			<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-				class="fa fa-twitter"></i></a> <a href="#"><i
-				class="fa fa-instagram"></i></a> <a href="#"><i
-				class="fa fa-pinterest-p"></i></a>
-		</div>
-		<div class="humberger__menu__contact">
-			<ul>
-				<li><i class="fa fa-envelope"></i> ccokat@gmail.com</li>
-			</ul>
-		</div>
-	</div>
-	<!-- Humberger End -->
+        </div>
+    </div>
+    <!-- Humberger End -->
 
-	<!-- Header Section Begin -->
-	<header class="header">
-		<div class="header__top">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="header__top__left">
-							<ul>
+<!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header__top__left">
+                           <ul>
+								<a href="https://mail.google.com/mail" target="_blank">
 								<li><i class="fa fa-envelope"></i> ccookat@gmail.com</li>
+								</a>
 							</ul>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="header__top__right">
-							<div class="header__top__right__social">
-								<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-									class="fa fa-twitter"></i></a> <a href="#"><i
-									class="fa fa-instagram"></i></a> <a href="#"><i
-									class="fa fa-pinterest-p"></i></a>
-							</div>
-							<div class="header__top__right__language">
-								<img src="<%=cp %>/Data/style/img/ccookat/korean.jpg" alt="">
-								<div>한국어</div>
-								<span class="arrow_carrot-down"></span>
-								<ul>
-									<li><a href="#">한국어</a></li>
-									<li><a href="#">English</a></li>
-								</ul>
-							</div>
-							<c:if test="${empty sessionScope.customerInfo.customerId}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                              <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+							  <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a> 
+							  <a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
+							  <a href="https://www.pinterest.co.kr" target="_blank"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <img src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
+                                <div>한국어</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">한국어</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
+                            </div>
+                          <c:if test="${empty sessionScope.customerInfo.customerId}">
 									<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/login.do"><i class="fa fa-user"></i> Login</a>
 									</div>
@@ -146,93 +161,94 @@
 							</c:if>
 							<c:if test="${!empty sessionScope.customerInfo.customerId}">
              						<div class="header__top__right__auth">
-               						<a href="#"><i class="fa fa-user"></i> Mypage</a>
+               						<a href="<%=cp %>/main/customer/customerPwdChk.do"><i class="fa fa-user"></i> Mypage</a>
            						 </div>
            						 <div class="header__top__right__auth">
            						 <a href="<%=cp %>/main/customer/logout.do"><i class="fa fa-user"></i> Logout</a>
            						 </div>
            					 </c:if>
-						</div>
-					</div>
-				</div>
-			</div>
-		<div class="container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="container">
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
 						<a href="<%=cp %>/main"><img src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
-					<div class="col-lg-6">
+				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
 							<li><a href="<%=cp%>/main">Home</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
-							<li><a href="#">Pages</a>
-								<ul class="header__menu__dropdown">
-									<li><a href="./shop-details.html">Shop Details</a></li>
-									<li><a href="./shoping-cart.html">Shopping Cart</a></li>
-									<li><a href="./checkout.html">Check Out</a></li>
-								</ul></li>
-							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">Contact</a></li>
-						</ul>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
+							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+						</ul>						
 					</nav>
 				</div>
-				<div class="col-lg-3">
-					<div class="header__cart">
-			<c:if test="${empty sessionScope.customerInfo.customerId}">
-								<ul>
-									<li><a href="<%=cp%>/main/customer/login.do"><i
-											class="fa fa-heart"></i></a></li>
-									<li><a href="<%=cp%>/main/customer/login.do"><i
-											class="fa fa-shopping-bag"></i></a></li>
-								</ul>
-							</c:if>
-							<c:if test="${!empty sessionScope.customerInfo.customerId}">
-								<ul>
-									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-heart"></i></a></li>
-									<li><a href="<%=cp%>/main/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
-								</ul>
-									</c:if>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+						<c:if test="${empty sessionScope.customerInfo.customerId}">
+							<ul>
+								<li><a href="<%=cp%>/main/customer/login.do"><i
+										class="fa fa-heart"></i></a></li>
+								<li><a href="<%=cp%>/main/customer/login.do"><i
+										class="fa fa-shopping-bag"></i></a></li>
+							</ul>
+						</c:if>
+						<c:if test="${!empty sessionScope.customerInfo.customerId}">
+							<ul>
+								<li><a href="<%=cp%>/main/cart/list.do"><i
+										class="fa fa-heart"></i></a></li>
+								<li><a href="<%=cp%>/main/cart/list.do"><i
+										class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
+							</ul>
+						</c:if>
 						<div class="header__cart__price"></div>
 					</div>
-				</div>
-			</div>
-			<div class="humberger__open">
-				<i class="fa fa-bars"></i>
-			</div>
-		</div>
-	</header>
-	<!-- Header Section End -->
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
 
-	<!-- Hero Section Begin -->
-	<section class="hero hero-normal">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="hero__categories">
-						<div class="hero__categories__all">
-							<i class="fa fa-bars"></i> <span>Cateories</span>
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+							<i class="fa fa-bars"></i> 
+							<span>카테고리</span>
 						</div>
-						      <ul>
-                             <li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Vegetables & Fruit</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=bread">Rice & Noodle & Bread</a></li>
-                            <li><a href="<%=cp %>/main/item/list.do?itemType=meat">Fresh Meat & Egg</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-9">
-					<div class="hero__search">
-						<div class="hero__search__form">
-						<form action="#">
-								<div class="hero__search__categories">
-									All Categories <span class="arrow_carrot-down"></span>
-								</div>
-								<input type="text" placeholder="검색어를 입력해주세요">
-								<button type="submit" class="site-btn">SEARCH</button>
-						</form>
-						</div>
-						<div class="hero__search__phone">
+                        <ul>
+                          <li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
+						  <li><a href="<%=cp %>/main/item/list.do">채소ㆍ과일</a></li>
+						  <li><a href="<%=cp %>/main/item/list.do">밥ㆍ빵ㆍ면</a></li>
+						  <li><a href="<%=cp %>/main/item/list.do">정육ㆍ계란</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    제품명
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="제품명 입력하세요">
+                                <button type="submit" class="site-btn">검색하기</button>
+                            </form>
+                        </div>
+                       <div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
 								<i class="fa fa-truck"></i>
 							</div>
@@ -241,12 +257,14 @@
 								<span> 샛별ㆍ낮 배송</span>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Hero Section End -->
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
 
 
 	<!-- Checkout Section Begin -->
