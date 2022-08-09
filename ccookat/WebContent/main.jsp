@@ -326,7 +326,6 @@
 							</c:when>
 							<c:otherwise><li>&nbsp;</li></c:otherwise>
 							</c:choose>						
-						</ul>
 
 					</div>
 				</div>
