@@ -102,7 +102,7 @@ public class CustomerOrderServlet extends HttpServlet {
 
 			if(customerInfo!=null) {
 
-				OrderDetailDTO oddto = new OrderDetailDTO();
+				OrderDetailDTO oddto = null;
 				CustomerDTO cdto = new CustomerDTO();
 
 				String customerId = customerInfo.getCustomerId();
@@ -114,10 +114,10 @@ public class CustomerOrderServlet extends HttpServlet {
 				
 				Iterator<CartDTO> it = lists.iterator();
 				
+				
 				while(it.hasNext()) {
-					
-					
-					
+				
+					oddto = new OrderDetailDTO();
 					
 					
 				}
@@ -133,7 +133,7 @@ public class CustomerOrderServlet extends HttpServlet {
 				url = "/main";
 				forward(request, response, url);	
 				return;
-			}
+			}			
 			//로그인 안되어있을때 로그인창보내기
 			url = cp +"/main/customer/login.do";
 			response.sendRedirect(url);

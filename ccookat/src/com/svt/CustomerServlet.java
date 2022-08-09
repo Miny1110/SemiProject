@@ -230,15 +230,13 @@ public class CustomerServlet extends HttpServlet{
 			url = "/customer/searchPwd.jsp";
 			forward(req, resp, url);
 
-
-
 		}else if(uri.indexOf("searchPwd_ok.do")!=-1) {
 			String customerId = req.getParameter("customerId");
 			String customerTel = req.getParameter("customerTel");
-
+			
 			CustomerDTO cdto =cdao.getReadData(customerId);
 
-			if(cdto==null||!cdto.getCustomerTel().equals(customerTel)) {
+			if(!cdto.getCustomerTel().equals(customerTel)||cdto==null) {
 				req.setAttribute("message", "회원정보가 존재하지 않습니다.");
 
 				url = "/customer/searchPwd.jsp";
