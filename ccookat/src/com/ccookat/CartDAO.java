@@ -187,7 +187,6 @@ public class CartDAO {
 	}
 
 	//그아이디에 장바구니에 같은상품이 있는지 알아보기위해 한개의 데이터를 가져와보는 출력문
-
 	public int getReadData(int itemNum, String customerId) {
 		int result = 0;
 
@@ -217,6 +216,7 @@ public class CartDAO {
 		}
 		return result;
 	}
+	
 	//로그인한 사람이 가지고 있는 장바구니 수량 갯수를 장바구니 이모티콘에 출력해줄 데이터
 	public int cartCount(String customerId) {
 		int cartCount = 0;
@@ -248,6 +248,7 @@ public class CartDAO {
 		return cartCount;
 	}
 	
+	//주문하기가 성공하면 장바구니에서 데이터를 삭제해줌
 	public void orderdelete(String customerId) {		
 		PreparedStatement pstmt = null;
 		String sql;
