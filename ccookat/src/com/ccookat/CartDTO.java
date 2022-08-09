@@ -13,7 +13,6 @@ public class CartDTO {
 	private int itemDiscount;
 	
 	
-	
 	public int getItemDiscount() {
 		return itemDiscount;
 	}

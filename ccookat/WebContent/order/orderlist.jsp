@@ -346,7 +346,6 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-      <form action="<%=cp%>/main/order/order_ok.do">
        <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
@@ -375,7 +374,7 @@
                             <c:set var="beforedc" value="${beforedc + ctdto.itemPrice*ctdto.cartItemCount}"/>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="${itemImagePath }/${ctdto.itemName}" alt="">
+                                        <img src="${itemImagePath }/${ctdto.itemImage1}" alt="" width="100px" height="100px">
                                         <h5>${ctdto.itemName}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
@@ -418,8 +417,8 @@
     <!-- Product Section End -->
     <!-- Blog Section Begin -->
     <section class="checkout spad">
-        <div class="container">
-            
+       <form action="<%=cp%>/main/order/order_ok.do">
+        <div class="container">         
             <div class="checkout__form_order">
                 <h3>주문하기</h3>           
                     <div class="row">
@@ -485,8 +484,8 @@
                     </div>
           	  	</div>
         	</div>
-    </section>
-    </form>
+         </form> 	
+    </section> 
     <br><br><br><br><br>
     <!-- Blog Section End -->
     
