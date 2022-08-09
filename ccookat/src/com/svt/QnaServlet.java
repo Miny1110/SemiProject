@@ -101,6 +101,7 @@ public class QnaServlet extends HttpServlet {
 			CustomerInfo customerInfo = new CustomerInfo();
 
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+			ReplyDTO redto = new ReplyDTO();
 
 			if(customerInfo==null) {
 				url = "/main/customer/login.do";
@@ -150,7 +151,8 @@ public class QnaServlet extends HttpServlet {
 			
 				List<QnaDTO> lists = 
 						qdao.selectAll(start, end, searchKey, searchValue);
-
+				
+				List<ReplyDTO> relists = redao.getLists();
 				String params = "";
 				if(searchValue!=null && !searchValue.equals("")) {
 					params = "?searchKey=" + searchKey; 
@@ -172,7 +174,10 @@ public class QnaServlet extends HttpServlet {
 				if(!params.equals("")) {
 					detailUrl += "&" + params;			
 				}
-
+				
+				
+				request.setAttribute("relists", relists);
+				request.setAttribute("redto", redto);
 				request.setAttribute("lists", lists);
 				request.setAttribute("pageIndexList", pageIndexList);
 				request.setAttribute("detailUrl", detailUrl);
