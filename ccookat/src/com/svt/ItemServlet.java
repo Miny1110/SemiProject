@@ -219,6 +219,7 @@ public class ItemServlet extends HttpServlet {
 
 			//num과 pageNum을 받아온다. 리다이렉트 주소를 만들기 위해 필요한 값
 			int itemNum = Integer.parseInt(req.getParameter("itemNum"));
+			System.out.println(itemNum);
 			int currentPage = Integer.parseInt(req.getParameter("pageNum"));
 			String itemType = req.getParameter("itemType");
 
