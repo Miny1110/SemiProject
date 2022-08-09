@@ -60,8 +60,8 @@ public class CustomerDAO {
 		try {
 			
 			sql = "insert into customer(customerId,customerPwd,customerName,";
-			sql+= "customerEmail,customerTel) ";
-			sql+= "values(?,?,?,?,?)";
+			sql+= "customerEmail,customerTel,customerZipcode,customerAddr1,customerAddr2) ";
+			sql+= "values(?,?,?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -70,6 +70,9 @@ public class CustomerDAO {
 			pstmt.setString(3, cdto.getCustomerName());
 			pstmt.setString(4, cdto.getCustomerEmail());
 			pstmt.setString(5, cdto.getCustomerTel());
+			pstmt.setString(6, cdto.getCustomerZipcode());
+			pstmt.setString(7, cdto.getCustomerAddr1());
+			pstmt.setString(8, cdto.getCustomerAddr2());
 			
 			
 			//result = pstmt.executeUpdate();
@@ -176,7 +179,7 @@ public class CustomerDAO {
 		try {
 			
 			sql = "select customerId,customerPwd,";
-			sql+= "customerName,customerEmail,customerTel ";
+			sql+= "customerName,customerEmail,customerTel,customerZipcode,customerAddr1,customerAddr2 ";
 			sql+= "from customer where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -194,7 +197,9 @@ public class CustomerDAO {
 				cdto.setCustomerName(rs.getString("customerName"));
 				cdto.setCustomerEmail(rs.getString("customerEmail"));
 				cdto.setCustomerTel(rs.getString("customerTel"));
-				//cdto.setCustomerCreated(rs.getString("created"));
+				cdto.setCustomerZipcode(rs.getString("customerZipcode"));
+				cdto.setCustomerAddr1(rs.getString("customerAddr1"));
+				cdto.setCustomerAddr2(rs.getString("customerAddr2"));
 			}
 			
 			rs.close();
@@ -259,7 +264,8 @@ public class CustomerDAO {
 		
 		try {
 			
-			sql = "update customer set customerPwd=?,customerEmail=?,customerTel=? ";
+			sql = "update customer set customerPwd=?,customerEmail=?,customerTel=?,";
+			sql+= "customerZipcode=?,customerAddr1=?,customerAddr2=? ";
 			sql+= "where customerId=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -267,7 +273,10 @@ public class CustomerDAO {
 			pstmt.setString(1, cdto.getCustomerPwd());
 			pstmt.setString(2, cdto.getCustomerEmail());
 			pstmt.setString(3, cdto.getCustomerTel());
-			pstmt.setString(4, cdto.getCustomerId());
+			pstmt.setString(4, cdto.getCustomerZipcode());
+			pstmt.setString(5, cdto.getCustomerAddr1());
+			pstmt.setString(6, cdto.getCustomerAddr2());
+			pstmt.setString(7, cdto.getCustomerId());
 			
 			pstmt.executeUpdate();
 			
@@ -305,5 +314,6 @@ public class CustomerDAO {
 		return result;
 		
 	}
+	
 
 }
