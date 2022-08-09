@@ -73,7 +73,28 @@ public class CustomerServlet extends HttpServlet{
 			url = "/customer/login.jsp";
 			forward(req, resp, url);
 
-		} else if(uri.indexOf("login.do")!=-1) {
+		} else if(uri.indexOf("idcheck.do")!=-1) {
+			
+			String customerId = req.getParameter("customerId");
+			String idDuplication = "idUncheck";
+			
+			int result = cdao.idChk(customerId);
+			
+			if(result==1) {
+				req.setAttribute("msg", "이미 존재하는 아이디입니다.");
+				req.setAttribute("idDuplication", idDuplication);
+			}else {
+				req.setAttribute("msg", "사용 가능한 아이디입니다.");
+				req.setAttribute("customerIdChk", customerId);
+				idDuplication = "idcheck";
+				req.setAttribute("idDuplication", idDuplication);
+				
+			}
+			url = "/customer/signUp.jsp";
+			forward(req, resp, url);
+
+		}
+		else if(uri.indexOf("login.do")!=-1) {
 			//로그인창
 
 			url = "/customer/login.jsp";
@@ -230,13 +251,15 @@ public class CustomerServlet extends HttpServlet{
 			url = "/customer/searchPwd.jsp";
 			forward(req, resp, url);
 
+
+
 		}else if(uri.indexOf("searchPwd_ok.do")!=-1) {
 			String customerId = req.getParameter("customerId");
 			String customerTel = req.getParameter("customerTel");
-			
+
 			CustomerDTO cdto =cdao.getReadData(customerId);
 
-			if(!cdto.getCustomerTel().equals(customerTel)||cdto==null) {
+			if(cdto==null||!cdto.getCustomerTel().equals(customerTel)) {
 				req.setAttribute("message", "회원정보가 존재하지 않습니다.");
 
 				url = "/customer/searchPwd.jsp";
@@ -280,6 +303,7 @@ public class CustomerServlet extends HttpServlet{
 		
 	}
 }
+
 
 
 
