@@ -94,7 +94,7 @@ public class CustomerOrderDAO {
 			sql ="select ordernum,customerid,TO_CHAR(ordate,'yyyy/mm/dd HH24:MI:SS') ordate,";
 			sql+="customerOrderName,customerOrderZipCode,customerOrderAddr1,customerOrderAddr2,";
 			sql+="customerOrderTel,customerOrderPay,customerMemo,customerOrderPrice ";
-			sql+="from customerorder where customerId = ?";
+			sql+="from customerorder where customerId = ? order by ordernum desc";
 
 			pstmt = conn.prepareStatement(sql);
 
