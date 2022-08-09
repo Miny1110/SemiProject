@@ -12,8 +12,15 @@ public class CustomerOrderDTO {
 	private String customerOrderTel;
 	private String customerOrderPay;
 	private String customerMemo;
+	private int customerPrice;
 	
 	
+	public int getCustomerPrice() {
+		return customerPrice;
+	}
+	public void setCustomerPrice(int customerPrice) {
+		this.customerPrice = customerPrice;
+	}
 	public String getOrdate() {
 		return ordate;
 	}
