@@ -335,7 +335,7 @@
         <div class="container">
             <div class="checkout__form">
                 <h3>리뷰 작성</h3>
-                <form action="/ccookat/main/review/created_ok.do" method="post" enctype="multipart/form-data">
+                <form action="/ccookat/main/review/updated_ok.do?reviewNum=${rdto.reviewNum}&pageNum=${pageNum}&itemNum=${itemNum}" method="post" enctype="multipart/form-data">
                     <div>
                         <div>
                            <div class="checkout__input">

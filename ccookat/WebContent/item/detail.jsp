@@ -320,7 +320,7 @@
                         </div>
                         <input type="hidden" value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" name="itemPrice">
                         <input type="hidden" name="itemNum" value="${idto.itemNum}">
-                        <input type="hidden" name="itemType" value="${itemType}"> 
+                        <input type="hidden" name="itemType" value="${itemType}"/> 
                         <a class="primary-btn" onclick="cartin();" style="cursor: hand; color: white; ">장바구니 넣기</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 						</form>
@@ -407,18 +407,35 @@
 														</c:if>
 														<div style="text-align: right;">
 															<input type="hidden" name="reviewNum"
-																value="${rdto.reviewNum}" /> <input type="hidden"
-																name="pageNum" value="${pageNum}" />
+																value="${rdto.reviewNum}" /> 
+																<input type="hidden"name="pageNum" value="${pageNum}"/>
+																<input type="hidden"name="itemNum" value="${itemNum}"/>
+																   <input type="hidden" name="itemType" value="${itemType}"/> 
 															<c:if
 																test="${sessionScope.customerInfo.customerId==rdto.customerId}">
 																<div class="blog__sidebar__item__tags">
+																<c:choose>
+																<c:when test="${itemType==null}">
 																	<a
-																		href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
+																		href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${idto.itemNum}">
 																		수정하기</a> <a
-																		href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${itemNum}">
+																		href="<%=cp %>/main/item/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}&itemNum=${idto.itemNum}">
 																		삭제하기</a>
+																		</c:when>
+																		<c:otherwise>
+																						<a
+																		href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}
+																		&itemNum=${idto.itemNum}}&itemType=${idto.itemType}">
+																		수정하기</a> <a
+																		href="<%=cp %>/main/item/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}
+																		&itemNum=${idto.itemNum}}&itemType=${idto.itemType}">
+																		삭제하기</a>
+																		</c:otherwise>
+																		</c:choose>
+																		
 																</div>
 															</c:if>
+
 
 															<c:if
 																test="${sessionScope.customerInfo.customerId=='admin'}">
@@ -426,6 +443,7 @@
 																	<a
 																		href="location='/ccookat/main/review/deleted.do?reviewNum=${rdto.reviewNum}&pageNum=${currentPage}">
 																		삭제하기</a>
+																		
 																</div>
 															</c:if>
 
