@@ -3,6 +3,8 @@ package com.ccookat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerOrderDAO {
 
@@ -77,6 +79,48 @@ public class CustomerOrderDAO {
 		}
 		return result;
 	}
+	//주문조회에 뿌려줄 데이터
+	public List<CustomerOrderDTO> selectAll(String customerId) {
+		
+		List<CustomerOrderDTO> orderlists = new ArrayList<CustomerOrderDTO>();
+		CustomerOrderDTO ordto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+		
+			sql ="select ordernum,customerid,TO_CHAR(ordate,'HH24:MI:SS') ordate,";
+			sql+="customerOrderName,customerOrderZipCode,customerOrderAddr1,customerOrderAddr2,";
+			sql+="customerOrderTel,customerOrderPay,customerMemo,customerOrderPrice ";
+			sql+="from customerorder where customerId = ?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, customerId);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				
+
+				ordto.setOrderNum(rs.getInt("ordernum"));
+				
+				orderlists.add(ordto);
+
+			}
+
+			pstmt.close();
+			rs.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return orderlists;
+	}
+	
 	
 	
 	

@@ -14,6 +14,7 @@ public class CustomerOrderDTO {
 	private String customerMemo;
 	private int customerOrderPrice;
 	private String itemImage1;
+	
 	public int getOrderNum() {
 		return orderNum;
 	}

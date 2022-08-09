@@ -303,14 +303,12 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
                                 <div class="hero__search__categories">
                                     제품명
                                     <span class="arrow_carrot-down"></span>
                                 </div>
                                 <input type="text" placeholder="제품명 입력하세요">
                                 <button type="submit" class="site-btn">검색하기</button>
-                            </form>
                         </div>
                        <div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
@@ -453,10 +451,10 @@
                             <div class="checkout__input__checkbox">
                                 <label for="acc" style="padding-right: 20px;">
                                     현금결제
-                                    <input type="radio" id="acc" name="customerOrderPay">
+                                    <input type="radio" id="acc" value="현금결제" name="customerOrderPay">
                                     <span class="checkmark"></span>
                                  </label>
-                                 <label for="diff-acc">카드결제<input type="radio" id="diff-acc" name="customerOrderPay">
+                                 <label for="diff-acc">카드결제<input type="radio" id="diff-acc"  value="카드결제" name="customerOrderPay">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>                                                    
@@ -468,8 +466,7 @@
                             <div class="checkout__order">
                                 <h4>주문하기</h4>
                                 <div class="checkout__order__total">총가격 <span> ${totalprice} </span></div>
-                            
-                               
+                
                                 <div class="checkout__input__checkbox">
                                     <label for="payment">
                                         Check Payment

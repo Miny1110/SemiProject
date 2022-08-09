@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import com.ccookat.CustomerDAO;
 import com.ccookat.CustomerDTO;
 import com.ccookat.CustomerInfo;
+import com.ccookat.CustomerOrderDAO;
+import com.ccookat.OrderDetailDAO;
 import com.ccookat.ReviewDAO;
 import com.util.DBConn;
 import com.util.MyPage;
@@ -46,7 +48,10 @@ public class CustomerServlet extends HttpServlet{
 		Connection conn = DBConn.getconnection();
 		CustomerDAO cdao = new CustomerDAO(conn);
 		ReviewDAO rdao = new ReviewDAO(conn);
-
+		CustomerOrderDAO ordao= new CustomerOrderDAO(conn);
+		OrderDetailDAO oddao= new OrderDetailDAO(conn);
+		
+		
 		String url;
 
 		//회원정보 입력
@@ -155,6 +160,21 @@ public class CustomerServlet extends HttpServlet{
 		//회원정보수정 페이지 들어가기 전 비밀번호 확인
 		else if(uri.indexOf("customerPwdChk.do")!=-1) {
 
+			HttpSession session = req.getSession();
+			CustomerInfo customerInfo = new CustomerInfo();
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+			String customerId = customerInfo.getCustomerId();
+
+			//여기에 주문정보랑 주문디테일 뽑아야함
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			url = "/customer/mypageEnter.jsp";
 			forward(req, resp, url);
 

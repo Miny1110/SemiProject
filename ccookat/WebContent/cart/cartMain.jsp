@@ -30,6 +30,17 @@
     <link rel="stylesheet" href="/ccookat/Data/style/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/ccookat/Data/style/css/style.css" type="text/css">
    
+ <script type="text/javascript">
+ 
+ function check() {
+	
+	 alert("장바구니에 담긴 상품이 없습니다.");	 
+	 
+}
+ 
+ </script>
+   
+   
 </head>
 <body>
     <!-- Page Preloder -->
@@ -433,7 +444,14 @@
                             <li>총 할인금액 <span> ${(beforedc-totalprice)*-1} </span></li>
                             <li>총 결제금액 <span> ${totalprice}</span></li>
                         </ul>
+                        <c:choose>
+                        <c:when test="${!empty lists }">
                         <a href="<%=cp%>/main/order/order.do" class="primary-btn"> 결&nbsp;제&nbsp;하&nbsp;기</a>
+                        </c:when>
+                        <c:otherwise>
+                        <a class="primary-btn" style="color: white; cursor: pointer;"  onclick="check();"> 결&nbsp;제&nbsp;하&nbsp;기</a>                        
+                        </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>
