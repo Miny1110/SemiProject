@@ -8,7 +8,7 @@ public class CustomerOrderDAO {
 
 	Connection conn;
 	
-	private CustomerOrderDAO(Connection conn) {
+	public CustomerOrderDAO(Connection conn) {
 		
 		this.conn = conn;
 	}
@@ -44,8 +44,8 @@ public class CustomerOrderDAO {
 	}
 
 	
-	//이미 주문하고 목록 불러와야하니 인서트하기
-	public int insertData(CustomerOrderDTO cudto) {
+	//주문정보(상품x오직 주문정보)
+	public int insertOrderData(CustomerOrderDTO ordto) {
 		
 		int result = 0;
 		PreparedStatement pstmt= null;
@@ -53,24 +53,22 @@ public class CustomerOrderDAO {
 		
 		try {
 			
-			sql = "insert into order(orderNum,customerId,itemNum,cartNum,";
+			sql = "insert into order(orderNum,customerId,to_char(ordate,'HH24:MI:SS'),";
 			sql+= "customerOrderName,customerOrderZipCode,customerOrderAddr1,customerAddr2,customerOrderTel,customerOrderPay,customerMemo) ";
-			sql+= "values (?,?,?,?,?,?,?,?,?,?,?)";
+			sql+= "values (?,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, cudto.getOrderNum());
-			pstmt.setString(2, cudto.getCustomerId());
-			pstmt.setInt(3, cudto.getItemNum());
-			pstmt.setInt(4, cudto.getCartNum());
-			pstmt.setString(5, cudto.getCustomerOrderName());
-			pstmt.setString(6, cudto.getCustomerOrderZipCode());
-			pstmt.setString(7, cudto.getCustomerOrderTel());
-			pstmt.setString(8, cudto.getCustomerOrderAddr1());
-			pstmt.setString(9, cudto.getCustomerOrderAddr2());
-			pstmt.setString(10, cudto.getCustomerOrderPay());
-			pstmt.setString(11, cudto.getCustomerMemo());
-			
+			pstmt.setInt(1, ordto.getOrderNum());
+			pstmt.setString(2, ordto.getCustomerId());
+			pstmt.setString(3, ordto.getOrdate());
+			pstmt.setString(4, ordto.getCustomerOrderName());
+			pstmt.setString(5, ordto.getCustomerOrderZipCode());
+			pstmt.setString(6, ordto.getCustomerOrderTel());
+			pstmt.setString(7, ordto.getCustomerOrderAddr1());
+			pstmt.setString(8, ordto.getCustomerOrderAddr2());
+			pstmt.setString(9, ordto.getCustomerOrderPay());
+			pstmt.setString(10, ordto.getCustomerMemo());			
 		
 			pstmt.executeUpdate();
 			
@@ -83,12 +81,13 @@ public class CustomerOrderDAO {
 	}
 	
 	
+	
+	
+	
 	//결제한 아티엠 타입의 수량 만큼 재고에서 빼주는 코딩 필요함
 	
 	
-	
-	//고객정보와 아이템 수량 아이템 타입을 테이블에 insert해줘야함
-	
+
 	
 	
 }

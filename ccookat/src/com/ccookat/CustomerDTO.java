@@ -10,16 +10,24 @@ public class CustomerDTO {
 	private String customerTel;
 	private String customerCreated;
 	//addr 1/2 로 바꿀거면 나중에 담당하는사람이 하기
-	private String customerAddr;
 	private String customerZipcode;
+	private String customerAddr1;
+	private String customerAddr2;
 	
 	
-	public String getCustomerAddr() {
-		return customerAddr;
+	public String getCustomerAddr1() {
+		return customerAddr1;
 	}
-	public void setCustomerAddr(String customerAddr) {
-		this.customerAddr = customerAddr;
+	public void setCustomerAddr1(String customerAddr1) {
+		this.customerAddr1 = customerAddr1;
 	}
+	public String getCustomerAddr2() {
+		return customerAddr2;
+	}
+	public void setCustomerAddr2(String customerAddr2) {
+		this.customerAddr2 = customerAddr2;
+	}
+
 	public String getCustomerZipcode() {
 		return customerZipcode;
 	}

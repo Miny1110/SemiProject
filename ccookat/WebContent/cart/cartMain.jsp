@@ -286,8 +286,8 @@
 											<c:set var="beforedc"
 												value="${beforedc + ctdto.itemPrice*ctdto.cartItemCount}" />
 											<tr>
-												<td class="shoping__cart__item"><img
-													src="${itemImagePath }/${ctdto.itemName}" alt="">
+												<td class="shoping__cart__item">
+												<img src="${itemImagePath }/${ctdto.itemImage1}" alt="" width="100px" height="100px">
 													<h5>${ctdto.itemName}</h5></td>
 												<td class="shoping__cart__price">
 													${ctdto.itemPrice*ctdto.cartItemCount }</td>
@@ -328,7 +328,7 @@
                             <h5>Discount Codes</h5>
                             <form action="#">
                                 <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">APPLY COUPON</button>
+                                <button type="submit" class="site-btn">할인쿠폰</button>
                             </form>
                         </div>
                     </div>

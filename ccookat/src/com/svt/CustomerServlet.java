@@ -64,6 +64,9 @@ public class CustomerServlet extends HttpServlet{
 			cdto.setCustomerName(req.getParameter("customerName"));
 			cdto.setCustomerEmail(req.getParameter("customerEmail"));
 			cdto.setCustomerTel(req.getParameter("customerTel"));
+			cdto.setCustomerZipcode(req.getParameter("customerZipcode"));
+			cdto.setCustomerAddr1(req.getParameter("customerAddr1"));
+			cdto.setCustomerAddr2(req.getParameter("customerAddr2"));
 
 			cdao.insertData(cdto);
 
@@ -181,6 +184,9 @@ public class CustomerServlet extends HttpServlet{
 			cdto.setCustomerName(req.getParameter("customerName"));
 			cdto.setCustomerEmail(req.getParameter("customerEmail"));
 			cdto.setCustomerTel(req.getParameter("customerTel"));
+			cdto.setCustomerZipcode(req.getParameter("customerZipcode"));
+			cdto.setCustomerAddr1(req.getParameter("customerAddr1"));
+			cdto.setCustomerAddr2(req.getParameter("customerAddr2"));
 
 			cdao.updateData(cdto);
 
@@ -267,6 +273,13 @@ public class CustomerServlet extends HttpServlet{
 			return;
 
 		}
+		
+		
+
+			
+		
+		
+		
 	}
 }
 
