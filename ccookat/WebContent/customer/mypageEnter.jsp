@@ -363,7 +363,7 @@
 								<c:forEach var="oddto" items="${dtlists}">
 								<c:if test="${ordto.orderNum==oddto.orderNum }">								
 								<tr height="60px">
-									<td class="qna_tr_test">${oddto.itemName }</td>
+									<td class="qna_tr_test"><img src="${itemImagePath }/${oddto.itemImage1}" alt="" width="100px" height="100px"></td>
 									<td class="qna_tr_test_center">${oddto.itemName }</td>
 									<td class="qna_tr_test">${oddto.itemCount }</td>
 									<td class="qna_tr_test">${oddto.cartTotPrice }</td>
