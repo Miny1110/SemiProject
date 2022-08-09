@@ -286,18 +286,18 @@
 							<div>
 								<div class="filter__sort notice_select">
 									<span>카테고리 선택</span> 
-									&nbsp;&nbsp;|
+									&nbsp;&nbsp;&nbsp;|
 									<select style="display: none;" name="noticeSearchKey">
 										<option value="gongji">공지사항</option>
 										<option value="jaju">자주하는질문</option>
-										<option value="ildaeil">1:1문의</option>
+										<option value="ildaeil">질문과답변</option>
 									</select>
 									<div class="nice-select" tabindex="0">
 										<span class="current">공지사항</span>
 										<ul class="list">
 											<li data-value="gongji" class="option selected focus">공지사항</li>
 											<li data-value="jaju" class="option">자주하는질문</li>
-											<li data-value="ildaeil" class="option">1:1문의</li>
+											<li data-value="ildaeil" class="option">질문과답변</li>
 										</ul>
 									</div>
 								</div>

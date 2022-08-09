@@ -482,7 +482,7 @@
                     </div>
                     <div class="product__pagination">
                         ${pageIndexList }
-                        <a href="#"><i class="fa fa-long-arrow-up"></i></a>
+                        <a href="#"><i class="fa fa-arrow-right"></i></a>
                     </div>
                     
                     

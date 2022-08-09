@@ -1297,6 +1297,7 @@ ol {
 	height: 270px;
 	position: relative;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .product__discount__item__pic .product__discount__percent {
@@ -1447,7 +1448,7 @@ ol {
 	border: 1px solid #ebebeb;
 	padding: 10px;
 	border-radius: 4px;
-	width: 300px;
+	width: 330px;
 	padding-left: 40px;
 }
 
@@ -2499,12 +2500,13 @@ ol {
 
 .blog__sidebar__item__tags a {
 	font-size: 16px;
-	color: #6f6f6f;
-	background: #f5f5f5;
+	color: #ffffff;
+	background: #FF5833;
 	display: inline-block;
 	padding: 7px 26px 5px;
 	margin-right: 6px;
 	margin-bottom: 10px;
+	border-radius: 5px;
 }
 
 .blog__sidebar__item__tags_notice {
