@@ -74,7 +74,7 @@ public class MainServlet extends HttpServlet {
 		req.setAttribute("itemDetailUrl", itemDetailUrl);
 		req.setAttribute("mainList", mainLists);
 		req.setAttribute("itemImagePath", itemImagePath);
-
+		req.setAttribute("customerInfo", customerInfo);
 		
 		url = "/main.jsp";
 		forward(req, resp, url);
