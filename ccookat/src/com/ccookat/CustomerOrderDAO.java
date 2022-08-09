@@ -55,8 +55,9 @@ public class CustomerOrderDAO {
 		try {
 			
 			sql = "insert into CUSTOMERORDER(orderNum,customerId,ordate,";
-			sql+= "customerOrderName,customerOrderZipCode,customerOrderAddr1,customerOrderAddr2,customerOrderTel,customerOrderPay,customerMemo) ";
-			sql+= "values (?,?,sysdate,?,?,?,?,?,?,?)";
+			sql+= "customerOrderName,customerOrderZipCode,customerOrderAddr1,customerOrderAddr2,customerOrderTel,";
+			sql+="customerOrderPay,customerMemo,customerOrderPrice) ";
+			sql+= "values (?,?,sysdate,?,?,?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -69,7 +70,8 @@ public class CustomerOrderDAO {
 			pstmt.setString(7, ordto.getCustomerOrderAddr2());
 			pstmt.setString(8, ordto.getCustomerOrderPay());
 			pstmt.setString(9, ordto.getCustomerMemo());			
-		
+			pstmt.setInt(10, ordto.getCustomerOrderPrice());
+			
 			pstmt.executeUpdate();
 			
 			pstmt.close();
