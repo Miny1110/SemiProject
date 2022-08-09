@@ -13,8 +13,14 @@ public class CustomerOrderDTO {
 	private String customerOrderPay;
 	private String customerMemo;
 	private int customerPrice;
+	private String itemImage1;
 	
-	
+	public String getItemImage1() {
+		return itemImage1;
+	}
+	public void setItemImage1(String itemImage1) {
+		this.itemImage1 = itemImage1;
+	}
 	public int getOrderNum() {
 		return orderNum;
 	}
