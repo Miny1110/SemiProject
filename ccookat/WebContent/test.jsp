@@ -247,7 +247,7 @@
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
 					href="#tabs-1" role="tab" aria-selected="false">회원정보 수정</a></li>
 				<li class="nav-item"><a class="nav-link active"
-					data-toggle="tab" href="#tabs-2" role="tab" aria-selected="true">배송조회</a>
+					data-toggle="tab" href="#tabs-2" role="tab" aria-selected="true">주문조회</a>
 				</li>
 
 			</ul>
@@ -268,9 +268,6 @@
 								<input type="button" value=" 확인 " class="btn1"
 									onclick="customerPwdChk();">
 							</div>
-							<div>
-								<input type="button" value=" 배송조회 " class="btn2" onclick="">
-							</div>
 						</form>
 					</div>
 				</div>
@@ -278,8 +275,27 @@
 <!-- 배송조회창 시작 -->
 				<div class="tab-pane active" id="tabs-2" role="tabpanel" align="center">
 					<div class="product__details__tab__desc">
-						<h6>배송조회</h6>
+						<h3>주문조회</h3>
 						<p></p>
+						<table class="qna_table">
+						<tbody>
+
+							<tr id="lists">
+								<th class="qna_tr" width="150">주문번호</th>
+								<th width="380">대표상품</th>
+								<th class="qna_tr" width="150">결제금액</th>
+								<th class="qna_tr" width="200">결제일시</th>
+								<th class="qna_tr" width="120"> 배송상태</th>
+							</tr>							
+								<tr id="lists">
+									<td class="qna_tr" >1</td>								
+									<td>말린망고</td>
+									<td class="qna_tr">240,000</td>
+									<td class="qna_tr">2022.08.07</td>
+									<td class="qna_tr">배송중</td>
+								</tr>
+						</tbody>
+					</table>
 					</div>
 				</div>
 <!-- 배송조회창 끝 -->
