@@ -73,7 +73,7 @@ public class CustomerOrderServlet extends HttpServlet {
 
 				//뿌려줄 회원정보 담아와야함 
 				cdto = cdao.getReadData(customerId);				
-				
+
 				request.setAttribute("cartCount", cartCount);//장바구니 수량 표시해줄 데이터
 				request.setAttribute("cdto", cdto);//회원정보 깔아줄 데이터
 				request.setAttribute("itemImagePath", itemImagePath);//장바구니에서 이미지 끌어올 데이터

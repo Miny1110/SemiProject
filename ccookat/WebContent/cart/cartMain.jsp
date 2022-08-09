@@ -287,7 +287,7 @@
 												value="${beforedc + ctdto.itemPrice*ctdto.cartItemCount}" />
 											<tr>
 												<td class="shoping__cart__item"><img
-													src="${itemImagePath }/${ctdto.itemName}" alt="">
+													src="${itemImagePath }/${ctdto.itemImage1}" alt="">
 													<h5>${ctdto.itemName}</h5></td>
 												<td class="shoping__cart__price">
 													${ctdto.itemPrice*ctdto.cartItemCount }</td>
