@@ -299,16 +299,11 @@
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                            <div class="pro-qty"><span class="dec qtybtn" onclick="pluscount();"></span>
-                                                <input type="text" value="${ctdto.cartItemCount}"/>
-                                            <span class="inc qtybtn" onclick="minuscount();"></span></div>
+                                                <input type="text" value="${ctdto.cartItemCount}" readonly="readonly" style="text-align: center; border: 0;"/>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
                                             ${ctdto.cartTotPrice }
-                                    </td>
-                                    <td class="shoping__cart__item__close" > 
-                                        <a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"><span class="icon_close"></span></a>
                                     </td>
                                 </tr>
                                 
