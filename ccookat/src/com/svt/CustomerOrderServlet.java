@@ -18,6 +18,8 @@ import com.ccookat.CartDTO;
 import com.ccookat.CustomerDAO;
 import com.ccookat.CustomerDTO;
 import com.ccookat.CustomerInfo;
+import com.ccookat.CustomerOrderDAO;
+import com.ccookat.CustomerOrderDTO;
 import com.util.DBConn;
 
 public class CustomerOrderServlet extends HttpServlet {
@@ -39,9 +41,10 @@ public class CustomerOrderServlet extends HttpServlet {
 		Connection conn = DBConn.getconnection();
 		CustomerDAO cdao = new CustomerDAO(conn);
 		CartDAO ctdao = new CartDAO(conn);
-		CartDTO ctdto = new CartDTO();
+		CustomerOrderDAO ordao = new CustomerOrderDAO(conn);
 		CustomerDTO cdto = new CustomerDTO();
-		
+		CartDTO ctdto = new CartDTO();
+		CustomerOrderDTO ordto = new CustomerOrderDTO();
 
 		String cp = request.getContextPath();
 		String uri = request.getRequestURI();
@@ -61,13 +64,14 @@ public class CustomerOrderServlet extends HttpServlet {
 				List<CartDTO> lists = ctdao.selectAll(customerId);
 
 				int cartCount = ctdao.cartCount(customerId);
+				
 				//주문하기 갈때 가지고 갈것들
 				int itemNum = Integer.parseInt(request.getParameter("itemNum"));
 				int cartNum = Integer.parseInt(request.getParameter("cartNum"));
 
-					request.setAttribute("ctdto", ctdto);
-					request.setAttribute("cdto", cdto);
-					request.setAttribute("itemImagePath", itemImagePath);
+					request.setAttribute("ctdto", ctdto);//장바구니상품 끌어올 데이터
+					request.setAttribute("cdto", cdto);//회원정보 깔아줄 데이터
+					request.setAttribute("itemImagePath", itemImagePath);//장바구니에서 이미지 끌어올 데이터
 					request.setAttribute("lists", lists);
 					request.setAttribute("cartCount", cartCount);
 					request.setAttribute("itemnum", itemNum);
@@ -81,7 +85,10 @@ public class CustomerOrderServlet extends HttpServlet {
 				
 			}else if(uri.indexOf("order_ok.do")!=-1) {
 				
-			//오더에 인서트 시킬때는 아이템넘/카트넘/세션아이디 받아서 아이디로 조인..? 
+			//주문하기 누르면 실행되어야할것
+			//1. 장바구니에서 상품 delete하기
+			//2. 주문정보 테이블에 저장
+			//3. 주문정보 테이블과 연결해서 주문상품 리스트 저장 
 				
 
 				

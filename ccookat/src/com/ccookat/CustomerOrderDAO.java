@@ -8,7 +8,7 @@ public class CustomerOrderDAO {
 
 	Connection conn;
 	
-	private CustomerOrderDAO(Connection conn) {
+	public CustomerOrderDAO(Connection conn) {
 		
 		this.conn = conn;
 	}
