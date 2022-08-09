@@ -264,7 +264,7 @@
                             </form>
                         </div>
                        <div class="hero__search__phone">
-							<div class="hero__search__phone__icon">
+							<div class="hero__search__phone__icon_list">
 								<i class="fa fa-truck"></i>
 							</div>
 							<div class="hero__search__phone__text">
@@ -360,10 +360,11 @@
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 						</form>
                         <ul>
-                            <li><b>Availability</b> <span>${idto.itemStock }개</span></li>
-                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>0.5 kg</span></li>
-                            <li><b>Share on</b>
+                            <li><b>구매가능수량</b> <span>${idto.itemStock }개</span></li>
+                            <li><b>배송기간</b> <span>새벽배송: 내일 아침 7시 전 
+                            <br>
+                            <samp style="padding-left: 180px;">일반배송: 1~3일 소요</samp></span></li>
+                            <li><b>공유</b>
                                 <div class="share">
                                   <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
 							 	  <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a> 
@@ -378,7 +379,7 @@
 <!-- 상품대표사진, 밑에 뜨는 사진들, 제품명, 가격 등등 정보 시작 -->
                 <div class="col-lg-12">
                     <div class="product__details__tab">
-                        <ul class="nav nav-tabs" role="tablist">
+                        <ul class="nav nav-tabs2" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
                                     aria-selected="true">상품 설명</a>
@@ -396,18 +397,18 @@
                         </ul>
                         <div class="tab-content">
 <!-- 상품설명창 시작 -->                       
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel" align="center">
                                 <div class="product__details__tab__desc">
-                                    <h6>상품 설명</h6>
+                                    <h4>상품 설명</h4><br>
                                     <p>${idto.itemContent }</p>
                                     <p align="center"><img src="${itemImagePath }/${idto.itemImage4}" style="width: 600px;"></p>
                                 </div>
                             </div>
 <!-- 상품설명창 끝 -->                       
                             
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="tab-pane" id="tabs-2" role="tabpanel" align="center">
                                 <div class="product__details__tab__desc">
-                                    <h6>상품 리뷰</h6>
+                                    <h4>상품 리뷰</h4>
                                     <p></p>
 
 
