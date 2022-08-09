@@ -394,15 +394,16 @@
                             </div>
                             <div class="checkout__input order_box_size">
                                 <p>주소<span>*</span></p>
-                                <input type="text" value="${cdto.customerAddr}" name="customerAddr"/>
+                                <input type="text" value="${cdto.customerAddr1}" name="customerAddr1"/>
                             </div>
                             <div class="checkout__input order_box_size">
                                 <p>상세주소<span>*</span></p>
-                                <input type="text">
+                                <input type="text" value="${cdto.customerAddr2}" name="customerAddr2">
                             </div>
                             <div class="checkout__input order_box_size">
                                 <p>배송메모<span>*</span></p>
-                                <input type="text" >
+                                <input type="text" name="customerMemo">
+                                
                             </div>
                             <div class="checkout__input order_box_size">
                                 <p> 우편번호<span>*</span></p>
@@ -417,16 +418,18 @@
                                 <input type="text" placeholder="카드번호를 입력해주세요">
                             </div>
                             <div class="checkout__input__checkbox">
-                                <label for="acc">현금결제
-                                    <input type="checkbox" id="acc">
+
+                                <label for="acc" style="padding-right: 20px;">
+                                    현금결제
+                                    <input type="radio" id="acc" name="customerOrderPay">
+                                    <span class="checkmark"></span>
+                                 </label>
+                                 <label for="diff-acc">카드결제<input type="radio" id="diff-acc" name="customerOrderPay">
                                     <span class="checkmark"></span>
                                 </label>
-                            </div>
-                            	<div class="checkout__input__checkbox">
-                                <label for="diff-acc">카드결제
-                                	<input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
+                            </div>                                                    
+                            <div class="checkout__input">                             
+                                <input type="text" placeholder="카드번호를 입력해주세요">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
