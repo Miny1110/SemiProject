@@ -235,18 +235,15 @@ public class ItemServlet extends HttpServlet {
 			rdao.deleteDataItem(itemNum);
 			idao.deleteData(itemNum);
 			
-			
-			if(itemType!=null) {
-				url = cp + "/main/item/list.do?itemType=" + itemType + "&pageNum=" + currentPage;
-			}else {
-				url = cp + "/main/item/list.do?pageNum=" + currentPage;
+			if(itemType==null) {
+				url = cp + "/main/item/list.do?pageNum="+currentPage;
+				resp.sendRedirect(url);}
+			else {
+				url = cp + "/main/item/list.do?itemType="+itemType +"&pageNum="+currentPage;
+				resp.sendRedirect(url);
 			}
 			
-
-			resp.sendRedirect(url);
-
-			return;
-
+			
 
 		}else if(uri.indexOf("list.do")!=-1) {
 			
@@ -332,7 +329,7 @@ public class ItemServlet extends HttpServlet {
 			String itemDeletePath = cp + "/item/deleted.do";
 			String itemDetailUrl;
 			
-			if(itemType==null) {
+			if(itemType==null || itemType.equals("")) {
 				itemDetailUrl = cp + "/main/item/detail.do?pageNum=" + currentPage;
 			}else {
 				itemDetailUrl = cp + "/main/item/detail.do?pageNum=" + currentPage + "&itemType=" + itemType;

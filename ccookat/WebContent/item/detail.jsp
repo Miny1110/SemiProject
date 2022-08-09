@@ -253,7 +253,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>${idto.itemType }</h2>
+                        <h2>${idto.itemType}</h2>
                     </div>
                 </div>
             </div>
@@ -284,9 +284,16 @@
                     <div class="product__details__text">
                         <h3>${idto.itemName }</h3>
                   		  조회수:${idto.itemHitCount }
-                  		   <c:if test="${ sessionScope.customerInfo.customerId=='admin'}"	>
+                  		   <c:if test="${ sessionScope.customerInfo.customerId=='admin'}">
+                  		  <c:choose>
+						<c:when test="${itemType==null}">
                         <a href="${itemDeletePath }?itemNum=${idto.itemNum}&pageNum=${currentPage}">[삭제]</a>
-                        </c:if>
+                        </c:when>
+                        <c:otherwise>
+                        <a href="${itemDeletePath }?itemNum=${idto.itemNum}&pageNum=${currentPage}&itemType=${itemType}">[삭제]</a>
+                        </c:otherwise>
+                        </c:choose>
+						</c:if>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -312,7 +319,8 @@
                             </div>
                         </div>
                         <input type="hidden" value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" name="itemPrice">
-                        <input type="hidden" name="itemNum" value="${idto.itemNum }">
+                        <input type="hidden" name="itemNum" value="${idto.itemNum}">
+                        <input type="hidden" name="itemType" value="${itemType}"> 
                         <a class="primary-btn" onclick="cartin();" style="cursor: hand; color: white; ">장바구니 넣기</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 						</form>
@@ -460,7 +468,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="${itemImagePath }/${idto.itemImage1}"
-                        onclick="location.href='<%=cp %>/main/item/detail.do?itemType=${idto.itemType }&itemNum=${idto.itemNum }';">
+                        onclick="location.href='<%=cp %>/main/item/detail.do?itemType=${idto.itemType}&itemNum=${idto.itemNum}';">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
