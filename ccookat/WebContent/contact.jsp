@@ -331,37 +331,37 @@ function sendIt(){
 	</header>
 	<!-- Header Section End -->
 
-   <!-- Hero Section Begin -->
-	<section class="hero">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="hero__categories">
-						<div class="hero__categories__all">
-							<i class="fa fa-bars"></i> <span>카테고리</span>
+	<!-- Hero Section Begin -->
+	 <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+							<i class="fa fa-bars"></i> 
+							<span>카테고리</span>
 						</div>
-
-					</div>
-				</div>
-
-				<div class="col-lg-9">
-					<div class="hero__search">
-						<div class="hero__search__form ">
-							<form action="">
-								<div class="hero__search__categories">
-									제품명 
-									<!-- <span class="arrow_carrot-down"></span> -->
-								</div>
-								<ul>
-
-
-								</ul>
-
-								<input type="text" placeholder="제품명 입력하세요">
-								<button type="submit" class="site-btn">검색하기</button>
-							</form>
-						</div>
-						<div class="hero__search__phone">
+                        <ul>
+                            <li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    제품명
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="제품명 입력하세요">
+                                <button type="submit" class="site-btn">검색하기</button>
+                            </form>
+                        </div>
+                       <div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
 								<i class="fa fa-truck"></i>
 							</div>
@@ -370,12 +370,13 @@ function sendIt(){
 								<span> 샛별ㆍ낮 배송</span>
 							</div>
 						</div>
-               		 </div>
-            	</div>
-            </div>	
+                    
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <!-- Hero Section End -->
+	<!-- Hero Section End -->
 
     <!-- Map Begin -->
     <div class="map">
