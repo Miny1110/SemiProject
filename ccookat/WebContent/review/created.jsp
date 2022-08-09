@@ -287,11 +287,10 @@
                             </div>
 							
 							<div>
-								<input type="hidden" value="${pageNum}" name="pageNum">
 								<input type="hidden" value="${itemNum}" name="itemNum">
 								<input class="blog__sidebar__item__tags_review" type="submit" value=" 등록하기 ">
 								<input class="blog__sidebar__item__tags_review" type="reset" value="다시입력" onclick="document.myForm.reviewTitle.focus();">
-								<input class="blog__sidebar__item__tags_review" type="button" value="작성취소" onclick="location='/ccookat/main/item/detail.do?pageNum=${pageNum}&itemNum=${itemNum}';">			
+								<input class="blog__sidebar__item__tags_review" type="button" value="작성취소" onclick="location='/ccookat/main/item/detail.do&itemNum=${itemNum}';">			
 
 							</div>
 						</div>

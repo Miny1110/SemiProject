@@ -166,12 +166,12 @@ public class ReviewServlet extends HttpServlet {
 		}
 		
 		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+	//	int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		
 
 		
 		req.setAttribute("itemNum", itemNum);
-		req.setAttribute("pageNum", pageNum);
+		//req.setAttribute("pageNum", pageNum);
 
 		
 		url = "/review/created.jsp";
@@ -188,7 +188,6 @@ public class ReviewServlet extends HttpServlet {
 				new MultipartRequest(req, path, maxSize, encType,
 						new DefaultFileRenamePolicy()); 
 		
-		int pageNum = Integer.parseInt(mr.getParameter("pageNum"));
 		int itemNum = Integer.parseInt(mr.getParameter("itemNum"));
 		
 		ReviewDTO rdto = new ReviewDTO();
@@ -216,18 +215,17 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.insertData(rdto);
 		
-		url = cp + "/main/item/detail.do?pageNum=" + pageNum + "&itemNum="+ itemNum ; // 리다이렉트는 가상의주소로
+		url = cp + "/main/item/detail.do?itemNum="+ itemNum ; // 리다이렉트는 가상의주소로
 		resp.sendRedirect(url);
 		//수정
 	} else if (uri.indexOf("updated.do") != -1) {
 		int reviewNum =Integer.parseInt(req.getParameter("reviewNum"));
-		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 		
 			ReviewDTO rdto = rdao.getReadData(reviewNum);
 			
 			if (rdto == null) {
-				url = cp + "main/item/detail.do?pageNum="+pageNum+"&itemNum="+rdto.getItemNum();
+				url = cp + "main/item/detail.do?itemNum="+rdto.getItemNum();
 				resp.sendRedirect(url);}
 			
 			HttpSession session = req.getSession();
@@ -244,7 +242,6 @@ public class ReviewServlet extends HttpServlet {
 			}
 			
 			req.setAttribute("rdto", rdto);
-			req.setAttribute("pageNum", pageNum);
 			req.setAttribute("itemNum", itemNum);
 			req.setAttribute("reviewNum", reviewNum);
 			
@@ -264,7 +261,6 @@ public class ReviewServlet extends HttpServlet {
 						new DefaultFileRenamePolicy()); 
 		
 		int reviewNum =Integer.parseInt(mr.getParameter("reviewNum"));
-		int pageNum = Integer.parseInt(mr.getParameter("pageNum"));
 		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
 		String itemType = req.getParameter("itemType");
 		
@@ -282,15 +278,14 @@ public class ReviewServlet extends HttpServlet {
 		rdto.setReviewImage(mr.getFilesystemName("upload"));
 		
 		rdao.updateData(rdto);
+	
+			url = cp + "/main/item/detail.do?itemNum="+itemNum;
 		
-		url = cp + "/main/item/list.do?pageNum="+pageNum+"&itemNum"+itemNum+"&itemType"+itemType;
 		resp.sendRedirect(url);
 } else if (uri.indexOf("deleted.do") != -1) {
 		
 		int reviewNum = Integer.parseInt(req.getParameter("reviewNum"));
-		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		int itemNum = Integer.parseInt(req.getParameter("itemNum"));
-		String itemType = req.getParameter("itemType");
 		
 		ReviewDTO rdto = rdao.getReadData(reviewNum);
 		
@@ -298,11 +293,11 @@ public class ReviewServlet extends HttpServlet {
 		
 		rdao.deleteData(reviewNum);
 		
-		url = cp + "/main/item/list.do?pageNum="+pageNum+"&itemNum"+itemNum+"&itemType"+itemType;
+		url = cp + "/main/item/detail.do?itemNum="+itemNum;
 		resp.sendRedirect(url);
 	}
 		
 }
-	}
+}
 
 	
