@@ -263,12 +263,12 @@
 						<div class="hero__categories__all">
 							<i class="fa fa-bars"></i> <span>카테고리</span>
 						</div>
-						<ul>
-							<li><a href="<%=cp%>/main/item/list.do">전체상품</a></li>
-							<li><a href="<%=cp%>/main/item/list.do">채소ㆍ과일</a></li>
-							<li><a href="<%=cp%>/main/item/list.do">밥ㆍ빵ㆍ면</a></li>
-							<li><a href="<%=cp%>/main/item/list.do">정육ㆍ계란</a></li>
-						</ul>
+                        <ul>
+                            <li><a href="<%=cp %>/main/item/list.do">전체상품</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">채소ㆍ과일</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=bread">밥ㆍ빵ㆍ면</a></li>
+							<li><a href="<%=cp %>/main/item/list.do?itemType=meat">정육ㆍ계란</a></li>
+                        </ul>
 					</div>
 				</div>
 				<div class="col-lg-9">
