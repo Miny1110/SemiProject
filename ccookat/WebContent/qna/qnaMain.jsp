@@ -64,42 +64,41 @@
 	<div class="humberger__menu__overlay"></div>
 	<div class="humberger__menu__wrapper">
 		<div class="humberger__menu__logo">
-			<a href="#"><img
-				src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
+			<a href="#"><img src="/ccookat/Data/style/img/logo.png" alt=""></a>
 		</div>
 		<div class="humberger__menu__cart">
 			<ul>
-                <li><a href="#"><i class="fa fa-heart"></i> </a></li>
+				<li><a href="#"><i class="fa fa-heart"></i></a></li>
 				<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
 			</ul>
-			<div class="header__cart__price"></div>
+			<div class="header__cart__price">
+				item: <span>$150.00</span>
+			</div>
 		</div>
 		<div class="humberger__menu__widget">
 			<div class="header__top__right__language">
-				<img class="korean" src="/ccookat/Data/style/img/ccookat/korean.jpg"
-					alt="">
-				<div>한국어</div>
+				<img src="/ccookat/Data/style/img/language.png" alt="">
+				<div>English</div>
 				<span class="arrow_carrot-down"></span>
 				<ul>
-					<li><a href="#">한국어</a></li>
+					<li><a href="#">Spanis</a></li>
 					<li><a href="#">English</a></li>
 				</ul>
 			</div>
+
 			<div class="header__top__right__auth">
-				<a href="#"><i class="fa fa-user"></i> Login</a>
+				<a href="#"><i class="fa fa-user"></i> Login</a> <a href="#"><i
+					class="fa fa-user"></i> Join</a>
 			</div>
+
+
 		</div>
 		<nav class="humberger__menu__nav mobile-menu">
 			<ul>
-				<li><a href="./index.html">Home</a></li>
+				<li class="active"><a href="./index.html">Home</a></li>
 				<li><a href="./shop-grid.html">Shop</a></li>
-				<li><a href="#">Pages</a>
-					<ul class="header__menu__dropdown">
-						<li><a href="./shop-details.html">Shop Details</a></li>
-						<li><a href="./shoping-cart.html">Shoping Cart</a></li>
-						<li><a href="./checkout.html">Check Out</a></li>
-					</ul></li>
-				<li><a href="./contact.html">Contact</a></li>
+				<li><a href="./shoping-cart.html">Shopping Cart</a></li>
+				<li><a href="./contact.html">Notice</a></li>
 			</ul>
 		</nav>
 		<div id="mobile-menu-wrap">
@@ -112,22 +111,22 @@
 				<nav class="slicknav_nav slicknav_hidden" aria-hidden="true"
 					role="menu" style="display: none;">
 					<ul>
-						<li><a href="./index.html" role="menuitem">Home</a></li>
+						<li class="active"><a href="./index.html" role="menuitem">Home</a></li>
 						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
 						<li class="slicknav_collapsed slicknav_parent"><a href="#"
 							role="menuitem" aria-haspopup="true" tabindex="-1"
-							class="slicknav_item slicknav_row" style="outline: none;"> <a
+							class="slicknav_item slicknav_row" style="outline: none;"><a
 								href="#">Pages</a> <span class="slicknav_arrow">►</span></a>
-							<ul class="header__menu__dropdown slicknav_hidden" role="menu"
+						<ul class="header__menu__dropdown slicknav_hidden" role="menu"
 								aria-hidden="true" style="display: none;">
 								<li><a href="./shop-details.html" role="menuitem"
 									tabindex="-1">Shop Details</a></li>
 								<li><a href="./shoping-cart.html" role="menuitem"
-									tabindex="-1">Shoping Cart</a></li>
+									tabindex="-1">Cart</a></li>
 								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
 										Out</a></li>
 							</ul></li>
-						<li><a href="./contact.html" role="menuitem">Contact</a></li>
+						<li><a href="./contact.html" role="menuitem">NOTICE</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -140,37 +139,64 @@
 				<nav class="slicknav_nav slicknav_hidden" aria-hidden="true"
 					role="menu" style="display: none;">
 					<ul>
-						<li><a href="./index.html" role="menuitem">Home</a></li>
+						<li class="active"><a href="./index.html" role="menuitem">Home</a></li>
 						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
 						<li class="slicknav_collapsed slicknav_parent"><a href="#"
 							role="menuitem" aria-haspopup="true" tabindex="-1"
 							class="slicknav_item slicknav_row" style="outline: none;"></a><a
 							href="#">Pages</a> <span class="slicknav_arrow">►</span>
-							<ul class="header__menu__dropdown slicknav_hidden" role="menu"
+						<ul class="header__menu__dropdown slicknav_hidden" role="menu"
 								aria-hidden="true" style="display: none;">
 								<li><a href="./shop-details.html" role="menuitem"
 									tabindex="-1">Shop Details</a></li>
 								<li><a href="./shoping-cart.html" role="menuitem"
-									tabindex="-1">Shopping Cart</a></li>
+									tabindex="-1">Shoping Cart</a></li>
 								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
 										Out</a></li>
 							</ul></li>
-						<li><a href="./contact.html" role="menuitem">Contact</a></li>
+						<li><a href="./contact.html" role="menuitem">NOTICE</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="slicknav_menu">
+				<a href="#" aria-haspopup="true" role="button" tabindex="0"
+					class="slicknav_btn slicknav_collapsed" style="outline: none;"><span
+					class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span
+						class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span
+						class="slicknav_icon-bar"></span></span></a>
+				<nav class="slicknav_nav slicknav_hidden" aria-hidden="true"
+					role="menu" style="display: none;">
+					<ul>
+						<li class="active"><a href="./index.html" role="menuitem">Home</a></li>
+						<li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
+						<li class="slicknav_collapsed slicknav_parent"><a href="#"
+							role="menuitem" aria-haspopup="true" tabindex="-1"
+							class="slicknav_item slicknav_row" style="outline: none;"></a><a
+							href="#">Pages</a> <span class="slicknav_arrow">►</span>
+						<ul class="header__menu__dropdown slicknav_hidden" role="menu"
+								aria-hidden="true" style="display: none;">
+								<li><a href="./shop-details.html" role="menuitem"
+									tabindex="-1">Shop Details</a></li>
+								<li><a href="./shoping-cart.html" role="menuitem"
+									tabindex="-1">Shoping Cart</a></li>
+								<li><a href="./checkout.html" role="menuitem" tabindex="-1">Check
+										Out</a></li>
+							</ul></li>
+						<li><a href="/contact.html" role="menuitem">Contact</a></li>
 					</ul>
 				</nav>
 			</div>
 		</div>
 		<div class="header__top__right__social">
-			<a href="https://www.facebook.com" target="_blank"><i
-				class="fa fa-facebook"></i></a> <a href="https://twitter.com"
-				target="_blank"><i class="fa fa-twitter"></i></a> <a
-				href="https://www.instagram.com" target="_blank"><i
-				class="fa fa-instagram"></i></a> <a href="https://www.pinterest.co.kr"
-				target="_blank"><i class="fa fa-pinterest-p"></i></a>
+			<a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a>
+			<a href="https://twitter.com"><i class="fa fa-twitter"></i></a> <a
+				href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
+			<a href="https://www.pinterest.co.kr"><i
+				class="fa fa-pinterest-p"></i></a>
 		</div>
 		<div class="humberger__menu__contact">
 			<ul>
-				<li><i class="fa fa-envelope"></i> ccokat@gmail.com</li>
+				<li><i class="fa fa-envelope"></i></li>
 			</ul>
 		</div>
 	</div>
@@ -193,16 +219,10 @@
 					<div class="col-lg-6">
 						<div class="header__top__right">
 							<div class="header__top__right__social">
-								<div class="header__top__right__social">
-									<a href="https://www.facebook.com" target="_blank">
-									<i class="fa fa-facebook"></i></a> 
-									<a href="https://twitter.com" target="_blank">
-									<i class="fa fa-twitter"></i></a> 
-									<a href="https://www.instagram.com" target="_blank">
-									<i class="fa fa-instagram"></i></a> 
-									<a href="https://www.pinterest.co.kr" target="_blank">
-									<i class="fa fa-pinterest-p"></i></a>
-								</div>
+								<a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+								<a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
+								<a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a> 
+								<a href="https://www.pinterest.co.kr" target="_blank"><i class="fa fa-pinterest-p"></i></a>
 							</div>
 							<div class="header__top__right__language">
 								<img src="/ccookat/Data/style/img/ccookat/korean.jpg" alt="">
@@ -225,7 +245,8 @@
 							</c:if>
 							<c:if test="${!empty sessionScope.customerInfo.customerId}">
 								<div class="header__top__right__auth">
-									<a href="#"><i class="fa fa-user"></i> Mypage</a>
+									<a href="<%=cp %>/main/customer/customerPwdChk.do"><i
+										class="fa fa-user"></i> Mypage</a>
 								</div>
 								<div class="header__top__right__auth">
 									<a href="<%=cp %>/main/customer/logout.do"><i
@@ -241,7 +262,7 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="./index.html"><img
+						<a href="<%=cp %>/main"><img
 							src="/ccookat/Data/style/img/ccookat/ccookat_logo.png" alt=""></a>
 					</div>
 				</div>
@@ -252,15 +273,27 @@
 							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
 							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
 							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
-						</ul>	
+						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__cart">
-						<ul>
-               				<li><a href="#"><i class="fa fa-heart"></i> </a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>${itemCount }</span></a></li>
-						</ul>
+						<c:if test="${empty sessionScope.customerInfo.customerId}">
+							<ul>
+								<li><a href="<%=cp%>/main/customer/login.do"><i
+										class="fa fa-heart"></i></a></li>
+								<li><a href="<%=cp%>/main/customer/login.do"><i
+										class="fa fa-shopping-bag"></i></a></li>
+							</ul>
+						</c:if>
+						<c:if test="${!empty sessionScope.customerInfo.customerId}">
+							<ul>
+								<li><a href="<%=cp%>/main/cart/list.do"><i
+										class="fa fa-heart"></i></a></li>
+								<li><a href="<%=cp%>/main/cart/list.do"><i
+										class="fa fa-shopping-bag"></i> <span>${cartCount }</span></a></li>
+							</ul>
+						</c:if>
 						<div class="header__cart__price"></div>
 					</div>
 				</div>
@@ -271,6 +304,7 @@
 		</div>
 	</header>
 	<!-- Header Section End -->
+	
 
 	<!-- Hero Section Begin -->
 	 <section class="hero hero-normal">
