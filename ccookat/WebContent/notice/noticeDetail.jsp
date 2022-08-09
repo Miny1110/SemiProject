@@ -123,6 +123,7 @@
 							</c:when>
 							<c:otherwise>
 							<ul>
+							
 								<li><i class="fa fa-user"></i>회원가입을 하시면 더 다양한 이용이 가능합니다.</li>
 							</ul>
 							</c:otherwise>

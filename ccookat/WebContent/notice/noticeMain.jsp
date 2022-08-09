@@ -130,6 +130,7 @@
 							</c:choose>
                         </div>
                     </div>
+                    
                     <div class="col-lg-6">
                         <div class="header__top__right">
                             <div class="header__top__right__social">
