@@ -429,8 +429,7 @@
 															<b>작성일 :&nbsp;</b>${rdto.reviewCreated}
 														</div>
 														<div align="right"></div>
-														<div class="product__details__tab__desc">
-															${rdto.reviewTitle}</div>
+													
 														<c:if test="${rdto.reviewImage!=null}">
 															<div>
 																<img src="${reviewImagePath }/${rdto.reviewImage }"
