@@ -198,7 +198,7 @@
 					<div class="col-lg-6">
 						<div class="header__top__left">
 						<c:choose>
-						<c:when test="${empty sessionScope.customerInfo.customerName }">
+						<c:when test="${!empty sessionScope.customerInfo.customerName }">
 							<ul>
 								<li><i class="fa fa-user"></i>${sessionScope.customerInfo.customerName }님 맛있는 쇼핑 하세요.</li>
 							</ul>
