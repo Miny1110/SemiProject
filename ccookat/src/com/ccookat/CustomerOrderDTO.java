@@ -4,8 +4,7 @@ public class CustomerOrderDTO {
 
 	private int orderNum;
 	private String customerId;
-	private int itemNum;
-	private int cartNum;
+	private String ordate;
 	private String customerOrderName;
 	private String customerOrderZipCode;
 	private String customerOrderAddr1;
@@ -15,7 +14,12 @@ public class CustomerOrderDTO {
 	private String customerMemo;
 	
 	
-	
+	public String getOrdate() {
+		return ordate;
+	}
+	public void setOrdate(String ordate) {
+		this.ordate = ordate;
+	}
 	public String getCustomerOrderAddr1() {
 		return customerOrderAddr1;
 	}
@@ -34,13 +38,6 @@ public class CustomerOrderDTO {
 	public void setCustomerMemo(String customerMemo) {
 		this.customerMemo = customerMemo;
 	}
-	public int getCartNum() {
-		return cartNum;
-	}
-	public void setCartNum(int cartNum) {
-		this.cartNum = cartNum;
-	}
-
 	public int getOrderNum() {
 		return orderNum;
 	}
@@ -52,12 +49,6 @@ public class CustomerOrderDTO {
 	}
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
-	}
-	public int getItemNum() {
-		return itemNum;
-	}
-	public void setItemNum(int itemNum) {
-		this.itemNum = itemNum;
 	}
 	public String getCustomerOrderName() {
 		return customerOrderName;
