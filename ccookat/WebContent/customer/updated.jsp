@@ -354,7 +354,7 @@ function sample6_execDaumPostcode() {
 						</tr>
 						<tr>
 							<th>이메일<span class="ico">*</span></th>
-							<td><input class="box-size2" type="text" name="customerEmail" placeholder="이메일을 입력해주세요"
+							<td><input class="box-size2" type="text" name="customerEmail" placeholder="예: marketkurly@kurly.com"
 								class="email" id="customerEmail" value="${cdto.customerEmail }">
 								<input type="button" value="중복확인" class="signUp_btn"></td>
 						</tr>
@@ -370,8 +370,6 @@ function sample6_execDaumPostcode() {
 								name="customerZipcode" value="${cdto.customerZipcode }"> 
 								<input type="button" value="우편번호찾기"
 								class="btn_zipcode" onclick="sample6_execDaumPostcode();"></td>
-
-
 						</tr>
 
 						<tr>
