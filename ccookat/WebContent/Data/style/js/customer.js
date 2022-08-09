@@ -1,177 +1,99 @@
-function sendIt() {
-		
-		var f = document.myForm;
-		
-		if(!f.customerId.value) {
-			alert("아이디를 입력하세요.");
-			f.customerId.focus();
-			return;
-		}
-		
-/*		if(!f.idDuplication.value) {
-			alert("아이디 중복체크를 해주세요.");
-			return;
-		}*/
-		
-		if(!f.customerPwd.value){
-			alert("비밀번호를 입력하세요.");
-			f.customerPwd.focus();
-			return;
-		}
-		
-		if(!f.customerPwd2.value){
-			alert("비밀번호를 다시 한번 입력하세요.");
-			f.customerPwd2.focus();
-			return;
-		}
-		
-		if(f.customerPwd.value != f.customerPwd2.value){
-			alert("비밀번호가 다릅니다.");t
-			f.customerPwd2.focus();
-			return;
-		}
-		
-		if(!f.customerName.value){
-			alert("이름을 입력하세요.");
-			f.customerName.focus();
-			return;
-		}
-		
-		if(!f.customerEmail.value){
-			alert("이메일을 입력하세요.");
-			f.customerEmail.focus();
-			return;
-		}
-		
-		if(!f.customerTel.value){
-			alert("전화번호를 입력하세요.");
-			f.customerTel.focus();
-			return;
-		}
-		
-		f.action = "/ccookat/main/customer/created_ok.do";
-		f.submit();
-}
-
-
-
-//id 중복체크
-function checkId() {
-
-	var f = document.myForm;
-
-	if(f.customerID.value == "") {
-		alert("아이디를 입력하세요.");
-		f.customId.focus();
-		return;
-	} else {
-
-		f.action = "/ccookat/main/customer/created.do";
-	}
-	f.submit();
-
-	/*
+function insertItem(){
 	
-	if(f.customerId.value != customerId.value){
-		alert("사용 가능한 아이디 입니다.");
-		f.customerId.focus();
+	f = document.myForm;
+	
+	//상품명
+	str = f.itemName.value;
+	str = str.trim();
+	if(!str){
+		alert("상품명을 입력하세요");
+		f.itemName.focus();
 		return;
 	}
-	else
-	alert("이미 사용중인 아이디 입니다.");
-	f.customerId.focus();
+	f.itemName.value = str;
 	
-}
-
-//email 중복/형식 체크
-function checkEmail(){
-	
-	var f = document.myForm;
-	
-	if(f.customerEmail.value = customerEmail.value){
-		alert("이미 사용중인 이메일 입니다.");
-		f.customerId.focus();
+	//상품가격
+	str = f.itemPrice.value;
+	str = str.trim();
+	if(!str){
+		alert("상품가격을 입력하세요");
+		f.itemPrice.focus();
 		return;
 	}
+	f.itemPrice.value = str;
 	
-	
-	if(f.email.value){
-		
-		if(!isValidEmail(f.email.value)){
-			alert("\n올바른 E-MAIL이 아닙니다.");
-			f.email.focus();
-			return;
-		}
-		
-		f.submit();
-}   
- */
-	
-	
-	
-
-// E-Mail 검사
-function isValidEmail(customerEmail) {
-	var format = /^((\w|[\-\.])+)@((\w|[\-\.])+)\.([A-Za-z]+)$/;
-    if (customerEmail.search(format) != -1)
-        return true; //올바른 포맷 형식
-    return false;
-}
-	
-	
-
-
-function customerPwdChk(){
-	
-	var f = document.myForm;
-	
-	if(!f.customerPwd.value){
-		alert("비밀번호를 입력하세요");
-		f.customerPwd.focus();
+	//상품할인
+	str = f.itemDiscount.value;
+	str = str.trim();
+	if(!str){
+		alert("할인율을 입력하세요");
+		f.itemDiscount.focus();
 		return;
 	}
+	f.itemDiscount.value = str;
 	
-	f.action = "/ccookat/main/customer/customerPwdChk_ok.do";
+	//상품카테고리
+	str = f.itemType.value;
+	str = str.trim();
+	if(!str){
+		alert("상품 카테고리를 선택하세요");
+		f.itemType.focus();
+		return;
+	}
+	f.itemType.value = str;
+	
+	//상품내용
+	str = f.itemContent.value;
+	str = str.trim();
+	if(!str){
+		alert("상품설명을 입력하세요");
+		f.itemContent.focus();
+		return;
+	}
+	f.itemContent.value = str;
+	
+/*	//상품이미지1
+	str = f.itemImage1.value;
+	str = str.trim();
+	if(!str){
+		alert("상품사진을 첨부하세요");
+		f.itemImage1.focus();
+		return;
+	}
+	f.itemImage1.value = str;
+	
+	//상품이미지2
+	str = f.itemImage2.value;
+	str = str.trim();
+	if(!str){
+		alert("상품사진을 첨부하세요");
+		f.itemImage2.focus();
+		return;
+	}
+	f.itemImage1.value = str;
+	
+	//상품이미지3
+	str = f.itemImage3.value;
+	str = str.trim();
+	if(!str){
+		alert("상품사진을 첨부하세요");
+		f.itemImage3.focus();
+		return;
+	}
+	f.itemImage3.value = str;
+	
+	//상품이미지4
+	str = f.itemImage4.value;
+	str = str.trim();
+	if(!str){
+		alert("상품사진을 첨부하세요");
+		f.itemImage4.focus();
+		return;
+	}
+	f.itemImage4.value = str;*/
+	
+	f.action = "/ccookat/main/item/created_ok.do";
 	f.submit();
 	
 }
-
-
-function updated(){
-	
-	var f = document.myForm;
-	
-	if(f.customerPwd.value != f.customerPwd2.value){
-		alert("비밀번호가 다릅니다.");
-		f.customerPwd2.focus();
-		return;
-	}
-	
-	alert("수정이 완료되었습니다.");
-	f.action = "/ccookat/main/customer/updated_ok.do";
-	f.submit();
-	
-}
-
-
-function deleted(){
-	
-	var f = document.myForm;
-	var msg = "정말 탈퇴하시겠습니까?";
-	
-	if(!confirm(msg)){
-		alert("취소되었습니다.");
-	}else {
-		alert("탈퇴되었습니다.");
-		f.action = "/ccookat/main/customer/deleted_ok.do";
-		f.submit();
-	}
-
-
-}
-
-
-}
-
-
 
