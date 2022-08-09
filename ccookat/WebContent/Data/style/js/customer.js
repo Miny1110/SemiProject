@@ -8,10 +8,10 @@ function sendIt() {
 			return;
 		}
 		
-/*		if(!f.idDuplication.value) {
-			alert("아이디 중복체크를 해주세요.");
+		if(f.idDuplication.value != "idcheck"){
+			alert("아이디 중복체크를 해주세요.")
 			return;
-		}*/
+		}
 		
 		if(!f.customerPwd.value){
 			alert("비밀번호를 입력하세요.");
@@ -43,82 +43,86 @@ function sendIt() {
 			return;
 		}
 		
+		if(f.emailDuplication.value != "emailcheck"){
+			alert("올바른 이메일 형식이 아닙니다.")
+			f.customerEmail.focus();
+			return;
+		}
+		
 		if(!f.customerTel.value){
 			alert("전화번호를 입력하세요.");
 			f.customerTel.focus();
 			return;
 		}
 		
+		if(!f.customerZipcode.value){
+			alert("우편번호를 입력하세요.");
+			f.customerZipcode.focus();
+			return;
+		}
+		
+		if(!f.customerAddr1.value){
+			alert("주소를 입력하세요.");
+			f.customerAddr1.focus();
+			return;
+		}
+		
+		if(!f.customerAddr2.value){
+			alert("상세주소를 입력하세요.");
+			f.customerAddr2.focus();
+			return;
+		}
+		
+		
 		f.action = "/ccookat/main/customer/created_ok.do";
 		f.submit();
 }
 
-
-
-//id 중복체크
-function checkId() {
-
-	var f = document.myForm;
-
-	if(f.customerID.value == "") {
-		alert("아이디를 입력하세요.");
-		f.customId.focus();
-		return;
-	} else {
-
-		f.action = "/ccookat/main/customer/created.do";
-	}
-	f.submit();
-
-	/*
-	
-	if(f.customerId.value != customerId.value){
-		alert("사용 가능한 아이디 입니다.");
-		f.customerId.focus();
-		return;
-	}
-	else
-	alert("이미 사용중인 아이디 입니다.");
-	f.customerId.focus();
-	
-}
-
-//email 중복/형식 체크
-function checkEmail(){
-	
-	var f = document.myForm;
-	
-	if(f.customerEmail.value = customerEmail.value){
-		alert("이미 사용중인 이메일 입니다.");
-		f.customerId.focus();
-		return;
-	}
-	
-	
-	if(f.email.value){
-		
-		if(!isValidEmail(f.email.value)){
-			alert("\n올바른 E-MAIL이 아닙니다.");
-			f.email.focus();
-			return;
-		}
-		
-		f.submit();
-}   
- */
-	
 	
 	
 
 // E-Mail 검사
 function isValidEmail(customerEmail) {
 	var format = /^((\w|[\-\.])+)@((\w|[\-\.])+)\.([A-Za-z]+)$/;
-    if (customerEmail.search(format) != -1)
-        return true; //올바른 포맷 형식
-    return false;
+    if (customerEmail.search(format) != -1){
+    	return true; //올바른 포맷 형식
+    }else{
+    	return false;
+    }
 }
 	
+
+
+function checkFmEmail(){
 	
+	var f= document.myForm;
+	var customerEmail = f.customerEmail.value;
+	
+	if(!isValidEmail(customerEmail)){
+		alert("올바른 이메일 형식이 아닙니다.");
+		f.emailDuplication.value = "emailUncheck";
+		setTimeout(function(){f.customerEmail.focus();}, 10);
+		return;
+	}else{
+		f.emailDuplication.value = "emailcheck";
+	}
+	
+}
+
+
+function idChk(){
+	
+	var f = document.myForm;
+	
+	if(!f.customerId.value){
+		alert("아이디를 입력하세요");
+		f.customerId.focus();
+		return;
+	}else{
+		f.action = "/ccookat/main/customer/idcheck.do";
+		f.submit();
+	}
+}
 
 
 function customerPwdChk(){
@@ -171,7 +175,6 @@ function deleted(){
 }
 
 
-}
 
 
 

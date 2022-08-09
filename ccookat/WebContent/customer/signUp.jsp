@@ -44,6 +44,8 @@
 <script type="text/javascript" src="<%=cp%>/Data/style/js/customer.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
+
+
 function sample6_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -293,10 +295,13 @@ function sample6_execDaumPostcode() {
 						<tr>
 							<th>아이디<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerId"
-								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" >
-								<!-- <input type="button" value="중복확인" class="signUp_btn" /> -->
-								<!-- <input type="hidden" name="idDuplication" value="idUncheck"> -->
+								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" 
+								value="${customerIdChk }">
+								
+								<input type="button" value="중복확인" class="signUp_btn" onclick="idChk();"/>
+								<input type="hidden" name="idDuplication" value="${idDuplication }">
 							</td>
+							<td>${msg }</td>
 						</tr>
 						<tr>
 							<th>비밀번호<span class="ico">*</span></th>
@@ -319,8 +324,9 @@ function sample6_execDaumPostcode() {
 							<th>이메일<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerEmail"
 								class="email" id="customerEmail"
-								placeholder="예: marketkurly@kurly.com" onchange="isValidEmail(this)">
-								</td>
+								placeholder="예: marketkurly@kurly.com" onchange="checkFmEmail();">
+								<input type="hidden" name="emailDuplication" value="${emailDuplication }">
+							</td>
 						</tr>
 						<tr class="field_phone">
 							<th>휴대폰<span class="ico">*</span></th>
