@@ -2125,6 +2125,14 @@ ol {
 	margin-bottom: 25px;
 }
 
+.checkout__form_order h3{
+	color: #1c1c1c;
+	font-weight: 500;
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 20px;
+	margin-bottom: 50px;
+}
+
 .checkout__form p {
 	column-rule: #b2b2b2;
 }
@@ -3702,4 +3710,9 @@ ol {
 
 .qna_tr_test_center {
 	padding-left: 20px;
+}
+
+/* orderlist.jsp */
+.order_box_size {
+	width: 600px;
 }
