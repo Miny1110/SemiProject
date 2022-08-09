@@ -19,6 +19,7 @@ import com.ccookat.CustomerDTO;
 import com.ccookat.CustomerInfo;
 import com.ccookat.CustomerOrderDAO;
 import com.ccookat.CustomerOrderDTO;
+import com.ccookat.ItemDAO;
 import com.ccookat.OrderDetailDAO;
 import com.ccookat.OrderDetailDTO;
 import com.util.DBConn;
@@ -45,6 +46,7 @@ public class CustomerOrderServlet extends HttpServlet {
 		CustomerDAO cdao = new CustomerDAO(conn);
 		CustomerOrderDAO ordao = new CustomerOrderDAO(conn);
 		OrderDetailDAO oddao = new OrderDetailDAO(conn);
+		ItemDAO idao = new ItemDAO(conn);
 		
 		String cp = request.getContextPath();
 		String uri = request.getRequestURI();
@@ -151,8 +153,14 @@ public class CustomerOrderServlet extends HttpServlet {
 				//cartdelete 해야함 어차피 장바구니 전체상품 다 지워야하니까
 				//id조회해서 그 id가 가지고있는거 다지우는걸로 하면될듯					
 				ctdao.orderdelete(customerId);
+				
+				//item db연결해서 주문한 수량만큼 item재고 빼기
+				
+				
+				
+				
 
-				//일단 메인으로감....결제완료페이지만들예정
+				//주문조회 창으로 넘어가기
 				url = cp + "/main/customer/customerPwdChk.do";
 				//forward(request, response, url);
 				response.sendRedirect(url);
