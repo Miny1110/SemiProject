@@ -286,7 +286,7 @@
                    	
                                <div class="checkout__input">
                                 <p>ID<span>*</span></p>
-                            <input type="taxt" name="customerId" value="${sessionScope.customerInfo.customerId }"/>
+                            <input type="taxt" name="customerId" value="${sessionScope.customerInfo.customerId }" readonly="readonly"/>
                                 <br/>
                             </div>
                          
