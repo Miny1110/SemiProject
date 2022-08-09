@@ -42,8 +42,8 @@ public class CustomerOrderServlet extends HttpServlet {
 
 		Connection conn = DBConn.getconnection();
 		
-		CustomerDAO cdao = new CustomerDAO(conn);
 		CartDAO ctdao = new CartDAO(conn);
+		CustomerDAO cdao = new CustomerDAO(conn);
 		CustomerOrderDAO ordao = new CustomerOrderDAO(conn);
 		OrderDetailDAO oddao = new OrderDetailDAO(conn);
 		
