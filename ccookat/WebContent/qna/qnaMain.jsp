@@ -399,7 +399,7 @@
 								<th class="qna_tr" width="100">작성자</th>
 								<th class="qna_tr" width="200">작성일</th>
 								<th class="qna_tr" width="100">조회수</th>
-								<th class="qna_tr" width="200">상태</th>
+							<!-- 	<th class="qna_tr" width="200">답변여부</th> -->
 							</tr>
 							<c:forEach var="qdto" items="${lists }">
 								<tr id="lists">
@@ -419,7 +419,10 @@
 									<td class="qna_tr">${qdto.customerId }</td>
 									<td class="qna_tr">${qdto.qnaCreated }</td>
 									<td class="qna_tr">${qdto.qnaHitCount }</td>
-
+					 				<%-- <c:if test="${redto.qnaNum!=null and redto.replyContent==null }">
+									<td class="qna_tr">답변완료</td>
+									</c:if>
+ --%>
 
 
 								</tr>
