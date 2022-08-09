@@ -329,6 +329,13 @@
 				<div class="tab-pane active" id="tabs-2" role="tabpanel" align="center">
 					<div class="product__details__tab__desc">
 						<div id="login-name">주문조회</div>
+						<c:choose>
+						<c:when test="${empty orderlists }">
+						<table style="border-top: 2px solid gray; border-bottom: 2px solid gray;">
+							<tr><td  align="center" width="400px" height="100px">주문하신 정보가 없습니다.</td></tr>
+						</table>						
+						</c:when>
+						<c:otherwise>
 						<c:forEach var="ordto" items="${orderlists}">
 						<table class="qna_table">
 							<tbody>				
@@ -337,8 +344,7 @@
 									<th class="qna_tr_test_center" width="350" style="color: white">주문일시 | ${ordto.ordate }</th>
 									<th class="qna_tr_test" width="80" style="color: white">&nbsp;</th>	
 									<th class="qna_tr_test" width="150" style="color: white">주문금액 | </th>							
-									<th class="qna_tr_test" width="120" style="color: white">${ordto.customerOrderPrice }원</th>	
-								
+									<th class="qna_tr_test" width="120" style="color: white">${ordto.customerOrderPrice }원</th>									
 								</tr>
 								<tr height="60px" style="border-top: 2px solid gray; border-bottom: 1px solid gray;">
 									<td class="qna_tr_test">상품이미지</td>
@@ -362,6 +368,11 @@
 						</table>
 						<br/><br/>
 						</c:forEach>
+						</c:otherwise>					
+						</c:choose>
+
+						
+						
 					</div>
 				</div>
 				<!-- 배송조회창 끝 -->
