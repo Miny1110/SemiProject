@@ -117,7 +117,7 @@ public class CustomerOrderServlet extends HttpServlet {
 				ordto.setCustomerOrderAddr2(request.getParameter("customerOrderAddr2"));
 				ordto.setCustomerMemo(request.getParameter("customerMemo"));
 				ordto.setCustomerOrderPay(request.getParameter("customerOrderPay"));
-				ordto.setCustomerPrice(Integer.parseInt(request.getParameter("customerPrice")));
+				ordto.setCustomerOrderPrice(Integer.parseInt(request.getParameter("customerOrderPrice")));
 				
 				ordao.insertOrderData(ordto);
 				
@@ -147,16 +147,21 @@ public class CustomerOrderServlet extends HttpServlet {
 					oddto.setCustomerId(customerId);
 					oddto.setCartTotPrice(cartdao.getCartTotPrice());
 					
-					oddao.insertDetailData(oddto);					
+					oddao.insertDetailData(oddto);
+					
 				}
-				//cartdelete 해야함 어차피 장바구니 전체상품 다 지워야하니까
-				//id조회해서 그 id가 가지고있는거 다지우는걸로 하면될듯				
-				ctdao.orderdelete(customerId);
+				
+				while(!it.hasNext()) {
+					//cartdelete 해야함 어차피 장바구니 전체상품 다 지워야하니까
+					//id조회해서 그 id가 가지고있는거 다지우는걸로 하면될듯					
+					ctdao.orderdelete(customerId);
+				}
+			
 						
 				//일단 메인으로감....결제완료페이지만들예정
-				url = "/main/custome/searchPwd_ok.do";
+				url = "/main/customer/searchPwd_ok.do";
 				//forward(request, response, url);	
-				response.sendRedirect(url);
+				forward(request, response, url);
 				return;
 			}			
 			//로그인 안되어있을때 로그인창보내기

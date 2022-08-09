@@ -477,7 +477,7 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                           
+                           		<input type="hidden" value="${totalprice}" name="customerOrderPrice"/>
                                 <button type="submit" class="site-btn">주문하기</button>
                             </div>
                         </div>

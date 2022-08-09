@@ -22,7 +22,7 @@ public class CustomerOrderDAO {
 		String sql;
 		try {
 
-			sql = "select nvl(max(customerOrderNum),0) from customerorder";
+			sql = "select nvl(max(orderNum),0) from CUSTOMERORDER";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -42,7 +42,6 @@ public class CustomerOrderDAO {
 
 		return maxNum;
 	}
-
 	
 	//주문정보(상품x오직 주문정보)
 	public int insertOrderData(CustomerOrderDTO ordto) {
@@ -53,22 +52,21 @@ public class CustomerOrderDAO {
 		
 		try {
 			
-			sql = "insert into order(orderNum,customerId,to_char(ordate,'HH24:MI:SS'),";
-			sql+= "customerOrderName,customerOrderZipCode,customerOrderAddr1,customerAddr2,customerOrderTel,customerOrderPay,customerMemo) ";
-			sql+= "values (?,?,?,?,?,?,?,?,?,?)";
+			sql = "insert into CUSTOMERORDER(orderNum,customerId,ordate,";
+			sql+= "customerOrderName,customerOrderZipCode,customerOrderAddr1,customerOrderAddr2,customerOrderTel,customerOrderPay,customerMemo) ";
+			sql+= "values (?,?,sysdate,?,?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, ordto.getOrderNum());
 			pstmt.setString(2, ordto.getCustomerId());
-			pstmt.setString(3, ordto.getOrdate());
-			pstmt.setString(4, ordto.getCustomerOrderName());
-			pstmt.setString(5, ordto.getCustomerOrderZipCode());
-			pstmt.setString(6, ordto.getCustomerOrderTel());
-			pstmt.setString(7, ordto.getCustomerOrderAddr1());
-			pstmt.setString(8, ordto.getCustomerOrderAddr2());
-			pstmt.setString(9, ordto.getCustomerOrderPay());
-			pstmt.setString(10, ordto.getCustomerMemo());			
+			pstmt.setString(3, ordto.getCustomerOrderName());
+			pstmt.setString(4, ordto.getCustomerOrderZipCode());
+			pstmt.setString(5, ordto.getCustomerOrderTel());
+			pstmt.setString(6, ordto.getCustomerOrderAddr1());
+			pstmt.setString(7, ordto.getCustomerOrderAddr2());
+			pstmt.setString(8, ordto.getCustomerOrderPay());
+			pstmt.setString(9, ordto.getCustomerMemo());			
 		
 			pstmt.executeUpdate();
 			
