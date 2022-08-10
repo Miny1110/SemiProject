@@ -288,7 +288,7 @@
 			<div>
 				<input type="submit" value="입력완료" class="btn1" />
 				<input type="reset" value="다시입력" class="btn1" onclick="document.myForm.customerId.focus();">
-				<input type="button" value="돌아가기" class="btn1" onclick="<%=cp%>/main/customer/login.do" />
+				<input type="button" value="돌아가기" class="btn1" onclick="location='/ccookat/main/customer/login.do';" />
 			</div>
 		</form>
 	</div>
