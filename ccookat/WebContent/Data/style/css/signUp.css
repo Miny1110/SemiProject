@@ -160,3 +160,10 @@ tr {
 .ud_th_size {
 	padding-right: 30px;
 }
+
+.singUp_id {
+	padding-left: 20px; 
+	margin-bottom: 0px; 
+	font-size: 13px;
+	color: #FF5833;
+}

@@ -441,7 +441,7 @@
 															</div>
 														</c:if>
 														<c:if test="${rdto.reviewImage==null}">
-															<div class="review_content">
+															<div class="product__details__tab__desc">
 																${rdto.reviewContent}</div>
 														</c:if>
 														<div style="text-align: right;">
@@ -452,7 +452,7 @@
 																<input type="hidden" name="itemType" value="${itemType}"/> 
 															<br>	
 															<c:if test="${sessionScope.customerInfo.customerId==rdto.customerId}">
-																<div class="blog__sidebar__item__tags" style="margin-right: 60px; padding-bottom: 20px;">
+																<div class="blog__sidebar__item__tags" style="margin-right: 70px; padding-bottom: 20px;">
 																	<a href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&itemNum=${idto.itemNum}">
 																		수정하기</a> 
 																	<a href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}&itemNum=${idto.itemNum}">
@@ -461,7 +461,7 @@
 															</c:if>
 															<c:if
 																test="${sessionScope.customerInfo.customerId=='admin'}">
-																<div class="blog__sidebar__item__tags" style="margin-right: 60px;">
+																<div class="blog__sidebar__item__tags">
 																	<a href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}&itemNum=${idto.itemNum}">
 																		삭제하기</a>
 																		
