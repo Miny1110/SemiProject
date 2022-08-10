@@ -296,8 +296,8 @@ function sendIt(){
 					<nav class="header__menu">
 						<ul>
 							<li><a href="<%=cp%>/main">Home</a></li>
-							<li><a href="<%=cp %>/main/item/list.do?itemType=fruit">Shop</a></li>
-							<li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">NOTICE</a></li>
+							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
+							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
 							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
 						</ul>
 					</nav>
