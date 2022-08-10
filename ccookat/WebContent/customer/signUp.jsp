@@ -337,7 +337,7 @@ function sample6_execDaumPostcode() {
 						<tr>
 							<th style="height: 100px; padding-bottom: 10px;" >아이디<span class="ico">*</span></th>
 							<td><input class="box-size2" type="text" name="customerId"
-								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" 
+								id="customerId" placeholder="영문 혹은 영문과 숫자를 조합" 
 								value="${customerIdChk }" onchange="checkFmId();">
 								<input type="hidden" name="idFormat" value="${idFormat }">
 

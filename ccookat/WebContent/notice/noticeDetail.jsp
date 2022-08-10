@@ -308,8 +308,11 @@
                             <div class="col-lg-6">
                                 <div class="blog__details__author">                                   
                                     <div class="blog__details__author__text">                                        
+                                       <c:if test="${ sessionScope.customerInfo.customerId=='admin'}">
                                         <div class="blog__sidebar__item__tags_notice">
-                               			<a href="${deletePath }?noticeNum=${ndto.noticeNum }&pageNum=${pageNum }">삭제</a></div>
+                               			<a href="${deletePath }?noticeNum=${ndto.noticeNum }&pageNum=${pageNum }">삭제</a>
+                               			</div>
+                               			</c:if>
                                     </div>
                                 </div>
                             </div>
