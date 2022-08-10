@@ -291,7 +291,7 @@
                             <h4>Categories</h4>
                             <ul>
                                 <li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=gongji">공지사항</a></li>
-                                <li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=jaju">자주하는질문</a></li>
+                                <li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=jaju">이&nbsp;벤&nbsp;트</a></li>
                                 <li><a href="<%=cp %>/main/notice/list.do?noticeSearchKey=ildaeil">1:1문의</a></li>
                             </ul>
                         </div>
