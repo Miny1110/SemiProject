@@ -324,18 +324,18 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
+					<div class="hero__search">
+					<div class="hero__search__form">
+                            <form action="<%=cp%>/main/item/list.do">
                                 <div class="hero__search__categories">
                                     제품명
-                                    <span class="arrow_carrot-down"></span>
+                                    
                                 </div>
-                                <input type="text" placeholder="제품명 입력하세요">
+                                <input type="text" placeholder="제품명 입력하세요" name="itemSearchValue">
                                 <button type="submit" class="site-btn">검색하기</button>
                             </form>
                         </div>
-                       <div class="hero__search__phone">
+						<div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
 								<i class="fa fa-truck"></i>
 							</div>
@@ -344,7 +344,6 @@
 								<span> 샛별ㆍ낮 배송</span>
 							</div>
 						</div>
-                    
                     </div>
                 </div>
             </div>
@@ -373,7 +372,7 @@
 	<section class="checkout spad">
 		<div class="container">
 			<div class="checkout__form">
-				<h3>1:1 문의 답변하기</h3>
+				<h4>답변하기</h4>
 				<br>
 				<form action="/ccookat/main/qna/reply_ok.do" method="post" name="myForm">
 					<div>
