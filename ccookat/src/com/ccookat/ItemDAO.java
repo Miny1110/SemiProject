@@ -535,6 +535,7 @@ public class ItemDAO {
 	}
 	//주문하기되면 상품 수량에서 주문한 수량만큼 빼줘야함 itemNum이랑 itemCount 로 어떻게 해야되는데 .. ..
 	public void afterOrder(int itemcount,int itemnum) {
+
 		PreparedStatement pstmt = null;
 		String sql;
 		
@@ -556,6 +557,7 @@ public class ItemDAO {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}	
+		
 	}
 		
 	

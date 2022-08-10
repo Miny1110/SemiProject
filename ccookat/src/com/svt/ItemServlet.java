@@ -288,7 +288,7 @@ public class ItemServlet extends HttpServlet {
 			}
 			
 			//한 페이지에 나올 데이터는 6개
-			int numPerPage = 6; 
+			int numPerPage = 9; 
 			int totalPage = myPage.getPageCount(numPerPage, dataCount);
 			if(currentPage>totalPage) {
 				currentPage = totalPage;

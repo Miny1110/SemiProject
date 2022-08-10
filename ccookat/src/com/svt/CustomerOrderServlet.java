@@ -155,7 +155,6 @@ public class CustomerOrderServlet extends HttpServlet {
 					
 					int itemcount = oddto.getItemCount();
 					int itemnum = oddto.getItemNum();
-					
 					idao.afterOrder(itemcount, itemnum);
 				}
 					
