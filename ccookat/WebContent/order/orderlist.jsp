@@ -311,7 +311,7 @@
                                         <h5>${ctdto.itemName}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                    ${ctdto.itemPrice*ctdto.cartItemCount }                               
+                                    <fmt:formatNumber value="${ctdto.itemPrice*ctdto.cartItemCount }" pattern="0"/>원                            
                                     </td>
                                         <td class="shoping__cart__price">
                                     ${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice}                               

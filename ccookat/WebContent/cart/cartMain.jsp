@@ -399,9 +399,9 @@
 												<img src="${itemImagePath }/${ctdto.itemImage1}" alt="" width="100px" height="100px">
 													<h5>${ctdto.itemName}</h5></td>
 												<td class="shoping__cart__price">
-													${ctdto.itemPrice*ctdto.cartItemCount }</td>
+													<fmt:formatNumber value="${ctdto.itemPrice*ctdto.cartItemCount }" pattern=""/>원</td>
 												<td class="shoping__cart__price">
-													${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice }
+													<fmt:formatNumber value="${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice }" pattern=""/>원
 												</td>
 												<td class="shoping__cart__quantity">													
 														<div class="quantity">
@@ -446,9 +446,9 @@
                     <div class="shoping__checkout">
                         <h5>장바구니 금액</h5>
                         <ul>
-                        	<li>총 상품금액 <span> ${beforedc} </span></li>
-                            <li>총 할인금액 <span> ${(beforedc-totalprice)*-1} </span></li>
-                            <li>총 결제금액 <span> <fmt:formatNumber value="${totalprice}" pattern=""/></span></li>
+                        	<li>총 상품금액 <span> <fmt:formatNumber value="${beforedc}" pattern=""/>원</span></li>
+                            <li>총 할인금액 <span> <fmt:formatNumber value="${(beforedc-totalprice)*-1}" pattern=""/>원</span></li>
+                            <li>총 결제금액 <span> <fmt:formatNumber value="${totalprice}" pattern=""/>원</span></li>
                         </ul>
                         <c:choose>
                         <c:when test="${!empty lists }">
