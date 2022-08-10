@@ -361,14 +361,14 @@
 	<!-- Blog Details Section End -->
 		
 	
-		<div class="container answer_div">
+		<div  class="container" style="padding-bottom: 200px;">
 			<div class="row">
 				<div id="qna_detail">
 					<br> <br> <br>
 					<h1>답변</h1>
 					<br> <br>
 							 <c:if test="${redto.qnaNum==null}">
-						<table>
+						<table  class="container answer_div_if" >
 						<tbody>
 							<tr>
 								<td height="150" style="padding: 10px; text-align: center; font-size: 25px;" >답변전입니다.</td>
@@ -378,7 +378,7 @@
 					</c:if>
 
 					 <c:if test="${redto.qnaNum!=null}">
-					<table>
+					<table  class="container answer_div">
 						<tbody>
 							<tr>
 								<th>작성자</th>
