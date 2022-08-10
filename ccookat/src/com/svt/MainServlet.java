@@ -51,7 +51,7 @@ public class MainServlet extends HttpServlet {
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		String url;
-
+	
 		HttpSession session = req.getSession();
 
 		CustomerInfo customerInfo = new CustomerInfo();
@@ -59,10 +59,10 @@ public class MainServlet extends HttpServlet {
 		customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 
 		if(customerInfo!=null) {
-		String customerId = customerInfo.getCustomerId();
+			String customerId = customerInfo.getCustomerId();
 
-		int cartCount = ctdao.cartCount(customerId);
-		req.setAttribute("cartCount", cartCount);
+			int cartCount = ctdao.cartCount(customerId);
+			req.setAttribute("cartCount", cartCount);
 		}
 
 		List<ItemDTO> mainLists = new ArrayList<ItemDTO>(); 
@@ -75,7 +75,7 @@ public class MainServlet extends HttpServlet {
 		req.setAttribute("mainList", mainLists);
 		req.setAttribute("itemImagePath", itemImagePath);
 		req.setAttribute("customerInfo", customerInfo);
-		
+
 		url = "/main.jsp";
 		forward(req, resp, url);
 

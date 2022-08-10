@@ -244,6 +244,25 @@ public class NoticeServlet extends HttpServlet {
 			
 			url = cp + "/main/notice/list.do?pageNum=" + pageNum;
 			response.sendRedirect(url);
+			
+		}else if(uri.indexOf("info.do")!=-1) {
+
+			HttpSession session = request.getSession();
+
+			CustomerInfo customerInfo = new CustomerInfo();
+
+			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+
+			if(customerInfo!=null) {
+				String customerId = customerInfo.getCustomerId();
+
+				int cartCount = ctdao.cartCount(customerId);
+				request.setAttribute("cartCount", cartCount);
+			
+			}
+			url = "/contact.jsp";
+			forward(request, response, url);
+						
 		}
 
 	}
