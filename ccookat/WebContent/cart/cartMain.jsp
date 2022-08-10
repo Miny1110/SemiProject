@@ -448,7 +448,7 @@
                         <ul>
                         	<li>총 상품금액 <span> ${beforedc} </span></li>
                             <li>총 할인금액 <span> ${(beforedc-totalprice)*-1} </span></li>
-                            <li>총 결제금액 <span> ${totalprice}</span></li>
+                            <li>총 결제금액 <span> <fmt:formatNumber value="${totalprice}" pattern=""/></span></li>
                         </ul>
                         <c:choose>
                         <c:when test="${!empty lists }">
