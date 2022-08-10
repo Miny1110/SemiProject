@@ -1850,20 +1850,20 @@ ol {
 
 .product__details__tab .nav-tabs:before {
 	position: absolute;
-	left: 350px;
+	left: 400px;
 	top: 12px;
 	height: 1px;
-	width: 330px;
+	width: 300px;
 	background: #ebebeb;
 	content: "";
 }
 
 .product__details__tab .nav-tabs:after {
 	position: absolute;
-	right: 350px;
+	right: 400px;
 	top: 12px;
 	height: 1px;
-	width: 330px;
+	width: 300px;
 	background: #ebebeb;
 	content: "";
 }
