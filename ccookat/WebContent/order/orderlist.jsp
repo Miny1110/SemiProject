@@ -1,6 +1,6 @@
-
- <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -311,7 +311,7 @@
                                         <h5>${ctdto.itemName}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                    ${ctdto.itemPrice*ctdto.cartItemCount }                               
+                                    <fmt:formatNumber value="${ctdto.itemPrice*ctdto.cartItemCount }" pattern="0"/>원                            
                                     </td>
                                         <td class="shoping__cart__price">
                                     ${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice}                               
