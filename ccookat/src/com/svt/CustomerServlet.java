@@ -167,12 +167,15 @@ public class CustomerServlet extends HttpServlet{
 		else if(uri.indexOf("customerPwdChk.do")!=-1) {
 
 			HttpSession session = req.getSession();
+			
 			CustomerInfo customerInfo = new CustomerInfo();
+			
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
+			
 			String customerId = customerInfo.getCustomerId();
 			int cartCount = ctdao.cartCount(customerId);
 			
-			String itemImagePath = cp + "/pds/itemImageFile";
+			String itemImagePath = cp + "/pds/itemImageFile";			
 			req.setAttribute("itemImagePath", itemImagePath);
 			
 			//여기에 주문정보랑 주문디테일 뽑아야함
