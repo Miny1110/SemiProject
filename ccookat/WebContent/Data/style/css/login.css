@@ -86,10 +86,6 @@
 
 /* review detail 상품리뷰 디자인 */
 .review_img {
-	padding-right: 80%;
+	padding-right: 500px;
 	padding-bottom: 30px;
-}
-
-.review_content {
-	padding-left: 20%;
 }

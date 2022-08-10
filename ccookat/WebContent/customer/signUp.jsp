@@ -335,7 +335,7 @@ function sample6_execDaumPostcode() {
 				<form action="" method="post" name="myForm" id="join">
 					<table class="tbl_comm">
 						<tr>
-							<th>아이디<span class="ico">*</span></th>
+							<th style="height: 100px; padding-bottom: 10px;" >아이디<span class="ico">*</span></th>
 							<td><input class="box-size2" type="text" name="customerId"
 								id="customerId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" 
 								value="${customerIdChk }" onchange="checkFmId();">
@@ -343,8 +343,9 @@ function sample6_execDaumPostcode() {
 
 								<input type="button" value="중복확인" class="signUp_btn" onclick="idChk();"/>
 								<input type="hidden" name="idDuplication" value="${idDuplication }">
+								<br>
+								<span class="singUp_id">${msg }</span>
 							</td>
-							<td>${msg }</td>
 						</tr>
 						<tr>
 							<th>비밀번호<span class="ico">*</span></th>
