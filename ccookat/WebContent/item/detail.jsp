@@ -417,7 +417,7 @@
 
 
 									<form action="" method="post">
-
+									
 										<c:if test="${!empty sessionScope.customerInfo.customerId}">
 											<div>
 												<input type="button" class="btn2" value=리뷰등록
@@ -429,14 +429,14 @@
 										<c:forEach var="rdto" items="${reviewlists}">
 												<div>
 													<div style="border-bottom: 1px solid #d5d5d5;">
-														<div class="product__details__tab__desc">
+														<div class="product__details__tab__desc_detail">
 															<b>작성자 :&nbsp;</b>${rdto.customerId}
 															<b>작성일 :&nbsp;</b>${rdto.reviewCreated}
 														</div>
 														<div align="right"></div>
 													
 														<c:if test="${rdto.reviewImage!=null}">
-															<div>
+															<div class="review_img">
 																<img src="${reviewImagePath }/${rdto.reviewImage }"
 																	height="200" width="200" /> ${rdto.reviewContent}
 															</div>
@@ -450,7 +450,7 @@
 																value="${rdto.reviewNum}" /> 
 																<input type="hidden"name="pageNum" value="${pageNum}"/>
 																<input type="hidden"name="itemNum" value="${itemNum}"/>
-																   <input type="hidden" name="itemType" value="${itemType}"/> 
+																<input type="hidden" name="itemType" value="${itemType}"/> 
 															<c:if
 																test="${sessionScope.customerInfo.customerId==rdto.customerId}">
 																<div class="blog__sidebar__item__tags">
