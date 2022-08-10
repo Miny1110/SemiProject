@@ -149,17 +149,19 @@ public class CustomerOrderServlet extends HttpServlet {
 					
 					oddao.insertDetailData(oddto);
 					
+					//item db연결해서 주문한 수량만큼 item재고 빼기
+					//주문정보에 insert 되면 item 테이블이 수정되게끔 트리거를 실행하고 싶었으나. .. .할수없었따								
+					/*이게 되는 코드인지는 모르겠음 ^^*/
+					
+					int itemcount = oddto.getItemCount();
+					int itemnum = oddto.getItemNum();
+					idao.afterOrder(itemcount, itemnum);
 				}
 					
 				//cartdelete 해야함 어차피 장바구니 전체상품 다 지워야하니까
 				//id조회해서 그 id가 가지고있는거 다지우는걸로 하면될듯					
 				ctdao.orderdelete(customerId);
-				
-				//item db연결해서 주문한 수량만큼 item재고 빼기
-				//주문정보에 insert 되면 item 테이블이 수정되게끔 트리거를 실행하고 싶었으나. .. .할수없었따
-				idao.afterOrder();
-				
-				
+								
 
 				//주문조회 창으로 넘어가기
 				url = cp + "/main/customer/customerPwdChk.do";
