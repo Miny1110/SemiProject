@@ -410,7 +410,7 @@
 														<a href="<%=cp %>/main/cart/plus.do?cartNum=${ctdto.cartNum }&itemPrice=${ctdto.itemPrice}&itemDiscount=${ctdto.itemDiscount}">+</a>
 														</div>						
 												</td>
-												<td class="shoping__cart__total">${ctdto.cartTotPrice }
+												<td class="shoping__cart__total"><fmt:formatNumber value="${ctdto.cartTotPrice }" pattern=""/>원
 												</td>
 												<td class="shoping__cart__item__close"><a href="<%=cp%>/main/cart/cartout.do?itemNum=${ctdto.itemNum}"><span
 														class="icon_close"></span></a></td>
