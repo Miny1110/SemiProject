@@ -370,7 +370,7 @@ function sample6_execDaumPostcode() {
 							<th>이메일<span class="ico">*</span></th>
 							<td><input class="box-size" type="text" name="customerEmail"
 								class="email" id="customerEmail"
-								placeholder="예: marketkurly@kurly.com" onchange="checkFmEmail();">
+								placeholder="예: ccookat@ccockat.com" onchange="checkFmEmail();">
 								<input type="hidden" name="emailDuplication" value="${emailDuplication }">
 							</td>
 						</tr>

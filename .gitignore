@@ -26,3 +26,4 @@
 *.class
 *.java
 ccookat/build/classes/com/ccookat/ItemDAO.class
+*.class

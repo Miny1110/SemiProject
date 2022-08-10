@@ -360,7 +360,7 @@ function sample6_execDaumPostcode() {
 						</tr>
 						<tr>
 							<th>이메일<span class="ico">*</span></th>
-							<td><input class="box-size2" type="text" name="customerEmail" placeholder="예: marketkurly@kurly.com"
+							<td><input class="box-size2" type="text" name="customerEmail" placeholder="예: ccookat@ccockat.com."
 								class="email" id="customerEmail" value="${cdto.customerEmail }">
 								<input type="button" value="중복확인" class="signUp_btn"></td>
 						</tr>
