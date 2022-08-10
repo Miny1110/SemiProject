@@ -1,12 +1,12 @@
 <%@page import="java.util.Enumeration"%>
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 	
 %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -416,9 +416,8 @@
                                             <span>조회수: ${idto.itemHitCount }</span>
                                             <h5><a href="#">${idto.itemName }</a></h5>
                                             <div class="product__item__price">
-                                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
-                                            pattern="0"/>원
-                                           <span>${idto.itemPrice }원</span></div>
+                                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" pattern=""/>원
+                                           <span><fmt:formatNumber value="${idto.itemPrice }" pattern=""/>원</span></div>
                                             
                                         </div>
                                     </div>
@@ -474,9 +473,8 @@
                                     
  										<div class="product__discount__item__text">
                                             <div class="product__item__price">
-                                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}"
-                                            pattern="0"/>원
-                                           <span>${idto.itemPrice }원</span></div>
+                                            <fmt:formatNumber value="${idto.itemPrice * (1-0.01*idto.itemDiscount)}" pattern=""/>원
+                                           <span><fmt:formatNumber value="${idto.itemPrice }" pattern=""/>원</span></div>
                                             
                                         </div>
                                 </div>
