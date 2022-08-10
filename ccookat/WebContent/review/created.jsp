@@ -70,7 +70,7 @@
 			<li><a href="<%=cp%>/main">Home</a></li>
 			<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
 		 	<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
-			<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+			<li><a href="<%=cp%>/main/notice/info.do">INFO</a></li>
 			</ul>
         </nav>
         <div id="mobile-menu-wrap">
@@ -181,7 +181,7 @@
 							<li><a href="<%=cp%>/main">Home</a></li>
 							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
 							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
-							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+							<li><a href="<%=cp%>/main/notice/info.do">INFO</a></li>
 						</ul>						
 					</nav>
 				</div>
