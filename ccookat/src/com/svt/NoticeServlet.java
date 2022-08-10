@@ -258,11 +258,11 @@ public class NoticeServlet extends HttpServlet {
 
 				int cartCount = ctdao.cartCount(customerId);
 				request.setAttribute("cartCount", cartCount);
+			
 			}
-
-			url = "/main/notice/info.do";
+			url = "/contact.jsp";
 			forward(request, response, url);
-
+						
 		}
 
 	}
