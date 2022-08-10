@@ -1,6 +1,6 @@
-
- <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -69,7 +69,7 @@
 			<li><a href="<%=cp%>/main">Home</a></li>
 			<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
 		 	<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
-			<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+			<li><a href="<%=cp%>/main/notice/info.do">INFO</a></li>
 			</ul>
         </nav>
         <div id="mobile-menu-wrap">
@@ -184,7 +184,7 @@
 							<li><a href="<%=cp%>/main">Home</a></li>
 							<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
 							<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
-							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+							<li><a href="<%=cp%>/main/notice/info.do">INFO</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -311,10 +311,10 @@
                                         <h5>${ctdto.itemName}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                    ${ctdto.itemPrice*ctdto.cartItemCount }                               
+                                    <fmt:formatNumber value="${ctdto.itemPrice*ctdto.cartItemCount }" pattern=""/>원    
                                     </td>
                                         <td class="shoping__cart__price">
-                                    ${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice}                               
+                                    <fmt:formatNumber value="${(ctdto.itemPrice*ctdto.cartItemCount)-ctdto.cartTotPrice}" pattern=""/>원                               
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -322,7 +322,7 @@
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                            ${ctdto.cartTotPrice }
+                                    <fmt:formatNumber value="${ctdto.cartTotPrice }" pattern=""/>원
                                     </td>
                                 </tr>
                                 </c:forEach> 
@@ -400,7 +400,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>주문하기</h4>
-                                <div class="checkout__order__total">총가격 <span> ${totalprice} </span></div>
+                                <div class="checkout__order__total">총가격 <span> <fmt:formatNumber value="${totalprice}" pattern=""/>원  </span></div>
                 
                                 <div class="checkout__input__checkbox">
                                     <label for="payment">

@@ -172,6 +172,7 @@ public class CustomerServlet extends HttpServlet{
 			
 			customerInfo = (CustomerInfo)session.getAttribute("customerInfo");
 			
+			if(customerInfo!=null) {
 			String customerId = customerInfo.getCustomerId();
 			int cartCount = ctdao.cartCount(customerId);
 			
@@ -194,6 +195,12 @@ public class CustomerServlet extends HttpServlet{
 			
 			url = "/customer/mypageEnter.jsp";
 			forward(req, resp, url);
+			return;
+			}
+			
+			//로그인 안되어있을때 로그인창보내기
+			url = cp +"/main/customer/login.do";
+			resp.sendRedirect(url);
 
 		}else if(uri.indexOf("customerPwdChk_ok.do")!=-1) {
 
@@ -331,13 +338,7 @@ public class CustomerServlet extends HttpServlet{
 			return;
 
 		}
-		
-		
-
-			
-		
-		
-		
+				
 	}
 }
 

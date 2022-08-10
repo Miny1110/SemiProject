@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -75,7 +76,7 @@
 				<li><a href="<%=cp%>/main">Home</a></li>
 				<li><a href="<%=cp%>/main/item/list.do">Shop</a></li>
 				<li><a href="<%=cp%>/main/notice/list.do">NOTICE</a></li>
-				<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+				<li><a href="<%=cp%>/main/notice/info.do">INFO</a></li>
 			</ul>
 		</nav>
 		<div id="mobile-menu-wrap">
@@ -228,7 +229,7 @@
 							<li><a href="<%=cp%>/main">Home</a></li>
 							<li><a href="<%=cp%>/main/item/list.do">Shop</a></li>
 							<li><a href="<%=cp%>/main/notice/list.do">NOTICE</a></li>
-							<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+							<li><a href="<%=cp%>/main/notice/info.do">INFO</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -343,11 +344,12 @@
 						<table class="qna_table">
 							<tbody>				
 								<tr height="60px" style="background-color: gray">
-									<th class="qna_tr_test" width="150" style="color: white">주문번호 | ${ordto.orderNum }</th>
-									<th class="qna_tr_test_center" width="350" style="color: white">주문일시 | ${ordto.ordate }</th>
+									<th class="qna_tr_test" width="150" style="color: white">| 주문번호 | ${ordto.orderNum }</th>
+									<th class="qna_tr_test_center" width="350" style="color: white">| 주문일시 | ${ordto.ordate }</th>
 									<th class="qna_tr_test" width="80" style="color: white">&nbsp;</th>	
-									<th class="qna_tr_test" width="150" style="color: white">주문금액 | </th>							
-									<th class="qna_tr_test" width="120" style="color: white">${ordto.customerOrderPrice }원</th>									
+									<th class="qna_tr_test" width="150" style="color: white">| 주문금액 | </th>							
+									<th class="qna_tr_test" width="120" style="color: white"><fmt:formatNumber value="${ordto.customerOrderPrice }" pattern=""/>&nbsp;원	</th>
+																	
 								</tr>
 								<tr height="60px" style="border-top: 2px solid gray; border-bottom: 1px solid gray;">
 									<td class="qna_tr_test">상품이미지</td>
@@ -362,7 +364,7 @@
 									<td class="qna_tr_test"><img src="${itemImagePath }/${oddto.itemImage1}" alt="" width="100px" height="100px"></td>
 									<td class="qna_tr_test_center">${oddto.itemName }</td>
 									<td class="qna_tr_test">${oddto.itemCount }</td>
-									<td class="qna_tr_test">${oddto.cartTotPrice }</td>
+									<td class="qna_tr_test"><fmt:formatNumber value="${oddto.cartTotPrice }" pattern=""/>원</td>
 									<td class="qna_tr_test">배송중</td>
 								</tr>
 								</c:if>

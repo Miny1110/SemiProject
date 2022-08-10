@@ -1921,6 +1921,10 @@ ol {
 	padding-top: 44px;
 }
 
+.product__details__tab__desc_detail {
+	margin-left: 540px;
+}
+
 .product__details__tab .product__details__tab__desc h6 {
 	font-weight: 700;
 	color: #333333;
