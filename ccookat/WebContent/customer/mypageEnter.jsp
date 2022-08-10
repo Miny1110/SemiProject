@@ -300,7 +300,7 @@
 	<!-- Checkout Section Begin -->
 	<div class="col-lg-12">
 		<div class="product__details__tab">
-			<ul class="nav nav-tabs2" role="tablist">
+			<ul class="nav nav-tabs" role="tablist">
 				<li class="nav-item">
 					<a class="nav-link" data-toggle="tab" style="margin-left: 10px;"
 					href="#tabs-1" role="tab" aria-selected="false" >회원정보 수정</a>
