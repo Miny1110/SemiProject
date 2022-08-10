@@ -288,14 +288,14 @@
 									&nbsp;&nbsp;&nbsp;|
 									<select style="display: none;" name="noticeSearchKey">
 										<option value="gongji">공지사항</option>
-										<option value="jaju">자주하는질문</option>
+										<option value="jaju">이&nbsp;벤&nbsp;트</option>
 										<option value="ildaeil">질문과답변</option>
 									</select>
 									<div class="nice-select" tabindex="0">
 										<span class="current">공지사항</span>
 										<ul class="list">
 											<li data-value="gongji" class="option selected focus">공지사항</li>
-											<li data-value="jaju" class="option">자주하는질문</li>
+											<li data-value="jaju" class="option">이&nbsp;벤&nbsp;트</li>
 											<li data-value="ildaeil" class="option">질문과답변</li>
 										</ul>
 									</div>
