@@ -89,7 +89,7 @@
 			<li><a href="<%=cp%>/main">Home</a></li>
 			<li><a href="<%=cp %>/main/item/list.do">Shop</a></li>
 		 	<li><a href="<%=cp %>/main/notice/list.do">NOTICE</a></li>
-			<li><a href="<%=cp%>/contact.jsp">INFO</a></li>
+			<li><a href="<%=cp %>/main/notice/info.do">INFO</li>
 			</ul>
         </nav>
         <div id="mobile-menu-wrap">
@@ -264,7 +264,7 @@
                             </form>
                         </div>
 						<div class="hero__search__phone">
-							<div class="hero__search__phone__icon">
+							<div class="hero__search__phone__icon_list">
 								<i class="fa fa-truck"></i>
 							</div>
 							<div class="hero__search__phone__text">
@@ -420,25 +420,24 @@
 									
 										<c:if test="${!empty sessionScope.customerInfo.customerId}">
 											<div>
-												<input type="button" class="btn2" value=리뷰등록
+												<input type="button" class="btn22" value=리뷰등록
 													onclick="location='/ccookat/main/review/created.do?itemNum=${idto.itemNum}';">
 											</div>
 										</c:if>
 
-
 										<c:forEach var="rdto" items="${reviewlists}">
 												<div>
-													<div style="border-bottom: 1px solid #d5d5d5;">
-														<div class="product__details__tab__desc_detail">
-															<b>작성자 :&nbsp;</b>${rdto.customerId}
+													<div style="border-bottom: 1px solid #d5d5d5; width: 1000px;">
+														<div class="product__details__tab__desc_detail" style="padding-top: 20px;">
+															<b>작성자 :&nbsp;</b>${rdto.customerId}&nbsp;&nbsp;
 															<b>작성일 :&nbsp;</b>${rdto.reviewCreated}
 														</div>
 														<div align="right"></div>
 													
 														<c:if test="${rdto.reviewImage!=null}">
-															<div class="review_img">
-																<img src="${reviewImagePath }/${rdto.reviewImage }"
-																	height="200" width="200" /> ${rdto.reviewContent}
+															<div class="review_img" >
+																<img src="${reviewImagePath }/${rdto.reviewImage }" height="200" width="200" />
+																&nbsp;&nbsp;&nbsp;	 ${rdto.reviewContent}
 															</div>
 														</c:if>
 														<c:if test="${rdto.reviewImage==null}">
@@ -451,25 +450,19 @@
 																<input type="hidden"name="pageNum" value="${pageNum}"/>
 																<input type="hidden"name="itemNum" value="${itemNum}"/>
 																<input type="hidden" name="itemType" value="${itemType}"/> 
-															<c:if
-																test="${sessionScope.customerInfo.customerId==rdto.customerId}">
-																<div class="blog__sidebar__item__tags">
-																						<a
-																		href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}
-																		&itemNum=${idto.itemNum}">
-																		수정하기</a> <a
-																		href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}
-																		&itemNum=${idto.itemNum}">
+															<br>	
+															<c:if test="${sessionScope.customerInfo.customerId==rdto.customerId}">
+																<div class="blog__sidebar__item__tags" style="margin-right: 70px; padding-bottom: 20px;">
+																	<a href="<%=cp %>/main/review/updated.do?reviewNum=${rdto.reviewNum}&itemNum=${idto.itemNum}">
+																		수정하기</a> 
+																	<a href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}&itemNum=${idto.itemNum}">
 																		삭제하기</a>
+																</div>		
 															</c:if>
-
-
 															<c:if
 																test="${sessionScope.customerInfo.customerId=='admin'}">
 																<div class="blog__sidebar__item__tags">
-																	<a
-																		href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}
-																		&itemNum=${idto.itemNum}">
+																	<a href="<%=cp %>/main/review/deleted.do?reviewNum=${rdto.reviewNum}&itemNum=${idto.itemNum}">
 																		삭제하기</a>
 																		
 																</div>

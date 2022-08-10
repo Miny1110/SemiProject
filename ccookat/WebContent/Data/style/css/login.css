@@ -46,7 +46,7 @@
 
 }  
 
-.btn2 {
+.btn22 {
     font-size: 14px;
     border-color: #FF5833;
     border: solid 0.5px;
@@ -56,7 +56,7 @@
     margin-bottom: 30px;
     color: #FF5833;
     height: 45px;
-    margin-left: 700px;
+    margin-left: 720px;
 
 } 
    
@@ -82,4 +82,10 @@
 
 .dilivery {
 	border: 0.5px solid #BDBDBD;
+}
+
+/* review detail 상품리뷰 디자인 */
+.review_img {
+	padding-right: 500px;
+	padding-bottom: 30px;
 }
