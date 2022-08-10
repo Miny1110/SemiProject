@@ -49,14 +49,14 @@ public class OrderDetailDAO {
 	public List<OrderDetailDTO> selectAll(String customerId) {
 		
 		List<OrderDetailDTO> dtlists = new ArrayList<OrderDetailDTO>();
-		OrderDetailDTO ordto = null;
+		OrderDetailDTO oddto = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
 
 		try {
 			
-			sql ="select a.ordernum,a.customerid,a.cartitemcount,a.carttotprice,b.itemname,b.ItemImage1 ";
+			sql ="select a.ordernum,a.customerid,a.cartitemcount,a.carttotprice,b.itemname,b.ItemImage1,a.itemnum ";
 			sql+="from CUSTOMERORDERDETAIL a join item b on a.itemnum = b.itemnum ";
 			sql+="where customerid = ?";
 			
@@ -68,16 +68,17 @@ public class OrderDetailDAO {
 
 			while(rs.next()) {
 
-				ordto = new OrderDetailDTO();
+				oddto = new OrderDetailDTO();
 
-				ordto.setOrderNum(rs.getInt(1));
-				ordto.setCustomerId(rs.getString(2));
-				ordto.setItemCount(rs.getInt(3));
-				ordto.setCartTotPrice(rs.getInt(4));
-				ordto.setItemName(rs.getString(5));
-				ordto.setItemImage1(rs.getString(6));
+				oddto.setOrderNum(rs.getInt(1));
+				oddto.setCustomerId(rs.getString(2));
+				oddto.setItemCount(rs.getInt(3));
+				oddto.setCartTotPrice(rs.getInt(4));
+				oddto.setItemName(rs.getString(5));
+				oddto.setItemImage1(rs.getString(6));
+				oddto.setItemNum(rs.getInt(7));
 				
-				dtlists.add(ordto);
+				dtlists.add(oddto);
 			}
 
 			pstmt.close();
@@ -91,10 +92,6 @@ public class OrderDetailDAO {
 		
 	}
 	
-	
-	
-	
-	
-	
+
 	
 }
