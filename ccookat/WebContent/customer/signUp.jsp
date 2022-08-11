@@ -337,11 +337,10 @@ function sample6_execDaumPostcode() {
 						<tr>
 							<th style="height: 100px; padding-bottom: 10px;" >아이디<span class="ico">*</span></th>
 							<td><input class="box-size2" type="text" name="customerId"
-								id="customerId" placeholder="영문 혹은 영문과 숫자를 조합" 
-								value="${customerIdChk }" onchange="checkFmId();">
+								id="customerId" placeholder="영문 혹은 영문과 숫자를 조합" onchange="checkFmId();">
 								<input type="hidden" name="idFormat" value="${idFormat }">
 
-								<input type="button" value="중복확인" class="signUp_btn" onclick="idChk();"/>
+								<input type="button" value="중복확인" class="signUp_btn" onclick="openIdChk();"/>
 								<input type="hidden" name="idDuplication" value="${idDuplication }">
 								<br>
 								<span class="singUp_id">${msg }</span>

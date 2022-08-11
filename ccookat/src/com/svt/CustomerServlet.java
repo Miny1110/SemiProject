@@ -338,7 +338,31 @@ public class CustomerServlet extends HttpServlet{
 			return;
 
 		}
-				
+		
+		else if(uri.indexOf("idChk.do")!=-1) {
+			
+			String customerId = req.getParameter("customerId");
+			
+			int result = cdao.idChk(customerId);
+			
+			System.out.println(customerId);
+			
+			if(result==1) {
+				req.setAttribute("customerId", customerId);
+				req.setAttribute("msg", "이미 존재하는 아이디입니다.");
+				req.setAttribute("bnt_msg", " 다시입력 ");
+			}else {
+				req.setAttribute("customerId", customerId);
+				req.setAttribute("msg", "사용 가능한 아이디입니다.");
+				req.setAttribute("bnt_msg", " 사용하기 ");
+			}
+			
+			url = "/customer/idChk.jsp";
+			forward(req, resp, url);
+			
+		}
+		
+	
 	}
 }
 
