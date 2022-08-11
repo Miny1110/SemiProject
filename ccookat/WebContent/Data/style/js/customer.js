@@ -182,8 +182,31 @@ function checkFmTel(){
 }
 
 
+function openIdChk(){
+	
+	//idChk.jsp는 자식창 / signUp.jsp는 부모창
+	
+	var customerId_chk = document.getElementById("customerId").value;
+	
+	if(customerId_chk){
+		
+		//window.name = "부모창 이름";
+		window.name = "myForm";
+		
+		url = "idChk.do?customerId="+customerId_chk;
+		
+		//window.open("open할 window","자식창 이름","팝업창 옵션");
+		openWin = window.open(url,"아이디확인",
+		"width=400px,height=200px,resizable=no,left=700,top=100");
+	}else {
+		alert("아이디를 입력하세요");
+	}
+	
+	
+}
 
-function idChk(){
+
+/*function idChk(){
 	
 	var f = document.myForm;
 	
@@ -195,7 +218,7 @@ function idChk(){
 		f.action = "/ccookat/main/customer/idcheck.do";
 		f.submit();
 	}
-}
+}*/
 
 
 /*//아이디 형식 검사
