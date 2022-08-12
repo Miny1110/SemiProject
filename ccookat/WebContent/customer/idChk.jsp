@@ -16,6 +16,9 @@
 <body>
 [${customerId }]은(는) ${msg}<br/>
 
-<input type="button" value="${bnt_msg }" onclick="window.close();">
+<input type="hidden" id="idDuplication_popup" name="idDuplication_popup" value=${idDuplication }>
+
+
+<input type="button" value="${bnt_msg }" onclick="getIdDup(); ">
 </body>
 </html>

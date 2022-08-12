@@ -206,6 +206,11 @@ function openIdChk(){
 }
 
 
+function getIdDup(){
+	window.close();
+	opener.document.getElementById("idDuplication").value = document.getElementById("idDuplication_popup").value;
+}
+
 /*function idChk(){
 	
 	var f = document.myForm;
@@ -221,7 +226,7 @@ function openIdChk(){
 }*/
 
 
-/*//아이디 형식 검사
+//아이디 형식 검사
 function isValidId(customerId){
 	
 	var format = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
@@ -237,14 +242,14 @@ function checkFmId(){
 	
 	if(!isValidId(customerId)){
 		alert("올바른 아이디 형식이 아닙니다.");
-		f.idFormat.value = "idFmUncheck";
+		f.idDuplication.value = "idUncheck";
 		setTimeout(function(){f.customerId.focus();}, 10);
 		return;
 	}else{
-		f.idFormat.value = "idFmcheck";
+		f.idDuplication.value = "idUncheck";
 	}
 	
-}*/
+}
 
 
 function customerPwdChk(){
